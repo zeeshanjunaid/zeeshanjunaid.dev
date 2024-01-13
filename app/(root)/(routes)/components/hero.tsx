@@ -1,9 +1,9 @@
 import { ResumeButton, SocialLinks } from "@/components/social-connect";
 
+import { BlurBG } from "@/components/blur-bg";
 import { Container } from "@/components/container";
 import Image from "next/image";
 import React from "react";
-import { BlurBG } from "@/components/blur-bg";
 
 const heroTitle =
   "Hello 👋🏻, I’m Zeeshan Junaid, Frontend Engineer with 8+ years of experience";
@@ -12,14 +12,14 @@ export const Hero = () => {
   return (
     <Container
       className="
-        mt-6
+        mt-8 lg:mt-6
         px-4 lg:px-0     
         flex
         flex-col lg:flex-row
         space-y-4 lg:space-y-0
     "
     >
-      <div className="lg:hidden px-2 w-full sm:w-[80%] md:w-[90%] mx-auto mb-16">
+      <div className="lg:hidden px-2 w-full sm:w-[80%] md:w-[90%] mx-auto mt-4">
         <h2 className="text-center text-[22px] leading-tight sm:text-[28px] md:text-[36px] font-bold font-ao text-dark dark:text-light">
           {heroTitle}
         </h2>
@@ -34,7 +34,7 @@ export const Hero = () => {
           <SocialLinks />
         </div>
       </div>
-      <div className="w-full max-w-[360px] lg:max-w-full h-[265px] sm:h-[355px] rounded-3xl relative mx-auto lg:w-1/3">
+      <div className="w-full max-w-[360px] lg:max-w-full h-[265px] sm:h-[355px] rounded-3xl relative mx-auto lg:w-1/3 -order-1 lg:order-1">
         <BlurBG className="rounded-3xl" />
         <div className="absolute bottom-0 left-2/3 lg:left-auto lg:right-0 -translate-x-3/4 lg:translate-x-0 w-full h-full z-20">
           <Image

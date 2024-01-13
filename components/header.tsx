@@ -7,6 +7,7 @@ import Link from "next/link";
 import { ModeToggle } from "./theme-toggle";
 import NavMobile from "./nav-mobile";
 import { cn } from "@/lib/utils";
+import navLinks from "@/data/nav";
 
 const LogoIcon = () => (
   <svg
@@ -25,13 +26,6 @@ const LogoIcon = () => (
   </svg>
 );
 
-const data = [
-  { label: "About", link: "/about" },
-  { label: "Services", link: "/services" },
-  { label: "Testimonials", link: "/reviews" },
-  { label: "Work", link: "/work" },
-  { label: "Contact", link: "/contact" },
-];
 export const Header = () => {
   const [scrolled, setScrolled] = useState(false);
 
@@ -57,7 +51,7 @@ export const Header = () => {
     >
       <Container className="flex items-center justify-between">
         <Link
-          className="font-ao text-lg lg:text-xl text-dark dark:text-light font-bold tracking-tighter flex items-center gap-x-2 "
+          className="font-ao text-lg lg:text-xl text-dark dark:text-light font-bold tracking-tighter flex items-center gap-x-2 header-logo"
           href="/"
         >
           <LogoIcon />
@@ -66,7 +60,7 @@ export const Header = () => {
 
         <div className="flex items-center space-x-3 md:space-x-3.5 lg:space-x-8">
           <div className="hidden lg:flex items-center space-x-8">
-            {data.map(({ link, label }) => (
+            {navLinks.map(({ link, label }) => (
               <Link
                 href={link}
                 key={label}
@@ -76,7 +70,7 @@ export const Header = () => {
               </Link>
             ))}
           </div>
-          <NavMobile data={data} />
+          <NavMobile data={navLinks} />
           <ModeToggle />
         </div>
       </Container>

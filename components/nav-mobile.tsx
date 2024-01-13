@@ -4,9 +4,9 @@ import { ResumeButton, SocialLinks } from "./social-connect";
 import { Sheet, SheetContent, SheetTrigger } from "./ui/sheet";
 
 import { Button } from "./ui/button";
+import { HiMenuAlt4 } from "react-icons/hi";
 import Link from "next/link";
 import React from "react";
-import { RxHamburgerMenu } from "react-icons/rx";
 
 interface NavMobileProps {
   data: {
@@ -19,17 +19,18 @@ const NavMobile = ({ data }: NavMobileProps) => {
     <Sheet>
       <SheetTrigger asChild>
         <Button
+          size="icon"
           variant="highlight"
-          className="lg:hidden inline-flex items-center space-x-1 h-[40px]"
+          className="lg:hidden inline-flex items-center h-[38px]"
         >
           <div
-            className="absolute top-0 left-0 w-full h-full rounded-md -z-10 scale-y-110 scale-x-105
+            className="absolute top-0 left-0 w-full h-full rounded-full -z-10 scale-y-110 scale-x-105
     bg-gradient-to-r from-pink-500 via-red-500 to-orange-500 from-yellow-500 via-green-500 to-blue-500 from-cyan-500 via-teal-500 to-blue-500 from-blue-500 via-indigo-500 to-blue-500 backdrop-blur-xs group-hover:scale-0 transition-all duration-500 delay-0 ease-in-out group-hover:duration-1000"
           />
-          <RxHamburgerMenu className="h-3.25 w-3.25 md:h-3.5 md:w-3.5" />
-          <span className="uppercase font-switzer font-light text-[12px] md:text-[14px]">
+          <HiMenuAlt4 className="h-[20px] w-[20px] md:h-[22px] md:w-[22px]" />
+          {/* <span className="uppercase font-switzer font-light text-[12px] md:text-[14px]">
             Menu
-          </span>
+          </span> */}
         </Button>
       </SheetTrigger>
       <SheetContent className="bg-light dark:bg-dark flex flex-col justify-between">

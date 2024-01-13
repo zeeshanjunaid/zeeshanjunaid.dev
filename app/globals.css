@@ -98,7 +98,11 @@ body {
 }
 
 .rotate-slow {
-  animation: spin-slow 4s infinite linear;
+  animation: spin-slow 24s infinite linear;
+}
+
+.header-logo:hover .rotate-slow{
+  animation-play-state: paused; ;
 }
 
 .text-gradient {
