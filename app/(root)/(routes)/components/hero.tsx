@@ -1,0 +1,56 @@
+import { ResumeButton, SocialLinks } from "@/components/social-connect";
+
+import { Container } from "@/components/container";
+import Image from "next/image";
+import React from "react";
+import { BlurBG } from "@/components/blur-bg";
+
+const heroTitle =
+  "Hello 👋🏻, I’m Zeeshan Junaid, Frontend Engineer with 8+ years of experience";
+const heroImg = "/images/zeeshan.png";
+export const Hero = () => {
+  return (
+    <Container
+      className="
+        mt-6
+        px-4 lg:px-0     
+        flex
+        flex-col lg:flex-row
+        space-y-4 lg:space-y-0
+    "
+    >
+      <div className="lg:hidden px-2 w-full sm:w-[80%] md:w-[90%] mx-auto mb-16">
+        <h2 className="text-center text-[22px] leading-tight sm:text-[28px] md:text-[36px] font-bold font-ao text-dark dark:text-light">
+          {heroTitle}
+        </h2>
+      </div>
+      <div className="hidden lg:flex flex-col w-2/3  rounded-3xl px-16 py-12 justify-between flex-1 mr-5 relative overflow-hidden">
+        <BlurBG className="rounded-3xl" />
+        <h2 className="z-20 relative text-left text-[32px] 2xl:text-[36px] font-bold font-ao text-dark dark:text-light">
+          {heroTitle}
+        </h2>
+        <div className="flex items-center space-x-3 min-w-max justify-start z-20 relative">
+          <ResumeButton />
+          <SocialLinks />
+        </div>
+      </div>
+      <div className="w-full max-w-[360px] lg:max-w-full h-[265px] sm:h-[355px] rounded-3xl relative mx-auto lg:w-1/3">
+        <BlurBG className="rounded-3xl" />
+        <div className="absolute bottom-0 left-2/3 lg:left-auto lg:right-0 -translate-x-3/4 lg:translate-x-0 w-full h-full z-20">
+          <Image
+            fill
+            alt="profile"
+            src={heroImg}
+            className="scale-125 lg:scale-[135%] 2xl:scale-[120%] origin-bottom object-contain object-bottom transition-opacity delay-750 duration-1000"
+          />
+        </div>
+      </div>
+      <div className="flex flex-col sm:flex-row lg:hidden items-center gap-3 min-w-max justify-center">
+        <ResumeButton />
+        <div className="flex space-x-3">
+          <SocialLinks />
+        </div>
+      </div>
+    </Container>
+  );
+};
