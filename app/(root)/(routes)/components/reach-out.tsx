@@ -1,12 +1,12 @@
 import { ResumeButton, SocialLinks } from "@/components/social-connect";
 
+import { BlurBG } from "@/components/blur-bg";
 import { Container } from "@/components/container";
 import React from "react";
-import { BlurBG } from "@/components/blur-bg";
 
 const ReachOut = () => {
   return (
-    <Container className="mt-8 lg:mt-12 px-5 md:px-7 lg:px-0">
+    <Container className="mt-8 lg:mt-12 px-5 md:px-7 lg:px-0 relative">
       <div className="py-8 px-5 md:p-12  lg:p-16 rounded-3xl relative flex flex-col justify-between items-start gap-y-[120px] md:gap-y-[140px] lg:gap-y-[160px] overflow-hidden">
         <BlurBG className="rounded-3xl" />
         <div className="relative z-[20]">
@@ -32,6 +32,7 @@ const ReachOut = () => {
           </div>
         </div>
       </div>
+      <div className="reactout-gradient absolute w-[350px] h-[350px] bottom-0 right-0 z-20 rounded-full opacity-70" />
     </Container>
   );
 };

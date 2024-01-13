@@ -101,8 +101,8 @@ body {
   animation: spin-slow 24s infinite linear;
 }
 
-.header-logo:hover .rotate-slow{
-  animation-play-state: paused; ;
+.header-logo:hover .rotate-slow {
+  animation-play-state: paused;
 }
 
 .text-gradient {
@@ -121,3 +121,4 @@ body {
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
 }
+
