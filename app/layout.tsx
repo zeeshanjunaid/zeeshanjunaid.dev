@@ -1,4 +1,5 @@
 import "./globals.css";
+import { Analytics } from "@vercel/analytics/react";
 
 import { Footer } from "@/components/footer";
 import { Header } from "@/components/header";
@@ -64,6 +65,7 @@ export default function RootLayout({
           <SmoothScroll>{children}</SmoothScroll>
           <Footer />
         </ThemeProvider>
+        <Analytics />
       </body>
     </html>
   );
