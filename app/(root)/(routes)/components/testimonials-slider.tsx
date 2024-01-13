@@ -1,18 +1,21 @@
 "use client";
 
+import { ChevronLeft, ChevronRight } from "lucide-react";
+import React, { useState } from "react";
+
 import { BlurBG } from "@/components/blur-bg";
+import { Button } from "@/components/ui/button";
 import { Container } from "@/components/container";
 import Image from "next/image";
-import React from "react";
 import { useTheme } from "next-themes";
 
 interface TestimonialsSliderProps {
   reviews: {
     client: string;
-    logo: string;
+    logo?: string;
+    company?: string;
     profile: string;
     review: string;
-    featured?: boolean;
   }[];
 }
 const QuotedIcon = ({ color }: { color: string }) => (
@@ -32,6 +35,19 @@ const QuotedIcon = ({ color }: { color: string }) => (
 );
 const TestimonialsSlider = ({ reviews }: TestimonialsSliderProps) => {
   const { theme } = useTheme();
+  const [currentIndex, setCurrentIndex] = useState(0);
+  const totalReviews = reviews.length;
+
+  const handleNext = () => {
+    setCurrentIndex((prevIndex) => (prevIndex + 1) % totalReviews);
+  };
+
+  const handlePrevious = () => {
+    setCurrentIndex(
+      (prevIndex) => (prevIndex - 1 + totalReviews) % totalReviews,
+    );
+  };
+  const { client, logo, company, profile, review } = reviews[currentIndex];
 
   return (
     <Container className="mt-8 lg:mt-12 px-5 md:px-7 lg:px-0 relative flex lg:gap-x-5">
@@ -40,49 +56,60 @@ const TestimonialsSlider = ({ reviews }: TestimonialsSliderProps) => {
         <Image
           objectFit="cover"
           className="aspect-square"
-          src="/images/testimonials/josh-pic.jpg"
+          src={profile}
           fill
-          alt="Josh Peters"
+          alt={client}
         />
       </div>
       <div className="py-8 px-5 md:p-12 w-full   lg:px-16 rounded-3xl relative flex overflow-hidden">
         <BlurBG className="rounded-3xl" />
         <div className="relative z-20">
           <h2 className="text-[#3F3F3F]/70 dark:text-[#FAFAF6]/70 font-medium font-switzer text-[16px] md:text-[20px] lg:text-[16px] leading-relaxed  mb-8">
-            Here&apos;s why Josh Peters from Passage Protocols hired me.
+            Here&apos;s why {client} {company && <>from {company}</>} hired me.
           </h2>
           <div className="flex flex-col justify-between space-y-12 lg:space-y-5">
             <div className="relative">
               <QuotedIcon color={theme === "dark" ? "#FAFAF6" : "#3F3F3F"} />
               <p className="italic text-[16px] md:text-[20px] lg:text-[16px] text-dark dark:text-light leading-relaxed md:mr-[72px] lg:mr-0 lg:min-h-[130px]">
-                Worked with Zeeshan for a project in React, Next.js 13, and
-                Tailwind to build a frontend. His attention to detail, timely
-                communication, and professionalism were outstanding. I recommend
-                his services to anyone seeking top-notch frontend development.
+                {review}
               </p>
             </div>
 
-            <div className="">
+            <div className="flex items-end justify-between">
               <div className="flex justify-start items-center gap-x-2.5 md:gap-x-4">
                 <div className="lg:hidden w-[42px] md:w-[60px] h-[42px] md:h-[60px] relative rounded-full overflow-hidden">
-                  <Image
-                    src="/images/testimonials/josh-pic.jpg"
-                    fill
-                    alt="Josh Peters"
-                  />
+                  {profile && <Image src={profile} fill alt={client} />}
                 </div>
                 <div className="flex flex-col gap-y-1">
                   <p className="italic font-bold text-[14px] md:text-[18px] lg:text-[22px] text-dark dark:text-light leading-relaxed">
-                    Josh Peters
+                    {client}
                   </p>
-                  <Image
-                    src="/images/testimonials/pp.png"
-                    width={70}
-                    height={20}
-                    alt="passage protocol logo"
-                    className="hidden dark:block"
-                  />
+                  {logo && (
+                    <Image
+                      src={logo}
+                      width={70}
+                      height={20}
+                      alt={company ? company : "logo"}
+                      className="hidden dark:block"
+                    />
+                  )}
                 </div>
+              </div>
+              <div className="flex gap-x-2">
+                <Button
+                  size="icon"
+                  onClick={handlePrevious}
+                  className="bg-transparent text-dark dark:text-light border-[1px] border-solid border-dark dark:border-light hover:bg-purple hover:border-purple dark:hover:border-purple transition duration-200 rounded-xl"
+                >
+                  <ChevronLeft size={18} />
+                </Button>
+                <Button
+                  onClick={handleNext}
+                  size="icon"
+                  className="bg-transparent text-dark dark:text-light border-[1px] border-solid border-dark dark:border-light hover:bg-purple hover:border-purple dark:hover:border-purple transition duration-200 rounded-xl"
+                >
+                  <ChevronRight size={18} />
+                </Button>
               </div>
             </div>
           </div>
