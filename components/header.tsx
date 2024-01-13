@@ -46,7 +46,6 @@ export const Header = () => {
       className={cn(
         "fixed z-40 top-0 left-0 right-0 w-full px-4 lg:px-0 pt-6 pb-4 border-b-[1px] border-b-borderDarkColor transition-all duration-200 bg-light/0 dark:bg-dark/0",
         scrolled && "bg-light/100 dark:bg-dark/100",
-        !scrolled && "lg:border-0",
       )}
     >
       <Container className="flex items-center justify-between">

@@ -57,7 +57,7 @@ export function SocialLinks() {
           <Tooltip>
             <TooltipTrigger>
               <a href={link} target="_blank">
-                <Button size="icon" className="min-w-max">
+                <Button size="icon" className="rounded-xl">
                   {icon}
                 </Button>
               </a>
@@ -72,7 +72,7 @@ export function SocialLinks() {
 
 export function ResumeButton({ className }: { className?: string }) {
   return (
-    <Button variant="purple" className={cn("space-x-1 w-max", className)}>
+    <Button variant="purple" className={cn("space-x-1 w-max rounded-xl", className)}>
       <DownloadCloud className="w-3 md:w-4 lg:w-5 h-3 md:h-4 lg:h-5" />
       <span className="text-dark dark:text-light uppercase text-[12px] md:text-[14px]">
         Download CV

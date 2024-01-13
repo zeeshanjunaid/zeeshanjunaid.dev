@@ -24,7 +24,7 @@ const NavMobile = ({ data }: NavMobileProps) => {
           className="lg:hidden inline-flex items-center h-[38px]"
         >
           <div
-            className="absolute top-0 left-0 w-full h-full rounded-full -z-10 scale-y-110 scale-x-105
+            className="absolute top-0 left-0 w-full h-full rounded-xl -z-10 scale-y-110 scale-x-105
     bg-gradient-to-r from-pink-500 via-red-500 to-orange-500 from-yellow-500 via-green-500 to-blue-500 from-cyan-500 via-teal-500 to-blue-500 from-blue-500 via-indigo-500 to-blue-500 backdrop-blur-xs group-hover:scale-0 transition-all duration-500 delay-0 ease-in-out group-hover:duration-1000"
           />
           <HiMenuAlt4 className="h-[20px] w-[20px] md:h-[22px] md:w-[22px]" />
