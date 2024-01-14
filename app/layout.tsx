@@ -1,14 +1,14 @@
 import "./globals.css";
-import { Analytics } from "@vercel/analytics/react";
-import { SpeedInsights } from "@vercel/speed-insights/next"
 
+import { Analytics } from "@vercel/analytics/react";
 import { Footer } from "@/components/footer";
 import { Header } from "@/components/header";
 import type { Metadata } from "next";
+import SmoothScroll from "@/components/smooth-scroll";
+import { SpeedInsights } from "@vercel/speed-insights/next";
 import { ThemeProvider } from "@/components/theme-provider";
 import { cn } from "@/lib/utils";
 import localFont from "next/font/local";
-import SmoothScroll from "@/components/smooth-scroll";
 
 export const metadata: Metadata = {
   title: "Zeeshan Junaid",
@@ -63,7 +63,8 @@ export default function RootLayout({
       >
         <ThemeProvider attribute="class" defaultTheme="system" enableSystem>
           <Header />
-          <SmoothScroll>{children}</SmoothScroll>
+          {/* <SmoothScroll>{children}</SmoothScroll> */}
+          <main className="pt-[100px]">{children}</main>
           <Footer />
         </ThemeProvider>
         <Analytics />

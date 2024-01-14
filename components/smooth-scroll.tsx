@@ -18,9 +18,8 @@ const SmoothScroll: React.FC<SmoothScrollProps> = ({ children }) => {
         el: contentRef.current!,
         lerp: 0.1,
         smooth: true,
-        easing: (t:any) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
+        easing: (t: any) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
         autoResize: true,
-        reloadOnContextChange: true,
       });
     };
 

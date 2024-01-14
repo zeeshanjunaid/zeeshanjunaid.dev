@@ -2,12 +2,14 @@
 
 import React, { useEffect, useState } from "react";
 
+import { Button } from "./ui/button";
 import { Container } from "./container";
 import Link from "next/link";
 import { ModeToggle } from "./theme-toggle";
 import NavMobile from "./nav-mobile";
 import { cn } from "@/lib/utils";
 import navLinks from "@/data/nav";
+import { usePathname } from "next/navigation";
 
 const LogoIcon = () => (
   <svg
@@ -27,6 +29,8 @@ const LogoIcon = () => (
 );
 
 export const Header = () => {
+  const pathname = usePathname();
+
   const [scrolled, setScrolled] = useState(false);
 
   useEffect(() => {
@@ -57,16 +61,21 @@ export const Header = () => {
           Zeeshan Junaid
         </Link>
 
-        <div className="flex items-center space-x-3 md:space-x-3.5 lg:space-x-8">
-          <div className="hidden lg:flex items-center space-x-8">
+        <div className="flex items-center space-x-5 ">
+          <div className="hidden lg:flex items-center gap-x-3">
             {navLinks.map(({ link, label }) => (
-              <Link
-                href={link}
+              <Button
+                variant="ghost"
                 key={label}
-                className="font-switzer font-dark dark:font-light text-sm uppercase font-medium transition-color duration-200 hover:text-purple"
+                className={cn(
+                  "font-switzer font-dark dark:font-light text-sm uppercase font-medium transition-color duration-200 hover:text-purple hover:bg-transparent rounded-xl",
+                  pathname === link &&
+                    "bg-purple text-dark dark:text-light hover:bg-purple active:bg-purple focus:bg-purple",
+                )}
+                asChild
               >
-                {label}
-              </Link>
+                <Link href={link}>{label}</Link>
+              </Button>
             ))}
           </div>
           <NavMobile data={navLinks} />
