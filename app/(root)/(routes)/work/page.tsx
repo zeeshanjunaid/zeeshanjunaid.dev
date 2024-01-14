@@ -12,7 +12,9 @@ import { WorkList } from "../components/work-list";
 
 const WorkPage = () => {
   const projectsNum = ProjectsList.length;
-  const [gridView, setGridView] = useState(false);
+  const [gridView, setGridView] = useState(
+    JSON.parse(localStorage.getItem("zsGridView") || "false"),
+  );
   const [skillValue, setSkillValue] = useState("");
   const [projects, setProjects] = useState(ProjectsList);
 
@@ -30,6 +32,10 @@ const WorkPage = () => {
 
     setProjects(filteredProjects);
   }, [skillValue]);
+
+  useEffect(() => {
+    localStorage.setItem("zsGridView", JSON.stringify(gridView));
+  }, [gridView]);
 
   return (
     <>
