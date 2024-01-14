@@ -3,6 +3,7 @@
 import React, { useState } from "react";
 
 import { Container } from "@/components/container";
+import { FilterBar } from "../components/filter-bar";
 import ProjectsList from "@/data/work";
 import ReachOut from "../components/reach-out";
 import { ViewToggle } from "../components/view-toggle";
@@ -23,7 +24,8 @@ const WorkPage = () => {
         <h2 className="text-[28px] md:text-[42px] lg:text-[54px] font-bold font-ao text-dark dark:text-light">
           Projects ({projectsNum})
         </h2>
-        <div className="flex justify-start items-center">
+        <div className="flex justify-start items-center gap-x-2 md:gap-x-4">
+          <FilterBar />
           <ViewToggle gridView={gridView} setGridView={setGridView} />
         </div>
       </Container>
