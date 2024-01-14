@@ -1,4 +1,5 @@
 "use client";
+
 import { useEffect, useRef } from "react";
 
 interface SmoothScrollProps {
@@ -19,6 +20,7 @@ const SmoothScroll: React.FC<SmoothScrollProps> = ({ children }) => {
         smooth: true,
         easing: (t:any) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
         autoResize: true,
+        reloadOnContextChange: true,
       });
     };
 

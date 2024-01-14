@@ -29,7 +29,7 @@ export const WorkGrid = ({ projects }: WorkGridProps) => {
                 </div>
 
                 <div className="flex items-center justify-between w-full">
-                  <h3 className="text-2xl font-bold font-ao text-dark dark:text-light text-[20px] capitalize">
+                  <h3 className="font-bold font-ao text-dark dark:text-light text-[16px] md:text-[18px] lg:text-[20px] capitalize">
                     {name}
                   </h3>
                   <span className="text-[24px] text-dark dark:text-light">
