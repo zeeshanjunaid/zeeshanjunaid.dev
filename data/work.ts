@@ -1,14 +1,24 @@
-const ProjectsList = [
+export interface Project {
+  name: string;
+  imgUrl?: string;
+  link: string;
+  year: number;
+  tags: string[];
+  selected?: boolean;
+  archived?: boolean;
+}
+const ProjectsList: Project[] = [
   {
     name: "customs",
+    imgUrl: "/images/projects/customs.jpg",
     link: "https://customs-frontend-git-homepage-design-passage-protocol.vercel.app/",
     year: 2023,
     tags: ["ui/ux", "frontend"],
-    image: "",
     selected: true,
   },
   {
-    name: "Roa’a",
+    name: "Roa’a Technologies",
+    imgUrl: "/images/projects/roaa.jpg",
     link: "https://roaa-zeeshanjunaid.vercel.app/",
     year: 2023,
     tags: ["ui/ux", "frontend", "animations"],
@@ -16,10 +26,18 @@ const ProjectsList = [
   },
   {
     name: "drillbit",
+    imgUrl: "/images/projects/drillbit.jpg",
     link: "https://www.drillbit.xyz/",
     year: 2023,
     tags: ["ui/ux", "frontend"],
     selected: true,
+  },
+  {
+    name: "Nova AI",
+    imgUrl: "/images/projects/nova.jpg",
+    link: "https://stevenland.com/",
+    year: 2022,
+    tags: ["frontend", "animations"],
   },
   {
     name: "calaways sol",

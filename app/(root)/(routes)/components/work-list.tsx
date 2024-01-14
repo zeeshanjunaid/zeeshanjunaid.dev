@@ -1,17 +1,13 @@
 "use client";
 
 import { Container } from "@/components/container";
+import type { Project } from "@/data/work";
 import React from "react";
 import { WorkItem } from "@/components/work-item";
 interface WorkListProps {
   title?: string;
   selectedSkill?: string;
-  projects: {
-    name: string;
-    year: number;
-    tags: string[];
-    link: string;
-  }[];
+  projects: Project[];
 }
 export const WorkList = ({ title, projects, selectedSkill }: WorkListProps) => {
   return (
