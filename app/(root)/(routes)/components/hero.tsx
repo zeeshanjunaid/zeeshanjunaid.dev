@@ -41,6 +41,7 @@ export const Hero = () => {
             fill
             alt="profile"
             src={heroImg}
+            priority={true}
             className="scale-125 lg:scale-[135%] 2xl:scale-[120%] origin-bottom object-contain object-bottom transition-opacity delay-750 duration-1000"
           />
         </div>
