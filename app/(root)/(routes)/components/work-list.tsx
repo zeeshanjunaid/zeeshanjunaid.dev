@@ -9,6 +9,7 @@ interface WorkListProps {
     name: string;
     year: number;
     tags: string[];
+    link: string;
   }[];
 }
 export const WorkList = ({ title, projects }: WorkListProps) => {
@@ -26,8 +27,14 @@ md:px-7 lg:px-0
         {title}
       </h2>
       <ul className="flex flex-col gap-y-3">
-        {projects.map(({ name, year, tags }, index) => (
-          <WorkItem key={name + index} name={name} year={year} tags={tags} />
+        {projects.map(({ name, year, tags, link }, index) => (
+          <WorkItem
+            key={name + index}
+            name={name}
+            year={year}
+            tags={tags}
+            link={link}
+          />
         ))}
       </ul>
     </Container>
