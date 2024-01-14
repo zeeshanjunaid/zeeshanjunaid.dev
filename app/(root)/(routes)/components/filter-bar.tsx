@@ -59,7 +59,7 @@ export function FilterBar({
       <PopoverTrigger
         disabled={skills.length === 0}
         asChild
-        className="relative"
+        className="relative hover:bg-purple/40"
       >
         <Button
           variant="outline"
@@ -77,7 +77,7 @@ export function FilterBar({
         </Button>
       </PopoverTrigger>
       <PopoverContent className="w-full min-w-[200px] md:min-w-[300px] py-0 rounded-xl bg-light dark:bg-dark">
-        <Command className="rounded-xl bg-light dark:bg-dark">
+        <Command className="rounded-xl bg-light dark:bg-dark ">
           <CommandInput placeholder="Search skill..." />
           <CommandEmpty>No Skill found.</CommandEmpty>
           <CommandGroup>
@@ -85,7 +85,7 @@ export function FilterBar({
               <CommandItem
                 key={skill}
                 value={skill}
-                className="uppercase font-switzer font-light text-dark dark:text-light"
+                className="uppercase font-switzer font-light text-dark dark:text-light hover:bg-purple/40 aria-selected:bg-purple/40"
                 onSelect={(currentValue) => {
                   setSkillValue(
                     currentValue === skillValue ? "" : currentValue,
