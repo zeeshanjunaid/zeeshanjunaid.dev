@@ -1,8 +1,8 @@
 "use client";
 
+import { BlurBG } from "./blur-bg";
 import { MdArrowOutward } from "react-icons/md";
 import React from "react";
-import { BlurBG } from "./blur-bg";
 interface WorkItemProps {
   name: string;
   year: number;
@@ -10,9 +10,9 @@ interface WorkItemProps {
 }
 export const WorkItem = ({ name, year, tags }: WorkItemProps) => {
   return (
-    <div className="cursor-pointer group w-full rounded-2xl hover:bg-gradient-to-r from-[#ce55b0] via-[#f34dac] to-[#f48e66] from-[#f0b832] via-[#b2ce37] to-[#63d7af] from-[#1cc2df] via-[#0580e6] p-[2px] transition duration-1000 overflow-hidden z-20">
-      <div className="relative px-6 md:px-8 py-6 bg-light dark:bg-dark rounded-2xl">
-        <BlurBG className="rounded-2xl" />
+    <div className="cursor-pointer bg-transparent group w-full rounded-3xl bg-purple hover:bg-gradient-to-r from-[#ce55b0] via-[#f34dac] to-[#f48e66] from-[#f0b832] via-[#b2ce37] to-[#63d7af] from-[#1cc2df] via-[#0580e6] p-[2px] transition-background duration-200 overflow-hidden z-20">
+      <div className="relative px-6 md:px-8 py-6 bg-light dark:bg-dark rounded-3xl">
+        <BlurBG className="rounded-3xl" />
         <div className="flex items-start gap-x-8 justify-between md:items-center relative z-20">
           <WorkYear year={year} />
           <div className="flex flex-col md:flex-row md:justify-between md:items-center gap-y-3 flex-1 flex-wrap">
@@ -43,7 +43,7 @@ const WorkName = ({ name }: { name: string }) => (
   </h1>
 );
 const WorkTag = ({ tag }: { tag: string }) => (
-  <div className="inline-flex uppercase px-2.5 md:px-[12px] py-1.5 md:py-2 text-[10px] md:text-[12px] text-dark dark:text-light border border-solid border-dark dark:border-light rounded-full leading-[125%]">
+  <div className="inline-flex uppercase px-4 py-2 text-[10px] md:text-[12px] text-dark dark:text-light border border-solid border-dark dark:border-light rounded-xl leading-[125%]">
     {tag}
   </div>
 );
