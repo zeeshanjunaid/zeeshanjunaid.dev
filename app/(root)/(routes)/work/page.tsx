@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 
 import { Container } from "@/components/container";
 import { FilterBar } from "../components/filter-bar";
@@ -12,6 +12,24 @@ import { WorkList } from "../components/work-list";
 const WorkPage = () => {
   const projectsNum = ProjectsList.length;
   const [gridView, setGridView] = useState(false);
+  const [skillValue, setSkillValue] = useState("");
+  const [projects, setProjects] = useState(ProjectsList);
+
+  const skills = Array.from(
+    new Set(ProjectsList.flatMap((project) => project.tags)),
+  ).sort();
+
+  useEffect(() => {
+    const filteredProjects =
+      skillValue.length > 0
+        ? ProjectsList.filter((project) =>
+            project.tags.some((skill) => skill.includes(skillValue)),
+          )
+        : ProjectsList;
+
+    setProjects(filteredProjects);
+  }, [skillValue]);
+
   return (
     <>
       <Container
@@ -25,7 +43,11 @@ const WorkPage = () => {
           Projects ({projectsNum})
         </h2>
         <div className="flex justify-start items-center gap-x-2 md:gap-x-4">
-          <FilterBar />
+          <FilterBar
+            skillValue={skillValue}
+            setSkillValue={setSkillValue}
+            skills={skills}
+          />
           <ViewToggle gridView={gridView} setGridView={setGridView} />
         </div>
       </Container>
@@ -56,7 +78,7 @@ const WorkPage = () => {
         </div>
       )}
 
-      {gridView ? "" : <WorkList projects={ProjectsList} />}
+      {gridView ? "" : <WorkList projects={projects} />}
       <ReachOut />
     </>
   );

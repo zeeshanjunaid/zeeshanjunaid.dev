@@ -42,50 +42,64 @@ const frameworks = [
     label: "Astro",
   },
 ];
-
-export function FilterBar() {
+interface FilterBarProps {
+  skills: string[];
+  skillValue: string;
+  setSkillValue: (value: string) => void;
+}
+export function FilterBar({
+  skills,
+  skillValue,
+  setSkillValue,
+}: FilterBarProps) {
   const [open, setOpen] = React.useState(false);
-  const [value, setValue] = React.useState("");
 
   return (
     <Popover open={open} onOpenChange={setOpen}>
-      <PopoverTrigger asChild className="relative">
+      <PopoverTrigger
+        disabled={skills.length === 0}
+        asChild
+        className="relative"
+      >
         <Button
           variant="outline"
           role="combobox"
           aria-expanded={open}
-          className="justify-between bg-transparent rounded-xl overflow-hidden relative w-[260px] md:w-[300px]"
+          className="justify-between bg-transparent rounded-xl overflow-hidden relative w-[260px] md:w-[300px] uppercase font-switzer font-light text-dark dark:text-light text-xs md:text-sm"
         >
           <BlurBG />
           <div className="z-20 relative flex justify-between w-full">
-            {value
-              ? frameworks.find((framework) => framework.value === value)?.label
+            {skillValue
+              ? skills.find((skill) => skill === skillValue)
               : "All Projects"}
             <ChevronsUpDown className="ml-2 h-4 w-4 shrink-0 opacity-50" />
           </div>
         </Button>
       </PopoverTrigger>
-      <PopoverContent className="w-[200px] md:w-[300px] p-0">
-        <Command>
+      <PopoverContent className="w-[200px] md:w-[300px] p-0 rounded-xl bg-light dark:bg-dark">
+        <Command className="rounded-xl bg-light dark:bg-dark">
           <CommandInput placeholder="Search skill..." />
-          <CommandEmpty>No framework found.</CommandEmpty>
+          <CommandEmpty>No Skill found.</CommandEmpty>
           <CommandGroup>
-            {frameworks.map((framework) => (
+            {skills.map((skill) => (
               <CommandItem
-                key={framework.value}
-                value={framework.value}
+                key={skill}
+                value={skill}
+                className="uppercase font-switzer font-light text-dark dark:text-light"
                 onSelect={(currentValue) => {
-                  setValue(currentValue === value ? "" : currentValue);
+                  setSkillValue(
+                    currentValue === skillValue ? "" : currentValue,
+                  );
                   setOpen(false);
                 }}
               >
                 <Check
                   className={cn(
-                    "mr-2 h-4 w-4",
-                    value === framework.value ? "opacity-100" : "opacity-0",
+                    "mr-2 h-4 w-4 text-purple",
+                    skillValue === skill ? "opacity-100" : "opacity-0",
                   )}
                 />
-                {framework.label}
+                {skill}
               </CommandItem>
             ))}
           </CommandGroup>
