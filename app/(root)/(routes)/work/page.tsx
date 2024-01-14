@@ -1,13 +1,11 @@
 "use client";
 
-import { LuLayoutGrid, LuLayoutList } from "react-icons/lu";
 import React, { useState } from "react";
-import { ToggleGroup, ToggleGroupItem } from "@/components/ui/toggle-group";
 
-import { BlurBG } from "@/components/blur-bg";
 import { Container } from "@/components/container";
 import ProjectsList from "@/data/work";
 import ReachOut from "../components/reach-out";
+import { ViewToggle } from "../components/view-toggle";
 import { WorkList } from "../components/work-list";
 
 const WorkPage = () => {
@@ -26,27 +24,7 @@ const WorkPage = () => {
           Projects ({projectsNum})
         </h2>
         <div className="flex justify-start items-center">
-          <ToggleGroup type="single" className="relative rounded-xl p-1">
-            <BlurBG className="rounded-xl" />
-            <ToggleGroupItem
-              onClick={() => setGridView(false)}
-              value="list"
-              aria-label="Toggle list"
-              className="rounded-xl z-20 data-[state=on]:bg-purple hover:bg-purple/10"
-              data-state={!gridView ? "on" : "off"}
-            >
-              <LuLayoutList className="h-4 w-4" />
-            </ToggleGroupItem>
-            <ToggleGroupItem
-              onClick={() => setGridView(true)}
-              value="grid"
-              aria-label="Toggle grid"
-              className="rounded-xl z-20 data-[state=on]:bg-purple hover:bg-purple/10"
-              data-state={gridView ? "on" : "off"}
-            >
-              <LuLayoutGrid className="h-4 w-4" />
-            </ToggleGroupItem>
-          </ToggleGroup>
+          <ViewToggle gridView={gridView} setGridView={setGridView} />
         </div>
       </Container>
       {!gridView && (
