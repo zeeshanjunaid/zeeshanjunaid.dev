@@ -29,7 +29,7 @@ const ProjectsList = [
   },
   {
     name: "abstrkt",
-    link: "https://abstrkt.vercel.app",
+    link: "https://abstrkt.vercel.app/homepage-design",
     year: 2022,
     tags: ["frontend", "ui/ux"],
     selected: true,
