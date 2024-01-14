@@ -78,7 +78,7 @@ const ProjectsList: Project[] = [
     name: "stevenland",
     link: "https://stevenland.com/",
     year: 2019,
-    tags: ["development", "support", "maintenance"],
+    tags: ["fullstack development", "support", "maintenance"],
     archived: true,
   },
 ];
