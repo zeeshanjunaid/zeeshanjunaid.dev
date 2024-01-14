@@ -4,6 +4,7 @@ const ProjectsList = [
     link: "https://customs-frontend-git-homepage-design-passage-protocol.vercel.app/",
     year: 2023,
     tags: ["ui/ux", "frontend"],
+    image: "",
     selected: true,
   },
   {
