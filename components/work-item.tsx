@@ -3,13 +3,21 @@
 import { BlurBG } from "./blur-bg";
 import { MdArrowOutward } from "react-icons/md";
 import React from "react";
+import { cn } from "@/lib/utils";
 interface WorkItemProps {
   name: string;
   year: number;
   tags: string[];
   link: string;
+  selectedSkill?: string;
 }
-export const WorkItem = ({ name, year, tags, link }: WorkItemProps) => {
+export const WorkItem = ({
+  name,
+  year,
+  tags,
+  link,
+  selectedSkill,
+}: WorkItemProps) => {
   return (
     <a
       href={link}
@@ -24,7 +32,7 @@ export const WorkItem = ({ name, year, tags, link }: WorkItemProps) => {
             <WorkName name={name} />
             <div className="flex items-center flex-wrap gap-2 md:gap-2.5">
               {tags.map((tag, index) => (
-                <WorkTag key={index} tag={tag} />
+                <WorkTag key={index} tag={tag} selectedSkill={selectedSkill} />
               ))}
             </div>
           </div>
@@ -47,8 +55,20 @@ const WorkName = ({ name }: { name: string }) => (
     {name}
   </h1>
 );
-const WorkTag = ({ tag }: { tag: string }) => (
-  <div className="inline-flex uppercase px-4 py-2 text-[10px] md:text-[12px] text-dark dark:text-light border border-solid border-dark dark:border-light rounded-xl leading-[125%]">
+const WorkTag = ({
+  tag,
+  selectedSkill,
+}: {
+  tag: string;
+  selectedSkill: string | undefined;
+}) => (
+  <div
+    className={cn(
+      "inline-flex uppercase px-4 py-2 text-[10px] md:text-[12px] text-dark dark:text-light border border-solid border-dark dark:border-light rounded-xl leading-[125%]",
+      selectedSkill === tag &&
+        "bg-purple/40 border-transparent dark:border-transparent",
+    )}
+  >
     {tag}
   </div>
 );

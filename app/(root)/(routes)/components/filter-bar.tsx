@@ -76,7 +76,7 @@ export function FilterBar({
           </div>
         </Button>
       </PopoverTrigger>
-      <PopoverContent className="w-[200px] md:w-[300px] p-0 rounded-xl bg-light dark:bg-dark">
+      <PopoverContent className="w-full min-w-[200px] md:min-w-[300px] py-0 rounded-xl bg-light dark:bg-dark">
         <Command className="rounded-xl bg-light dark:bg-dark">
           <CommandInput placeholder="Search skill..." />
           <CommandEmpty>No Skill found.</CommandEmpty>

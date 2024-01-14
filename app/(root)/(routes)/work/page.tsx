@@ -19,16 +19,16 @@ const WorkPage = () => {
     new Set(ProjectsList.flatMap((project) => project.tags)),
   ).sort();
 
-  useEffect(() => {
-    const filteredProjects =
-      skillValue.length > 0
-        ? ProjectsList.filter((project) =>
-            project.tags.some((skill) => skill.includes(skillValue)),
-          )
-        : ProjectsList;
+  // useEffect(() => {
+  //   const filteredProjects =
+  //     skillValue.length > 0
+  //       ? ProjectsList.filter((project) =>
+  //           project.tags.some((skill) => skill.includes(skillValue)),
+  //         )
+  //       : ProjectsList;
 
-    setProjects(filteredProjects);
-  }, [skillValue]);
+  //   setProjects(filteredProjects);
+  // }, [skillValue]);
 
   return (
     <>
@@ -78,7 +78,7 @@ const WorkPage = () => {
         </div>
       )}
 
-      {gridView ? "" : <WorkList projects={projects} />}
+      {gridView ? "" : <WorkList selectedSkill={skillValue} projects={projects} />}
       <ReachOut />
     </>
   );

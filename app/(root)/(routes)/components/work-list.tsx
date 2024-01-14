@@ -5,6 +5,7 @@ import React from "react";
 import { WorkItem } from "@/components/work-item";
 interface WorkListProps {
   title?: string;
+  selectedSkill?: string;
   projects: {
     name: string;
     year: number;
@@ -12,7 +13,7 @@ interface WorkListProps {
     link: string;
   }[];
 }
-export const WorkList = ({ title, projects }: WorkListProps) => {
+export const WorkList = ({ title, projects, selectedSkill }: WorkListProps) => {
   return (
     <Container
       className="mt-[3.125rem] flex flex-col gap-y-3 px-4
@@ -37,6 +38,7 @@ md:px-7 lg:px-0
             year={year}
             tags={tags}
             link={link}
+            selectedSkill={selectedSkill}
           />
         ))}
       </ul>
