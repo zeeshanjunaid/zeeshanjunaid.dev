@@ -6,6 +6,7 @@ import { Container } from "@/components/container";
 import Image from "next/image";
 import type { Project } from "@/data/work";
 import React from "react";
+import { BlurBG } from "@/components/blur-bg";
 interface WorkGridProps {
   projects: Project[];
 }
@@ -25,8 +26,15 @@ export const WorkGrid = ({ projects }: WorkGridProps) => {
                   className="flex flex-col gap-y-1.5 lg:gap-y-2.5 group"
                 >
                   <div className="relative w-full">
+                    <BlurBG />
                     <AspectRatio ratio={16 / 9}>
-                      <Image fill objectFit="cover" alt={name} src={imgUrl} />
+                      <Image
+                        className="z-20"
+                        fill
+                        objectFit="cover"
+                        alt={name}
+                        src={imgUrl}
+                      />
                     </AspectRatio>
                   </div>
 
