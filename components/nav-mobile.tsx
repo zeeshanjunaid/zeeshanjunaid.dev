@@ -34,11 +34,11 @@ const NavMobile = ({ data }: NavMobileProps) => {
         </Button>
       </SheetTrigger>
       <SheetContent className="bg-light dark:bg-dark flex flex-col justify-between">
-        <div className="flex flex-col space-y-6 mt-12">
+        <div className="flex flex-col space-y-4 mt-12">
           <Link
             href="/"
             className={cn(
-              "w-full border-b-[1px] last:border-0 pt-0 pb-6 font-switzer font-dark dark:font-light text-base uppercase font-medium transition hover:text-purple",
+              "w-full border-b-[1px] last:border-0 pt-0 pb-4 font-switzer font-dark dark:font-light text-base uppercase font-medium transition hover:text-purple",
               pathname === "/" && "text-purple",
             )}
           >
@@ -49,7 +49,7 @@ const NavMobile = ({ data }: NavMobileProps) => {
               href={link}
               key={label}
               className={cn(
-                "w-full border-b-[1px] last:border-0 pt-0 pb-6 font-switzer font-dark dark:font-light text-base uppercase font-medium transition hover:text-purple",
+                "w-full border-b-[1px] last:border-0 pt-0 pb-4 font-switzer font-dark dark:font-light text-base uppercase font-medium transition hover:text-purple",
                 pathname === link && "text-purple",
               )}
             >
