@@ -1,3 +1,5 @@
+'use client';
+
 import { LuLayoutGrid, LuLayoutList } from "react-icons/lu";
 import { ToggleGroup, ToggleGroupItem } from "@/components/ui/toggle-group";
 

@@ -1,5 +1,7 @@
-import { cn } from "@/lib/utils";
+'use client';
+
 import React from "react";
+import { cn } from "@/lib/utils";
 
 export const BlurBG = ({ className }: { className?: string }) => {
   return (
