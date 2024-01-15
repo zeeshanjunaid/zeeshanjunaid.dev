@@ -47,7 +47,7 @@ export const WorkItem = ({
 };
 
 const WorkYear = ({ year }: { year: number }) => (
-  <span className="font-ao text-dark dark:text-light uppercase text-[10px] md:text-[12px] lg:text-[14px] pt-[3px] md:pt-0">
+  <span className="font-ao text-dark/50 dark:text-light/50 uppercase text-[10px] md:text-[12px] pt-1 md:pt-0">
     {year}
   </span>
 );
@@ -65,7 +65,7 @@ const WorkTag = ({
 }) => (
   <div
     className={cn(
-      "inline-flex uppercase px-4 py-2 text-[10px] md:text-[12px] text-dark dark:text-light border border-solid border-dark dark:border-light rounded-xl leading-[125%]",
+      "inline-flex uppercase px-4 py-2 text-[10px] md:text-[12px] text-dark/70 dark:text-light/70 border border-solid border-dark/15 dark:border-light/15 rounded-xl leading-[125%]",
       selectedSkill === tag &&
         "bg-purple/40 border-transparent dark:border-transparent",
     )}
