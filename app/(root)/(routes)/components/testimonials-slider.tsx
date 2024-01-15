@@ -1,4 +1,3 @@
-
 "use client";
 
 import { ChevronLeft, ChevronRight } from "lucide-react";
@@ -55,6 +54,7 @@ const TestimonialsSlider = ({ reviews }: TestimonialsSliderProps) => {
       <div className="shrink-0 overflow-hidden rounded-3xl relative hidden lg:block w-[360px] h-[360px]">
         <BlurBG className="rounded-3xl" />
         <Image
+          priority={true}
           objectFit="cover"
           className="aspect-square"
           src={profile}
@@ -79,7 +79,9 @@ const TestimonialsSlider = ({ reviews }: TestimonialsSliderProps) => {
             <div className="flex items-end justify-between">
               <div className="flex justify-start items-center gap-x-2.5 md:gap-x-4">
                 <div className="lg:hidden w-[42px] md:w-[60px] h-[42px] md:h-[60px] relative rounded-full overflow-hidden">
-                  {profile && <Image src={profile} fill alt={client} />}
+                  {profile && (
+                    <Image objectFit="cover" src={profile} fill alt={client} />
+                  )}
                 </div>
                 <div className="flex flex-col gap-y-1">
                   <p className="italic font-bold text-[14px] md:text-[18px] lg:text-[22px] text-dark dark:text-light leading-relaxed">
@@ -87,6 +89,7 @@ const TestimonialsSlider = ({ reviews }: TestimonialsSliderProps) => {
                   </p>
                   {logo && (
                     <Image
+                      priority={true}
                       src={logo}
                       width={70}
                       height={20}
