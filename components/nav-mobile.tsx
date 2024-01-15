@@ -7,6 +7,8 @@ import { Button } from "./ui/button";
 import { HiMenuAlt4 } from "react-icons/hi";
 import Link from "next/link";
 import React from "react";
+import { cn } from "@/lib/utils";
+import { usePathname } from "next/navigation";
 
 interface NavMobileProps {
   data: {
@@ -15,6 +17,7 @@ interface NavMobileProps {
   }[];
 }
 const NavMobile = ({ data }: NavMobileProps) => {
+  const pathname = usePathname();
   return (
     <Sheet>
       <SheetTrigger asChild>
@@ -28,18 +31,27 @@ const NavMobile = ({ data }: NavMobileProps) => {
     bg-gradient-to-r from-pink-500 via-red-500 to-orange-500 from-yellow-500 via-green-500 to-blue-500 from-cyan-500 via-teal-500 to-blue-500 from-blue-500 via-indigo-500 to-blue-500 backdrop-blur-xs group-hover:scale-0 transition-all duration-500 delay-0 ease-in-out group-hover:duration-1000"
           />
           <HiMenuAlt4 className="h-[20px] w-[20px] md:h-[22px] md:w-[22px]" />
-          {/* <span className="uppercase font-switzer font-light text-[12px] md:text-[14px]">
-            Menu
-          </span> */}
         </Button>
       </SheetTrigger>
       <SheetContent className="bg-light dark:bg-dark flex flex-col justify-between">
         <div className="flex flex-col space-y-6 mt-12">
+          <Link
+            href="/"
+            className={cn(
+              "w-full border-b-[1px] last:border-0 pt-0 pb-6 font-switzer font-dark dark:font-light text-base uppercase font-medium transition hover:text-purple",
+              pathname === "/" && "text-purple",
+            )}
+          >
+            Home
+          </Link>
           {data.map(({ link, label }) => (
             <Link
               href={link}
               key={label}
-              className="w-full border-b-[1px] last:border-0 pt-0 pb-6 font-switzer font-dark dark:font-light text-base uppercase font-medium transition hover:text-purple"
+              className={cn(
+                "w-full border-b-[1px] last:border-0 pt-0 pb-6 font-switzer font-dark dark:font-light text-base uppercase font-medium transition hover:text-purple",
+                pathname === link && "text-purple",
+              )}
             >
               {label}
             </Link>
