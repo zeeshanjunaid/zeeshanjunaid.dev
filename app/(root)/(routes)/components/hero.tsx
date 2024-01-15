@@ -1,4 +1,4 @@
-'use client';
+"use client";
 import { ResumeButton, SocialLinks } from "@/components/social-connect";
 
 import { BlurBG } from "@/components/blur-bg";
@@ -43,7 +43,7 @@ export const Hero = () => {
             alt="profile"
             src={heroImg}
             priority={true}
-            className="scale-125 lg:scale-[135%] 2xl:scale-[120%] origin-bottom object-contain object-bottom transition-opacity delay-750 duration-1000"
+            className="scale-125 lg:scale-[135%] 2xl:scale-[120%] origin-bottom object-contain object-bottom transition-opacity delay-750 duration-1000 user-select-none pointer-events-none"
           />
         </div>
       </div>

@@ -48,7 +48,9 @@ const WorkPage = () => {
         px-4 lg:px-0     
         flex
         flex-col
-        space-y-6"
+        space-y-6
+        
+        "
       >
         <h2 className="text-[28px] md:text-[42px] lg:text-[54px] font-bold font-ao text-dark dark:text-light">
           Projects ({projectsNum})
