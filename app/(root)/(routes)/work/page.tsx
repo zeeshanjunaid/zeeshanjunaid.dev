@@ -13,7 +13,9 @@ import { WorkList } from "../components/work-list";
 const WorkPage = () => {
   const projectsNum = ProjectsList.length;
   const [gridView, setGridView] = useState(
-    JSON.parse(localStorage.getItem("zsGridView") || "false"),
+    typeof localStorage !== "undefined"
+      ? JSON.parse(localStorage.getItem("zsGridView") || "false")
+      : false,
   );
   const [skillValue, setSkillValue] = useState("");
   const [projects, setProjects] = useState(ProjectsList);
@@ -34,7 +36,9 @@ const WorkPage = () => {
   }, [skillValue]);
 
   useEffect(() => {
-    localStorage.setItem("zsGridView", JSON.stringify(gridView));
+    if (typeof localStorage !== "undefined") {
+      localStorage.setItem("zsGridView", JSON.stringify(gridView));
+    }
   }, [gridView]);
 
   return (
