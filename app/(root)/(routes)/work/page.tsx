@@ -11,6 +11,7 @@ import { WorkGrid } from "../components/work-grid";
 import { WorkList } from "../components/work-list";
 
 const WorkPage = () => {
+  const [isMounted, setIsMounted] = useState(false);
   const projectsNum = ProjectsList.length;
   const [gridView, setGridView] = useState(
     typeof localStorage !== "undefined"
@@ -38,9 +39,14 @@ const WorkPage = () => {
   useEffect(() => {
     if (typeof localStorage !== "undefined") {
       localStorage.setItem("zsGridView", JSON.stringify(gridView));
+    } else {
+      setGridView(false);
     }
   }, [gridView]);
-
+  useEffect(() => {
+    setIsMounted(true);
+  }, [isMounted]);
+  if (!isMounted) return null;
   return (
     <>
       <Container
