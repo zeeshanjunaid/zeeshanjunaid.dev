@@ -1,16 +1,20 @@
 "use client";
 
+import React, { useState } from "react";
+
 import { ArrowRight } from "lucide-react";
 import { AspectRatio } from "@/components/ui/aspect-ratio";
 import { Container } from "@/components/container";
 import Image from "next/image";
 import type { Project } from "@/data/work";
-import React from "react";
-import { BlurBG } from "@/components/blur-bg";
+import { Skeleton } from "@/components/ui/skeleton";
+
 interface WorkGridProps {
   projects: Project[];
 }
 export const WorkGrid = ({ projects }: WorkGridProps) => {
+  const [isLoaded, setIsLoaded] = useState(false);
+
   return (
     <>
       <div className="border-b border-b-borderDarkColor w-full mt-8 lg:mt-12" />
@@ -26,14 +30,15 @@ export const WorkGrid = ({ projects }: WorkGridProps) => {
                   className="flex flex-col gap-y-1.5 lg:gap-y-2.5 group"
                 >
                   <div className="relative w-full">
-                    <BlurBG />
                     <AspectRatio ratio={16 / 9}>
+                      {!isLoaded && <Skeleton className="w-full h-full" />}
                       <Image
                         className="z-20"
                         fill
                         objectFit="cover"
                         alt={name}
                         src={imgUrl}
+                        onLoad={() => setIsLoaded(false)}
                       />
                     </AspectRatio>
                   </div>
