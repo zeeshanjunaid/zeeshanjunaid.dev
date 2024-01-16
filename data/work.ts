@@ -41,9 +41,16 @@ const ProjectsList: Project[] = [
     selected: true,
   },
   {
+    name: "Freestyle",
+    imgUrl: "/images/projects/freestyle.jpg",
+    link: "https://freestyle.passage.xyz/",
+    year: 2022,
+    tags: ["frontend", "animations"],
+  },
+  {
     name: "Nova AI",
     imgUrl: "/images/projects/nova.jpg",
-    link: "https://stevenland.com/",
+    link: "https://novaai-one.vercel.app",
     year: 2022,
     tags: ["frontend", "animations"],
   },
