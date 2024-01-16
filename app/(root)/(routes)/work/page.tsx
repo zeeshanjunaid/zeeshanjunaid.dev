@@ -39,8 +39,6 @@ const WorkPage = () => {
   useEffect(() => {
     if (typeof localStorage !== "undefined") {
       localStorage.setItem("zsGridView", JSON.stringify(gridView));
-    } else {
-      setGridView(false);
     }
   }, [gridView]);
   useEffect(() => {

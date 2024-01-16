@@ -121,4 +121,17 @@ body {
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
 }
-
+.work-item-gradient:hover,
+.hamburger-gradient {
+  background: linear-gradient(
+    91deg,
+    #f34dac -0.15%,
+    #ce55b0 13.63%,
+    #f48e66 29.54%,
+    #f0b832 44.92%,
+    #7bbe92 58.7%,
+    #63d7af 71.43%,
+    #1cc2df 85.21%,
+    #0580e6 101.65%
+  );
+}

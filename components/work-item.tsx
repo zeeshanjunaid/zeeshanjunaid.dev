@@ -23,7 +23,7 @@ export const WorkItem = ({
     <a
       href={link}
       target="_blank"
-      className="group cursor-pointer bg-transparent group w-full rounded-3xl bg-purple hover:bg-gradient-to-r from-[#ce55b0] via-[#f34dac] to-[#f48e66] from-[#f0b832] via-[#b2ce37] to-[#63d7af] from-[#1cc2df] via-[#0580e6] p-[2px] transition-background duration-200 overflow-hidden z-20"
+      className="group cursor-pointer bg-transparent group w-full rounded-3xl bg-purple p-[2px] transition-background duration-200 overflow-hidden z-20 work-item-gradient"
     >
       <div className="relative px-6 md:px-8 py-6 bg-light dark:bg-dark rounded-3xl">
         <BlurBG className="rounded-3xl" />
