@@ -69,6 +69,7 @@ const ProjectsList: Project[] = [
   },
   {
     name: "amberx",
+    imgUrl: "/images/projects/amberx.jpg",
     link: "https://amberx.vercel.app/",
     year: 2020,
     tags: ["frontend"],

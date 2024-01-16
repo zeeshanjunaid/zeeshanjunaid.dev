@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 
 import { ArrowRight } from "lucide-react";
 import { AspectRatio } from "@/components/ui/aspect-ratio";
@@ -14,6 +14,15 @@ interface WorkGridProps {
 }
 export const WorkGrid = ({ projects }: WorkGridProps) => {
   const [isLoaded, setIsLoaded] = useState(false);
+  const [mounted, setMounted] = useState(false);
+
+  useEffect(() => {
+    setMounted(true);
+  }, [mounted]);
+
+  if (!mounted) {
+    return null;
+  }
 
   return (
     <>
