@@ -87,6 +87,14 @@ const ProjectsList: Project[] = [
     archived: true,
   },
   {
+    name: "expandage",
+    imgUrl: "/images/projects/expendage.jpg",
+    link: "https://expandage.netlify.app",
+    year: 2020,
+    tags: ["frontend", "animations"],
+    archived: true,
+  },
+  {
     name: "amberx",
     imgUrl: "/images/projects/amberx.jpg",
     link: "https://amberx.vercel.app/",
