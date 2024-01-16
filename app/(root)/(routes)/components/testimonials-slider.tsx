@@ -55,8 +55,7 @@ const TestimonialsSlider = ({ reviews }: TestimonialsSliderProps) => {
         <BlurBG className="rounded-3xl" />
         <Image
           priority={true}
-          objectFit="cover"
-          className="aspect-square"
+          className="aspect-square object-cover"
           src={profile}
           fill
           alt={client}
@@ -80,7 +79,12 @@ const TestimonialsSlider = ({ reviews }: TestimonialsSliderProps) => {
               <div className="flex justify-start items-center gap-x-2.5 md:gap-x-4">
                 <div className="lg:hidden w-[42px] md:w-[60px] h-[42px] md:h-[60px] relative rounded-full overflow-hidden">
                   {profile && (
-                    <Image objectFit="cover" src={profile} fill alt={client} />
+                    <Image
+                      className="object-cover"
+                      src={profile}
+                      fill
+                      alt={client}
+                    />
                   )}
                 </div>
                 <div className="flex flex-col gap-y-1">

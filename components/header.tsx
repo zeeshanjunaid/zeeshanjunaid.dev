@@ -1,13 +1,14 @@
 "use client";
 
 import React, { useEffect, useState } from "react";
-import { motion } from "framer-motion";
+
 import { Button } from "./ui/button";
 import { Container } from "./container";
 import Link from "next/link";
 import { ModeToggle } from "./theme-toggle";
 import NavMobile from "./nav-mobile";
 import { cn } from "@/lib/utils";
+import { motion } from "framer-motion";
 import navLinks from "@/data/nav";
 import { usePathname } from "next/navigation";
 
@@ -49,7 +50,7 @@ export const Header = () => {
     <motion.header
       initial={{ opacity: 0 }}
       animate={{ opacity: 1 }}
-      transition={{ ease: "easeInOut", duration: 0.75 }}
+      transition={{ ease: "easeInOut", duration: 0.25 }}
       className={cn(
         "fixed z-40 top-0 left-0 right-0 w-full px-4 lg:px-0 pt-6 pb-4 border-b-[1px] border-b-borderDarkColor transition-all duration-200 bg-light/0 dark:bg-dark/0",
         scrolled && "bg-light/100 dark:bg-dark/100",
