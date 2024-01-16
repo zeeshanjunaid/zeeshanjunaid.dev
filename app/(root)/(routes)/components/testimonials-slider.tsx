@@ -7,6 +7,7 @@ import { BlurBG } from "@/components/blur-bg";
 import { Button } from "@/components/ui/button";
 import { Container } from "@/components/container";
 import Image from "next/image";
+import { Skeleton } from "@/components/ui/skeleton";
 import { useTheme } from "next-themes";
 
 interface TestimonialsSliderProps {
@@ -36,6 +37,7 @@ const QuotedIcon = ({ color }: { color: string }) => (
 const TestimonialsSlider = ({ reviews }: TestimonialsSliderProps) => {
   const { theme } = useTheme();
   const [currentIndex, setCurrentIndex] = useState(0);
+  const [isLoaded, setIsLoaded] = useState(false);
   const totalReviews = reviews.length;
 
   const handleNext = () => {
@@ -52,13 +54,14 @@ const TestimonialsSlider = ({ reviews }: TestimonialsSliderProps) => {
   return (
     <Container className="mt-8 lg:mt-12 px-5 md:px-7 lg:px-0 relative flex lg:gap-x-5">
       <div className="shrink-0 overflow-hidden rounded-3xl relative hidden lg:block w-[360px] h-[360px]">
-        <BlurBG className="rounded-3xl" />
+        {!isLoaded && <Skeleton className="w-full h-full rounded-3xl" />}
         <Image
           priority={true}
           className="aspect-square object-cover"
           src={profile}
           fill
           alt={client}
+          onLoad={() => setIsLoaded(false)}
         />
       </div>
       <div className="py-8 px-5 md:p-12 w-full   lg:px-16 rounded-3xl relative flex overflow-hidden">
