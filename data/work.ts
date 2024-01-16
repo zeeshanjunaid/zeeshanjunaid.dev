@@ -9,6 +9,14 @@ export interface Project {
 }
 const ProjectsList: Project[] = [
   {
+    name: "Ajras",
+    imgUrl: "/images/projects/ajras.jpg",
+    link: "https://ajras.com",
+    year: 2024,
+    tags: ["frontend"],
+    selected: true,
+  },
+  {
     name: "customs",
     imgUrl: "/images/projects/customs.jpg",
     link: "https://customs-frontend-git-homepage-design-passage-protocol.vercel.app/",
@@ -40,7 +48,8 @@ const ProjectsList: Project[] = [
     tags: ["frontend", "animations"],
   },
   {
-    name: "calaways sol",
+    name: "calaways solutions",
+    imgUrl: "/images/projects/calaways-screen.jpg",
     link: "https://calawaysolutions.com/",
     year: 2022,
     tags: ["fullstack development"],
@@ -48,6 +57,7 @@ const ProjectsList: Project[] = [
   },
   {
     name: "abstrkt",
+    imgUrl: "/images/projects/absrkt-pro.jpg",
     link: "https://abstrkt.vercel.app/homepage-design",
     year: 2022,
     tags: ["frontend", "ui/ux"],
@@ -55,6 +65,7 @@ const ProjectsList: Project[] = [
   },
   {
     name: "digital x twins",
+    imgUrl: "/images/projects/digital-twins.jpg",
     link: "https://digitalxtwin.vercel.app",
     year: 2022,
     tags: ["ui/ux", "frontend", "animations"],
@@ -62,6 +73,7 @@ const ProjectsList: Project[] = [
   },
   {
     name: "ecocart",
+    imgUrl: "/images/projects/ecocart-screen.jpg",
     link: "https://ecocart.io",
     year: 2021,
     tags: ["ui/ux", "frontend", "backend"],
@@ -77,6 +89,7 @@ const ProjectsList: Project[] = [
   },
   {
     name: "stevenland",
+    imgUrl: "/images/projects/stevenland-screen.jpg",
     link: "https://stevenland.com/",
     year: 2019,
     tags: ["fullstack development", "support", "maintenance"],

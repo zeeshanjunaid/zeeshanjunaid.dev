@@ -4,17 +4,21 @@ import { Container } from "@/components/container";
 import type { Project } from "@/data/work";
 import React from "react";
 import { WorkItem } from "@/components/work-item";
+import { cn } from "@/lib/utils";
+import { usePathname } from "next/navigation";
 interface WorkListProps {
   title?: string;
   selectedSkill?: string;
   projects: Project[];
 }
 export const WorkList = ({ title, projects, selectedSkill }: WorkListProps) => {
+  const pathanme = usePathname();
   return (
     <Container
-      className="mt-[3.125rem] flex flex-col gap-y-3 px-4
-md:px-7 lg:px-0
-    "
+      className={cn(
+        "flex flex-col gap-y-3 px-4 md:px-7 lg:px-0",
+        pathanme === "/work" ? "mt-[1rem]" : "mt-[3.125rem]",
+      )}
     >
       {title && (
         <h2 className="inline-flex center gap-x-[10px] items-center font-normal text-dark dark:text-light uppercase text-[14px] tracking-[.42px]">
