@@ -46,7 +46,7 @@ export const WorkItem = ({
   );
 };
 
-const WorkYear = ({ year }: { year: number }) => (
+export const WorkYear = ({ year }: { year: number }) => (
   <span className="font-ao text-dark/50 dark:text-light/50 uppercase text-[10px] md:text-[12px] pt-1 md:pt-0">
     {year}
   </span>
@@ -56,7 +56,7 @@ const WorkName = ({ name }: { name: string }) => (
     {name}
   </h1>
 );
-const WorkTag = ({
+export const WorkTag = ({
   tag,
   selectedSkill,
 }: {

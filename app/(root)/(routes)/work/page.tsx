@@ -15,7 +15,7 @@ const WorkPage = () => {
   const projectsNum = ProjectsList.length;
   const [gridView, setGridView] = useState(
     typeof localStorage !== "undefined"
-      ? JSON.parse(localStorage.getItem("zsGridView") || "false")
+      ? JSON.parse(localStorage.getItem("zsGridView") || "true")
       : false,
   );
   const [skillValue, setSkillValue] = useState("");
@@ -69,7 +69,7 @@ const WorkPage = () => {
         </div>
       </Container>
       {gridView ? (
-        <WorkGrid projects={projects} />
+        <WorkGrid selectedSkill={skillValue} projects={projects} />
       ) : (
         <>
           <div className="border-b-[1px] border-b-borderDarkColor mt-12 pb-6">
