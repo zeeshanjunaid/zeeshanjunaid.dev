@@ -31,16 +31,14 @@ export const WorkGrid = ({ projects }: WorkGridProps) => {
                 >
                   <div className="relative w-full">
                     <AspectRatio ratio={16 / 9}>
-                      {/* {!isLoaded && <Skeleton className="w-full h-full" />} */}
+                      {!isLoaded && <Skeleton className="w-full h-full" />}
                       <Image
-                        placeholder="blur"
-                        blurDataURL={blurDataUrl}
                         className="z-20"
                         fill
                         objectFit="cover"
                         alt={name}
                         src={imgUrl}
-                        // onLoad={() => setIsLoaded(false)}
+                        onLoad={() => setIsLoaded(false)}
                       />
                     </AspectRatio>
                   </div>

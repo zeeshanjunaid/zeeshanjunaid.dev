@@ -1,7 +1,6 @@
 export interface Project {
   name: string;
   imgUrl?: string;
-  blurDataUrl?: string;
   link: string;
   year: number;
   tags: string[];
@@ -12,8 +11,6 @@ const ProjectsList: Project[] = [
   {
     name: "customs",
     imgUrl: "/images/projects/customs.jpg",
-    blurDataUrl:
-      "iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVR42mNcOudNPQAGyQKuaerS4QAAAABJRU5ErkJggg==",
     link: "https://customs-frontend-git-homepage-design-passage-protocol.vercel.app/",
     year: 2023,
     tags: ["ui/ux", "frontend"],
@@ -22,8 +19,6 @@ const ProjectsList: Project[] = [
   {
     name: "Roa’a Technologies",
     imgUrl: "/images/projects/roaa.jpg",
-    blurDataUrl:
-      "iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVR42mN8dKGoHgAHZQKl8LkmDwAAAABJRU5ErkJggg==",
     link: "https://roaa-zeeshanjunaid.vercel.app/",
     year: 2023,
     tags: ["ui/ux", "frontend", "animations"],
@@ -32,8 +27,6 @@ const ProjectsList: Project[] = [
   {
     name: "drillbit",
     imgUrl: "/images/projects/drillbit.jpg",
-    blurDataUrl:
-      "iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVR42mP893ZyPQAIbgL/FL8ATwAAAABJRU5ErkJggg==",
     link: "https://www.drillbit.xyz/",
     year: 2023,
     tags: ["ui/ux", "frontend"],
@@ -42,8 +35,6 @@ const ProjectsList: Project[] = [
   {
     name: "Nova AI",
     imgUrl: "/images/projects/nova.jpg",
-    blurDataUrl:
-      "iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVR42mPsN86pBwAENgGv6t/+DgAAAABJRU5ErkJggg==",
     link: "https://stevenland.com/",
     year: 2022,
     tags: ["frontend", "animations"],
