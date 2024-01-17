@@ -5,13 +5,25 @@ import { ResumeButton, SocialLinks } from "@/components/social-connect";
 import { BlurBG } from "@/components/blur-bg";
 import { Container } from "@/components/container";
 import React from "react";
+import { motion } from "framer-motion";
 
 const ReachOut = () => {
   return (
     <Container className="mt-8 lg:mt-12 px-5 md:px-7 lg:px-0 relative">
       <div className="py-8 px-5 md:p-12  lg:p-16 rounded-3xl relative flex flex-col justify-between items-start gap-y-[120px] md:gap-y-[140px] lg:gap-y-[160px] overflow-hidden">
         <BlurBG className="rounded-3xl" />
-        <div className="react-out-gradient w-[300px] h-[300px] rounded-full absolute bottom-0 right-0 z-[20] opacity-70" />
+        <motion.div
+          className="react-out-gradient w-[280px] h-[280px] md:w-[400px] md:h-[400px] lg:w-[400px] lg:h-[400px] blur-[25px] rounded-full absolute -bottom-[50px] -right-[100px] lg:-bottom[10px] lg:-right-[50px] z-[20] opacity-60 dark:opacity-40"
+          animate={{
+            rotate: [0, 45, 90, 135, 180, 225, 270, 315, 360],
+          }}
+          transition={{
+            repeat: Infinity,
+            ease: "linear",
+            type: "tween",
+            duration: 16,
+          }}
+        />
         <div className="relative z-[30]">
           <h2 className="mb-6 font-ao text-[24px] md:text-[36px] lg:text-[42px] font-bold text-gradient">
             Want to work together?

@@ -74,11 +74,13 @@ export const Header = () => {
                 className={cn(
                   "font-switzer font-dark dark:font-light text-sm uppercase font-medium transition-color duration-200 hover:text-purple hover:bg-transparent rounded-xl",
                   pathname === link &&
-                    "bg-purple text-dark dark:text-light hover:bg-purple active:bg-purple focus:bg-purple",
+                    "bg-purple text-dark dark:text-light hover:text-dark dark:hover:text-light hover:bg-purple active:bg-purple focus:bg-purple ",
                 )}
                 asChild
               >
-                <Link href={link}>{label}</Link>
+                <Link href={link} className="text-inherit">
+                  {label}
+                </Link>
               </Button>
             ))}
           </div>
