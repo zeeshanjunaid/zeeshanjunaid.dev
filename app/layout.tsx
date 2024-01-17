@@ -4,6 +4,7 @@ import { Analytics } from "@vercel/analytics/react";
 import { Footer } from "@/components/footer";
 import { Header } from "@/components/header";
 import type { Metadata } from "next";
+import ReachOut from "@/components/reach-out";
 import SmoothScroll from "@/components/smooth-scroll";
 import { SpeedInsights } from "@vercel/speed-insights/next";
 import { ThemeProvider } from "@/components/theme-provider";
@@ -65,6 +66,7 @@ export default function RootLayout({
           <Header />
           {/* <SmoothScroll>{children}</SmoothScroll> */}
           <main className="pt-[100px]">{children}</main>
+          <ReachOut />
           <Footer />
         </ThemeProvider>
         <Analytics />

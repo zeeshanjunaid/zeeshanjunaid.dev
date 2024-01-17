@@ -5,7 +5,7 @@ import React, { useEffect, useState } from "react";
 import { Container } from "@/components/container";
 import { FilterBar } from "../components/filter-bar";
 import ProjectsList from "@/data/work";
-import ReachOut from "../components/reach-out";
+import ReachOut from "../../../../components/reach-out";
 import { ViewToggle } from "../components/view-toggle";
 import { WorkGrid } from "../components/work-grid";
 import { WorkList } from "../components/work-list";
@@ -99,7 +99,6 @@ const WorkPage = () => {
           <WorkList selectedSkill={skillValue} projects={projects} />
         </>
       )}
-      <ReachOut />
     </>
   );
 };
