@@ -14,7 +14,6 @@ const ProjectsList: Project[] = [
     link: "https://ajras.com",
     year: 2024,
     tags: ["frontend"],
-    selected: true,
   },
   {
     name: "customs",
@@ -30,7 +29,6 @@ const ProjectsList: Project[] = [
     link: "https://roaa-zeeshanjunaid.vercel.app/",
     year: 2023,
     tags: ["ui/ux", "frontend", "animations"],
-    selected: true,
   },
   {
     name: "drillbit",
@@ -68,7 +66,6 @@ const ProjectsList: Project[] = [
     link: "https://abstrkt.vercel.app/homepage-design",
     year: 2022,
     tags: ["frontend", "ui/ux"],
-    selected: true,
   },
   {
     name: "digital x twins",
@@ -84,7 +81,7 @@ const ProjectsList: Project[] = [
     link: "https://ecocart.io",
     year: 2021,
     tags: ["ui/ux", "frontend", "backend"],
-    archived: true,
+    selected: true,
   },
   {
     name: "expandage",
@@ -108,7 +105,7 @@ const ProjectsList: Project[] = [
     link: "https://stevenland.com/",
     year: 2019,
     tags: ["fullstack development", "support", "maintenance"],
-    archived: true,
+    selected: true,
   },
 ];
 
