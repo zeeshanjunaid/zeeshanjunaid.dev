@@ -34,8 +34,8 @@ export const WorkItem = ({
   const xSpring = useSpring(xValue);
   const ySpring = useSpring(yValue);
 
-  const top = useTransform(ySpring, [0.5, -0.5], ["4%", "60%"]);
-  const left = useTransform(xSpring, [0.5, -0.5], ["40%", "60%"]);
+  const top = useTransform(ySpring, [0.5, -0.5], ["20%", "40%"]);
+  const left = useTransform(xSpring, [0.5, -0.5], ["30%", "40%"]);
 
   const handleMouseMove = (e: any) => {
     if (linkRef.current) {
@@ -138,14 +138,14 @@ export const WorkImg = ({
         duration: 0.25,
       }}
       style={{ top, left, transform: "translate(-50%, -50%)" }}
-      className="absolute w-[350px] origin-center shadow-2xl transition -mt-[60px]"
+      className="absolute w-[350px] origin-center shadow-2xl transition -mt-[60px] hidden md:block"
     >
       <div className="relative w-full">
         <AspectRatio ratio={16 / 9}>
           {!isLoaded && <Skeleton className="w-full h-full" />}
           <Image
             fill
-            objectFit="cover"
+            className="object-cover"
             alt="work image"
             src={imgUrl}
             onLoad={() => setIsLoaded(false)}
