@@ -1,12 +1,12 @@
 "use client";
 
+import React, { useEffect } from "react";
 import { ResumeButton, SocialLinks } from "./social-connect";
 import { Sheet, SheetContent, SheetTrigger } from "./ui/sheet";
 
 import { Button } from "./ui/button";
 import { HiMenuAlt4 } from "react-icons/hi";
 import Link from "next/link";
-import React from "react";
 import { cn } from "@/lib/utils";
 import { usePathname } from "next/navigation";
 
@@ -17,9 +17,14 @@ interface NavMobileProps {
   }[];
 }
 const NavMobile = ({ data }: NavMobileProps) => {
+  const [open, setOpen] = React.useState(false);
   const pathname = usePathname();
+
+  useEffect(() => {
+    setOpen(false);
+  }, [pathname]);
   return (
-    <Sheet>
+    <Sheet open={open} onOpenChange={setOpen}>
       <SheetTrigger asChild>
         <Button
           size="icon"

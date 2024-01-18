@@ -1,4 +1,5 @@
 "use client";
+
 import { ResumeButton, SocialLinks } from "@/components/social-connect";
 
 import { BlurBG } from "@/components/blur-bg";
@@ -39,6 +40,7 @@ export const Hero = () => {
         <BlurBG className="rounded-3xl" />
         <div className="absolute bottom-0 left-2/3 lg:left-auto lg:right-0 -translate-x-3/4 lg:translate-x-0 w-full h-full z-20">
           <Image
+            loading="eager"
             fill
             alt="profile"
             src={heroImg}
