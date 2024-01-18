@@ -71,12 +71,12 @@ export const WorkItem = ({
             },
           }}
           transition={{
+            type: "spring",
             duration: 0.2,
-            type: "tween",
-            ease: "easeInOut",
           }}
           className="rounded-3xl z-[5] absolute top-0 left-0 right-0 bottom-0 work-item-gradient w-full h-full"
         />
+
         <BlurBG className="rounded-3xl" />
         <div className="flex items-start gap-x-8 justify-between md:items-center relative z-20">
           <WorkYear year={year} />
@@ -137,7 +137,7 @@ export const WorkImg = ({
         initial: {
           rotate: "-6.5deg",
           scale: 0,
-          zIndex: "-1",
+          zIndex: "11",
         },
         whileHover: {
           rotate: "6.5deg",
@@ -150,7 +150,7 @@ export const WorkImg = ({
         duration: 0.2,
       }}
       style={{ top, left, transform: "translate(-50%, -50%)" }}
-      className="absolute w-[350px] origin-center shadow-2xl transition -mt-[60px] hidden md:block"
+      className="absolute w-[350px] transition origin-center shadow-3xl -mt-[60px] hidden md:block"
     >
       <div className="relative w-full">
         <AspectRatio ratio={16 / 9}>
