@@ -31,13 +31,14 @@ export const WorkList = ({ title, projects, selectedSkill }: WorkListProps) => {
       )}
 
       <ul className="flex flex-col gap-y-3">
-        {projects.map(({ name, year, tags, link }, index) => (
+        {projects.map(({ name, year, tags, link, imgUrl }, index) => (
           <WorkItem
             key={name + index}
             name={name}
             year={year}
             tags={tags}
             link={link}
+            imgUrl={imgUrl}
             selectedSkill={selectedSkill}
           />
         ))}

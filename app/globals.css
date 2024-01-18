@@ -121,7 +121,7 @@ body {
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
 }
-.work-item-gradient:hover,
+.work-item-gradient,
 .hamburger-gradient {
   background: linear-gradient(
     91deg,

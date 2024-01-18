@@ -1,15 +1,21 @@
 "use client";
 
+import React, { useRef, useState } from "react";
+import { motion, useMotionValue, useSpring, useTransform } from "framer-motion";
+
 import { ArrowRight } from "lucide-react";
+import { AspectRatio } from "./ui/aspect-ratio";
 import { BlurBG } from "./blur-bg";
-import { MdArrowOutward } from "react-icons/md";
-import React from "react";
+import Image from "next/image";
+import { Skeleton } from "./ui/skeleton";
 import { cn } from "@/lib/utils";
+
 interface WorkItemProps {
   name: string;
   year: number;
   tags: string[];
   link: string;
+  imgUrl?: string;
   selectedSkill?: string;
 }
 export const WorkItem = ({
@@ -17,35 +23,138 @@ export const WorkItem = ({
   year,
   tags,
   link,
+  imgUrl,
   selectedSkill,
 }: WorkItemProps) => {
+  const [isHovered, setIsHovered] = useState(false);
+  const linkRef = useRef<HTMLAnchorElement>(null);
+  const xValue = useMotionValue(0);
+  const yValue = useMotionValue(0);
+
+  const xSpring = useSpring(xValue);
+  const ySpring = useSpring(yValue);
+
+  const top = useTransform(ySpring, [0.5, -0.5], ["4%", "60%"]);
+  const left = useTransform(xSpring, [0.5, -0.5], ["40%", "60%"]);
+
+  const handleMouseMove = (e: any) => {
+    if (linkRef.current) {
+      const rect = linkRef.current.getBoundingClientRect();
+      const x = e.clientX - rect.left;
+      const y = e.clientY - rect.top;
+      const xPct = x / rect.width - 0.5;
+      const yPct = y / rect.height - 0.5;
+
+      xValue.set(xPct);
+      yValue.set(yPct);
+    }
+  };
   return (
-    <a
+    <motion.a
+      onMouseMove={handleMouseMove}
+      ref={linkRef}
+      onMouseEnter={() => setIsHovered(true)}
+      onMouseLeave={() => setIsHovered(false)}
+      initial="initial"
+      whileHover="whileHover"
       href={link}
       target="_blank"
-      className="group cursor-pointer bg-transparent group w-full rounded-3xl bg-purple p-[2px] transition-background duration-200 overflow-hidden z-20 work-item-gradient"
+      className={cn(
+        "group relative w-full rounded-3xl p-[2px] transition duration-200",
+        isHovered ? "work-item-gradient" : "bg-transparent",
+      )}
     >
-      <div className="relative px-6 md:px-8 py-6 bg-light dark:bg-dark rounded-3xl">
+      <div className="relative px-6 md:px-8 py-6  rounded-3xl">
         <BlurBG className="rounded-3xl" />
         <div className="flex items-start gap-x-8 justify-between md:items-center relative z-20">
           <WorkYear year={year} />
           <div className="flex flex-col md:flex-row md:justify-between md:items-center gap-y-3 flex-1 flex-wrap">
             <WorkName name={name} />
+
             <div className="flex items-center flex-wrap gap-2 md:gap-2.5">
               {tags.map((tag, index) => (
                 <WorkTag key={index} tag={tag} selectedSkill={selectedSkill} />
               ))}
             </div>
           </div>
-          <span className="text-[24px] text-dark dark:text-light md:hidden">
-            <ArrowRight className="group-hover:-rotate-45 transition duration-200" />
-          </span>
+
+          <motion.span
+            variants={{
+              initial: {
+                opacity: 0.25,
+                rotate: 0,
+                scale: 1,
+              },
+              whileHover: {
+                opacity: 1,
+                rotate: "-45",
+                scale: 1.125,
+              },
+            }}
+            transition={{
+              duration: 0.25,
+              type: "tween",
+              ease: "easeInOut",
+            }}
+            className="text-[24px] text-dark dark:text-light md:hidden"
+          >
+            <ArrowRight />
+          </motion.span>
         </div>
       </div>
-    </a>
+      <WorkImg top={top} left={left} imgUrl={imgUrl} />
+    </motion.a>
   );
 };
-
+export const WorkImg = ({
+  imgUrl,
+  top,
+  left,
+}: {
+  imgUrl?: string;
+  top: any;
+  left: any;
+}) => {
+  const [isLoaded, setIsLoaded] = useState(true);
+  if (!imgUrl) {
+    return null;
+  }
+  return (
+    <motion.div
+      variants={{
+        initial: {
+          rotate: "-6.5deg",
+          scale: 0,
+          zIndex: "-1",
+        },
+        whileHover: {
+          rotate: "6.5deg",
+          scale: 1,
+          zIndex: 40,
+        },
+      }}
+      transition={{
+        type: "spring",
+        duration: 0.25,
+      }}
+      style={{ top, left, transform: "translate(-50%, -50%)" }}
+      className="absolute w-[350px] origin-center shadow-2xl transition -mt-[60px]"
+    >
+      <div className="relative w-full">
+        <AspectRatio ratio={16 / 9}>
+          {!isLoaded && <Skeleton className="w-full h-full" />}
+          <Image
+            fill
+            objectFit="cover"
+            alt="work image"
+            src={imgUrl}
+            onLoad={() => setIsLoaded(false)}
+          />
+        </AspectRatio>
+      </div>
+    </motion.div>
+  );
+};
 export const WorkYear = ({ year }: { year: number }) => (
   <span className="font-ao text-dark/50 dark:text-light/50 uppercase text-[10px] md:text-[12px] pt-1 md:pt-0">
     {year}
