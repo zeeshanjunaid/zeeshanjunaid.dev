@@ -32,28 +32,13 @@ const LogoIcon = () => (
 export const Header = () => {
   const pathname = usePathname();
 
-  const [scrolled, setScrolled] = useState(false);
-
-  useEffect(() => {
-    const handleScroll = () => {
-      setScrolled(window.scrollY > 0);
-    };
-
-    window.addEventListener("scroll", handleScroll);
-
-    return () => {
-      window.removeEventListener("scroll", handleScroll);
-    };
-  }, []);
-
   return (
     <motion.header
       initial={{ opacity: 0 }}
       animate={{ opacity: 1 }}
-      transition={{ ease: "easeInOut", duration: 0.25 }}
+      transition={{ ease: "easeInOut", duration: 0.2 }}
       className={cn(
-        "fixed z-40 top-0 left-0 right-0 w-full px-4 lg:px-0 pt-6 pb-4 border-b-[1px] border-b-borderDarkColor transition-all duration-200 bg-light/0 dark:bg-dark/0",
-        scrolled && "bg-light/100 dark:bg-dark/100",
+        "fixed z-40 top-0 left-0 right-0 w-full px-4 lg:px-0 pt-6 pb-4 border-b-[1px] border-b-borderDarkColor transition-all duration-200 bg-light dark:bg-dark",
       )}
     >
       <Container className="flex items-center justify-between">

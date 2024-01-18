@@ -9,7 +9,7 @@ export const Footer = () => {
       className="py-8"
       initial={{ opacity: 0 }}
       animate={{ opacity: 1 }}
-      transition={{ ease: "easeInOut", duration: 0.25 }}
+      transition={{ ease: "easeInOut", duration: 0.2 }}
     >
       <Container className="px-5 text-center flex justify-center">
         <div className="overflow-hidden rounded-xl px-3 sm:px-5 py-2 relative">

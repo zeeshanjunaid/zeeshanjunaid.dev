@@ -34,7 +34,7 @@ const ReachOut = () => {
             repeat: Infinity,
             ease: "linear",
             type: "tween",
-            duration: 20,
+            duration: 16,
           }}
         />
         <BlurBG className="rounded-3xl" />

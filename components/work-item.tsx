@@ -26,7 +26,6 @@ export const WorkItem = ({
   imgUrl,
   selectedSkill,
 }: WorkItemProps) => {
-  const [isHovered, setIsHovered] = useState(false);
   const linkRef = useRef<HTMLAnchorElement>(null);
   const xValue = useMotionValue(0);
   const yValue = useMotionValue(0);
@@ -53,18 +52,31 @@ export const WorkItem = ({
     <motion.a
       onMouseMove={handleMouseMove}
       ref={linkRef}
-      onMouseEnter={() => setIsHovered(true)}
-      onMouseLeave={() => setIsHovered(false)}
       initial="initial"
       whileHover="whileHover"
       href={link}
       target="_blank"
       className={cn(
         "group relative w-full rounded-3xl p-[2px] transition duration-200",
-        isHovered ? "work-item-gradient" : "bg-transparent",
       )}
     >
       <div className="relative px-6 md:px-8 py-6  rounded-3xl">
+        <motion.div
+          variants={{
+            initial: {
+              opacity: 0,
+            },
+            whileHover: {
+              opacity: 1,
+            },
+          }}
+          transition={{
+            duration: 0.2,
+            type: "tween",
+            ease: "easeInOut",
+          }}
+          className="rounded-3xl z-[5] absolute top-0 left-0 right-0 bottom-0 work-item-gradient w-full h-full"
+        />
         <BlurBG className="rounded-3xl" />
         <div className="flex items-start gap-x-8 justify-between md:items-center relative z-20">
           <WorkYear year={year} />
@@ -82,17 +94,17 @@ export const WorkItem = ({
             variants={{
               initial: {
                 opacity: 0.25,
-                rotate: 0,
+                rotate: "0deg",
                 scale: 1,
               },
               whileHover: {
                 opacity: 1,
-                rotate: "-45",
+                rotate: "-25deg",
                 scale: 1.125,
               },
             }}
             transition={{
-              duration: 0.25,
+              duration: 0.2,
               type: "tween",
               ease: "easeInOut",
             }}
@@ -135,7 +147,7 @@ export const WorkImg = ({
       }}
       transition={{
         type: "spring",
-        duration: 0.25,
+        duration: 0.2,
       }}
       style={{ top, left, transform: "translate(-50%, -50%)" }}
       className="absolute w-[350px] origin-center shadow-2xl transition -mt-[60px] hidden md:block"
