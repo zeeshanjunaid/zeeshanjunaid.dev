@@ -146,3 +146,18 @@ body {
     radial-gradient(at 29% 73%, hsla(42, 100%, 56%, 1) 0px, transparent 50%),
     radial-gradient(at 32% 34%, hsla(16, 100%, 67%, 1) 0px, transparent 50%);
 }
+
+.masonry-grid {
+  display: flex;
+  margin-left: -20px; 
+  width: auto;
+}
+
+.masonry-grid-column {
+  padding-left: 20px;
+  background-clip: padding-box;
+}
+
+.masonry-item {
+  margin-bottom: 20px; 
+}

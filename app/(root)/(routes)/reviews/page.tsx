@@ -1,7 +1,7 @@
-import { PenBoxIcon, PenIcon } from "lucide-react";
-
 import { Button } from "@/components/ui/button";
 import { Container } from "@/components/container";
+import MasonryLayout from "../components/masonry-layout";
+import { PenBoxIcon } from "lucide-react";
 import React from "react";
 import ReviewsList from "@/data/reviews";
 import TestimonialCard from "../components/testimonial-card";
@@ -38,10 +38,14 @@ const ReviewsPage = () => {
         </Container>
       </div>
       <section className="mt-12">
-        <Container className="gap-5 px-4 lg:px-0 grid lg:grid-cols-2 ">
-          {ReviewsList.map((review, index) => (
-            <TestimonialCard key={index} review={review} className="" />
-          ))}
+        <Container className="px-4 lg:px-0">
+          <MasonryLayout>
+            {ReviewsList.map((review, index) => (
+              <div key={index} className="masonry-item">
+                <TestimonialCard key={index} review={review} className="" />
+              </div>
+            ))}
+          </MasonryLayout>
         </Container>
       </section>
     </>
