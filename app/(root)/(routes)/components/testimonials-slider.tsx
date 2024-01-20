@@ -7,6 +7,7 @@ import { BlurBG } from "@/components/blur-bg";
 import { Button } from "@/components/ui/button";
 import { Container } from "@/components/container";
 import Image from "next/image";
+import { QuotedIcon } from "./testimonial-card";
 import { Skeleton } from "@/components/ui/skeleton";
 import { useTheme } from "next-themes";
 
@@ -19,21 +20,6 @@ interface TestimonialsSliderProps {
     review: string;
   }[];
 }
-const QuotedIcon = ({ color }: { color: string }) => (
-  <svg
-    xmlns="http://www.w3.org/2000/svg"
-    width="42"
-    height="39"
-    fill="none"
-    className="absolute -top-1.5 -left-2.5 -z-10"
-  >
-    <path
-      fill={color}
-      d="M2.1 38.267c6.3 0 14.7-2.126 14.7-17.008V4.252c0-2.657-1.588-4.288-4.2-4.251H4.2C1.575 0 0 1.595 0 4.193v12.815c0 2.657 1.575 4.252 4.2 4.252 2.1 0 2.1 0 2.1 2.125v2.126c0 2.126-2.1 4.252-4.2 4.252S0 29.78 0 31.955v4.186c0 2.126 0 2.126 2.1 2.126zm25.2 0c6.3 0 14.7-2.126 14.7-17.008V4.252c0-2.657-1.59-4.288-4.2-4.251h-8.4c-2.625 0-4.2 1.594-4.2 4.192v12.815c0 2.657 1.575 4.252 4.2 4.252h1.575c0 4.783.525 8.503-5.775 8.503v6.378c0 2.126 0 2.126 2.1 2.126z"
-      opacity="0.1"
-    ></path>
-  </svg>
-);
 const TestimonialsSlider = ({ reviews }: TestimonialsSliderProps) => {
   const { theme } = useTheme();
   const [currentIndex, setCurrentIndex] = useState(0);
@@ -72,7 +58,7 @@ const TestimonialsSlider = ({ reviews }: TestimonialsSliderProps) => {
           </h2>
           <div className="flex flex-col justify-between space-y-12 lg:space-y-5">
             <div className="relative">
-              <QuotedIcon color={theme === "dark" ? "#FAFAF6" : "#3F3F3F"} />
+              <QuotedIcon />
               <p className="italic text-[16px] md:text-[20px] lg:text-[16px] text-dark dark:text-light leading-relaxed md:mr-[72px] lg:mr-0 lg:min-h-[130px]">
                 {review}
               </p>
@@ -95,14 +81,14 @@ const TestimonialsSlider = ({ reviews }: TestimonialsSliderProps) => {
                     {client}
                   </p>
                   {logo && (
-                    <Image
-                      priority={true}
-                      src={logo}
-                      width={70}
-                      height={20}
-                      alt={company ? company : "logo"}
-                      className="hidden dark:block"
-                    />
+                    <div className="h-[20px] relative mix-blend-multiply">
+                      <Image
+                        fill
+                        src={logo}
+                        alt={company ? company : "logo"}
+                        className="hidden dark:block object-contain object-left mix-blend-multiply"
+                      />
+                    </div>
                   )}
                 </div>
               </div>

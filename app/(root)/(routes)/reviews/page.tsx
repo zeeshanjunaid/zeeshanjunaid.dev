@@ -1,8 +1,51 @@
+import { PenBoxIcon, PenIcon } from "lucide-react";
+
+import { Button } from "@/components/ui/button";
 import { Container } from "@/components/container";
 import React from "react";
+import ReviewsList from "@/data/reviews";
+import TestimonialCard from "../components/testimonial-card";
 
 const ReviewsPage = () => {
-  return <Container>Reviews page coming soon</Container>;
+  return (
+    <>
+      <div className="border-b-[1px] border-b-borderDarkColor pb-12">
+        <Container
+          className="
+        px-4 lg:px-0     
+        flex flex-col md:flex-row justify-between items-start md:items-end gap-6 md:gap-2.5
+        "
+        >
+          <div className="flex flex-col gap-y-4 md:max-w-[70%]">
+            <h2 className="text-[28px] md:text-[36px] lg:text-[44px] font-bold font-ao text-dark dark:text-light">
+              Exceeding Expectations
+            </h2>
+            <p className="font-light text-[16px] md:text-[18px] lg:text-[20px] leading-snug">
+              Dive into these testimonials to explore the profound connections
+              and success stories that resonate beneath the surface of my
+              products/services
+            </p>
+          </div>
+          <div>
+            <Button
+              variant="highlight"
+              className="flex items-center gap-x-1 bg-purple hover:bg-purple/80 text-dark dark:text-light transition duration-200 dark:bg-purple dark:hover:bg-purple/80"
+            >
+              <PenBoxIcon size={14} />
+              Share your story
+            </Button>
+          </div>
+        </Container>
+      </div>
+      <section className="mt-12">
+        <Container className="gap-5 px-4 lg:px-0 grid lg:grid-cols-2 ">
+          {ReviewsList.map((review, index) => (
+            <TestimonialCard key={index} review={review} className="" />
+          ))}
+        </Container>
+      </section>
+    </>
+  );
 };
 
 export default ReviewsPage;

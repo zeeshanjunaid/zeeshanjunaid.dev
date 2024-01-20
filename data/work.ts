@@ -9,6 +9,22 @@ export interface Project {
 }
 const ProjectsList: Project[] = [
   {
+    name: "Reno Leaders",
+    imgUrl: "/images/projects/reno-leaders.jpg",
+    link: "https://renoleaders.com",
+    year: 2024,
+    tags: ["frontend", "animations", "backend"],
+    selected: true,
+  },
+  {
+    name: "AGM Renovations",
+    imgUrl: "/images/projects/agm.jpg",
+    link: "https://www.agmrenovations.com",
+    year: 2024,
+    tags: ["frontend", "backend"],
+    selected: true,
+  },
+  {
     name: "Ajras",
     imgUrl: "/images/projects/ajras.jpg",
     link: "https://ajras.com",

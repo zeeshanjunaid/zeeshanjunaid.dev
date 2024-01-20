@@ -1,4 +1,13 @@
-const ReviewsList = [
+export interface Review {
+  client: string;
+  logo?: string;
+  company?: string;
+  profile: string;
+  review: string;
+  featured?: boolean;
+}
+
+const ReviewsList: Review[] = [
   {
     client: "Josh Peters",
     logo: "/images/testimonials/pp.png",
@@ -13,6 +22,42 @@ const ReviewsList = [
     profile: "/images/testimonials/liane-pic.jpeg",
     review:
       "I hired Zeeshan to do two web projects - one full web design from scratch - and was extremely pleased with his work. Zeeshan is very skilled in many areas of development. Highly recommend him - you will not be dissapointed!",
+    featured: true,
+  },
+  {
+    client: "Mac Cassity",
+    profile: "/images/testimonials/mac.jpeg",
+    review:
+      "Excellent provider...attention to detail, extremely knowledgeable and a pleasure to work with. HIGHLY recommended!",
+  },
+  {
+    client: "Chad Yesilova",
+    profile: "/images/testimonials/chad.jpeg",
+    logo: "/images/testimonials/bs.jpeg",
+    company: "Blue Studies",
+    review:
+      "Zeeshan over-delivered from the get go! Incredible communicator, understood the requirements, made immediate changes based on feedback and delivered above expectations. I will definitely use again.",
+    featured: true,
+  },
+  {
+    client: "Veronica Runyon",
+    profile: "/images/testimonials/veronica.jpg",
+    review:
+      "The service was exactly what I needed. Very quick, efficient and accurate. He went over and above to deliver on what I needed",
+  },
+  {
+    client: "Matheo Masschelein",
+    profile: "/images/testimonials/matheo.webp",
+    review:
+      "That's a many time I have work with Zeeshan and that's always perfect, all my problems are resolved within 48 hours and he explain me really well all the things to do to don't have the same error on the future. He is one of the best freelancer wich I have work, professionnal and efficient.",
+  },
+  {
+    client: "Amanda Clarke",
+    logo: "/images/testimonials/allegra.png",
+    company: "Allegra Dawn",
+    profile: "/images/testimonials/amanda.jpg",
+    review:
+      "That's a many time I have work with Zeeshan and that's always perfect, all my problems are resolved within 48 hours and he explain me really well all the things to do to don't have the same error on the future. He is one of the best freelancer wich I have work, professionnal and efficient.",
     featured: true,
   },
 ];
