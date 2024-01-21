@@ -6,8 +6,47 @@ export interface Review {
   review: string;
   featured?: boolean;
 }
-
+interface VideoReview {
+  client: string;
+  video: string;
+  profile?: string;
+}
+export const VideoReviewsList: VideoReview[] = [
+  {
+    client: "Felicia Rachel",
+    video: "https://youtu.be/vWWplNROVkI",
+    profile: "/images/testimonials/felicia.webp",
+  },
+  {
+    client: "David Kalisman",
+    video: "https://youtu.be/WvE1OrrY7xk",
+  },
+  {
+    client: "Sebastian Zeb",
+    video: "https://youtu.be/Qc3foD2QR9k",
+    profile: "/images/testimonials/seb.png",
+  },
+  {
+    client: "Shann Lim",
+    video: "https://youtu.be/TAaeI-7R5Ys",
+    profile: "/images/testimonials/shann.jpeg",
+  },
+  {
+    client: "Anthony Chicabu",
+    video: "https://youtu.be/vVjoBGQ0o7c",
+    profile: "/images/testimonials/anthony.jpeg",
+  },
+];
 const ReviewsList: Review[] = [
+  {
+    client: "Arthur Carrion",
+    profile: "/images/testimonials/arthur.jpeg",
+    company: "BluHorn Media",
+    logo: "/images/testimonials/bluhorn.png",
+    review:
+      "I hired Zeeshan for multiple projects. He is my go to developer and designer right now. I highly recommend working with him. He is very responsive when it comes to communicating. He has done all my tasks in a timely manner with very high attention to details. If you are looking for an all around developer Zeeshan is your guy!",
+    featured: true,
+  },
   {
     client: "Josh Peters",
     logo: "/images/testimonials/pp.png",

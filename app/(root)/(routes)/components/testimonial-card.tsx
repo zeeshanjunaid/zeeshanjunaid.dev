@@ -64,7 +64,7 @@ const TestimonialCard = ({ review, className }: TestimonialCardProps) => {
         </div>
         <div className="relative">
           <QuotedIcon />
-          <p className="text-dark dark:text-light font-switzer font-light italic text-[16px] md:text-[18px] leading-relaxed">
+          <p className="text-dark dark:text-light font-switzer font-light italic text-[16px] md:text-[18px] tracking-wider leading-relaxed">
             {review.review}
           </p>
         </div>

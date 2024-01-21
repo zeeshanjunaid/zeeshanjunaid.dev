@@ -86,7 +86,7 @@ const TestimonialsSlider = ({ reviews }: TestimonialsSliderProps) => {
                         fill
                         src={logo}
                         alt={company ? company : "logo"}
-                        className="hidden dark:block object-contain object-left mix-blend-multiply"
+                        className="object-contain object-left"
                       />
                     </div>
                   )}

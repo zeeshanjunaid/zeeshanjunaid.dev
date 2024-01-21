@@ -1,10 +1,12 @@
+import ReviewsList, { VideoReviewsList } from "@/data/reviews";
+
 import { Button } from "@/components/ui/button";
 import { Container } from "@/components/container";
 import MasonryLayout from "../components/masonry-layout";
 import { PenBoxIcon } from "lucide-react";
 import React from "react";
-import ReviewsList from "@/data/reviews";
 import TestimonialCard from "../components/testimonial-card";
+import VideoModal from "../components/video-modal";
 
 const ReviewsPage = () => {
   return (
@@ -28,6 +30,7 @@ const ReviewsPage = () => {
           </div>
           <div>
             <Button
+              disabled
               variant="highlight"
               className="flex items-center gap-x-1 bg-purple hover:bg-purple/80 text-dark dark:text-light transition duration-200 dark:bg-purple dark:hover:bg-purple/80"
             >
@@ -38,7 +41,17 @@ const ReviewsPage = () => {
         </Container>
       </div>
       <section className="mt-12">
-        <Container className="px-4 lg:px-0">
+        <Container className="px-4 lg:px-0 flex flex-col gap-5">
+          <div className="flex justify-start items-center gap-5 overflow-x-scroll pb-5">
+            {VideoReviewsList.map(({ client, video, profile }, index) => (
+              <VideoModal
+                key={index}
+                client={client}
+                profile={profile}
+                video={video}
+              />
+            ))}
+          </div>
           <MasonryLayout>
             {ReviewsList.map((review, index) => (
               <div key={index} className="masonry-item">
