@@ -12,6 +12,7 @@ import React, { useState } from "react";
 
 import { BlurBG } from "@/components/blur-bg";
 import Image from "next/image";
+import ReactCountryFlag from "react-country-flag";
 import ReactPlayer from "react-player/youtube";
 import { User2Icon } from "lucide-react";
 
@@ -19,10 +20,15 @@ const VideoModal = ({
   video,
   client,
   profile,
+  country,
 }: {
   video: string;
   client: string;
   profile?: string;
+  country?: {
+    code: string;
+    name: string;
+  };
 }) => {
   const [isModalOpen, setIsModalOpen] = useState(false);
 
@@ -53,7 +59,20 @@ const VideoModal = ({
 
       <DialogContent className="bg-light dark:bg-dark min-w-max">
         <DialogHeader>
-          <DialogTitle className="mb-5">{client}</DialogTitle>
+          <DialogTitle className="mb-5 flex items-center gap-x-1.5">
+            {client}
+            {country && (
+              <span>
+                <ReactCountryFlag
+                  countryCode={country.code}
+                  style={{
+                    fontSize: "1.25rem",
+                  }}
+                  aria-label={country.name}
+                />
+              </span>
+            )}
+          </DialogTitle>
           <DialogDescription asChild className="h-auto max-w-full">
             <ReactPlayer
               width={"100%"}

@@ -43,14 +43,17 @@ const ReviewsPage = () => {
       <section className="mt-12">
         <Container className="px-4 lg:px-0 flex flex-col gap-5">
           <div className="flex justify-start items-center gap-5 overflow-x-scroll pb-5">
-            {VideoReviewsList.map(({ client, video, profile }, index) => (
-              <VideoModal
-                key={index}
-                client={client}
-                profile={profile}
-                video={video}
-              />
-            ))}
+            {VideoReviewsList.map(
+              ({ client, video, profile, country }, index) => (
+                <VideoModal
+                  key={index}
+                  client={client}
+                  profile={profile}
+                  video={video}
+                  country={country}
+                />
+              ),
+            )}
           </div>
           <MasonryLayout>
             {ReviewsList.map((review, index) => (

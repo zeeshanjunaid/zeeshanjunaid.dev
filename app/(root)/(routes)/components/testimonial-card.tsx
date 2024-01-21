@@ -3,10 +3,12 @@
 import { BlurBG } from "@/components/blur-bg";
 import Image from "next/image";
 import React from "react";
+import ReactCountryFlag from "react-country-flag";
 import { Review } from "@/data/reviews";
 import { Star } from "lucide-react";
 import { cn } from "@/lib/utils";
 import { useTheme } from "next-themes";
+
 interface TestimonialCardProps {
   review: Review;
   className?: string;
@@ -34,7 +36,7 @@ const TestimonialCard = ({ review, className }: TestimonialCardProps) => {
   return (
     <div
       className={cn(
-        "bg-light relative dark:bg-dark rounded-3xl px-6 py-10 md:px-[3.75rem] md:py-[4rem]",
+        "bg-light relative dark:bg-dark rounded-3xl px-6 py-10 lg:px-[3.75rem] lg:py-[4rem]",
         className,
       )}
     >
@@ -50,8 +52,19 @@ const TestimonialCard = ({ review, className }: TestimonialCardProps) => {
             />
           </div>
           <div className="flex flex-col gap-y-1">
-            <h3 className="text-dark dark:text-light font-switzer font-medium text-[16px]">
+            <h3 className="text-dark dark:text-light font-switzer font-medium text-[16px] flex items-center gap-x-1.5">
               {review.client}
+              {review.country && (
+                <span>
+                  <ReactCountryFlag
+                    countryCode={review.country.code}
+                    style={{
+                      fontSize: "1.25rem",
+                    }}
+                    aria-label={review.country.name}
+                  />
+                </span>
+              )}
             </h3>
             <div className="flex gap-x-1 items-center justify-start">
               <Star color="#FFC107" fill="#FFC107" />
