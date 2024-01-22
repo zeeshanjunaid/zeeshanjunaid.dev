@@ -48,13 +48,12 @@ const ContactForm = () => {
   const isLoading = form.formState.isSubmitting;
   const onSubmit: SubmitHandler<FormValues> = async (values) => {
     try {
-      const { data } = await axios.post("/api/send", values);
+      await axios.post("/api/send", values);
       form.reset();
       toast({
         title: "Thank you for your message.",
         description: "I'll get back to you within 24 hours.",
       });
-      console.log(data);
     } catch (error) {
       toast({
         variant: "destructive",
