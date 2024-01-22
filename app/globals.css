@@ -107,7 +107,7 @@ body {
 
 .text-gradient {
   background: linear-gradient(
-    45deg,
+    35deg,
     #f34dac -0.15%,
     #ce55b0 13.63%,
     #f48e66 29.54%,
@@ -150,7 +150,7 @@ body {
 
 .masonry-grid {
   display: flex;
-  margin-left: -20px; 
+  margin-left: -20px;
   width: auto;
 }
 
@@ -160,5 +160,5 @@ body {
 }
 
 .masonry-item {
-  margin-bottom: 20px; 
+  margin-bottom: 20px;
 }
