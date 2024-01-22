@@ -7,7 +7,7 @@ export async function POST(req: Request) {
   try {
     const body = await req.json();
     const { name, email, message, phone, referral } = body;
-    const data = await resend.emails.send({
+    const { data, error } = await resend.emails.send({
       from: email,
       to: ["hello@zeeshanjunaid.dev"],
       subject: `New message from ${name}`,
@@ -20,7 +20,11 @@ export async function POST(req: Request) {
       }) as React.ReactElement,
     });
 
-    return NextResponse.json(data);
+    if (error) {
+      return NextResponse.json({ error });
+    }
+
+    return NextResponse.json({ data });
   } catch (error) {
     return new NextResponse("Internal Error", { status: 500 });
   }

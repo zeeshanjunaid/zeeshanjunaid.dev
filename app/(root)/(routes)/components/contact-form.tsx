@@ -52,7 +52,6 @@ const ContactForm = () => {
       form.reset();
       toast({
         title: "Thank you for your message.",
-
         description: "I'll get back to you within 24 hours.",
       });
     } catch (error) {
