@@ -42,7 +42,7 @@ export const VideoReviewsList: VideoReview[] = [
     video: "https://youtu.be/Qc3foD2QR9k",
     profile: "/images/testimonials/seb.png",
     country: {
-      code: "uk",
+      code: "gb",
       name: "United Kingdom",
     },
   },
