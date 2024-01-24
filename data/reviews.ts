@@ -21,12 +21,12 @@ interface VideoReview {
 }
 export const VideoReviewsList: VideoReview[] = [
   {
-    client: "Felicia Rachel",
+    client: "Felicia Lucco",
     video: "https://youtu.be/vWWplNROVkI",
     profile: "/images/testimonials/felicia.webp",
     country: {
-      code: "us",
-      name: "United States",
+      code: "ca",
+      name: "Canada",
     },
   },
   {
