@@ -42,7 +42,7 @@ const VideoModal = ({
                 <Image
                   fill
                   src={profile}
-                  className="object-cover z-20"
+                  className="object-cover z-20 w-[100px] h-[100px] lg:h-[120px] lg:w-[120px] rounded-full"
                   alt={client}
                 />
               ) : (
