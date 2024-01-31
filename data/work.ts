@@ -33,7 +33,7 @@ const ProjectsList: Project[] = [
     tags: ["frontend"],
   },
   {
-    name: "customs",
+    name: "Customs Royalty Checker",
     imgUrl: "/images/projects/customs.jpg",
     link: "https://customs-frontend-git-homepage-design-passage-protocol.vercel.app/",
     year: 2023,
