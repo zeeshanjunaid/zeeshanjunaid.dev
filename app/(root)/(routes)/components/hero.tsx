@@ -7,8 +7,14 @@ import { Container } from "@/components/container";
 import Image from "next/image";
 import React from "react";
 
-const heroTitle =
-  "Hello 👋🏻, I’m Zeeshan Junaid, Frontend Engineer with 8+ years of experience";
+const handIcon = <span className="animate-waver">👋🏻</span>;
+
+const heroTitle = (
+  <>
+    Hello {handIcon}, I’m Zeeshan Junaid, Frontend Engineer with 8+ years of
+    experience
+  </>
+);
 const heroImg = "/images/zeeshan.png";
 export const Hero = () => {
   return (

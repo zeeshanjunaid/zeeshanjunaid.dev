@@ -8,7 +8,7 @@ import ReachOut from "@/components/reach-out";
 import SmoothScroll from "@/components/smooth-scroll";
 import { SpeedInsights } from "@vercel/speed-insights/next";
 import { ThemeProvider } from "@/components/theme-provider";
-import { Toaster } from "@/components/ui/toaster"
+import { Toaster } from "@/components/ui/toaster";
 import { cn } from "@/lib/utils";
 import localFont from "next/font/local";
 

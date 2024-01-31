@@ -101,6 +101,24 @@ body {
   animation: spin-slow 24s infinite linear;
 }
 
+@keyframes waver {
+  0% {
+    transform: rotate(0deg);
+  }
+  50% {
+    transform: rotate(30deg);
+  }
+  100% {
+    transform: rotate(0deg);
+  }
+}
+
+.animate-waver {
+  display: inline-block;
+  animation: waver 2.5s infinite;
+  animation-delay: 2.5s;
+}
+
 .header-logo:hover .rotate-slow {
   animation-play-state: paused;
 }
@@ -146,6 +164,15 @@ body {
     radial-gradient(at 66% 30%, hsla(71, 100%, 51%, 1) 0px, transparent 50%),
     radial-gradient(at 29% 73%, hsla(42, 100%, 56%, 1) 0px, transparent 50%),
     radial-gradient(at 32% 34%, hsla(16, 100%, 67%, 1) 0px, transparent 50%);
+}
+.header-gradient {
+  background: linear-gradient(
+    133deg,
+    #f48e66 11.53%,
+    #f0b832 37.22%,
+    #b2ce37 67.19%,
+    #63d7af 93.74%
+  );
 }
 
 .masonry-grid {

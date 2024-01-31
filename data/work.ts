@@ -6,6 +6,7 @@ export interface Project {
   tags: string[];
   selected?: boolean;
   archived?: boolean;
+  images?: string[];
 }
 const ProjectsList: Project[] = [
   {
@@ -49,6 +50,12 @@ const ProjectsList: Project[] = [
   {
     name: "drillbit",
     imgUrl: "/images/projects/drillbit.jpg",
+    images: [
+      "/images/projects/drillbit2.jpg",
+      "/images/projects/drillbit3.jpg",
+      "/images/projects/drillbit4.jpg",
+      "/images/projects/drillbit5.jpg",
+    ],
     link: "https://www.drillbit.xyz/",
     year: 2023,
     tags: ["ui/ux", "frontend"],
