@@ -27,6 +27,8 @@ const NavMobile = ({ data }: NavMobileProps) => {
     <Sheet open={open} onOpenChange={setOpen}>
       <SheetTrigger asChild>
         <Button
+          aria-label="hamburger"
+          role="button"
           size="icon"
           variant="highlight"
           className="lg:hidden inline-flex items-center h-[38px]"
