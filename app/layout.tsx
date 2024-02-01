@@ -14,7 +14,8 @@ import localFont from "next/font/local";
 
 export const metadata: Metadata = {
   title: "Zeeshan Junaid - Frontend Developer",
-  description: "Portfolio website of Zeeshan Junaid",
+  description:
+    "Freelance UI/UX Designer and Frontned developer with 8+ years of experience",
   icons: {
     icon: "/favicons/favicon.ico",
     shortcut: "/favicons/favicon-16x16.png",
@@ -22,7 +23,8 @@ export const metadata: Metadata = {
   },
   openGraph: {
     title: "Zeeshan Junaid - Frontend Developer",
-    description: "Portfolio website of Zeeshan Junaid",
+    description:
+      "Freelance UI/UX Designer and Frontned developer with 8+ years of experience",
     url: "https://zeeshanjunaid.dev",
     siteName: "Zeeshan Junaid",
     images: "/images/og-image.jpg",

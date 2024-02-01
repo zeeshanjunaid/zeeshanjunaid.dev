@@ -28,15 +28,15 @@ export const Hero = () => {
     "
     >
       <div className="lg:hidden px-2 w-full sm:w-[80%] md:w-[90%] mx-auto mt-4">
-        <h2 className="text-center text-[22px] leading-tight sm:text-[28px] md:text-[36px] font-bold font-ao text-dark dark:text-light">
+        <h1 className="text-center text-[22px] leading-tight sm:text-[28px] md:text-[36px] font-bold font-ao text-dark dark:text-light">
           {heroTitle}
-        </h2>
+        </h1>
       </div>
       <div className="hidden lg:flex flex-col w-2/3  rounded-3xl px-16 py-12 justify-between flex-1 mr-5 relative overflow-hidden">
         <BlurBG className="rounded-3xl" />
-        <h2 className="z-20 relative text-left text-[32px] 2xl:text-[36px] font-bold font-ao text-dark dark:text-light leading-tight">
+        <h1 className="z-20 relative text-left text-[32px] 2xl:text-[36px] font-bold font-ao text-dark dark:text-light leading-tight">
           {heroTitle}
-        </h2>
+        </h1>
         <div className="flex items-center space-x-3 min-w-max justify-start z-20 relative">
           <ResumeButton />
           <SocialLinks />

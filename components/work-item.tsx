@@ -173,9 +173,9 @@ export const WorkYear = ({ year }: { year: number }) => (
   </span>
 );
 const WorkName = ({ name }: { name: string }) => (
-  <h1 className="font-ao text-dark font-bold text-[18px] md:text-[20px] lg:text-[22px] dark:text-light uppercase">
+  <h2 className="font-ao text-dark font-bold text-[18px] md:text-[20px] lg:text-[22px] dark:text-light uppercase">
     {name}
-  </h1>
+  </h2>
 );
 export const WorkTag = ({
   tag,
