@@ -42,7 +42,6 @@ const TestimonialsSlider = ({ reviews }: TestimonialsSliderProps) => {
       <div className="shrink-0 overflow-hidden rounded-3xl relative hidden lg:block w-[360px] h-[360px]">
         {!isLoaded && <Skeleton className="w-full h-full rounded-3xl" />}
         <Image
-          priority={true}
           className="aspect-square object-cover"
           src={profile}
           fill
