@@ -1,0 +1,15 @@
+{
+    "rewrites": [
+      {
+        "source": "/(.*)",
+        "destination": "https://zeeshanjunaid.dev/$1",
+        "has": [
+          {
+            "type": "host",
+            "value": "www.zeeshanjunaid.dev"
+          }
+        ]
+      }
+    ]
+  }
+  
