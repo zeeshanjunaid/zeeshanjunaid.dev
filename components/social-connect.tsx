@@ -56,7 +56,7 @@ export function SocialLinks() {
         <TooltipProvider key={name}>
           <Tooltip>
             <TooltipTrigger>
-              <a href={link} target="_blank">
+              <a href={link} target="_blank" rel="noopener noreferrer">
                 <Button size="icon" className="rounded-xl">
                   {icon}
                 </Button>

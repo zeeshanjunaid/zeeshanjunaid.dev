@@ -31,7 +31,7 @@ const ContactPage = () => {
                   href="mailto:hello@zeeshanjunaid.dev"
                   className="text-[16px] md:text-[18px] lg:text-5 font-switzer text-dark dark:text-light underline underline-purple underline-offset-4 hover:text-dark/90 dark:hover:text-light/90 transition-color duration-200"
                 >
-                  hello@zeeshanjunaid.dev
+                  hello[at]zeeshanjunaid[dot]dev
                 </a>
               </div>
               <div className="flex items-center justify-start gap-x-1.5">

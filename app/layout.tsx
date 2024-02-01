@@ -13,8 +13,33 @@ import { cn } from "@/lib/utils";
 import localFont from "next/font/local";
 
 export const metadata: Metadata = {
-  title: "Zeeshan Junaid",
+  title: "Zeeshan Junaid - Frontend Developer",
   description: "Portfolio website of Zeeshan Junaid",
+  icons: {
+    icon: "/favicons/favicon.ico",
+    shortcut: "/favicons/favicon-16x16.png",
+    apple: "/favicons/apple-touch-icon.png",
+  },
+  openGraph: {
+    title: "Zeeshan Junaid - Frontend Developer",
+    description: "Portfolio website of Zeeshan Junaid",
+    url: "https://zeeshanjunaid.dev",
+    siteName: "Zeeshan Junaid",
+    images: "/images/og-image.jpg",
+    locale: "en-US",
+    type: "website",
+  },
+  robots: {
+    index: true,
+    follow: true,
+    googleBot: {
+      index: true,
+      follow: true,
+      "max-video-preview": -1,
+      "max-image-preview": "large",
+      "max-snippet": -1,
+    },
+  },
 };
 
 const switzer = localFont({
