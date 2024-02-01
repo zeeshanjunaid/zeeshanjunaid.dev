@@ -30,7 +30,7 @@ export const metadata: Metadata = {
       "Freelance UI/UX Designer and Frontned developer with 8+ years of experience",
     url: "https://zeeshanjunaid.dev",
     siteName: "Zeeshan Junaid",
-    images: "/images/og-image.jpg",
+    images: "/images/opengraph-image.jpg",
     locale: "en-US",
     type: "website",
   },
