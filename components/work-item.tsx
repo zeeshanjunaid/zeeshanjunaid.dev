@@ -26,7 +26,7 @@ export const WorkItem = ({
   imgUrl,
   selectedSkill,
 }: WorkItemProps) => {
-  const linkRef = useRef<HTMLAnchorElement>(null);
+  const itemRef = useRef<HTMLLIElement>(null);
   const xValue = useMotionValue(0);
   const yValue = useMotionValue(0);
 
@@ -37,8 +37,8 @@ export const WorkItem = ({
   const left = useTransform(xSpring, [0.5, -0.5], ["30%", "40%"]);
 
   const handleMouseMove = (e: any) => {
-    if (linkRef.current) {
-      const rect = linkRef.current.getBoundingClientRect();
+    if (itemRef.current) {
+      const rect = itemRef.current.getBoundingClientRect();
       const x = e.clientX - rect.left;
       const y = e.clientY - rect.top;
       const xPct = x / rect.width - 0.5;
@@ -49,73 +49,77 @@ export const WorkItem = ({
     }
   };
   return (
-    <motion.a
+    <motion.li
       onMouseMove={handleMouseMove}
-      ref={linkRef}
+      ref={itemRef}
       initial="initial"
       whileHover="whileHover"
-      href={link}
-      target="_blank"
       className={cn(
         "group relative w-full rounded-3xl p-[2px] transition duration-200",
       )}
     >
-      <div className="relative px-6 md:px-8 py-6  rounded-3xl">
-        <motion.div
-          variants={{
-            initial: {
-              opacity: 0,
-            },
-            whileHover: {
-              opacity: 1,
-            },
-          }}
-          transition={{
-            type: "spring",
-            duration: 0.2,
-          }}
-          className="rounded-3xl z-[5] absolute top-0 left-0 right-0 bottom-0 work-item-gradient w-full h-full"
-        />
-
-        <BlurBG className="rounded-3xl" />
-        <div className="flex items-start gap-x-8 justify-between md:items-center relative z-20">
-          <WorkYear year={year} />
-          <div className="flex flex-col md:flex-row md:justify-between md:items-center gap-y-3 flex-1 flex-wrap">
-            <WorkName name={name} />
-
-            <div className="flex items-center flex-wrap gap-2 md:gap-2.5">
-              {tags.map((tag, index) => (
-                <WorkTag key={index} tag={tag} selectedSkill={selectedSkill} />
-              ))}
-            </div>
-          </div>
-
-          <motion.span
+      <a href={link} target="_blank" rel="noreferrer noopener">
+        <div className="relative px-6 md:px-8 py-6  rounded-3xl">
+          <motion.div
             variants={{
               initial: {
-                opacity: 0.25,
-                rotate: "0deg",
-                scale: 1,
+                opacity: 0,
               },
               whileHover: {
                 opacity: 1,
-                rotate: "-25deg",
-                scale: 1.125,
               },
             }}
             transition={{
+              type: "spring",
               duration: 0.2,
-              type: "tween",
-              ease: "easeInOut",
             }}
-            className="text-[24px] text-dark dark:text-light md:hidden"
-          >
-            <ArrowRight />
-          </motion.span>
+            className="rounded-3xl z-[5] absolute top-0 left-0 right-0 bottom-0 work-item-gradient w-full h-full"
+          />
+
+          <BlurBG className="rounded-3xl" />
+          <div className="flex items-start gap-x-8 justify-between md:items-center relative z-20">
+            <WorkYear year={year} />
+            <div className="flex flex-col md:flex-row md:justify-between md:items-center gap-y-3 flex-1 flex-wrap">
+              <WorkName name={name} />
+
+              <div className="flex items-center flex-wrap gap-2 md:gap-2.5">
+                {tags.map((tag, index) => (
+                  <WorkTag
+                    key={index}
+                    tag={tag}
+                    selectedSkill={selectedSkill}
+                  />
+                ))}
+              </div>
+            </div>
+
+            <motion.span
+              variants={{
+                initial: {
+                  opacity: 0.25,
+                  rotate: "0deg",
+                  scale: 1,
+                },
+                whileHover: {
+                  opacity: 1,
+                  rotate: "-25deg",
+                  scale: 1.125,
+                },
+              }}
+              transition={{
+                duration: 0.2,
+                type: "tween",
+                ease: "easeInOut",
+              }}
+              className="text-[24px] text-dark dark:text-light md:hidden"
+            >
+              <ArrowRight />
+            </motion.span>
+          </div>
         </div>
-      </div>
-      <WorkImg top={top} left={left} imgUrl={imgUrl} />
-    </motion.a>
+        <WorkImg top={top} left={left} imgUrl={imgUrl} />
+      </a>
+    </motion.li>
   );
 };
 export const WorkImg = ({

@@ -73,7 +73,7 @@ const ReviewsList: Review[] = [
     logo: "/images/testimonials/bluhorn.png",
     review:
       "I hired Zeeshan for multiple projects. He is my go to developer and designer right now. I highly recommend working with him. He is very responsive when it comes to communicating. He has done all my tasks in a timely manner with very high attention to details. If you are looking for an all around developer Zeeshan is your guy!",
-    featured: true,
+
     country: {
       code: "us",
       name: "United States",
@@ -120,7 +120,6 @@ const ReviewsList: Review[] = [
     company: "Blue Studies",
     review:
       "Zeeshan over-delivered from the get go! Incredible communicator, understood the requirements, made immediate changes based on feedback and delivered above expectations. I will definitely use again.",
-    featured: true,
     country: {
       code: "mx",
       name: "Maxico",

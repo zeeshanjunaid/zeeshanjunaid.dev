@@ -57,7 +57,12 @@ export function SocialLinks() {
           <Tooltip>
             <TooltipTrigger>
               <a href={link} target="_blank" rel="noopener noreferrer">
-                <Button size="icon" className="rounded-xl">
+                <Button
+                  aria-label={name}
+                  role="link"
+                  size="icon"
+                  className="rounded-xl"
+                >
                   {icon}
                 </Button>
               </a>
@@ -72,7 +77,11 @@ export function SocialLinks() {
 
 export function ResumeButton({ className }: { className?: string }) {
   return (
-    <Button disabled variant="purple" className={cn("space-x-1 w-max rounded-xl", className)}>
+    <Button
+      disabled
+      variant="purple"
+      className={cn("space-x-1 w-max rounded-xl", className)}
+    >
       <DownloadCloud className="w-3 md:w-4 lg:w-5 h-3 md:h-4 lg:h-5" />
       <span className="text-dark dark:text-light uppercase text-[12px] md:text-[14px]">
         Download CV

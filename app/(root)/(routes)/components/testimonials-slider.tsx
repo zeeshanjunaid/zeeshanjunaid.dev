@@ -94,6 +94,7 @@ const TestimonialsSlider = ({ reviews }: TestimonialsSliderProps) => {
               </div>
               <div className="flex gap-x-2">
                 <Button
+                  aria-label="Previous"
                   size="icon"
                   onClick={handlePrevious}
                   className="bg-transparent text-dark dark:text-light border-[1px] border-solid border-dark dark:border-light hover:bg-purple hover:border-purple dark:hover:border-purple transition duration-200 rounded-xl"
@@ -101,6 +102,7 @@ const TestimonialsSlider = ({ reviews }: TestimonialsSliderProps) => {
                   <ChevronLeft size={18} />
                 </Button>
                 <Button
+                  aria-label="Next"
                   onClick={handleNext}
                   size="icon"
                   className="bg-transparent text-dark dark:text-light border-[1px] border-solid border-dark dark:border-light hover:bg-purple hover:border-purple dark:hover:border-purple transition duration-200 rounded-xl"
