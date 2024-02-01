@@ -8,6 +8,9 @@ import React from "react";
 import TestimonialCard from "../components/testimonial-card";
 import VideoModal from "../components/video-modal";
 
+export const metadata = {
+  title: "Feedback",
+};
 const ReviewsPage = () => {
   return (
     <>

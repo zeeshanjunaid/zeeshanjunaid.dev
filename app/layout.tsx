@@ -13,7 +13,10 @@ import { cn } from "@/lib/utils";
 import localFont from "next/font/local";
 
 export const metadata: Metadata = {
-  title: "Zeeshan Junaid - Frontend Developer",
+  title: {
+    default: "Zeeshan Junaid - Frontend Developer",
+    template: "%s | ZJ Portfolio",
+  },
   description:
     "Freelance UI/UX Designer and Frontned developer with 8+ years of experience",
   icons: {

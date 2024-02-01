@@ -5,6 +5,9 @@ import ContactForm from "../components/contact-form";
 import { Container } from "@/components/container";
 import React from "react";
 
+export const metadata = {
+  title: "Contact",
+};
 const ContactPage = () => {
   return (
     <>
