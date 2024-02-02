@@ -18,7 +18,7 @@ export const metadata: Metadata = {
     template: "%s | ZJ Portfolio",
   },
   description:
-    "Freelance UI/UX Designer and Frontned developer with 8+ years of experience",
+    "Experienced freelance UI/UX designer and frontend developer with over 8 years of expertise in creating engaging digital experiences.",
   icons: {
     icon: "/favicons/favicon.ico",
     shortcut: "/favicons/favicon-16x16.png",
@@ -27,7 +27,7 @@ export const metadata: Metadata = {
   openGraph: {
     title: "Zeeshan Junaid - Frontend Developer",
     description:
-      "Freelance UI/UX Designer and Frontned developer with 8+ years of experience",
+      "Experienced freelance UI/UX designer and frontend developer with over 8 years of expertise in creating engaging digital experiences.",
     url: "https://zeeshanjunaid.dev",
     siteName: "Zeeshan Junaid",
     images: "/images/opengraph-image.jpg",
