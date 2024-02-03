@@ -25,9 +25,9 @@ export const metadata: Metadata = {
     apple: "/favicons/apple-touch-icon.png",
   },
   openGraph: {
-    title: "Zeeshan Junaid - Frontend Developer",
+    title: "Zeeshan Junaid - UI/UX Designer and Frontend Developer",
     description:
-      "Experienced freelance UI/UX designer and frontend developer with over 8 years of expertise in creating engaging digital experiences.",
+      "Experienced freelance UI/UX designer and frontend developer with over 8 years of expertise in creating engaging digital experiences, innovative design solutions and seamless user interfaces.",
     url: "https://zeeshanjunaid.dev",
     siteName: "Zeeshan Junaid",
     images: "/images/opengraph-image.jpg",
