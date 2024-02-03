@@ -25,7 +25,7 @@ import { zodResolver } from "@hookform/resolvers/zod";
 const formSchema = z.object({
   name: z.string().min(1, { message: "Name is required" }),
   email: z.string().email("Invalid email address"),
-  phone: z.string().refine((val) => /^\d{10}$/.test(val), {
+  phone: z.string().refine((val) => /^\+\d{1,3}\d{10}$/.test(val), {
     message: "Invalid phone number",
   }),
   referral: z.string().optional(),
