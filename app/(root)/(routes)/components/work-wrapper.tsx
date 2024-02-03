@@ -56,7 +56,10 @@ const WorkWrapper = () => {
     "
       >
         <h2 className="text-[28px] md:text-[42px] lg:text-[54px] font-bold font-ao text-dark dark:text-light">
-          Projects ({projectsNum})
+          Recent Projects{" "}
+          <span className="text-[20px] md:text-[28px] lg:text-[42px] font-bold font-ao text-dark/50 dark:text-light/50">
+            [{projectsNum}]
+          </span>
         </h2>
         <div className="flex justify-start items-center gap-x-2 md:gap-x-4">
           <FilterBar

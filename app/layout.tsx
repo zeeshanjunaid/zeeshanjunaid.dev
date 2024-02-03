@@ -14,20 +14,22 @@ import localFont from "next/font/local";
 
 export const metadata: Metadata = {
   title: {
-    default: "Zeeshan Junaid - Frontend Developer",
+    default:
+      "Zeeshan Junaid: Expert UI/UX Designer & Frontend Developer | React, Next.js, WordPress, Webflow",
     template: "%s | ZJ Portfolio",
   },
   description:
-    "Experienced freelance UI/UX designer and frontend developer with over 8 years of expertise in creating engaging digital experiences.",
+    "Meet Zeeshan Junaid, an accomplished UI/UX Designer and Frontend Developer specializing in React, Next.js, WordPress, and Webflow. Dive into a portfolio that blends stunning design with cutting-edge development to create seamless user experiences.",
   icons: {
     icon: "/favicons/favicon.ico",
     shortcut: "/favicons/favicon-16x16.png",
     apple: "/favicons/apple-touch-icon.png",
   },
   openGraph: {
-    title: "Zeeshan Junaid - Frontend Developer",
+    title:
+      "Zeeshan Junaid: Expert UI/UX Designer & Frontend Developer | React, Next.js, WordPress, Webflow",
     description:
-      "Experienced freelance UI/UX designer and frontend developer with over 8 years of expertise in creating engaging digital experiences.",
+      "Meet Zeeshan Junaid, an accomplished UI/UX Designer and Frontend Developer specializing in React, Next.js, WordPress, and Webflow. Dive into a portfolio that blends stunning design with cutting-edge development to create seamless user experiences.",
     url: "https://zeeshanjunaid.dev",
     siteName: "Zeeshan Junaid",
     images: "/images/opengraph-image.jpg",
