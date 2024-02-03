@@ -28,29 +28,29 @@ const ContactPage = () => {
               experiences that resonate and captivate your audience.
             </p>
             <div className="flex flex-col md:flex-row gap-5  md:gap-8 md:flex-wrap lg:justify-between md:items-center mt-2.5 md:mt-8">
-              <div className="flex items-center justify-start gap-x-1.5">
+              <div className="flex items-center justify-start gap-x-1.5 group">
                 <Mail size={18} />
                 <a
                   href="mailto:hello@zeeshanjunaid.dev"
-                  className="text-[16px] md:text-[18px] lg:text-5 font-switzer text-dark dark:text-light underline underline-purple underline-offset-4 hover:text-dark/90 dark:hover:text-light/90 transition-color duration-200"
+                  className="blur-[3px] group-focus:blur-0 group-hover:blur-0 text-[16px] md:text-[18px] lg:text-5 font-switzer text-dark dark:text-light underline underline-purple underline-offset-4 hover:text-dark/90 dark:hover:text-light/90 transition-color duration-200"
                 >
-                  hello[at]zeeshanjunaid[dot]dev
+                  hello@zeeshanjunaid.dev
                 </a>
               </div>
-              <div className="flex items-center justify-start gap-x-1.5">
+              <div className="flex items-center justify-start gap-x-1.5 group">
                 <Phone size={18} />
                 <a
                   href="tel:+923408563525"
-                  className="text-[16px] md:text-[18px] lg:text-5 font-switzer text-dark dark:text-light underline underline-purple underline-offset-4 hover:text-dark/90 dark:hover:text-light/90 transition-color duration-200"
+                  className="blur-[3px] group-focus:blur-0 group-hover:blur-0 text-[16px] md:text-[18px] lg:text-5 font-switzer text-dark dark:text-light underline underline-purple underline-offset-4 hover:text-dark/90 dark:hover:text-light/90 transition-color duration-200"
                 >
                   +92 340 856 3525
                 </a>
               </div>
-              <div className="flex items-center justify-start gap-x-1.5">
+              <div className="flex items-center justify-start gap-x-1.5 group">
                 <BsWhatsapp size={18} />
                 <a
                   href="whatsapp://send?phone=923408563525"
-                  className="text-[16px] md:text-[18px] lg:text-5 font-switzer text-dark dark:text-light underline underline-purple underline-offset-4 hover:text-dark/90 dark:hover:text-light/90 transition-color duration-200"
+                  className="blur-[3px] group-focus:blur-0 group-hover:blur-0 text-[16px] md:text-[18px] lg:text-5 font-switzer text-dark dark:text-light underline underline-purple underline-offset-4 hover:text-dark/90 dark:hover:text-light/90 transition-color duration-200"
                 >
                   +92 340 856 3525
                 </a>
