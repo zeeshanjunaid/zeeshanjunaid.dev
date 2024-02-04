@@ -1,10 +1,15 @@
-import { Container } from "@/components/container";
+import AboutHero from "../components/about-hero";
 import React from "react";
 export const metadata = {
   title: "About Me",
 };
+
 const AboutPage = () => {
-  return <Container>About page coming soon</Container>;
+  return (
+    <>
+      <AboutHero />
+    </>
+  );
 };
 
 export default AboutPage;
