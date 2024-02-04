@@ -95,11 +95,11 @@ export default function RootLayout({
       >
         <ThemeProvider attribute="class" defaultTheme="system" enableSystem>
           <Header />
-          <SmoothScroll>
+          <main className="pt-[100px]">
             {children}
             <ReachOut />
-            <Footer />
-          </SmoothScroll>
+          </main>
+          <Footer />
           <Toaster />
         </ThemeProvider>
         <Analytics />
