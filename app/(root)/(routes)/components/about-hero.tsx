@@ -36,18 +36,6 @@ const AboutHero = () => {
             stepping stone for where I am today.
           </p>
           <p className={paragraphStyles}>
-            What excites me most about being a Product Designer is being able to
-            design and create things that have purpose and solve real problems.
-            It goes beyond designing buttons and websites and involves having a
-            passion for designing experiences and solutions that help people,
-            whether it&apos;s helping them make better videos, market themselves
-            online, or buy something online. Leaning into customer insight and
-            understanding their needs, finding the right problems to solve,
-            delivering solutions as quickly as possible, learning from those and
-            then iterating and improving that value over time is the key to
-            great product design.
-          </p>
-          <p className={paragraphStyles}>
             This is one of my favourite quotes (by Peter Drucker):
           </p>
           <h3 className="font-ao text-[18px] md:text-[20px] text-dark/90 dark:text-light/90 leading-relaxed">
@@ -66,11 +54,9 @@ const AboutHero = () => {
         <BlurBG className="rounded-3xl" />
         <div className="absolute bottom-0 left-2/3 lg:left-auto lg:right-0 -translate-x-3/4 lg:translate-x-0 w-full h-full z-20">
           <Image
-            loading="eager"
             fill
             alt="profile"
             src={heroImg}
-            priority={true}
             className="scale-125 lg:scale-[135%] 2xl:scale-[120%] origin-bottom object-contain object-bottom transition-opacity delay-750 duration-1000 user-select-none pointer-events-none"
           />
         </div>
