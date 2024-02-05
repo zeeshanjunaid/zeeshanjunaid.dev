@@ -89,6 +89,10 @@ export const Skillset: SkillSetProps[] = [
         link: "https://developer.mozilla.org/en-US/docs/Web/HTML",
       },
       {
+        name: "HTMX",
+        link: "https://htmx.org",
+      },
+      {
         name: "CSS",
         icon: Css3Original,
         link: "https://developer.mozilla.org/en-US/docs/Web/CSS",
