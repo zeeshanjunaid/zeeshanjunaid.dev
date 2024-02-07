@@ -22,31 +22,46 @@ const AboutHero = () => {
         </h1>
         <div className="mt-6 md:mt-8 flex flex-col gap-y-4">
           <p className={paragraphStyles}>
-            The cusp of art and technology has always fascinated me and
-            I&apos;ve never been afraid to just jump in and give it a go,
-            whether it&apos;s Paint, Photoshop, Sketch or CSS. I&apos;ve been
-            designing with computers since the day I first opened Microsoft
-            Paint.
+            Hello! I&apos;m a passionate and innovative Frontend Developer with
+            a rich background in building sophisticated web applications and
+            digital solutions. My journey through the tech industry has led me
+            to work with forward-thinking companies like Passage Protocol,
+            Ledgy, Mindable Media, and The Bureau Dubai, where I&apos;ve left a
+            mark through my commitment to excellence and creative
+            problem-solving.
           </p>
           <p className={paragraphStyles}>
-            Fast forward to 2023 and I&apos;ve tried it all, from Digital
-            Campaign Design and Flash Actionscript to Web Design, Animation,
-            HTML/CSS, No-Code Web Development, Product Design and Product
-            Management. Everything I have done, small or big, has been a vital
-            stepping stone for where I am today.
+            Specializing in React, TypeScript, and Node.js, my expertise spans
+            the full spectrum of web development, from conceptualizing and
+            designing user-centric interfaces to developing robust, scalable
+            applications. My approach to development is holistic; I believe in
+            the power of seamless collaboration between design and technology to
+            create digital experiences that not only meet but exceed user
+            expectations.
           </p>
           <p className={paragraphStyles}>
-            This is one of my favourite quotes (by Peter Drucker):
+            Driven by a passion for continuous learning and innovation,
+            I&apos;ve embraced the challenges of modern web development,
+            including the integration of Web 3.0 technologies and the
+            application of Agile methodologies to ensure efficient and effective
+            project management. My work is characterized by a meticulous
+            attention to detail, a relentless pursuit of quality, and a constant
+            exploration of new technologies and practices to stay at the
+            forefront of the industry.
+          </p>
+          <p className={paragraphStyles}>
+            This is one of my favourite quotes (by Matt Mullenweg):
           </p>
           <h3 className="font-ao text-[18px] md:text-[20px] text-dark/90 dark:text-light/90 leading-relaxed">
-            “There is nothing so useless as doing efficiently that which should
-            not be done at all.”
+            “Technology is best when it brings people together.”
           </h3>
           <p className={paragraphStyles}>
-            This resonates so deeply with me because I have no desire to make
-            pretty things just for the sake of it. Some people love that! But
-            it&apos;s not for me. I only want to make, design or build ideas and
-            products that are real, that matter and have an impact in the world.
+            Outside of work, I&apos;m an avid learner, always seeking out new
+            knowledge and skills in both technology and design. I believe in
+            giving back to the community and often participate in tech meetups
+            and conferences, sharing insights and learning from peers. My career
+            is more than just a job; it&apos;s a journey of passion, innovation,
+            and continuous growth.
           </p>
         </div>
       </div>

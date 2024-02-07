@@ -69,7 +69,7 @@ import {
   YarnOriginal,
 } from "devicons-react";
 
-interface SkillProps {
+export interface SkillProps {
   name: string;
   icon?: any;
   link?: string;
@@ -641,5 +641,75 @@ export const Skillset: SkillSetProps[] = [
         link: "https://strapi.io/",
       },
     ],
+  },
+];
+export interface WorkExperienceProps {
+  duration: string;
+  role: string;
+  company: string;
+  companyLink: string;
+  description: string;
+  technologies: string[];
+}
+export const WorkExperience: WorkExperienceProps[] = [
+  {
+    duration: "2023 - Present",
+    role: "Frontend developer",
+    company: "Passage Protocol",
+    companyLink: "https://passage.xyz/",
+    description:
+      "As a Frontend Developer at Passage Protocol, I spearheaded the development of a crypto-powered membership engine, focusing on high-quality UI/UX with React, TypeScript, and Redux. My work involved designing solutions, coding, unit testing, and employing Agile practices to enhance project delivery. I contributed to building a single-page application demonstrating ATS functionality, using technologies like TailwindCSS, Framer Motion, and Web 3.0.",
+    technologies: [
+      "React",
+      "Node.js",
+      "Next.js",
+      "TypeScript",
+      "TailwindCSS",
+      "Framer Motion",
+      "Webflow",
+      "Web 3.0",
+    ],
+  },
+  {
+    duration: "2022 - 2023",
+    role: "Frontend Developer",
+    company: "Ledgy",
+    companyLink: "https://ledgy.com/",
+    description:
+      "At Ledgy, I utilized my skills in React, Node.js, and TypeScript as a Frontend Developer to improve the equity management platform, focusing on performance and user experience. I integrated Gatsby.js and Contentful for effective content management and leveraged Framer Motion for interactive designs, aiming to deliver seamless and engaging web solutions.",
+    technologies: [
+      "React",
+      "Node.js",
+      "Gatsby.js",
+      "Contentful",
+      "TypeScript",
+      "Framer Motion",
+    ],
+  },
+  {
+    duration: "2020 - 2022",
+    role: "Fullstack Designer & Developer",
+    company: "Mindable Media",
+    companyLink: "https://mindable.com/",
+    description:
+      "In my role as a Fullstack Designer & Developer at Mindable Media, I combined design and development to produce user-centric web experiences. Leveraging React, Node.js, Next.js, and WordPress, I focused on creating responsive and visually appealing websites. My expertise also extended to using Figma for design and Gatsby.js alongside Framer Motion for crafting interactive elements.",
+    technologies: [
+      "React",
+      "Node.js",
+      "Next.js",
+      "Gatsby.js",
+      "Wordpress",
+      "Framer Motion",
+      "Figma",
+    ],
+  },
+  {
+    duration: "2018 - 2020",
+    role: "Fullstack Developer",
+    company: "The Bureau Dubai",
+    companyLink: "https://thebureaubc.com",
+    description:
+      "As a Fullstack Developer at The Bureau Dubai, I was pivotal in developing web solutions with PHP and WordPress, focusing on scalability and client satisfaction. My role encompassed everything from UI/UX design with Adobe XD to implementing responsive websites, contributing significantly to the company's digital presence and marketing strategies.",
+    technologies: ["Php", "Adobe XD", "Wordpress"],
   },
 ];
