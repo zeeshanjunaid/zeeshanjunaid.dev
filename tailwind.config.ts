@@ -24,8 +24,10 @@ const config = {
       },
       colors: {
         purple: "#A374FF",
-        dark: "#1D1D1F",
-        light: "#FAFAF6",
+        dark: "#000",
+        light: "#fff",
+        // dark: "#1D1D1F",
+        // light: "#FAFAF6",
         dimLight: "rgb(163, 163, 163)",
         dimDark: "rgb(122, 122, 122)",
         darkBorderColor: "rgba(250,250,248,.08)",
