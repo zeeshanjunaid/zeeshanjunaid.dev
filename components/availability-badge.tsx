@@ -1,0 +1,47 @@
+"use client";
+
+import { BlurBG } from "./blur-bg";
+import { Container } from "./container";
+import Marquee from "react-fast-marquee";
+import React from "react";
+import { motion } from "framer-motion";
+
+const AvailabilityBadge = () => {
+  const pulseVariants = {
+    animate: {
+      scale: [1, 1.25, 1],
+      opacity: [1, 0.7, 1],
+      transition: {
+        duration: 2,
+        ease: "easeInOut",
+        repeat: Infinity,
+      },
+    },
+  };
+
+  return (
+    <Container className="px-4 md:px-7 lg:px-0 mt-5">
+      <div className="relative bg-light dark:bg-dark py-5 rounded-xl overflow-hidden">
+        <BlurBG className="rounded-xl" />
+        <div className="flex flex-col md:flex-row items-center w-full gap-y-4">
+          <h3 className="font-ao font-bold text-dark dark:text-light text-[14px] md:pl-8 pb-2 md:pb-0 md:pr-4 border-b-[1px] md:border-b-0 md:border-r-[1px] border-b-lightBorderColor dark:border-b-darkBorderColor min-w-max uppercase flex items-center gap-x-2 bg-light dark:bg-dark relative z-30">
+            <motion.span
+              variants={pulseVariants}
+              animate="animate"
+              className="w-3 h-3 bg-green-500 rounded-full"
+            />
+            Availability Status:
+          </h3>
+          <div className="tracking-wider inline text-nowrap relative z-20 text-dark dark:text-light text-[12px] font-light uppercase overflow-hidden">
+            <Marquee autoFill={true}>
+              Accepting new work from March 01, 2024{" "}
+              <span className="w-2 h-2 rounded-full bg-purple/20 mx-2 inline-flex" />
+            </Marquee>
+          </div>
+        </div>
+      </div>
+    </Container>
+  );
+};
+
+export default AvailabilityBadge;

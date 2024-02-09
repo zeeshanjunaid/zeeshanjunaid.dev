@@ -28,16 +28,16 @@ export function SocialLinks() {
   const styles =
     "dark:text-dark text-light w-4 h-4 md:w-5 md:h-5 lg:w-6 lg:h-6";
   const socialLinks = [
-    {
-      name: "upwork",
-      link: "https://www.upwork.com/freelancers/zeshanjunaid",
-      icon: <TbBrandUpwork className={styles} />,
-    },
-    {
-      name: "fiverr",
-      link: "https://www.fiverr.com/users/nitx_solutionx/seller_dashboard",
-      icon: <TbBrandFiverr className={styles} />,
-    },
+    // {
+    //   name: "upwork",
+    //   link: "https://www.upwork.com/freelancers/zeshanjunaid",
+    //   icon: <TbBrandUpwork className={styles} />,
+    // },
+    // {
+    //   name: "fiverr",
+    //   link: "https://www.fiverr.com/users/nitx_solutionx/seller_dashboard",
+    //   icon: <TbBrandFiverr className={styles} />,
+    // },
     {
       name: "github",
       link: "https://github.com/zeeshanjunaid",

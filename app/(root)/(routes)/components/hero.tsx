@@ -55,9 +55,9 @@ export const Hero = () => {
           />
         </div>
       </div>
-      <div className="flex flex-col sm:flex-row lg:hidden items-center gap-3 min-w-max justify-center">
+      <div className="flex flex-col sm:flex-row lg:hidden items-center gap-2 min-w-max justify-center">
         <ResumeButton />
-        <div className="flex space-x-3">
+        <div className="flex space-x-2">
           <SocialLinks />
         </div>
       </div>

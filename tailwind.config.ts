@@ -30,7 +30,7 @@ const config = {
         // light: "#FAFAF6",
         dimLight: "rgb(163, 163, 163)",
         dimDark: "rgb(122, 122, 122)",
-        darkBorderColor: "rgba(250,250,248,.08)",
+        darkBorderColor: "rgba(250,250,248,.15)",
         lightBorderColor: "rgba(29,29,31,.16)",
         border: "hsl(var(--border))",
         input: "hsl(var(--input))",
