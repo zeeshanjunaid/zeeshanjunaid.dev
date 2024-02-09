@@ -31,7 +31,7 @@ const ExperienceCard = ({ experience }: ExperienceCardProps) => {
           </span>
           <div className="flex flex-col">
             <h3 className="font-ao font-bold text-[18px] md:text-[20px] lg:text-[22px] mb-4">
-              {role} @{" "}
+              {role} @
               <a
                 href={companyLink}
                 target="_blank"
