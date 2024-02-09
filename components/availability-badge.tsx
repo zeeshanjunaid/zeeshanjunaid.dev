@@ -33,7 +33,7 @@ const AvailabilityBadge = () => {
               variants={pulseVariants}
               initial="initial"
               animate="animate"
-              className="w-3 h-3 bg-green-500 rounded-full"
+              className="w-3 h-3 bg-#15a81d rounded-full"
             />
             Availability Status:
           </h3>
