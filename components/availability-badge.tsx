@@ -24,7 +24,7 @@ const AvailabilityBadge = () => {
       <div className="relative bg-light dark:bg-dark py-5 rounded-xl overflow-hidden">
         <BlurBG className="rounded-xl" />
         <div className="flex flex-col md:flex-row items-center w-full gap-y-4">
-          <h3 className="font-ao font-bold text-dark dark:text-light text-[14px] md:pl-8 pb-2 md:pb-0 md:pr-4 border-b-[1px] md:border-b-0 md:border-r-[1px] border-b-lightBorderColor dark:border-b-darkBorderColor min-w-max uppercase flex items-center gap-x-2 bg-light dark:bg-dark relative z-30">
+          <h3 className="font-ao font-bold text-dark dark:text-light text-[14px] md:pl-8 pb-2 md:pb-0 md:pr-4 border-b-[1px] md:border-b-0 md:border-r-[1px] border-b-lightBorderColor dark:border-b-darkBorderColor min-w-max uppercase flex items-center gap-x-2 relative z-30">
             <motion.span
               variants={pulseVariants}
               animate="animate"
