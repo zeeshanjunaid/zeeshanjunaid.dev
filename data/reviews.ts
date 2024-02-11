@@ -66,19 +66,19 @@ export const VideoReviewsList: VideoReview[] = [
   },
 ];
 const ReviewsList: Review[] = [
-  {
-    client: "Arthur Carrion",
-    profile: "/images/testimonials/arthur.jpeg",
-    company: "BluHorn Media",
-    logo: "/images/testimonials/bluhorn.png",
-    review:
-      "I hired Zeeshan for multiple projects. He is my go to developer and designer right now. I highly recommend working with him. He is very responsive when it comes to communicating. He has done all my tasks in a timely manner with very high attention to details. If you are looking for an all around developer Zeeshan is your guy!",
+  // {
+  //   client: "Arthur Carrion",
+  //   profile: "/images/testimonials/arthur.jpeg",
+  //   company: "BluHorn Media",
+  //   logo: "/images/testimonials/bluhorn.png",
+  //   review:
+  //     "I hired Zeeshan for multiple projects. He is my go to developer and designer right now. I highly recommend working with him. He is very responsive when it comes to communicating. He has done all my tasks in a timely manner with very high attention to details. If you are looking for an all around developer Zeeshan is your guy!",
 
-    country: {
-      code: "us",
-      name: "United States",
-    },
-  },
+  //   country: {
+  //     code: "us",
+  //     name: "United States",
+  //   },
+  // },
   {
     client: "Josh Peters",
     logo: "/images/testimonials/pp.png",
