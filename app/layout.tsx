@@ -99,12 +99,12 @@ export default function RootLayout({
             color="#A374FF"
             initialPosition={0.08}
             crawlSpeed={250}
-            height={6}
+            height={2}
             crawl={true}
             showSpinner={false}
             easing="ease"
             speed={250}
-            shadow="0 0 10px #A374FF,0 0 5px #A374FF"
+            shadow="0 0 16px #A374FF,0 0 8px #A374FF"
             template='<div class="bar" role="bar"><div class="peg"></div></div> 
   <div class="spinner" role="spinner"><div class="spinner-icon"></div></div>'
             zIndex={1600}
