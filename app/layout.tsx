@@ -4,6 +4,7 @@ import { Analytics } from "@vercel/analytics/react";
 import { Footer } from "@/components/footer";
 import { Header } from "@/components/header";
 import type { Metadata } from "next";
+import NextTopLoader from "nextjs-toploader";
 import ReachOut from "@/components/reach-out";
 import SmoothScroll from "@/components/smooth-scroll";
 import { SpeedInsights } from "@vercel/speed-insights/next";
@@ -94,6 +95,21 @@ export default function RootLayout({
         )}
       >
         <ThemeProvider attribute="class" defaultTheme="system" enableSystem>
+          <NextTopLoader
+            color="#A374FF"
+            initialPosition={0.08}
+            crawlSpeed={250}
+            height={5}
+            crawl={true}
+            showSpinner={true}
+            easing="ease"
+            speed={250}
+            shadow="0 0 10px #A374FF,0 0 5px #A374FF"
+            template='<div class="bar" role="bar"><div class="peg"></div></div> 
+  <div class="spinner" role="spinner"><div class="spinner-icon"></div></div>'
+            zIndex={1600}
+            showAtBottom={false}
+          />
           <Header />
           <main className="pt-[100px]">
             {children}
