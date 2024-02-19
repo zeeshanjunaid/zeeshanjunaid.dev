@@ -1,6 +1,7 @@
 import "./globals.css";
 
 import { Analytics } from "@vercel/analytics/react";
+import AvailabilityBadge from "@/components/availability-badge";
 import { Footer } from "@/components/footer";
 import { Header } from "@/components/header";
 import type { Metadata } from "next";
@@ -116,6 +117,7 @@ export default function RootLayout({
             <ReachOut />
           </main>
           <Footer />
+          <AvailabilityBadge />
           <Toaster />
         </ThemeProvider>
         <Analytics />

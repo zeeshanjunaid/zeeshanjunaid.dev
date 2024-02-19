@@ -6,7 +6,7 @@ import { motion } from "framer-motion";
 export const Footer = () => {
   return (
     <motion.footer
-      className="py-8"
+      className="pt-8 pb-16"
       initial={{ opacity: 0 }}
       animate={{ opacity: 1 }}
       transition={{ ease: "easeInOut", duration: 0.2 }}

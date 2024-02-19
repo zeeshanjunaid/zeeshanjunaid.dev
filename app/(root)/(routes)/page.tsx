@@ -1,4 +1,3 @@
-import AvailabilityBadge from "@/components/availability-badge";
 import { Hero } from "./components/hero";
 import ProjectsList from "@/data/work";
 import ReviewsList from "@/data/reviews";
@@ -11,7 +10,6 @@ export default function Home() {
   return (
     <>
       <Hero />
-      <AvailabilityBadge />
       <WorkList title="selected work" projects={selectedProjects} />
       <WorkList title="archived" projects={archivedProjects} />
       <TestimonialsSlider reviews={featuredReviews} />
