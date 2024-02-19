@@ -42,14 +42,16 @@ const VideoModal = ({
             <div className="w-full h-full relative bg-light dark:bg-dark rounded-full overflow-hidden flex justify-center items-center">
               {profile ? (
                 <>
-                {!isLoaded && <Skeleton className="w-full h-full rounded-full" />}
-                <Image
-                  fill
-                  src={profile}
-                  className="object-cover z-20 w-[100px] h-[100px] lg:h-[120px] lg:w-[120px] rounded-full"
-                  alt={client}
-                  onLoad={() => setIsLoaded(false)}
-                />
+                  {!isLoaded && (
+                    <Skeleton className="w-full h-full rounded-full" />
+                  )}
+                  <Image
+                    fill
+                    src={profile}
+                    className="object-cover z-20 w-[100px] h-[100px] lg:h-[120px] lg:w-[120px] rounded-full"
+                    alt={client}
+                    onLoad={() => setIsLoaded(false)}
+                  />
                 </>
               ) : (
                 <User2Icon size={48} className="text-dark dark:text-light" />
@@ -68,7 +70,7 @@ const VideoModal = ({
           <DialogTitle className="mb-5 flex items-center gap-x-1.5">
             {client}
             {country && (
-              <span>
+              <span className="-mt-[2px]">
                 <ReactCountryFlag
                   countryCode={country.code}
                   style={{

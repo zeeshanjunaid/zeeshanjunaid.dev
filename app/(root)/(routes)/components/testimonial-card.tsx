@@ -10,6 +10,7 @@ import { Skeleton } from "@/components/ui/skeleton";
 import { Star } from "lucide-react";
 import { cn } from "@/lib/utils";
 import { useTheme } from "next-themes";
+
 interface TestimonialCardProps {
   review: Review;
   className?: string;
@@ -60,7 +61,7 @@ const TestimonialCard = ({ review, className }: TestimonialCardProps) => {
             <h3 className="text-dark dark:text-light font-switzer font-medium text-[16px] flex items-center gap-x-1.5">
               {review.client}
               {review.country && (
-                <span>
+                <span className="-mt-[2px]">
                   <ReactCountryFlag
                     countryCode={review.country.code}
                     style={{
