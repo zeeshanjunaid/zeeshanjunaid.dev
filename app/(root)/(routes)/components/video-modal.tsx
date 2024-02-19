@@ -14,6 +14,7 @@ import { BlurBG } from "@/components/blur-bg";
 import Image from "next/image";
 import ReactCountryFlag from "react-country-flag";
 import ReactPlayer from "react-player/youtube";
+import { Skeleton } from "@/components/ui/skeleton";
 import { User2Icon } from "lucide-react";
 
 const VideoModal = ({
@@ -30,6 +31,7 @@ const VideoModal = ({
     name: string;
   };
 }) => {
+  const [isLoaded, setIsLoaded] = useState(false);
   const [isModalOpen, setIsModalOpen] = useState(false);
 
   return (
@@ -39,12 +41,16 @@ const VideoModal = ({
           <div className="relative w-[100px] h-[100px] lg:h-[120px] lg:w-[120px] rounded-full video-cta-gradient p-[2px]">
             <div className="w-full h-full relative bg-light dark:bg-dark rounded-full overflow-hidden flex justify-center items-center">
               {profile ? (
+                <>
+                {!isLoaded && <Skeleton className="w-full h-full rounded-full" />}
                 <Image
                   fill
                   src={profile}
                   className="object-cover z-20 w-[100px] h-[100px] lg:h-[120px] lg:w-[120px] rounded-full"
                   alt={client}
+                  onLoad={() => setIsLoaded(false)}
                 />
+                </>
               ) : (
                 <User2Icon size={48} className="text-dark dark:text-light" />
               )}

@@ -1,6 +1,6 @@
+import { BsSkype, BsWhatsapp } from "react-icons/bs";
 import { Mail, Phone, PhoneCall } from "lucide-react";
 
-import { BsWhatsapp } from "react-icons/bs";
 import ContactForm from "../components/contact-form";
 import { Container } from "@/components/container";
 import React from "react";
@@ -54,6 +54,15 @@ const ContactPage = () => {
                 className="text-[16px] md:text-[18px] lg:text-5 font-switzer text-dark dark:text-light underline underline-purple underline-offset-4 hover:text-dark/90 dark:hover:text-light/90 transition-color duration-200"
               >
                 +92 340 856 3525
+              </a>
+            </div>
+            <div className="flex items-center justify-start gap-x-1.5">
+              <BsSkype size={18} />
+              <a
+                href="skype:zeeshan_junaid"
+                className="text-[16px] md:text-[18px] lg:text-5 font-switzer text-dark dark:text-light underline underline-purple underline-offset-4 hover:text-dark/90 dark:hover:text-light/90 transition-color duration-200"
+              >
+                zeeshan_junaid
               </a>
             </div>
           </div>

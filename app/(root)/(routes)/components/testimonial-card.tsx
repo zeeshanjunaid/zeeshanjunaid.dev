@@ -1,20 +1,22 @@
 "use client";
 
+import React, {useState} from "react";
+
 import { BlurBG } from "@/components/blur-bg";
 import Image from "next/image";
-import React from "react";
 import ReactCountryFlag from "react-country-flag";
 import { Review } from "@/data/reviews";
+import { Skeleton } from "@/components/ui/skeleton";
 import { Star } from "lucide-react";
 import { cn } from "@/lib/utils";
 import { useTheme } from "next-themes";
-
 interface TestimonialCardProps {
   review: Review;
   className?: string;
 }
 export const QuotedIcon = () => {
   const { theme } = useTheme();
+  
   const color = theme === "dark" ? "#FAFAF6" : "#3F3F3F";
   return (
     <svg
@@ -33,6 +35,7 @@ export const QuotedIcon = () => {
   );
 };
 const TestimonialCard = ({ review, className }: TestimonialCardProps) => {
+  const [isLoaded, setIsLoaded] = useState(false);
   return (
     <div
       className={cn(
@@ -44,11 +47,13 @@ const TestimonialCard = ({ review, className }: TestimonialCardProps) => {
       <div className="z-[20] relative flex flex-col gap-y-8">
         <div className="flex flex-row items-center justify-start gap-2.5 md:gap-4">
           <div className="w-[60px] h-[60px] overflow-hidden rounded-full relative">
+          {!isLoaded && <Skeleton className="w-full h-full rounded-full" />}
             <Image
               src={review.profile}
               fill
               className="object-cover"
               alt={review.client}
+              onLoad={() => setIsLoaded(false)}
             />
           </div>
           <div className="flex flex-col gap-y-1">
