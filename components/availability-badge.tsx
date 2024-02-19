@@ -14,7 +14,7 @@ const AvailabilityBadge = () => {
     },
     animate: {
       scale: [1, 1.25, 1],
-      opacity: [0.7, 1, 0.7],
+      opacity: [0.8, 1, 0.8],
       transition: {
         duration: 2,
         ease: "easeInOut",
