@@ -47,7 +47,7 @@ const ReachOut = () => {
               Feel free to reach out for collaborations or just a friendly hello
             </p>
             <a
-              className="text-[14px] md:text-[18px] lg:text-5 font-switzer text-dark dark:text-light underline underline-purple underline-offset-4 hover:text-dark/90 dark:hover:text-light/90 transition-all delay-0 duration-200"
+              className="text-[14px] md:text-[18px] lg:text-[20px] font-switzer text-dark dark:text-light underline underline-purple underline-offset-4 hover:text-dark/90 dark:hover:text-light/90 transition-all delay-0 duration-200"
               href="mailto:hello@zeeshanjunaid.dev"
             >
               hello[at]zeeshanjunaid[dot]dev
