@@ -56,7 +56,6 @@ const VideoModal = ({
               ) : (
                 <User2Icon size={48} className="text-dark dark:text-light" />
               )}
-              <BlurBG className="rounded-full z-30  hover:bg-light/0 dark:hover:bg-dark/0 transition duration-200" />
             </div>
           </div>
         </DialogTrigger>

@@ -1,7 +1,7 @@
 import React from "react";
 
-const UiUXService = () => {
-  return <div>UiUXService</div>;
+const UiUXServicePage = () => {
+  return <div>UiUXServicePage</div>;
 };
 
-export default UiUXService;
+export default UiUXServicePage;

@@ -21,7 +21,7 @@ interface TestimonialsSliderProps {
   }[];
 }
 const TestimonialsSlider = ({ reviews }: TestimonialsSliderProps) => {
-  const { theme } = useTheme();
+  
   const [currentIndex, setCurrentIndex] = useState(0);
   const [isLoaded, setIsLoaded] = useState(false);
   const totalReviews = reviews.length;

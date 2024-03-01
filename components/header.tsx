@@ -1,6 +1,7 @@
 "use client";
 
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
+import { motion, useMotionValueEvent, useScroll } from "framer-motion";
 
 import { Button } from "./ui/button";
 import { Container } from "./container";
@@ -8,7 +9,6 @@ import Link from "next/link";
 import { ModeToggle } from "./theme-toggle";
 import NavMobile from "./nav-mobile";
 import { cn } from "@/lib/utils";
-import { motion } from "framer-motion";
 import navLinks from "@/data/nav";
 import { usePathname } from "next/navigation";
 
@@ -31,20 +31,16 @@ const LogoIcon = () => (
 
 export const Header = () => {
   const pathname = usePathname();
+  const { scrollY } = useScroll();
   const [scrolled, setScrolled] = useState(false);
 
-  useEffect(() => {
-    const handleScroll = () => {
-      const isScrolled = window.scrollY > 0;
-      setScrolled(isScrolled);
-    };
-
-    window.addEventListener("scroll", handleScroll);
-
-    return () => {
-      window.removeEventListener("scroll", handleScroll);
-    };
-  }, []);
+  useMotionValueEvent(scrollY, "change", (latest) => {
+    if (latest < 100) {
+      setScrolled(false);
+    } else {
+      setScrolled(true);
+    }
+  });
 
   const scrolledClasses = scrolled
     ? "bg-light dark:bg-dark border-b-lightBorderColor dark:border-b-darkBorderColor"
@@ -53,7 +49,7 @@ export const Header = () => {
     <motion.header
       initial={{ opacity: 0 }}
       animate={{ opacity: 1 }}
-      transition={{ ease: "easeInOut", duration: 0.2 }}
+      transition={{ ease: "easeInOut", duration: 0.2, delay: 0.2 }}
       className={cn(
         "fixed z-40 top-0 left-0 right-0 w-full px-4 md:px-8 lg:px-0 pt-6 pb-4 border-b-[1px] border-b-transparent transition-all duration-200 bg-transparent",
         scrolledClasses,

@@ -1,5 +1,8 @@
 import { Container } from "@/components/container";
 import React from "react";
+import ServiceCard from "../components/service-card";
+import { servicesCards } from "@/data/services";
+
 export const metadata = {
   title: "Services",
 };
@@ -9,7 +12,7 @@ const ServicesPage = () => {
       <div className="border-b-[1px] border-b-borderDarkColor pb-12">
         <Container
           className="
-    px-4 lg:px-0     
+          px-5 md:px-7 lg:px-0
     flex flex-col justify-between items-start
     "
         >
@@ -24,6 +27,13 @@ const ServicesPage = () => {
           </div>
         </Container>
       </div>
+      <section>
+        <Container className="px-5 md:px-7 lg:px-0 flex flex-col space-y-6 py-12 gap-y-12">
+          {servicesCards.map((service, index) => (
+            <ServiceCard key={index} {...service} />
+          ))}
+        </Container>
+      </section>
     </>
   );
 };
