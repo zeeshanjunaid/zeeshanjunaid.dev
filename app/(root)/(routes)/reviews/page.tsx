@@ -31,7 +31,7 @@ const ReviewsPage = () => {
               products/services
             </p>
           </div>
-          <div>
+          {/* <div>
             <Button
               disabled
               variant="highlight"
@@ -40,7 +40,7 @@ const ReviewsPage = () => {
               <PenBoxIcon size={14} />
               Share your story
             </Button>
-          </div>
+          </div> */}
         </Container>
       </div>
       <section className="mt-12">
