@@ -45,8 +45,10 @@ const TestimonialsSlider = ({ reviews }: TestimonialsSliderProps) => {
           className="aspect-square object-cover"
           src={profile}
           fill
+          
           alt={client}
           onLoad={() => setIsLoaded(false)}
+          sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
         />
       </div>
       <div className="py-8 px-5 md:p-12 w-full   lg:px-16 rounded-3xl relative flex overflow-hidden">
@@ -72,6 +74,7 @@ const TestimonialsSlider = ({ reviews }: TestimonialsSliderProps) => {
                       src={profile}
                       fill
                       alt={client}
+                      sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
                     />
                   )}
                 </div>
@@ -83,6 +86,7 @@ const TestimonialsSlider = ({ reviews }: TestimonialsSliderProps) => {
                     <div className="h-[20px] relative mix-blend-multiply">
                       <Image
                         fill
+                        sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
                         src={logo}
                         alt={company ? company : "logo"}
                         className="object-contain object-left"

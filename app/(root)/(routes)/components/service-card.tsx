@@ -32,6 +32,7 @@ const ServiceCard = ({
           fill
           alt="service"
           onLoad={() => setIsLoaded(false)}
+          sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
         />
       </div>
       <div className="py-8 px-5 md:p-12 w-full   lg:px-16 rounded-3xl relative flex overflow-hidden">

@@ -47,6 +47,7 @@ const VideoModal = ({
                   )}
                   <Image
                     fill
+                    sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
                     src={profile}
                     className="object-cover z-20 w-[100px] h-[100px] lg:h-[120px] lg:w-[120px] rounded-full"
                     alt={client}

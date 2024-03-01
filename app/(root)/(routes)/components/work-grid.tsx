@@ -44,6 +44,7 @@ export const WorkGrid = ({ projects, selectedSkill }: WorkGridProps) => {
                       <Image
                         className="z-20"
                         fill
+                        sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
                         objectFit="cover"
                         alt={name}
                         src={imgUrl}

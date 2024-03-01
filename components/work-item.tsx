@@ -161,6 +161,7 @@ export const WorkImg = ({
           {!isLoaded && <Skeleton className="w-full h-full" />}
           <Image
             fill
+            sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
             className="object-cover"
             alt="work image"
             src={imgUrl}

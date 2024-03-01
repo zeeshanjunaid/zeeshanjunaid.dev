@@ -59,9 +59,9 @@ export function FilterBar({
           <CommandInput placeholder="Search skill..." />
           <CommandEmpty>No Skill found.</CommandEmpty>
           <CommandGroup>
-            {skills.map((skill) => (
+            {skills.map((skill, index) => (
               <CommandItem
-                key={skill}
+                key={index}
                 value={skill}
                 className="uppercase font-switzer font-light text-dark dark:text-light hover:bg-purple/40 aria-selected:bg-purple/40"
                 onSelect={(currentValue) => {
