@@ -1,10 +1,11 @@
 import "./globals.css";
-import type { Metadata } from "next";
+
 import { Analytics } from "@vercel/analytics/react";
 import AvailabilityBadge from "@/components/availability-badge";
 import BackToTop from "@/components/back-to-top";
 import { Footer } from "@/components/footer";
 import { Header } from "@/components/header";
+import type { Metadata } from "next";
 import NextTopLoader from "nextjs-toploader";
 import ReachOut from "@/components/reach-out";
 // import SmoothScroll from "@/components/smooth-scroll";

@@ -40,24 +40,24 @@ const ServiceCard = ({
         <div className="relative z-20 flex flex-col gap-8">
           <div className="flex flex-col gap-3">
             <div className="flex flex-col gap-1">
-              <h3 className="text-[28px] text-dark dark:text-light font-ao ">
+              <h3 className="text-[20px] md:text-[24px] lg:text-[28px] text-dark dark:text-light font-ao ">
                 {name}
               </h3>
-              <p className="text-[20px] leading-relaxed font-light">
+              <p className="text-[16px] md:text-[18px] lg:text-[20px] leading-relaxed font-light">
                 {tagline}
               </p>
             </div>
-            <p className="leading-relaxed font-light text-dark/70 dark:text-light/70">
+            <p className="text-[14px] md:text-[16px] leading-relaxed font-light text-dark/70 dark:text-light/70">
               {description}
             </p>
           </div>
           <div className="flex flex-col gap-3">
             <div className="flex flex-col gap-1">
-              <h3 className="text-[24px] text-dark dark:text-light font-ao ">
+              <h3 className="text-[20px] md:text-[22px] lg:text-[24px] text-dark dark:text-light font-ao ">
                 {subServicesTitle}
               </h3>
             </div>
-            <ul className="leading-relaxed font-light text-dark/70 dark:text-light/70 flex flex-col gap-y-1.5 list-disc marker:text-purple list-inside">
+            <ul className="leading-relaxed font-light text-dark/70 dark:text-light/70 flex flex-col gap-y-1.5 list-disc marker:text-purple list-inside text-[14px] md:text-[16px]">
               {subServices.map((subService, index) => (
                 <li key={index}>{subService}</li>
               ))}
@@ -65,16 +65,16 @@ const ServiceCard = ({
           </div>
           <div className="flex flex-col gap-3">
             <div className="flex flex-col gap-1">
-              <h3 className="text-[24px] text-dark dark:text-light font-ao ">
+              <h3 className="text-[20px] md:text-[22px] lg:text-[24px] text-dark dark:text-light font-ao ">
                 {resultsTitle}
               </h3>
             </div>
-            <p className="leading-relaxed font-light text-dark/70 dark:text-light/70">
+            <p className="text-[14px] md:text-[16px] leading-relaxed font-light text-dark/70 dark:text-light/70">
               {results}
             </p>
           </div>
 
-          <p className="font-light leading-relaxed text-dark/70 dark:text-light/70">
+          <p className="text-[16px] md:text-[18px] font-light leading-relaxed text-dark/70 dark:text-light/70">
             <span className="font-normal text-dark dark:text-light">
               {">>>"}
             </span>
