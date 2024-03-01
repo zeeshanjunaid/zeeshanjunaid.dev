@@ -14,12 +14,55 @@ export default function sitemap(): MetadataRoute.Sitemap {
       changeFrequency: "monthly",
       priority: 0.9,
     },
-    // {
-    //   url: "https://zeeshanjunaid.dev/services",
-    //   lastModified: new Date(),
-    //   changeFrequency: "monthly",
-    //   priority: 0.5,
-    // },
+    {
+      url: "https://zeeshanjunaid.dev/services",
+      lastModified: new Date(),
+      changeFrequency: "monthly",
+      priority: 0.5,
+    },
+
+    {
+      url: "https://zeeshanjunaid.dev/services/uiux-design",
+      lastModified: new Date(),
+      changeFrequency: "monthly",
+      priority: 0.5,
+    },
+    {
+      url: "https://zeeshanjunaid.dev/services/frontend-development",
+      lastModified: new Date(),
+      changeFrequency: "monthly",
+      priority: 0.5,
+    },
+    {
+      url: "https://zeeshanjunaid.dev/services/wordpress-development",
+      lastModified: new Date(),
+      changeFrequency: "monthly",
+      priority: 0.5,
+    },
+    {
+      url: "https://zeeshanjunaid.dev/services/webflow-development",
+      lastModified: new Date(),
+      changeFrequency: "monthly",
+      priority: 0.5,
+    },
+    {
+      url: "https://zeeshanjunaid.dev/services/shopify-development",
+      lastModified: new Date(),
+      changeFrequency: "monthly",
+      priority: 0.5,
+    },
+    {
+      url: "https://zeeshanjunaid.dev/services/seo-optimization",
+      lastModified: new Date(),
+      changeFrequency: "monthly",
+      priority: 0.5,
+    },
+    {
+      url: "https://zeeshanjunaid.dev/services/speed-optimization",
+      lastModified: new Date(),
+      changeFrequency: "monthly",
+      priority: 0.5,
+    },
     {
       url: "https://zeeshanjunaid.dev/work",
       lastModified: new Date(),
