@@ -38,7 +38,7 @@ export const Hero = () => {
           {heroTitle}
         </h1>
         <div className="flex items-center space-x-3 min-w-max justify-start z-20 relative">
-          <ResumeButton />
+          {/* <ResumeButton /> */}
           <SocialLinks />
         </div>
       </div>
@@ -57,7 +57,7 @@ export const Hero = () => {
         </div>
       </div>
       <div className="flex flex-col sm:flex-row lg:hidden items-center gap-2 min-w-max justify-center">
-        <ResumeButton />
+        {/* <ResumeButton /> */}
         <div className="flex space-x-2">
           <SocialLinks />
         </div>

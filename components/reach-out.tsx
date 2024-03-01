@@ -55,7 +55,7 @@ const ReachOut = () => {
           </div>
         </div>
         <div className="flex flex-col sm:flex-row w-max xs:w-full  items-start gap-3 justify-start z-[30] relative">
-          <ResumeButton className="w-full xs:w-auto" />
+          {/* <ResumeButton className="w-full xs:w-auto" /> */}
           <div className="flex flex-wrap sm:flex-nowrap justify-start space-x-3">
             <SocialLinks />
           </div>

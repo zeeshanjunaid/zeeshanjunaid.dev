@@ -63,7 +63,7 @@ const NavMobile = ({ data }: NavMobileProps) => {
               {label}
             </Link>
           ))}
-          <ResumeButton />
+          {/* <ResumeButton /> */}
         </div>
         <div className="flex flex-col items-start border-t-[1px] pt-6 min-w-max flex-wrap justify-between">
           <h4 className="font-ao text-xs">Reach out via:</h4>
