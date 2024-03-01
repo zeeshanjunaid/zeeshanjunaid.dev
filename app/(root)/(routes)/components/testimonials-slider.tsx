@@ -7,9 +7,10 @@ import { BlurBG } from "@/components/blur-bg";
 import { Button } from "@/components/ui/button";
 import { Container } from "@/components/container";
 import Image from "next/image";
-import { QuotedIcon } from "./testimonial-card";
+
 import { Skeleton } from "@/components/ui/skeleton";
 import { useTheme } from "next-themes";
+import { QuotedIconDark, QuotedIconLight } from "@/components/icons";
 
 interface TestimonialsSliderProps {
   reviews: {
@@ -21,7 +22,7 @@ interface TestimonialsSliderProps {
   }[];
 }
 const TestimonialsSlider = ({ reviews }: TestimonialsSliderProps) => {
-  
+  const { theme } = useTheme();
   const [currentIndex, setCurrentIndex] = useState(0);
   const [isLoaded, setIsLoaded] = useState(false);
   const totalReviews = reviews.length;
@@ -45,7 +46,6 @@ const TestimonialsSlider = ({ reviews }: TestimonialsSliderProps) => {
           className="aspect-square object-cover"
           src={profile}
           fill
-          
           alt={client}
           onLoad={() => setIsLoaded(false)}
           sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
@@ -59,7 +59,7 @@ const TestimonialsSlider = ({ reviews }: TestimonialsSliderProps) => {
           </h2>
           <div className="flex flex-col justify-between space-y-12 lg:space-y-5">
             <div className="relative">
-              <QuotedIcon />
+              {theme === "dark" ? <QuotedIconLight /> : <QuotedIconDark />}
               <p className="italic text-[16px] md:text-[20px] lg:text-[16px] text-dark dark:text-light leading-relaxed md:mr-[72px] lg:mr-0 lg:min-h-[130px]">
                 {review}
               </p>

@@ -1,14 +1,13 @@
 import "./globals.css";
-
+import type { Metadata } from "next";
 import { Analytics } from "@vercel/analytics/react";
 import AvailabilityBadge from "@/components/availability-badge";
 import BackToTop from "@/components/back-to-top";
 import { Footer } from "@/components/footer";
 import { Header } from "@/components/header";
-import type { Metadata } from "next";
 import NextTopLoader from "nextjs-toploader";
 import ReachOut from "@/components/reach-out";
-import SmoothScroll from "@/components/smooth-scroll";
+// import SmoothScroll from "@/components/smooth-scroll";
 import { SpeedInsights } from "@vercel/speed-insights/next";
 import { ThemeProvider } from "@/components/theme-provider";
 import { Toaster } from "@/components/ui/toaster";
@@ -16,6 +15,7 @@ import { cn } from "@/lib/utils";
 import localFont from "next/font/local";
 
 export const metadata: Metadata = {
+  metadataBase: new URL("https://zeeshanjunaid.dev"),
   title: {
     default: "Zeeshan Junaid - UI/UX Designer and Frontend Developer",
     template: "%s | ZJ Portfolio",

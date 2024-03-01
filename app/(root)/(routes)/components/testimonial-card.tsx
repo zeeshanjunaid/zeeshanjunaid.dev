@@ -1,7 +1,7 @@
 "use client";
 
-import React, {useState} from "react";
-
+import React, { useState } from "react";
+import { useTheme } from "next-themes";
 import { BlurBG } from "@/components/blur-bg";
 import Image from "next/image";
 import ReactCountryFlag from "react-country-flag";
@@ -9,34 +9,16 @@ import { Review } from "@/data/reviews";
 import { Skeleton } from "@/components/ui/skeleton";
 import { Star } from "lucide-react";
 import { cn } from "@/lib/utils";
-import { useTheme } from "next-themes";
+import { QuotedIconDark, QuotedIconLight } from "@/components/icons";
 
 interface TestimonialCardProps {
   review: Review;
   className?: string;
 }
-export const QuotedIcon = () => {
-  const { theme } = useTheme();
-  
-  const color = theme === "dark" ? "#FAFAF6" : "#3F3F3F";
-  return (
-    <svg
-      xmlns="http://www.w3.org/2000/svg"
-      width="42"
-      height="39"
-      fill="none"
-      className="absolute -top-1.5 -left-2.5 -z-10"
-    >
-      <path
-        fill={color}
-        d="M2.1 38.267c6.3 0 14.7-2.126 14.7-17.008V4.252c0-2.657-1.588-4.288-4.2-4.251H4.2C1.575 0 0 1.595 0 4.193v12.815c0 2.657 1.575 4.252 4.2 4.252 2.1 0 2.1 0 2.1 2.125v2.126c0 2.126-2.1 4.252-4.2 4.252S0 29.78 0 31.955v4.186c0 2.126 0 2.126 2.1 2.126zm25.2 0c6.3 0 14.7-2.126 14.7-17.008V4.252c0-2.657-1.59-4.288-4.2-4.251h-8.4c-2.625 0-4.2 1.594-4.2 4.192v12.815c0 2.657 1.575 4.252 4.2 4.252h1.575c0 4.783.525 8.503-5.775 8.503v6.378c0 2.126 0 2.126 2.1 2.126z"
-        opacity="0.1"
-      ></path>
-    </svg>
-  );
-};
+
 const TestimonialCard = ({ review, className }: TestimonialCardProps) => {
   const [isLoaded, setIsLoaded] = useState(false);
+  const { theme } = useTheme();
   return (
     <div
       className={cn(
@@ -48,10 +30,11 @@ const TestimonialCard = ({ review, className }: TestimonialCardProps) => {
       <div className="z-[20] relative flex flex-col gap-y-8">
         <div className="flex flex-row items-center justify-start gap-2.5 md:gap-4">
           <div className="w-[60px] h-[60px] overflow-hidden rounded-full relative">
-          {!isLoaded && <Skeleton className="w-full h-full rounded-full" />}
+            {!isLoaded && <Skeleton className="w-full h-full rounded-full" />}
             <Image
               src={review.profile}
               fill
+              sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
               className="object-cover"
               alt={review.client}
               onLoad={() => setIsLoaded(false)}
@@ -82,7 +65,7 @@ const TestimonialCard = ({ review, className }: TestimonialCardProps) => {
           </div>
         </div>
         <div className="relative">
-          <QuotedIcon />
+          {theme === "dark" ? <QuotedIconLight /> : <QuotedIconDark />}
           <p className="text-dark dark:text-light font-switzer font-light italic text-[16px] md:text-[18px] tracking-wider leading-relaxed">
             {review.review}
           </p>

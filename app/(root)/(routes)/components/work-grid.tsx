@@ -42,10 +42,9 @@ export const WorkGrid = ({ projects, selectedSkill }: WorkGridProps) => {
                     <AspectRatio ratio={16 / 9}>
                       {!isLoaded && <Skeleton className="w-full h-full" />}
                       <Image
-                        className="z-20"
+                        className="z-20 object-cover"
                         fill
                         sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
-                        objectFit="cover"
                         alt={name}
                         src={imgUrl}
                         onLoad={() => setIsLoaded(false)}
