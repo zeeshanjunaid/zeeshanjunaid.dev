@@ -4,6 +4,7 @@ import { MdCode, MdDesignServices } from "react-icons/md";
 
 import { BlurBG } from "@/components/blur-bg";
 import { Container } from "@/components/container";
+import CustomLink from "@/components/CustomLink";
 import Link from "next/link";
 import React from "react";
 import { servicesCategories } from "@/data/services";
@@ -39,12 +40,14 @@ const Services = () => {
           ))}
 
           <li>
-            <Link
-              className="text-[14px] font-ao text-dark dark:text-light underline underline-purple underline-offset-4 hover:text-dark/90 dark:hover:text-light/90 transition-all delay-0 duration-200 uppercase mx-4 py-2 flex items-center"
-              href="/services"
-            >
-              view all
-            </Link>
+            <CustomLink>
+              <Link
+                className="text-[14px] font-ao text-dark dark:text-light uppercase px-4 py-2 flex items-center"
+                href="/services"
+              >
+                view all
+              </Link>
+            </CustomLink>
           </li>
         </ul>
       </div>

@@ -4,6 +4,7 @@ import { ResumeButton, SocialLinks } from "@/components/social-connect";
 
 import { BlurBG } from "@/components/blur-bg";
 import { Container } from "@/components/container";
+import CustomLink from "./CustomLink";
 import React from "react";
 import { motion } from "framer-motion";
 
@@ -46,12 +47,14 @@ const ReachOut = () => {
             <p className="text-[14px] md:text-[18px] lg:text-5 font-switzer text-dark dark:text-light">
               Feel free to reach out for collaborations or just a friendly hello
             </p>
-            <a
-              className="text-[14px] md:text-[18px] lg:text-[20px] font-switzer text-dark dark:text-light underline underline-purple underline-offset-4 hover:text-dark/90 dark:hover:text-light/90 transition-all delay-0 duration-200"
-              href="mailto:hello@zeeshanjunaid.dev"
-            >
-              hello[at]zeeshanjunaid[dot]dev
-            </a>
+            <CustomLink>
+              <a
+                className="text-[14px] md:text-[18px] lg:text-[20px] font-switzer text-dark dark:text-light"
+                href="mailto:hello@zeeshanjunaid.dev"
+              >
+                hello[at]zeeshanjunaid[dot]dev
+              </a>
+            </CustomLink>
           </div>
         </div>
         <div className="flex flex-col sm:flex-row w-max xs:w-full  items-start gap-3 justify-start z-[30] relative">

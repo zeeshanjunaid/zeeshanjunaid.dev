@@ -46,10 +46,10 @@ export const Header = () => {
     ? "bg-light dark:bg-dark border-b-lightBorderColor dark:border-b-darkBorderColor"
     : "bg-transparent";
   return (
-    <motion.header
-      initial={{ opacity: 0 }}
-      animate={{ opacity: 1 }}
-      transition={{ ease: "easeInOut", duration: 0.2, delay: 0.2 }}
+    <header
+      // initial={{ opacity: 0 }}
+      // animate={{ opacity: 1 }}
+      // transition={{ ease: "easeInOut", duration: 0.2, delay: 0.2 }}
       className={cn(
         "fixed z-40 top-0 left-0 right-0 w-full px-4 md:px-8 lg:px-0 pt-6 pb-4 border-b-[1px] border-b-transparent transition-all duration-200 bg-transparent",
         scrolledClasses,
@@ -87,6 +87,6 @@ export const Header = () => {
           <ModeToggle />
         </div>
       </Container>
-    </motion.header>
+    </header>
   );
 };

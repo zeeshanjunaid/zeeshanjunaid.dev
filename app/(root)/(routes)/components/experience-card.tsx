@@ -2,6 +2,7 @@
 
 import { ArrowRight } from "lucide-react";
 import { BlurBG } from "@/components/blur-bg";
+import CustomLink from "@/components/CustomLink";
 import React from "react";
 import { WorkExperienceProps } from "@/data/about";
 import { cn } from "@/lib/utils";
@@ -30,16 +31,13 @@ const ExperienceCard = ({ experience }: ExperienceCardProps) => {
             {duration}
           </span>
           <div className="flex flex-col">
-            <h3 className="font-ao font-bold text-[18px] md:text-[20px] lg:text-[22px] mb-4">
+            <h3 className="font-ao font-bold text-[18px] md:text-[20px] lg:text-[22px] mb-4 inline-flex flex-wrap">
               {role} @
-              <a
-                href={companyLink}
-                target="_blank"
-                rel="noreferrer noopener"
-                className="text-purple hover:text-purple/80 transition duration-200"
-              >
-                {company}
-              </a>
+              <CustomLink>
+                <a href={companyLink} target="_blank" rel="noreferrer noopener">
+                  {company}
+                </a>
+              </CustomLink>
             </h3>
             <div className="text-dark/90 dark:text-light/90 text-[14px] leading-relaxed md:text-[16px] flex flex-col gap-y-2.5">
               <p>{description}</p>

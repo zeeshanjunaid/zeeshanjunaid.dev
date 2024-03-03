@@ -3,6 +3,7 @@
 import React, { useState } from "react";
 
 import { BlurBG } from "@/components/blur-bg";
+import CustomLink from "@/components/CustomLink";
 import Image from "next/image";
 import Link from "next/link";
 import { ServicesCardProps } from "@/data/services";
@@ -74,18 +75,20 @@ const ServiceCard = ({
             </p>
           </div>
 
-          <p className="text-[16px] md:text-[18px] font-light leading-relaxed text-dark/70 dark:text-light/70">
+          <div className="text-[16px] md:text-[18px] font-light leading-relaxed text-dark/70 dark:text-light/70 inline-flex flex-wrap whitespace-nowrap">
             <span className="font-normal text-dark dark:text-light">
               {">>>"}
             </span>
-            <Link
-              className="font-normal px-1 underline underline-offset-4 underline-purple text-dark dark:text-light"
-              href={`/services/${ctaLink}`}
-            >
-              {ctaText}
-            </Link>
-            {ctaInfo}
-          </p>
+            <CustomLink className="mx-1">
+              <Link
+                className="font-normal text-dark dark:text-light"
+                href={`/services/${ctaLink}`}
+              >
+                {ctaText}
+              </Link>
+            </CustomLink>
+            <p className="inline whitespace-break-spaces">{ctaInfo}</p>
+          </div>
         </div>
       </div>
     </div>
