@@ -24,7 +24,7 @@ const ServiceCard = ({
   const [isLoaded, setIsLoaded] = useState(false);
   return (
     <div className="flex flex-col md:flex-row gap-5">
-      <div className="shrink-0 overflow-hidden rounded-3xl relative w-full h-[400px] md:w-[300px] md:h-[300px] lg:w-[400px] lg:h-[400px]">
+      <div className="shrink-0 overflow-hidden rounded-3xl relative w-full h-[250px] md:w-[300px] md:h-[300px] lg:w-[400px] lg:h-[400px]">
         {!isLoaded && <Skeleton className="w-full h-full rounded-3xl" />}
         <Image
           className="aspect-square object-cover"

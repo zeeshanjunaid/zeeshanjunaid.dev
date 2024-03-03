@@ -36,6 +36,7 @@ const ExperienceCard = ({ experience }: ExperienceCardProps) => {
               <CustomLink
                 text={company}
                 link={companyLink}
+                target="_blank"
                 rel="noreferrer noopener"
                 className="ml-1"
               />

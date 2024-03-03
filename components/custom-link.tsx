@@ -2,8 +2,8 @@
 
 import React, { useEffect, useState } from "react";
 
-import { cn } from "@/lib/utils";
 import Link from "next/link";
+import { cn } from "@/lib/utils";
 
 const CustomLink = ({
   className,
@@ -11,12 +11,14 @@ const CustomLink = ({
   link,
   text,
   rel,
+  target,
 }: {
   link: string;
   text: string;
   className?: string;
   internal?: boolean;
   rel?: string;
+  target?: string;
 }) => {
   const [isHovered, setIsHovered] = useState(false);
   useEffect(() => {
@@ -45,7 +47,7 @@ const CustomLink = ({
     <a
       rel={rel}
       href={link}
-      target="_blank"
+      target={target}
       className={cn("relative w-max", className)}
       onMouseEnter={() => setIsHovered(true)}
       onMouseLeave={() => setIsHovered(false)}
