@@ -41,7 +41,7 @@ const Services = () => {
 
           <li>
             <CustomLink
-              className="text-[14px] font-ao text-dark dark:text-light uppercase px-4 py-2 flex items-center"
+              className="text-[14px] font-ao text-dark dark:text-light uppercase px-2 py-2 flex items-center"
               link="/services"
               text="View All"
               internal
