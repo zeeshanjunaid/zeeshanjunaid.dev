@@ -2,12 +2,6 @@
 
 import React, { useEffect, useState } from "react";
 import { TbBrandFiverr, TbBrandUpwork } from "react-icons/tb";
-import {
-  Tooltip,
-  TooltipContent,
-  TooltipProvider,
-  TooltipTrigger,
-} from "@/components/ui/tooltip";
 
 import { BsGithub } from "react-icons/bs";
 import { Button } from "./ui/button";
@@ -15,16 +9,23 @@ import { DownloadCloud } from "lucide-react";
 import { RiLinkedinLine } from "react-icons/ri";
 import { cn } from "@/lib/utils";
 
+// import {
+//   Tooltip,
+//   TooltipContent,
+//   TooltipProvider,
+//   TooltipTrigger,
+// } from "@/components/ui/tooltip";
+
 export function SocialLinks() {
-  const [isMounted, setIsMounted] = useState(false);
+  // const [isMounted, setIsMounted] = useState(false);
 
-  useEffect(() => {
-    setIsMounted(true);
-  }, []);
+  // useEffect(() => {
+  //   setIsMounted(true);
+  // }, []);
 
-  if (!isMounted) {
-    return null;
-  }
+  // if (!isMounted) {
+  //   return null;
+  // }
   const styles =
     "dark:text-dark text-light w-4 h-4 md:w-5 md:h-5 lg:w-6 lg:h-6";
   const socialLinks = [
@@ -53,23 +54,23 @@ export function SocialLinks() {
   return (
     <>
       {socialLinks.map(({ name, link, icon }) => (
-        <TooltipProvider key={name}>
-          <Tooltip>
-            <TooltipTrigger>
-              <a href={link} target="_blank" rel="noopener noreferrer">
-                <Button
-                  aria-label={name}
-                  role="link"
-                  size="icon"
-                  className="rounded-xl"
-                >
-                  {icon}
-                </Button>
-              </a>
-            </TooltipTrigger>
-            <TooltipContent>{name}</TooltipContent>
-          </Tooltip>
-        </TooltipProvider>
+        // <TooltipProvider >
+        //   <Tooltip>
+        //     <TooltipTrigger>
+        <a key={name} href={link} target="_blank" rel="noopener noreferrer">
+          <Button
+            aria-label={name}
+            role="link"
+            size="icon"
+            className="rounded-xl h-12 w-12"
+          >
+            {icon}
+          </Button>
+        </a>
+        //     </TooltipTrigger>
+        //     <TooltipContent>{name}</TooltipContent>
+        //   </Tooltip>
+        // </TooltipProvider>
       ))}
     </>
   );

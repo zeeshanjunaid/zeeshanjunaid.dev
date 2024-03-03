@@ -3,9 +3,8 @@
 import React, { useState } from "react";
 
 import { BlurBG } from "@/components/blur-bg";
-import CustomLink from "@/components/CustomLink";
+import CustomLink from "@/components/custom-link";
 import Image from "next/image";
-import Link from "next/link";
 import { ServicesCardProps } from "@/data/services";
 import { Skeleton } from "@/components/ui/skeleton";
 
@@ -75,20 +74,20 @@ const ServiceCard = ({
             </p>
           </div>
 
-          <div className="text-[16px] md:text-[18px] font-light leading-relaxed text-dark/70 dark:text-light/70 inline-flex flex-wrap whitespace-nowrap">
+          <p className="text-[16px] md:text-[18px] font-light leading-relaxed text-dark/70 dark:text-light/70 ">
             <span className="font-normal text-dark dark:text-light">
               {">>>"}
             </span>
-            <CustomLink className="mx-1">
-              <Link
-                className="font-normal text-dark dark:text-light"
-                href={`/services/${ctaLink}`}
-              >
-                {ctaText}
-              </Link>
-            </CustomLink>
-            <p className="inline whitespace-break-spaces">{ctaInfo}</p>
-          </div>
+
+            <CustomLink
+              className="mx-1 font-normal text-dark dark:text-light"
+              link={`/services/${ctaLink}`}
+              text={ctaText}
+              internal
+            />
+
+            {ctaInfo}
+          </p>
         </div>
       </div>
     </div>

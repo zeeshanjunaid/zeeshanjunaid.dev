@@ -1,7 +1,7 @@
 import "./globals.css";
 
 import { Analytics } from "@vercel/analytics/react";
-import AvailabilityBadge from "@/components/availability-badge";
+// import AvailabilityBadge from "@/components/availability-badge";
 import BackToTop from "@/components/back-to-top";
 import { Footer } from "@/components/footer";
 import { Header } from "@/components/header";
@@ -97,7 +97,7 @@ export default function RootLayout({
           switzer.variable,
         )}
       >
-        <ThemeProvider attribute="class" defaultTheme="system" enableSystem>
+        <ThemeProvider attribute="class" defaultTheme="dark">
           <NextTopLoader
             color="#A374FF"
             initialPosition={0.08}
@@ -120,7 +120,7 @@ export default function RootLayout({
           </main>
           <Footer />
           <BackToTop />
-          <AvailabilityBadge />
+          {/* <AvailabilityBadge /> */}
           <Toaster />
         </ThemeProvider>
         <Analytics />

@@ -7,7 +7,7 @@ import { Container } from "@/components/container";
 import Image from "next/image";
 import React from "react";
 
-const handIcon = <span className="animate-waver">👋🏻</span>;
+const handIcon = <span className="">👋🏻</span>;
 
 const heroTitle = (
   <>

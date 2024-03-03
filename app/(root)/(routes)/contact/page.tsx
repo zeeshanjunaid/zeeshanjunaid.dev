@@ -3,7 +3,7 @@ import { Mail, Phone, PhoneCall } from "lucide-react";
 
 import ContactForm from "../components/contact-form";
 import { Container } from "@/components/container";
-import CustomLink from "@/components/CustomLink";
+import CustomLink from "@/components/custom-link";
 import React from "react";
 
 export const metadata = {
@@ -32,47 +32,35 @@ const ContactPage = () => {
           <div className="flex flex-col md:flex-row gap-5  md:gap-8 md:flex-wrap lg:justify-between md:items-center mt-6 md:mt-8">
             <div className="flex items-center justify-start gap-x-1.5">
               <Mail size={18} />
-              <CustomLink>
-                <a
-                  href="mailto:hello@zeeshanjunaid.dev"
-                  className="text-[16px] md:text-[18px] lg:text-5 font-switzer text-dark dark:text-light"
-                >
-                  hello[at]zeeshanjunaid[dot]dev
-                </a>
-              </CustomLink>
+              <CustomLink
+                text="hello[at]zeeshanjunaid[dot]dev"
+                link="mailto:hello@zeeshanjunaid.dev"
+                className="text-[16px] md:text-[18px] lg:text-5 font-switzer text-dark dark:text-light"
+              />
             </div>
             <div className="flex items-center justify-start gap-x-1.5">
               <Phone size={18} />
-              <CustomLink>
-                <a
-                  href="tel:+923408563525"
-                  className="text-[16px] md:text-[18px] lg:text-5 font-switzer text-dark dark:text-light"
-                >
-                  +92 340 856 3525
-                </a>
-              </CustomLink>
+              <CustomLink
+                text="+92 340 856 3525"
+                link="tel:+923408563525"
+                className="text-[16px] md:text-[18px] lg:text-5 font-switzer text-dark dark:text-light"
+              />
             </div>
             <div className="flex items-center justify-start gap-x-1.5">
               <BsWhatsapp size={18} />
-              <CustomLink>
-                <a
-                  href="whatsapp://send?phone=923408563525"
-                  className="text-[16px] md:text-[18px] lg:text-5 font-switzer text-dark dark:text-light"
-                >
-                  +92 340 856 3525
-                </a>
-              </CustomLink>
+              <CustomLink
+                text="+92 340 856 3525"
+                link="whatsapp://send?phone=923408563525"
+                className="text-[16px] md:text-[18px] lg:text-5 font-switzer text-dark dark:text-light"
+              />
             </div>
             <div className="flex items-center justify-start gap-x-1.5">
               <BsSkype size={18} />
-              <CustomLink>
-                <a
-                  href="skype:zeeshan_junaid"
-                  className="text-[16px] md:text-[18px] lg:text-5 font-switzer text-dark dark:text-light"
-                >
-                  zeeshan_junaid
-                </a>
-              </CustomLink>
+              <CustomLink
+                text="zeeshan_junaid"
+                link="skype:zeeshan_junaid"
+                className="text-[16px] md:text-[18px] lg:text-5 font-switzer text-dark dark:text-light"
+              />
             </div>
           </div>
         </Container>
