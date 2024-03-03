@@ -36,7 +36,7 @@ const BackToTop = () => {
       }}
       animate={hidden ? "hidden" : "visible"}
       transition={{ ease: "easeInOut", duration: 0.2, delay: 0.2 }}
-      className="fixed bottom-0 right-0 bg-purple/90 z-40 h-12 w-16 flex items-center justify-center text-dark dark:text-light cursor-pointer rounded-s-xl hover:bg-purple transition duration-200"
+      className="fixed bottom-0 right-8 md:right-12 bg-purple/90 z-40 h-12 w-12 flex items-center justify-center text-dark dark:text-light cursor-pointer rounded-s-xl hover:bg-purple transition duration-200"
     >
       <ChevronUp size={24} />
     </motion.div>
