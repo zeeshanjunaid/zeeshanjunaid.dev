@@ -88,7 +88,7 @@ body,
 body {
   overscroll-behavior: none !important;
 }
-/* @keyframes spin-slow {
+@keyframes spin-slow {
   0% {
     transform: rotate(0);
   }
@@ -121,7 +121,7 @@ body {
 
 .header-logo:hover .rotate-slow {
   animation-play-state: paused;
-} */
+}
 
 .text-gradient {
   background: linear-gradient(
