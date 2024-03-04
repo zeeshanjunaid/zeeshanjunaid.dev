@@ -98,7 +98,7 @@ body {
 }
 
 .rotate-slow {
-  animation: spin-slow 24s infinite linear;
+  animation: spin-slow 15s infinite linear;
 }
 
 @keyframes waver {

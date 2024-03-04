@@ -9,7 +9,7 @@ import Link from "next/link";
 import React from "react";
 import { SocialLinks } from "@/components/social-connect";
 
-const handIcon = <span className="animate-wave">👋🏻</span>;
+const handIcon = <span className="animate-waver">👋🏻</span>;
 
 const heroTitle = (
   <>
