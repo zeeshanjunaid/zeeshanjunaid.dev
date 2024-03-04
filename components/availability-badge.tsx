@@ -1,20 +1,10 @@
 "use client";
 
-import React, { useEffect, useState } from "react";
-
+import React from "react";
 import { cn } from "@/lib/utils";
 import { motion } from "framer-motion";
 
 const AvailabilityBadge = ({ className }: { className?: string }) => {
-  const [isMounted, setIsMounted] = useState(false);
-
-  useEffect(() => {
-    setIsMounted(true);
-  }, []);
-
-  if (!isMounted) {
-    return null;
-  }
   const pulseVariants = {
     initial: {
       scale: 1,
