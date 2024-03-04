@@ -2,6 +2,7 @@
 
 import { ResumeButton, SocialLinks } from "@/components/social-connect";
 
+import AvailabilityBadge from "@/components/availability-badge";
 import { BlurBG } from "@/components/blur-bg";
 import { Container } from "@/components/container";
 import Image from "next/image";
@@ -27,16 +28,20 @@ export const Hero = () => {
         space-y-4 lg:space-y-0
     "
     >
-      <div className="lg:hidden px-2 w-full sm:w-[80%] md:w-[90%] mx-auto mt-4">
+      <div className="lg:hidden px-2 w-full sm:w-[80%] md:w-[90%] mx-auto mt-6 flex flex-col justify-center items-center">
+        <AvailabilityBadge className="mb-2.5" />
         <h1 className="text-center text-[22px] leading-tight sm:text-[28px] md:text-[36px] font-bold font-ao text-dark dark:text-light">
           {heroTitle}
         </h1>
       </div>
       <div className="hidden lg:flex flex-col w-2/3  rounded-3xl px-16 py-12 justify-between flex-1 mr-5 relative overflow-hidden">
         <BlurBG className="rounded-3xl" />
-        <h1 className="z-20 relative text-left text-[32px] 2xl:text-[36px] font-bold font-ao text-dark dark:text-light leading-tight">
-          {heroTitle}
-        </h1>
+        <div className="z-20 relative">
+          <AvailabilityBadge className="mb-2.5" />
+          <h1 className=" text-left text-[32px] 2xl:text-[36px] font-bold font-ao text-dark dark:text-light leading-tight">
+            {heroTitle}
+          </h1>
+        </div>
         <div className="flex items-center space-x-3 min-w-max justify-start z-20 relative">
           {/* <ResumeButton /> */}
           <SocialLinks />
@@ -46,7 +51,7 @@ export const Hero = () => {
         <BlurBG className="rounded-3xl" />
         <div className="absolute bottom-0 left-2/3 lg:left-auto lg:right-0 -translate-x-3/4 lg:translate-x-0 w-full h-full z-20">
           <Image
-          sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+            sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
             loading="eager"
             fill
             alt="profile"
