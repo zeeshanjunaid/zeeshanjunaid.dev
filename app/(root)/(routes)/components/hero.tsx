@@ -1,12 +1,13 @@
 "use client";
 
-import { ResumeButton, SocialLinks } from "@/components/social-connect";
-
 import AvailabilityBadge from "@/components/availability-badge";
 import { BlurBG } from "@/components/blur-bg";
+import { Button } from "@/components/ui/button";
 import { Container } from "@/components/container";
 import Image from "next/image";
+import Link from "next/link";
 import React from "react";
+import { SocialLinks } from "@/components/social-connect";
 
 const handIcon = <span className="">👋🏻</span>;
 
@@ -43,7 +44,15 @@ export const Hero = () => {
           </h1>
         </div>
         <div className="flex items-center space-x-3 min-w-max justify-start z-20 relative">
-          {/* <ResumeButton /> */}
+          <Link href="/contact">
+            <Button
+              className="h-12 rounded-xl uppercase"
+              size="lg"
+              variant="purple"
+            >
+              Start a Project
+            </Button>
+          </Link>
           <SocialLinks />
         </div>
       </div>
@@ -62,10 +71,15 @@ export const Hero = () => {
         </div>
       </div>
       <div className="flex flex-col sm:flex-row lg:hidden items-center gap-2 min-w-max justify-center">
-        {/* <ResumeButton /> */}
-        <div className="flex space-x-2">
-          <SocialLinks />
-        </div>
+        <Link href="/contact">
+          <Button
+            className="h-12 rounded-xl uppercase"
+            size="lg"
+            variant="purple"
+          >
+            Start a Project
+          </Button>
+        </Link>
       </div>
     </Container>
   );
