@@ -9,23 +9,8 @@ import { DownloadCloud } from "lucide-react";
 import { RiLinkedinLine } from "react-icons/ri";
 import { cn } from "@/lib/utils";
 
-// import {
-//   Tooltip,
-//   TooltipContent,
-//   TooltipProvider,
-//   TooltipTrigger,
-// } from "@/components/ui/tooltip";
-
 export function SocialLinks() {
-  // const [isMounted, setIsMounted] = useState(false);
 
-  // useEffect(() => {
-  //   setIsMounted(true);
-  // }, []);
-
-  // if (!isMounted) {
-  //   return null;
-  // }
   const styles =
     "dark:text-dark text-light w-4 h-4 md:w-5 md:h-5 lg:w-6 lg:h-6";
   const socialLinks = [
@@ -67,10 +52,6 @@ export function SocialLinks() {
             {icon}
           </Button>
         </a>
-        //     </TooltipTrigger>
-        //     <TooltipContent>{name}</TooltipContent>
-        //   </Tooltip>
-        // </TooltipProvider>
       ))}
     </>
   );

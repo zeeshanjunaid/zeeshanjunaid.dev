@@ -9,18 +9,17 @@ import Link from "next/link";
 import React from "react";
 import { SocialLinks } from "@/components/social-connect";
 
-const handIcon = <span className="animate-waver">👋🏻</span>;
-
-const heroTitle = (
-  <>
-    Hello {handIcon}, I’m Zeeshan Junaid, Frontend Engineer with 8+ years of
-    experience
-  </>
-);
 const heroImg = "/images/zeeshan.png";
 export const Hero = () => {
+  const handIcon = <span className="animate-waver">👋🏻</span>;
+  const heroTitle = (
+    <>
+      Hello {handIcon}, I’m Zeeshan Junaid, Frontend Engineer with 8+ years of
+      experience
+    </>
+  );
   return (
-    <section className="overflow-hidden w-full">
+    <section className="overflow-x-hidden w-full md:pt-5">
       <Container
         className="
         mt-8 lg:mt-6
