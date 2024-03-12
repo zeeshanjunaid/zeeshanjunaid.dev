@@ -4,7 +4,6 @@ import { Analytics } from "@vercel/analytics/react";
 import BackToTop from "@/components/back-to-top";
 import { Footer } from "@/components/footer";
 import { Header } from "@/components/header";
-import MarkerComponent from "@/components/MarkerComponent.client";
 import type { Metadata } from "next";
 import NextTopLoader from "nextjs-toploader";
 import ReachOut from "@/components/reach-out";
@@ -113,7 +112,7 @@ export default function RootLayout({
             zIndex={1600}
             showAtBottom={false}
           />
-          <MarkerComponent />
+
           <Header />
           <main className="pt-[100px]">
             {children}
