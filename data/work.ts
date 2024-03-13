@@ -10,6 +10,13 @@ export interface Project {
 }
 const ProjectsList: Project[] = [
   {
+    name: "Pure Energy Dance",
+    imgUrl: "/images/projects/pure-energydance.jpg",
+    link: "https://pure-energydance.com",
+    year: 2024,
+    tags: ["ui/ux", "frontend", "backend"],
+  },
+  {
     name: "Reno Leaders",
     imgUrl: "/images/projects/reno-leaders.jpg",
     link: "https://renoleaders.com",
