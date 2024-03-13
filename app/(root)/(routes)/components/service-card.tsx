@@ -12,9 +12,6 @@ const ServiceCard = ({
   name,
   tagline,
   description,
-  ctaLink,
-  ctaText,
-  ctaInfo,
   img,
   subServices,
   results,
@@ -73,7 +70,7 @@ const ServiceCard = ({
               {results}
             </p>
           </div>
-
+          {/* 
           <p className="text-[16px] md:text-[18px] font-light leading-relaxed text-dark/70 dark:text-light/70 ">
             <span className="font-normal text-dark dark:text-light">
               {">>>"}
@@ -87,7 +84,7 @@ const ServiceCard = ({
             />
 
             {ctaInfo}
-          </p>
+          </p> */}
         </div>
       </div>
     </div>

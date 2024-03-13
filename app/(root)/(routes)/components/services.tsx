@@ -22,16 +22,11 @@ const Services = () => {
       <div className="px-5 md:px-6 py-8 w-full bg-light dark:bg-dark rounded-3xl relative overflow-hidden">
         <BlurBG className="rounded-3xl" />
         <ul className="w-full flex flex-wrap gap-2 md:gap-3 items-center z-20 relative">
-          {servicesCategories.map(({ name, slug, icon: Icon }, index) => (
+          {servicesCategories.map(({ name, icon: Icon }, index) => (
             <React.Fragment key={index}>
-              <li>
-                <Link
-                  className="uppercase font-ao text-dark dark:text-light text-[12px] md:text-[14px] flex items-center gap-x-1 md:gap-x-2 hover:bg-purple/25 px-4 py-2 rounded-xl w-max transition duration-200"
-                  href={`services/${slug}`}
-                >
-                  {Icon && <Icon className="text-purple -mt-[3px]" size="18" />}
-                  {name}
-                </Link>
+              <li className="uppercase font-ao text-dark dark:text-light text-[12px] md:text-[14px] flex items-center gap-x-1 md:gap-x-2  px-4 py-2 w-max">
+                {Icon && <Icon className="text-purple -mt-[3px]" size="18" />}
+                {name}
               </li>
               <li className="text-[20px] font-switzer font-light text-dark/50 dark:text-light/40">
                 /

@@ -48,6 +48,7 @@ export const servicesCategories: ServicesCategoriesProps[] = [
   },
 ];
 export interface ServicesCardProps {
+  slug: string;
   name: string;
   tagline: string;
   description: string;
@@ -62,6 +63,7 @@ export interface ServicesCardProps {
 }
 export const servicesCards: ServicesCardProps[] = [
   {
+    slug: "uiux-design",
     name: "UI/UX Design",
     tagline: "Empower Your Digital Presence with Intuitive Design",
     description:
@@ -83,6 +85,7 @@ export const servicesCards: ServicesCardProps[] = [
     ctaInfo: " for pricing and profound insights.",
   },
   {
+    slug: "frontend-development",
     name: "Frontend Development in React",
     tagline: "Build Fast, Scalable, and Interactive Web Experiences",
     description:
@@ -104,6 +107,7 @@ export const servicesCards: ServicesCardProps[] = [
     ctaInfo: "with our detailed guide and pricing.",
   },
   {
+    slug: 'wordpress-development',
     name: "WordPress Development",
     tagline: "Custom WordPress Solutions Tailored to Your Needs",
     description:
@@ -124,6 +128,7 @@ export const servicesCards: ServicesCardProps[] = [
     ctaInfo: "of custom solutions and pricing.",
   },
   {
+    slug: 'webflow-development',
     name: "Webflow Development",
     tagline: "Unlock the Potential of Webflow for Stunning Websites",
     description:
@@ -145,6 +150,7 @@ export const servicesCards: ServicesCardProps[] = [
     ctaInfo: "to my pricing and service blueprints.",
   },
   {
+    slug: 'shopify-development',
     name: "Shopify Development",
     tagline: "Elevate Your E-commerce Experience with Shopify",
     description:
@@ -166,6 +172,7 @@ export const servicesCards: ServicesCardProps[] = [
     ctaInfo: "to discover pricing and explore uncharted possibilities.",
   },
   {
+    slug: 'seo-optimization',
     name: "SEO Optimization",
     tagline: "Boost Your Visibility and Outrank Your Competitors",
     description:
@@ -187,6 +194,7 @@ export const servicesCards: ServicesCardProps[] = [
     ctaInfo: "to peak performance with pricing guide.",
   },
   {
+    slug: 'speed-optimization',
     name: "Performance Optimization",
     tagline: "Maximize Speed, Efficiency, and Conversion",
     description:
