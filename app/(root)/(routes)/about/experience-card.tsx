@@ -33,13 +33,13 @@ const ExperienceCard = ({ experience }: ExperienceCardProps) => {
           <div className="flex flex-col">
             <h3 className="font-ao font-bold text-[18px] md:text-[20px] lg:text-[22px] mb-4 inline-flex flex-wrap">
               {role} @
-              <CustomLink
+              {/* <CustomLink
                 text={company}
                 link={companyLink}
                 target="_blank"
                 rel="noreferrer noopener"
                 className="ml-1"
-              />
+              /> */}
             </h3>
             <div className="text-dark/90 dark:text-light/90 text-[14px] leading-relaxed md:text-[16px] flex flex-col gap-y-2.5">
               <p>{description}</p>

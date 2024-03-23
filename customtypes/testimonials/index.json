@@ -1,0 +1,65 @@
+{
+  "format": "custom",
+  "id": "testimonials",
+  "label": "Testimonials",
+  "repeatable": true,
+  "status": true,
+  "json": {
+    "Main": {
+      "uid": {
+        "config": {
+          "label": "UID"
+        },
+        "type": "UID"
+      },
+      "reviews": {
+        "type": "Group",
+        "config": {
+          "label": "Reviews",
+          "repeat": true,
+          "fields": {
+            "client_name": {
+              "type": "Text",
+              "config": {
+                "label": "Client Name",
+                "placeholder": ""
+              }
+            },
+            "logo": {
+              "type": "Image",
+              "config": {
+                "label": "Logo",
+                "constraint": {},
+                "thumbnails": []
+              }
+            },
+            "company": {
+              "type": "Text",
+              "config": {
+                "label": "company",
+                "placeholder": ""
+              }
+            },
+            "profile_picture": {
+              "type": "Image",
+              "config": {
+                "label": "Profile Picture",
+                "constraint": {},
+                "thumbnails": []
+              }
+            },
+            "reviews": {
+              "type": "StructuredText",
+              "config": {
+                "label": "Reviews",
+                "placeholder": "",
+                "allowTargetBlank": true,
+                "multi": "paragraph,strong,em"
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}

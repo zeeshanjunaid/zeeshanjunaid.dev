@@ -1,0 +1,126 @@
+[
+	{
+		"__TYPE__": "SharedSliceContent",
+		"variation": "default",
+		"primary": {
+			"heading": {
+				"__TYPE__": "StructuredTextContent",
+				"value": [
+					{
+						"type": "heading2",
+						"content": {
+							"text": "Frighten"
+						}
+					}
+				]
+			},
+			"sub_heading": {
+				"__TYPE__": "StructuredTextContent",
+				"value": [
+					{
+						"type": "paragraph",
+						"content": {
+							"text": "Nostrud consectetur non consequat nulla. Est elit excepteur magna veniam. Nostrud duis Lorem tempor veniam nulla proident non enim ad."
+						}
+					}
+				]
+			}
+		},
+		"items": []
+	},
+	{
+		"__TYPE__": "SharedSliceContent",
+		"variation": "withContactInfo",
+		"primary": {
+			"heading": {
+				"__TYPE__": "StructuredTextContent",
+				"value": [
+					{
+						"type": "heading2",
+						"content": {
+							"text": "Light"
+						}
+					}
+				]
+			},
+			"sub_heading": {
+				"__TYPE__": "StructuredTextContent",
+				"value": [
+					{
+						"type": "paragraph",
+						"content": {
+							"text": "Ea tempor excepteur commodo quis id. Exercitation aute excepteur nisi amet aliqua pariatur magna reprehenderit veniam. Consectetur et cupidatat aliquip nulla elit dolor officia minim aute cillum labore occaecat do in."
+						}
+					}
+				]
+			}
+		},
+		"items": [
+			{
+				"__TYPE__": "GroupItemContent",
+				"value": [
+					[
+						"label",
+						{
+							"__TYPE__": "FieldContent",
+							"value": "problem",
+							"type": "Text"
+						}
+					],
+					[
+						"link",
+						{
+							"__TYPE__": "LinkContent",
+							"value": {
+								"__TYPE__": "ExternalLink",
+								"url": "http://google.com"
+							}
+						}
+					],
+					[
+						"icon",
+						{
+							"__TYPE__": "FieldContent",
+							"value": "Email",
+							"type": "Select"
+						}
+					]
+				]
+			}
+		]
+	},
+	{
+		"__TYPE__": "SharedSliceContent",
+		"variation": "withWorkInfo",
+		"primary": {
+			"heading": {
+				"__TYPE__": "StructuredTextContent",
+				"value": [
+					{
+						"type": "heading2",
+						"content": {
+							"text": "Process"
+						}
+					}
+				]
+			},
+			"sub_heading": {
+				"__TYPE__": "StructuredTextContent",
+				"value": [
+					{
+						"type": "paragraph",
+						"content": {
+							"text": "Labore reprehenderit occaecat veniam nostrud duis consectetur commodo esse velit officia laborum sunt commodo. Enim id ipsum id voluptate mollit voluptate laboris tempor ut laborum velit est et. Lorem fugiat voluptate aute elit sit adipisicing enim excepteur occaecat."
+						}
+					}
+				]
+			}
+		},
+		"items": [
+			{
+				"__TYPE__": "GroupItemContent",
+				"value": []
+			}
+		]
+	}
+]

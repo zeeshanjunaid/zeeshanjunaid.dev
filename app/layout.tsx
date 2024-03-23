@@ -3,7 +3,7 @@ import "./globals.css";
 import { Analytics } from "@vercel/analytics/react";
 import BackToTop from "@/components/back-to-top";
 import { Footer } from "@/components/footer";
-import { Header } from "@/components/header";
+import Header from "@/components/Header";
 import type { Metadata } from "next";
 import NextTopLoader from "nextjs-toploader";
 import ReachOut from "@/components/reach-out";
@@ -91,7 +91,7 @@ export default function RootLayout({
     <html lang="en" suppressHydrationWarning>
       <body
         className={cn(
-          "bg-light dark:bg-dark font-switzer",
+          "bg-light font-switzer dark:bg-dark",
           antiqueOlive.variable,
           switzer.variable,
         )}

@@ -1,19 +1,31 @@
-import AboutHero from "../components/about-hero";
-import Experience from "../components/experience";
-import React from "react";
-import Skills from "../components/skills";
-export const metadata = {
-  title: "About Me",
-};
+import AboutHero from "./about-hero";
+import Experience from "./experience";
+import { Metadata } from "next";
+import Skills from "./skills";
+import { SliceZone } from "@prismicio/react";
+import { components } from "@/slices";
+import { createClient } from "@/prismicio";
 
-const AboutPage = () => {
+export default async function Page() {
+  const client = createClient();
+  const page = await client.getSingle("about");
+
   return (
     <>
+      {/* <SliceZone slices={page.data.slices} components={components} /> */}
       <AboutHero />
       <Experience />
       <Skills />
     </>
   );
-};
+}
 
-export default AboutPage;
+export async function generateMetadata(): Promise<Metadata> {
+  const client = createClient();
+  const page = await client.getSingle("about");
+
+  return {
+    title: page.data.meta_title,
+    description: page.data.meta_description,
+  };
+}

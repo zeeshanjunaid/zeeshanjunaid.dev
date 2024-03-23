@@ -1,34 +1,20 @@
 import { Container } from "@/components/container";
-import React from "react";
-import ServiceCard from "../components/service-card";
+import { Metadata } from "next";
+import ServiceCard from "./service-card";
+import { SliceZone } from "@prismicio/react";
+import { components } from "@/slices";
+import { createClient } from "@/prismicio";
 import { servicesCards } from "@/data/services";
 
-export const metadata = {
-  title: "Services",
-};
-const ServicesPage = () => {
+export default async function Page() {
+  const client = createClient();
+  const page = await client.getSingle("services");
+
   return (
     <>
-      <div className="border-b-[1px] border-b-borderDarkColor pb-12">
-        <Container
-          className="
-          px-5 md:px-7 lg:px-0
-    flex flex-col justify-between items-start
-    "
-        >
-          <div className="flex flex-col gap-y-4 md:max-w-[60%]">
-            <h2 className="leading-tight text-[28px] md:text-[36px] lg:text-[44px] font-bold font-ao text-dark dark:text-light">
-              Creating a platform for your purpose
-            </h2>
-            <p className="font-light text-[16px] md:text-[18px] lg:text-[20px] leading-snug">
-              Clients come to me at all stages of development. These are the
-              foundational services i offer based on their most common needs
-            </p>
-          </div>
-        </Container>
-      </div>
+      <SliceZone slices={page.data.slices} components={components} />
       <section>
-        <Container className="px-5 md:px-7 lg:px-0 flex flex-col space-y-6 py-12 gap-y-12">
+        <Container className="flex flex-col gap-y-12 space-y-6 px-5 py-12 md:px-7 lg:px-0">
           {servicesCards.map((service, index) => (
             <ServiceCard key={index} {...service} />
           ))}
@@ -36,6 +22,14 @@ const ServicesPage = () => {
       </section>
     </>
   );
-};
+}
 
-export default ServicesPage;
+export async function generateMetadata(): Promise<Metadata> {
+  const client = createClient();
+  const page = await client.getSingle("services");
+
+  return {
+    title: page.data.meta_title,
+    description: page.data.meta_description,
+  };
+}
