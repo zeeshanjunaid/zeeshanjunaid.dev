@@ -41,16 +41,16 @@ const ContactPage = () => {
             <div className="flex items-center justify-start gap-x-1.5">
               <Phone size={18} />
               <CustomLink
-                text="+92 340 856 3525"
-                link="tel:+923408563525"
+                text="+447 46 579 3282"
+                link="tel:+447465793282"
                 className="text-[16px] md:text-[18px] lg:text-5 font-switzer text-dark dark:text-light"
               />
             </div>
             <div className="flex items-center justify-start gap-x-1.5">
               <BsWhatsapp size={18} />
               <CustomLink
-                text="+92 340 856 3525"
-                link="whatsapp://send?phone=923408563525"
+                text="+447 46 579 3282"
+                link="whatsapp://send?phone=447465793282"
                 className="text-[16px] md:text-[18px] lg:text-5 font-switzer text-dark dark:text-light"
               />
             </div>
