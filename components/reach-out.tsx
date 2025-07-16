@@ -138,22 +138,5 @@ const ReachOut = () => {
     </Container>
   );
 };
-              text="hello[at]zeeshanjunaid[dot]dev"
-              link="mailto:hello@zeeshanjunaid.dev"
-              className="text-[14px] md:text-[18px] lg:text-[20px] font-switzer text-dark dark:text-light"
-            />
-          </div>
-        </div>
-        <div className="flex flex-col sm:flex-row w-max xs:w-full  items-start gap-3 justify-start z-[30] relative">
-          {/* <ResumeButton className="w-full xs:w-auto" /> */}
-          <div className="flex flex-wrap sm:flex-nowrap justify-start space-x-3">
-            <SocialLinks />
-          </div>
-        </div>
-      </div>
-      <div className="reactout-gradient absolute w-[350px] h-[350px] bottom-0 right-0 z-20 rounded-full opacity-70" />
-    </Container>
-  );
-};
 
 export default ReachOut;
