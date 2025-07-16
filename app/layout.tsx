@@ -1,5 +1,6 @@
 import "./globals.css";
 
+import { ClerkProvider } from '@clerk/nextjs'
 import { Analytics } from "@vercel/analytics/react";
 import BackToTop from "@/components/back-to-top";
 import { Footer } from "@/components/footer";
@@ -96,33 +97,35 @@ export default function RootLayout({
           switzer.variable,
         )}
       >
-        <ThemeProvider attribute="class" defaultTheme="dark">
-          <NextTopLoader
-            color="#A374FF"
-            initialPosition={0.08}
-            crawlSpeed={200}
-            height={4}
-            crawl={true}
-            showSpinner={false}
-            easing="ease"
-            speed={250}
-            shadow="0 0 16px #A374FF,0 0 8px #A374FF"
-            template='<div class="bar" role="bar"><div class="peg"></div></div> 
+        <ClerkProvider>
+          <ThemeProvider attribute="class" defaultTheme="dark">
+            <NextTopLoader
+              color="#A374FF"
+              initialPosition={0.08}
+              crawlSpeed={200}
+              height={4}
+              crawl={true}
+              showSpinner={false}
+              easing="ease"
+              speed={250}
+              shadow="0 0 16px #A374FF,0 0 8px #A374FF"
+              template='<div class="bar" role="bar"><div class="peg"></div></div> 
   <div class="spinner" role="spinner"><div class="spinner-icon"></div></div>'
-            zIndex={1600}
-            showAtBottom={false}
-          />
+              zIndex={1600}
+              showAtBottom={false}
+            />
 
-          <Header />
-          <main className="pt-[100px]">
-            {children}
-            <ReachOut />
-          </main>
-          <Footer />
-          <BackToTop />
+            <Header />
+            <main className="pt-[100px]">
+              {children}
+              <ReachOut />
+            </main>
+            <Footer />
+            <BackToTop />
 
-          <Toaster />
-        </ThemeProvider>
+            <Toaster />
+          </ThemeProvider>
+        </ClerkProvider>
         <Analytics />
         <SpeedInsights />
       </body>

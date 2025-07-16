@@ -8,6 +8,7 @@ import { Container } from "./container";
 import Link from "next/link";
 import { ModeToggle } from "./theme-toggle";
 import NavMobile from "./nav-mobile";
+import { AuthButtons } from "./auth-buttons";
 import { cn } from "@/lib/utils";
 import navLinks from "@/data/nav";
 import { usePathname } from "next/navigation";
@@ -85,6 +86,7 @@ export const Header = () => {
           </div>
           <NavMobile data={navLinks} />
           <ModeToggle />
+          <AuthButtons />
         </div>
       </Container>
     </header>
