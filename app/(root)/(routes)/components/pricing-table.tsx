@@ -107,7 +107,7 @@ const PricingTable = () => {
                 "px-6 py-3 rounded-lg text-sm font-medium transition-all duration-300 relative z-20 flex-1 text-center",
                 paymentMethod === "stripe"
                   ? "text-white"
-                  : "text-dark dark:text-light hover:bg-purple/20"
+                  : "text-dark dark:text-light"
               )}
             >
               <span className="flex items-center justify-center gap-2">
