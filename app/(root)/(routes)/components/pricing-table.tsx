@@ -78,16 +78,9 @@ const PricingTable = () => {
   const [paymentMethod, setPaymentMethod] = useState<PaymentMethod>("stripe");
 
   const handleSubscribe = (tierId: string) => {
-    // TODO: Implement subscription logic based on payment method
-    console.log(`Subscribing to ${tierId} with ${paymentMethod}`);
-    
-    if (paymentMethod === "stripe") {
-      // TODO: Redirect to Stripe checkout
-      console.log("Redirecting to Stripe checkout...");
-    } else {
-      // TODO: Redirect to Coinbase Commerce
-      console.log("Redirecting to Coinbase Commerce...");
-    }
+    // For now, redirect to sign up if not authenticated
+    // This will be replaced with actual payment processing
+    window.location.href = '/sign-up';
   };
 
   return (
