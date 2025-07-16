@@ -10,21 +10,22 @@ export function AuthButtons() {
 
   if (isSignedIn) {
     return (
-      <div className="flex items-center gap-2">
+      <div className="flex items-center gap-3">
         <Link href="/dashboard">
           <Button
             variant="ghost"
-            size="sm"
-            className="text-dark dark:text-light hover:text-purple hover:bg-transparent rounded-lg text-xs px-2 py-1 h-7"
+            size="default"
+            className="text-dark dark:text-light hover:text-purple hover:bg-transparent rounded-lg text-sm px-4 py-2 h-9 uppercase font-medium"
           >
-            <Settings className="w-3 h-3 mr-1" />
-            Dash
+            <Settings className="w-4 h-4 mr-2" />
+            Dashboard
           </Button>
         </Link>
+        <ModeToggle />
         <UserButton 
           appearance={{
             elements: {
-              avatarBox: "w-7 h-7",
+              avatarBox: "w-9 h-9",
               userButtonPopoverCard: "bg-light dark:bg-dark border border-lightBorderColor dark:border-darkBorderColor",
               userButtonPopoverActionButton: "text-dark dark:text-light hover:bg-purple/20",
               userButtonPopoverActionButtonText: "text-dark dark:text-light",
@@ -37,25 +38,17 @@ export function AuthButtons() {
   }
 
   return (
-    <div className="flex items-center gap-1">
+    <div className="flex items-center gap-3">
+      <ModeToggle />
       <SignInButton mode="modal">
         <Button
-          variant="ghost"
-          size="sm"
-          className="text-dark dark:text-light hover:text-purple hover:bg-transparent rounded-lg text-xs px-2 py-1 h-7"
+          variant="purple"
+          size="default"
+          className="rounded-lg text-sm px-6 py-2 h-9 uppercase font-medium"
         >
-          Login
+          Join / Login
         </Button>
       </SignInButton>
-      <SignUpButton mode="modal">
-        <Button
-          variant="purple"
-          size="sm"
-          className="rounded-lg text-xs px-2 py-1 h-7"
-        >
-          Join
-        </Button>
-      </SignUpButton>
     </div>
   )
 }

@@ -58,11 +58,11 @@ export const Header = () => {
     >
       <Container className="flex items-center justify-between">
         <Link
-          className="font-ao text-base lg:text-lg text-dark dark:text-light font-bold tracking-tight flex items-center gap-x-2 header-logo"
+          className="font-ao text-lg lg:text-xl text-dark dark:text-light font-bold tracking-tight flex items-center gap-x-2 header-logo"
           href="/"
         >
           <LogoIcon />
-          ZJ
+          Zeeshan Junaid
         </Link>
 
         <div className="flex items-center space-x-3 lg:space-x-4">
@@ -72,9 +72,9 @@ export const Header = () => {
                 variant="ghost"
                 key={label}
                 className={cn(
-                  "font-switzer font-dark dark:font-light text-xs uppercase font-medium transition-color duration-200 hover:text-purple hover:bg-transparent rounded-lg px-3 py-2 h-8",
+                  "font-switzer font-dark dark:font-light text-sm uppercase font-medium transition-color duration-200 hover:text-purple hover:bg-transparent rounded-lg px-4 py-2 h-9",
                   pathname === link &&
-                    "bg-purple text-dark dark:text-light hover:text-dark dark:hover:text-light hover:bg-purple active:bg-purple focus:bg-purple",
+                    "bg-purple text-dark dark:text-light hover:text-dark dark:hover:text-light hover:bg-purple",
                 )}
                 asChild
               >
@@ -85,10 +85,7 @@ export const Header = () => {
             ))}
           </div>
           <NavMobile data={navLinks} />
-          <div className="flex items-center gap-x-2">
-            <ModeToggle />
-            <AuthButtons />
-          </div>
+          <AuthButtons />
         </div>
       </Container>
     </header>
