@@ -4,6 +4,7 @@ import { Analytics } from "@vercel/analytics/react";
 import BackToTop from "@/components/back-to-top";
 import { Footer } from "@/components/footer";
 import { Header } from "@/components/header";
+import Preloader from "@/components/preloader";
 import type { Metadata } from "next";
 import NextTopLoader from "nextjs-toploader";
 import ReachOut from "@/components/reach-out";
@@ -114,6 +115,7 @@ export default function RootLayout({
           />
 
           <Header />
+          <Preloader />
           <main className="pt-[100px]">
             {children}
             <ReachOut />
