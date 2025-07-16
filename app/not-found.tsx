@@ -45,24 +45,7 @@ export default function NotFound() {
                   Let&apos;s get you back on track
                 </h3>
 
-                {/* Quick Navigation Grid */}
-                <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mb-8">
-                  {quickLinks.map(({ label, href, icon: Icon }, index) => (
-                    <Link key={label} href={href}>
-                      <div className="group p-4 rounded-xl bg-light dark:bg-dark border border-lightBorderColor dark:border-darkBorderColor hover:border-purple/50 transition-all duration-200 hover:bg-purple/5 relative overflow-hidden">
-                        <BlurBG className="rounded-xl" />
-                        <div className="relative z-20">
-                          <Icon className="w-6 h-6 text-purple mx-auto mb-2 group-hover:scale-110 transition-transform duration-200" />
-                          <span className="text-sm font-medium text-dark dark:text-light group-hover:text-purple transition-colors duration-200">
-                            {label}
-                          </span>
-                        </div>
-                      </div>
-                    </Link>
-                  ))}
-                </div>
-
-                {/* Main CTA Buttons */}
+                {/* Simple CTA Buttons */}
                 <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
                   <Link href="/">
                     <Button
@@ -71,7 +54,7 @@ export default function NotFound() {
                       className="rounded-xl uppercase font-medium flex items-center gap-2"
                     >
                       <Home className="w-4 h-4" />
-                      Back to Home
+                      BACK TO HOME
                     </Button>
                   </Link>
 
@@ -82,42 +65,8 @@ export default function NotFound() {
                     onClick={() => window.history.back()}
                   >
                     <ArrowLeft className="w-4 h-4" />
-                    Go Back
+                    GO BACK
                   </Button>
-                </div>
-              </div>
-            </div>
-          </div>
-
-          {/* All Navigation Links */}
-          <div className="relative max-w-4xl mx-auto">
-            <div className="bg-light dark:bg-dark rounded-3xl p-6 md:p-8 relative overflow-hidden">
-              <BlurBG className="rounded-3xl" />
-              
-              <div className="relative z-20">
-                <h4 className="text-[18px] md:text-[20px] font-ao font-bold text-dark dark:text-light mb-6">
-                  Or explore all sections
-                </h4>
-                
-                <div className="flex flex-wrap justify-center gap-3">
-                  <Link href="/">
-                    <Button
-                      variant="ghost"
-                      className="rounded-xl text-dark dark:text-light hover:text-purple hover:bg-purple/20 font-medium uppercase text-sm"
-                    >
-                      Home
-                    </Button>
-                  </Link>
-                  {navLinks.map(({ link, label }) => (
-                    <Link key={label} href={link}>
-                      <Button
-                        variant="ghost"
-                        className="rounded-xl text-dark dark:text-light hover:text-purple hover:bg-purple/20 font-medium uppercase text-sm"
-                      >
-                        {label}
-                      </Button>
-                    </Link>
-                  ))}
                 </div>
               </div>
             </div>
