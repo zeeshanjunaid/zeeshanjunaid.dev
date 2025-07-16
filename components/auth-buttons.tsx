@@ -70,7 +70,7 @@ export function AuthButtons() {
   return (
     <div className="flex items-center gap-3">
       <ModeToggle />
-      <SignInButton mode="modal">
+      <Link href="/sign-in">
         <Button
           variant="purple"
           size="default"
@@ -78,7 +78,7 @@ export function AuthButtons() {
         >
           Sign In
         </Button>
-      </SignInButton>
+      </Link>
     </div>
   )
 }
