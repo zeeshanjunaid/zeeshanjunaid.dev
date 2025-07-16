@@ -22,7 +22,7 @@ export default function NotFound() {
         <div className="text-center">
           {/* Main 404 Display */}
           <div className="mb-8">
-            <h1 className="text-[120px] md:text-[180px] lg:text-[220px] font-bold font-ao text-dark dark:text-light leading-none mb-4">
+            <h1 className="text-[120px] md:text-[180px] lg:text-[220px] font-bold font-ao text-gradient leading-none mb-4">
               404
             </h1>
             <h2 className="text-[28px] md:text-[36px] lg:text-[44px] font-bold font-ao text-dark dark:text-light mb-4">
