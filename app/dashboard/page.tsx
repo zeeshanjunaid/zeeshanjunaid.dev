@@ -1,43 +1,27 @@
 import { currentUser } from '@clerk/nextjs/server'
 import { redirect } from 'next/navigation'
 import { Container } from '@/components/container'
-import { supabaseAdmin } from '@/lib/supabase'
+import { getUserByClerkId, getUserSubscriptions } from '@/lib/db-helpers'
 import type { User, Subscription } from '@/lib/types'
 
 export const metadata = {
   title: "Dashboard",
 }
 
-async function getUserData(clerkId: string): Promise<{ user: User | null, subscriptions: Subscription[] }> {
+async function getUserData(clerkId: string): Promise<{ dbUser: User | null, subscriptions: Subscription[] }> {
   try {
-    // Get user data
-    const { data: userData, error: userError } = await supabaseAdmin
-      .from('users')
-      .select('*')
-      .eq('clerk_id', clerkId)
-      .single()
+    const dbUser = await getUserByClerkId(clerkId)
 
-    if (userError) {
-      console.error('Error fetching user:', userError)
-      return { user: null, subscriptions: [] }
+    if (!dbUser) {
+      return { dbUser: null, subscriptions: [] }
     }
 
-    // Get user's subscriptions
-    const { data: subscriptionsData, error: subscriptionsError } = await supabaseAdmin
-      .from('subscriptions')
-      .select('*')
-      .eq('user_id', userData.id)
-      .order('created_at', { ascending: false })
+    const subscriptions = await getUserSubscriptions(dbUser.id)
 
-    if (subscriptionsError) {
-      console.error('Error fetching subscriptions:', subscriptionsError)
-      return { user: userData, subscriptions: [] }
-    }
-
-    return { user: userData, subscriptions: subscriptionsData || [] }
+    return { dbUser, subscriptions }
   } catch (error) {
     console.error('Error in getUserData:', error)
-    return { user: null, subscriptions: [] }
+    return { dbUser: null, subscriptions: [] }
   }
 }
 

@@ -1,7 +1,7 @@
 import { Webhook } from 'svix'
 import { headers } from 'next/headers'
 import { WebhookEvent } from '@clerk/nextjs/server'
-import { supabaseAdmin } from '@/lib/supabase'
+import { createUser, updateUser, deleteUser } from '@/lib/db-helpers'
 
 export async function POST(req: Request) {
   // Get the headers
@@ -53,22 +53,16 @@ export async function POST(req: Request) {
     }
 
     try {
-      // Create user in Supabase
-      const { data, error } = await supabaseAdmin
-        .from('users')
-        .insert({
-          clerk_id: id,
-          email: email,
-        })
-        .select()
-        .single()
+      const user = await createUser({
+        clerk_id: id,
+        email: email,
+      })
 
-      if (error) {
-        console.error('Error creating user in Supabase:', error)
+      if (!user) {
         return new Response('Error creating user', { status: 500 })
       }
 
-      console.log('User created successfully:', data)
+      console.log('User created successfully:', user)
     } catch (error) {
       console.error('Error in user creation:', error)
       return new Response('Internal server error', { status: 500 })
@@ -85,17 +79,9 @@ export async function POST(req: Request) {
     }
 
     try {
-      // Update user in Supabase
-      const { error } = await supabaseAdmin
-        .from('users')
-        .update({
-          email: email,
-          updated_at: new Date().toISOString(),
-        })
-        .eq('clerk_id', id)
+      const user = await updateUser(id, { email })
 
-      if (error) {
-        console.error('Error updating user in Supabase:', error)
+      if (!user) {
         return new Response('Error updating user', { status: 500 })
       }
 
@@ -110,14 +96,9 @@ export async function POST(req: Request) {
     const { id } = evt.data
 
     try {
-      // Delete user from Supabase (subscriptions will be cascade deleted)
-      const { error } = await supabaseAdmin
-        .from('users')
-        .delete()
-        .eq('clerk_id', id)
+      const success = await deleteUser(id)
 
-      if (error) {
-        console.error('Error deleting user from Supabase:', error)
+      if (!success) {
         return new Response('Error deleting user', { status: 500 })
       }
 

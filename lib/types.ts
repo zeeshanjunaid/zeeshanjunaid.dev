@@ -1,23 +1,12 @@
-export interface User {
-  id: string
-  clerk_id: string
-  email: string
-  stripe_customer_id?: string
-  created_at: string
-  updated_at: string
-}
+import { Database } from './supabase'
 
-export interface Subscription {
-  id: string
-  user_id: string
-  plan_name: string
-  status: 'active' | 'canceled' | 'past_due' | 'incomplete' | 'trialing'
-  current_period_end?: string
-  payment_method: 'stripe' | 'crypto'
-  stripe_subscription_id?: string
-  created_at: string
-  updated_at: string
-}
+export type User = Database['public']['Tables']['users']['Row']
+export type UserInsert = Database['public']['Tables']['users']['Insert']
+export type UserUpdate = Database['public']['Tables']['users']['Update']
+
+export type Subscription = Database['public']['Tables']['subscriptions']['Row']
+export type SubscriptionInsert = Database['public']['Tables']['subscriptions']['Insert']
+export type SubscriptionUpdate = Database['public']['Tables']['subscriptions']['Update']
 
 export interface PricingTier {
   id: string
