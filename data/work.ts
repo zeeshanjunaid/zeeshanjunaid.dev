@@ -10,6 +10,20 @@ export interface Project {
 }
 const ProjectsList: Project[] = [
   {
+    name: "Aumentogram",
+    imgUrl: "/images/projects/leoboost.jpg",
+    link: "https://www.aumentogram.com",
+    year: 2024,
+    tags: ["ui/ux", "frontend", "backend"],
+  },
+  {
+    name: "Healing from grief",
+    imgUrl: "/images/projects/audrey.jpg",
+    link: "healingfromgrief.org",
+    year: 2024,
+    tags: ["ui/ux", "frontend", "backend"],
+  },
+  {
     name: "Pure Energy Dance",
     imgUrl: "/images/projects/pure-energydance.jpg",
     link: "https://pure-energydance.com",

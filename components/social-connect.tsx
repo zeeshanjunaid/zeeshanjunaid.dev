@@ -16,7 +16,7 @@ export function SocialLinks() {
   const socialLinks = [
     {
       name: "upwork",
-      link: "https://www.upwork.com/freelancers/zeshanjunaid",
+      link: "https://www.upwork.com/freelancers/zeeshanjunaid",
       icon: <TbBrandUpwork className={styles} />,
     },
     {
