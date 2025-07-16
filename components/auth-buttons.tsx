@@ -16,7 +16,7 @@ export function AuthButtons() {
           <Button
             variant="ghost"
             size="default"
-            className="text-dark dark:text-light hover:text-purple hover:bg-transparent rounded-lg text-sm px-4 py-2 h-9 uppercase font-medium"
+            className="text-dark dark:text-light hover:text-purple hover:bg-transparent rounded-lg text-sm px-4 py-2 h-9 font-medium"
           >
             <Settings className="w-4 h-4 mr-2" />
             Dashboard
@@ -45,9 +45,9 @@ export function AuthButtons() {
         <Button
           variant="purple"
           size="default"
-          className="rounded-lg text-sm px-6 py-2 h-9 uppercase font-medium"
+          className="rounded-lg text-sm px-6 py-2 h-9 font-medium"
         >
-          Join / Login
+          Sign In
         </Button>
       </SignInButton>
     </div>

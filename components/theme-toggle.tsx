@@ -1,41 +1,88 @@
 "use client";
 
 import * as React from "react";
-
-import {
-  DropdownMenu,
-  DropdownMenuContent,
-  DropdownMenuItem,
-  DropdownMenuTrigger,
-} from "@/components/ui/dropdown-menu";
 import { Moon, Sun } from "lucide-react";
-
-import { Button } from "@/components/ui/button";
 import { useTheme } from "next-themes";
+import { Button } from "@/components/ui/button";
+import { cn } from "@/lib/utils";
 
 export function ModeToggle() {
-  const { setTheme } = useTheme();
+  const { theme, setTheme } = useTheme();
+  const [mounted, setMounted] = React.useState(false);
+
+  React.useEffect(() => {
+    setMounted(true);
+  }, []);
+
+  if (!mounted) {
+    return (
+      <div className="relative">
+        <Button
+          variant="ghost"
+          size="icon"
+          className="w-9 h-9 rounded-lg bg-light dark:bg-dark border border-lightBorderColor dark:border-darkBorderColor"
+          disabled
+        >
+          <Sun className="h-4 w-4" />
+        </Button>
+      </div>
+    );
+  }
+
+  const isDark = theme === "dark";
 
   return (
-    <DropdownMenu>
-      <DropdownMenuTrigger asChild className="relative w-[36px] h-[36px] hover:bg-purple/40">
-        <Button variant="ghost" size="icon" className="rounded-lg w-9 h-9">
-          <Sun className="text-dark dark:text-light h-4 w-4 rotate-0 scale-100 transition-all dark:-rotate-90 dark:scale-0" />
-          <Moon className="text-dark dark:text-light absolute h-4 w-4 rotate-90 scale-0 transition-all dark:rotate-0 dark:scale-100" />
-          <span className="sr-only">Toggle theme</span>
-        </Button>
-      </DropdownMenuTrigger>
-      <DropdownMenuContent align="end">
-        <DropdownMenuItem onClick={() => setTheme("light")}>
-          Light
-        </DropdownMenuItem>
-        <DropdownMenuItem onClick={() => setTheme("dark")}>
-          Dark
-        </DropdownMenuItem>
-        {/* <DropdownMenuItem onClick={() => setTheme("system")}>
-          System
-        </DropdownMenuItem> */}
-      </DropdownMenuContent>
-    </DropdownMenu>
+    <div className="relative">
+      <Button
+        variant="ghost"
+        size="icon"
+        onClick={() => setTheme(isDark ? "light" : "dark")}
+        className={cn(
+          "w-9 h-9 rounded-lg transition-all duration-300 relative overflow-hidden",
+          "bg-light dark:bg-dark border border-lightBorderColor dark:border-darkBorderColor",
+          "hover:bg-purple/10 hover:border-purple/30"
+        )}
+      >
+        {/* Background gradient that shifts */}
+        <div
+          className={cn(
+            "absolute inset-0 transition-all duration-500 rounded-lg",
+            isDark
+              ? "bg-gradient-to-br from-slate-800 to-slate-900"
+              : "bg-gradient-to-br from-amber-50 to-orange-100"
+          )}
+        />
+        
+        {/* Icons container */}
+        <div className="relative z-10 flex items-center justify-center">
+          <Sun
+            className={cn(
+              "h-4 w-4 transition-all duration-300 absolute",
+              isDark
+                ? "rotate-90 scale-0 text-amber-500"
+                : "rotate-0 scale-100 text-amber-600"
+            )}
+          />
+          <Moon
+            className={cn(
+              "h-4 w-4 transition-all duration-300 absolute",
+              isDark
+                ? "rotate-0 scale-100 text-slate-300"
+                : "-rotate-90 scale-0 text-slate-600"
+            )}
+          />
+        </div>
+
+        {/* Subtle glow effect */}
+        <div
+          className={cn(
+            "absolute inset-0 rounded-lg transition-opacity duration-300",
+            isDark
+              ? "bg-blue-500/10 opacity-100"
+              : "bg-amber-500/10 opacity-100"
+          )}
+        />
+      </Button>
+    </div>
   );
 }
