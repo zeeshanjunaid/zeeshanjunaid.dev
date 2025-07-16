@@ -7,7 +7,6 @@ import { Button } from "./ui/button";
 import { DownloadCloud } from "lucide-react";
 import { RiLinkedinLine } from "react-icons/ri";
 import { cn } from "@/lib/utils";
-import { motion } from "framer-motion";
 
 export function SocialLinks() {
 
@@ -29,32 +28,21 @@ export function SocialLinks() {
   return (
     <>
       {socialLinks.map(({ name, link, icon }, index) => (
-        // <TooltipProvider >
-        //   <Tooltip>
-        //     <TooltipTrigger>
-        <motion.a 
+        <a 
           key={name} 
           href={link} 
           target="_blank" 
           rel="noopener noreferrer"
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ delay: index * 0.1 }}
-          whileHover={{ 
-            scale: 1.1,
-            rotate: 5,
-          }}
-          whileTap={{ scale: 0.95 }}
         >
           <Button
             aria-label={name}
             role="link"
             size="icon"
-            className="rounded-xl h-12 w-12 transition-all duration-200 hover:shadow-lg hover:shadow-purple/25"
+            className="rounded-xl h-12 w-12"
           >
             {icon}
           </Button>
-        </motion.a>
+        </a>
       ))}
     </>
   );
