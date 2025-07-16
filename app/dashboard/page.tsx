@@ -1,4 +1,4 @@
-import { auth } from '@clerk/nextjs/server'
+import { currentUser } from '@clerk/nextjs/server'
 import { redirect } from 'next/navigation'
 import { Container } from '@/components/container'
 import { supabaseAdmin } from '@/lib/supabase'
@@ -42,15 +42,15 @@ async function getUserData(clerkId: string): Promise<{ user: User | null, subscr
 }
 
 export default async function DashboardPage() {
-  const { userId } = auth()
+  const user = await currentUser()
   
-  if (!userId) {
+  if (!user) {
     redirect('/sign-in')
   }
 
-  const { user, subscriptions } = await getUserData(userId)
+  const { user: dbUser, subscriptions } = await getUserData(user.id)
 
-  if (!user) {
+  if (!dbUser) {
     return (
       <Container className="px-4 lg:px-0 py-12">
         <div className="text-center">
@@ -87,10 +87,10 @@ export default async function DashboardPage() {
             </h2>
             <div className="space-y-2">
               <p className="text-dark dark:text-light">
-                <span className="font-medium">Email:</span> {user.email}
+                <span className="font-medium">Email:</span> {dbUser.email}
               </p>
               <p className="text-dark dark:text-light">
-                <span className="font-medium">Member since:</span> {new Date(user.created_at).toLocaleDateString()}
+                <span className="font-medium">Member since:</span> {new Date(dbUser.created_at).toLocaleDateString()}
               </p>
             </div>
           </div>
