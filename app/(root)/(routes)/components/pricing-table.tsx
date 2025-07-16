@@ -112,9 +112,9 @@ const PricingTable = () => {
             >
               <span className="flex items-center justify-center gap-2">
                 <svg className="w-4 h-4" viewBox="0 0 24 24" fill="currentColor">
-                  <path d="M2 12C2 6.48 6.48 2 12 2s10 4.48 10 10-4.48 10-10 10S2 17.52 2 12zm4.64-1.96l3.54 3.54c.78.78 2.05.78 2.83 0l7.07-7.07c.78-.78.78-2.05 0-2.83-.78-.78-2.05-.78-2.83 0L12 9.93 8.75 6.68c-.78-.78-2.05-.78-2.83 0-.78.78-.78 2.05 0 2.83z"/>
+                  <path d="M20 4H4c-1.11 0-1.99.89-1.99 2L2 18c0 1.11.89 2 2 2h16c1.11 0 2-.89 2-2V6c0-1.11-.89-2-2-2zm0 14H4v-6h16v6zm0-10H4V6h16v2z"/>
                 </svg>
-                Card (Stripe)
+                Credit Card
               </span>
             </button>
             <button
@@ -123,14 +123,14 @@ const PricingTable = () => {
                 "px-6 py-3 rounded-lg text-sm font-medium transition-all duration-300 relative z-20 flex-1 text-center",
                 paymentMethod === "crypto"
                   ? "text-white"
-                  : "text-dark dark:text-light hover:bg-purple/20"
+                  : "text-dark dark:text-light"
               )}
             >
               <span className="flex items-center justify-center gap-2">
                 <svg className="w-4 h-4" viewBox="0 0 24 24" fill="currentColor">
-                  <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/>
+                  <path d="M12 2L2 7v10c0 5.55 3.84 9.74 9 11 5.16-1.26 9-5.45 9-11V7l-10-5z"/>
                 </svg>
-                Crypto (Coinbase)
+                Cryptocurrency
               </span>
             </button>
           </div>
@@ -212,7 +212,7 @@ const PricingTable = () => {
       <div className="text-center mt-8">
         <p className="text-dark/70 dark:text-light/70 text-sm">
           All plans include a 7-day free trial. Cancel anytime. 
-          {paymentMethod === "crypto" && " Crypto payments are processed securely through Coinbase Commerce."}
+          {paymentMethod === "crypto" && " Cryptocurrency payments are processed securely."}
         </p>
       </div>
     </div>
