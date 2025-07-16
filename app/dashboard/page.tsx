@@ -1,38 +1,54 @@
-import { currentUser } from '@clerk/nextjs/server'
-import { redirect } from 'next/navigation'
-import { Container } from '@/components/container'
-import { getUserByClerkId, getUserSubscriptions } from '@/lib/db-helpers'
-import type { User, Subscription } from '@/lib/types'
+import { currentUser } from "@clerk/nextjs/server";
+import { redirect } from "next/navigation";
+import { Container } from "@/components/container";
+import {
+  getUserByClerkId,
+  getUserSubscriptions,
+  getUserTasks,
+} from "@/lib/db-helpers";
+import type { User, Subscription, Task } from "@/lib/types";
+import Link from "next/link";
+import { Button } from "@/components/ui/button";
 
 export const metadata = {
   title: "Dashboard",
-}
+};
 
-async function getUserData(clerkId: string): Promise<{ dbUser: User | null, subscriptions: Subscription[] }> {
+// Helper function to fetch all necessary data for the dashboard
+async function getDashboardData(clerkId: string): Promise<{
+  dbUser: User | null;
+  subscriptions: Subscription[];
+  tasks: Task[];
+}> {
   try {
-    const dbUser = await getUserByClerkId(clerkId)
+    const dbUser = await getUserByClerkId(clerkId);
 
     if (!dbUser) {
-      return { dbUser: null, subscriptions: [] }
+      return { dbUser: null, subscriptions: [], tasks: [] };
     }
 
-    const subscriptions = await getUserSubscriptions(dbUser.id)
+    // Fetch subscriptions and tasks in parallel for better performance
+    const [subscriptions, tasks] = await Promise.all([
+      getUserSubscriptions(dbUser.id),
+      getUserTasks(dbUser.id),
+    ]);
 
-    return { dbUser, subscriptions }
+    return { dbUser, subscriptions, tasks };
   } catch (error) {
-    console.error('Error in getUserData:', error)
-    return { dbUser: null, subscriptions: [] }
+    console.error("Error in getDashboardData:", error);
+    return { dbUser: null, subscriptions: [], tasks: [] };
   }
 }
 
 export default async function DashboardPage() {
-  const user = await currentUser()
-  
+  const user = await currentUser();
+
   if (!user) {
-    redirect('/sign-in')
+    redirect("/sign-in");
   }
 
-  const { user: dbUser, subscriptions } = await getUserData(user.id)
+  // Correctly destructure the object returned by the helper function
+  const { dbUser, subscriptions, tasks } = await getDashboardData(user.id);
 
   if (!dbUser) {
     return (
@@ -42,11 +58,12 @@ export default async function DashboardPage() {
             User not found
           </h1>
           <p className="text-dark/70 dark:text-light/70">
-            There was an issue loading your account. Please try again.
+            There was an issue loading your account data. This can sometimes
+            happen right after signing up. Please try refreshing the page.
           </p>
         </div>
       </Container>
-    )
+    );
   }
 
   return (
@@ -58,7 +75,8 @@ export default async function DashboardPage() {
             Dashboard
           </h1>
           <p className="text-dark/70 dark:text-light/70 mt-2">
-            Welcome back! Manage your subscriptions and account settings.
+            Welcome back, {user.firstName || dbUser.email}! Manage your
+            subscriptions and tasks.
           </p>
         </div>
 
@@ -74,7 +92,8 @@ export default async function DashboardPage() {
                 <span className="font-medium">Email:</span> {dbUser.email}
               </p>
               <p className="text-dark dark:text-light">
-                <span className="font-medium">Member since:</span> {new Date(dbUser.created_at).toLocaleDateString()}
+                <span className="font-medium">Member since:</span>{" "}
+                {new Date(dbUser.created_at).toLocaleDateString()}
               </p>
             </div>
           </div>
@@ -87,23 +106,22 @@ export default async function DashboardPage() {
             <h2 className="text-xl font-bold font-ao text-dark dark:text-light mb-4">
               Your Subscriptions
             </h2>
-            
+
             {subscriptions.length === 0 ? (
               <div className="text-center py-8">
                 <p className="text-dark/70 dark:text-light/70 mb-4">
-                  You don't have any active subscriptions yet.
+                  You don&apos;t have any active subscriptions yet.
                 </p>
-                <a 
-                  href="/hire-me"
-                  className="inline-flex items-center px-6 py-3 bg-purple text-dark dark:text-light rounded-xl font-medium hover:bg-purple/80 transition-colors"
-                >
-                  Browse Plans
-                </a>
+                <Link href="/hire-me">
+                  <Button variant="purple" className="rounded-xl">
+                    Browse Plans
+                  </Button>
+                </Link>
               </div>
             ) : (
               <div className="space-y-4">
                 {subscriptions.map((subscription) => (
-                  <div 
+                  <div
                     key={subscription.id}
                     className="border border-lightBorderColor dark:border-darkBorderColor rounded-xl p-4"
                   >
@@ -113,22 +131,26 @@ export default async function DashboardPage() {
                           {subscription.plan_name}
                         </h3>
                         <p className="text-sm text-dark/70 dark:text-light/70 capitalize">
-                          Status: {subscription.status}
-                        </p>
-                        <p className="text-sm text-dark/70 dark:text-light/70 capitalize">
                           Payment: {subscription.payment_method}
                         </p>
                         {subscription.current_period_end && (
                           <p className="text-sm text-dark/70 dark:text-light/70">
-                            Next billing: {new Date(subscription.current_period_end).toLocaleDateString()}
+                            {subscription.status === "active"
+                              ? "Renews on:"
+                              : "Expired on:"}{" "}
+                            {new Date(
+                              subscription.current_period_end
+                            ).toLocaleDateString()}
                           </p>
                         )}
                       </div>
-                      <span className={`px-3 py-1 rounded-full text-xs font-medium ${
-                        subscription.status === 'active' 
-                          ? 'bg-green-100 text-green-800 dark:bg-green-900 dark:text-green-200'
-                          : 'bg-red-100 text-red-800 dark:bg-red-900 dark:text-red-200'
-                      }`}>
+                      <span
+                        className={`px-3 py-1 rounded-full text-xs font-medium capitalize ${
+                          subscription.status === "active"
+                            ? "bg-green-100 text-green-800 dark:bg-green-900 dark:text-green-200"
+                            : "bg-red-100 text-red-800 dark:bg-red-900 dark:text-red-200"
+                        }`}
+                      >
                         {subscription.status}
                       </span>
                     </div>
@@ -146,17 +168,18 @@ export default async function DashboardPage() {
             <h2 className="text-xl font-bold font-ao text-dark dark:text-light mb-4">
               Your Tasks
             </h2>
-            
+
             {tasks.length === 0 ? (
               <div className="text-center py-8">
                 <p className="text-dark/70 dark:text-light/70 mb-4">
-                  No tasks assigned yet. Once you subscribe to a plan, I'll create tasks for your project.
+                  No tasks assigned yet. Once you subscribe to a plan, tasks for
+                  your project will appear here.
                 </p>
               </div>
             ) : (
               <div className="space-y-4">
                 {tasks.map((task) => (
-                  <div 
+                  <div
                     key={task.id}
                     className="border border-lightBorderColor dark:border-darkBorderColor rounded-xl p-4"
                   >
@@ -164,13 +187,15 @@ export default async function DashboardPage() {
                       <h3 className="font-medium text-dark dark:text-light">
                         {task.title}
                       </h3>
-                      <span className={`px-3 py-1 rounded-full text-xs font-medium ${
-                        task.status === 'Completed' 
-                          ? 'bg-green-100 text-green-800 dark:bg-green-900 dark:text-green-200'
-                          : task.status === 'In Progress'
-                          ? 'bg-blue-100 text-blue-800 dark:bg-blue-900 dark:text-blue-200'
-                          : 'bg-yellow-100 text-yellow-800 dark:bg-yellow-900 dark:text-yellow-200'
-                      }`}>
+                      <span
+                        className={`px-3 py-1 rounded-full text-xs font-medium ${
+                          task.status === "Completed"
+                            ? "bg-green-100 text-green-800 dark:bg-green-900 dark:text-green-200"
+                            : task.status === "In Progress"
+                            ? "bg-blue-100 text-blue-800 dark:bg-blue-900 dark:text-blue-200"
+                            : "bg-yellow-100 text-yellow-800 dark:bg-yellow-900 dark:text-yellow-200"
+                        }`}
+                      >
                         {task.status}
                       </span>
                     </div>
@@ -190,5 +215,5 @@ export default async function DashboardPage() {
         </div>
       </div>
     </Container>
-  )
+  );
 }

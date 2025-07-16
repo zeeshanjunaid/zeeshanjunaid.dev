@@ -21,9 +21,10 @@ const HireMePage = () => {
               Choose Your Plan
             </h2>
             <p className="font-light text-[16px] md:text-[18px] lg:text-[20px] leading-snug">
-              Select the perfect subscription tier that matches your project needs. 
-              From ongoing maintenance to full-scale development, I've got you covered 
-              with flexible plans designed to grow with your business.
+              Select the perfect subscription tier that matches your project
+              needs. From ongoing maintenance to full-scale development,
+              I&apos;ve got you covered with flexible plans designed to grow
+              with your business.
             </p>
           </div>
         </Container>
