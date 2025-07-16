@@ -62,6 +62,7 @@ const AboutHero = () => {
               giving back to the community and often participate in tech meetups
               and conferences, sharing insights and learning from peers. My
               career is more than just a job; it&apos;s a journey of passion,
+              career is more than just a job; it&apos;s a journey of passion,
               innovation, and continuous growth.
             </p>
           </div>

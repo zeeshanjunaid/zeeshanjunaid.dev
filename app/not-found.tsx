@@ -75,7 +75,7 @@ export default function NotFound() {
           {/* Footer Message */}
           <div className="mt-8">
             <p className="text-sm text-dark/50 dark:text-light/50 font-light">
-              {"Not all who wander are lost, but this page definitely is."}
+              Not all who wander are lost, but this page definitely is.
             </p>
           </div>
         </div>
