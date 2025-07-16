@@ -44,7 +44,7 @@ export const Hero = () => {
             </h1>
           </div>
           <div className="flex items-center space-x-3 min-w-max justify-start z-20 relative">
-            <Link href="/contact">
+            <Link href="/hire-me">
               <Button
                 className="h-12 rounded-xl uppercase"
                 size="lg"
@@ -71,7 +71,7 @@ export const Hero = () => {
           </div>
         </div>
         <div className="flex flex-col sm:flex-row lg:hidden items-center gap-2 min-w-max justify-center">
-          <Link href="/contact">
+          <Link href="/hire-me">
             <Button className="rounded-xl uppercase" size="lg" variant="purple">
               Start a Project
             </Button>
