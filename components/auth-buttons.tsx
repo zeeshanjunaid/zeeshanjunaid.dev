@@ -4,6 +4,7 @@ import { SignInButton, SignUpButton, UserButton, useUser } from '@clerk/nextjs'
 import { Button } from './ui/button'
 import Link from 'next/link'
 import { User, Settings } from 'lucide-react'
+import { ModeToggle } from './theme-toggle'
 
 export function AuthButtons() {
   const { isSignedIn, user } = useUser()
