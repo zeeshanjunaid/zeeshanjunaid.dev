@@ -1,4 +1,4 @@
-import { BsSkype, BsWhatsapp } from "react-icons/bs";
+import { BsWhatsapp } from "react-icons/bs";
 import { Mail, Phone, PhoneCall } from "lucide-react";
 
 import ContactForm from "../components/contact-form";
@@ -41,7 +41,7 @@ const ContactPage = () => {
             <div className="flex items-center justify-start gap-x-1.5">
               <Phone size={18} />
               <CustomLink
-                text="+92 340 856 3525"
+                text="+923408563525"
                 link="tel:+923408563525"
                 className="text-[16px] md:text-[18px] lg:text-5 font-switzer text-dark dark:text-light"
               />
@@ -49,16 +49,8 @@ const ContactPage = () => {
             <div className="flex items-center justify-start gap-x-1.5">
               <BsWhatsapp size={18} />
               <CustomLink
-                text="+92 340 856 3525"
+                text="+923408563525"
                 link="whatsapp://send?phone=923408563525"
-                className="text-[16px] md:text-[18px] lg:text-5 font-switzer text-dark dark:text-light"
-              />
-            </div>
-            <div className="flex items-center justify-start gap-x-1.5">
-              <BsSkype size={18} />
-              <CustomLink
-                text="zeeshan_junaid"
-                link="skype:zeeshan_junaid"
                 className="text-[16px] md:text-[18px] lg:text-5 font-switzer text-dark dark:text-light"
               />
             </div>
