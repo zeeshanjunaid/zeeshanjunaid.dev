@@ -61,8 +61,8 @@ export async function POST(req: Request) {
 
   // Handle user creation
   if (eventType === "user.created") {
-    const { id, email_addresses } = evt.data;
-    const email = email_addresses[0]?.email_address;
+    const { id, email_addresses, first_name, last_name } = evt.data;
+    const email = email_addresses?.[0]?.email_address;
 
     if (!email) {
       console.error("No email found for user:", id);
@@ -76,6 +76,7 @@ export async function POST(req: Request) {
       });
 
       if (!user) {
+        console.error("Failed to create user in database for:", id, email);
         return new Response("Error creating user in database", { status: 500 });
       }
 
@@ -86,6 +87,7 @@ export async function POST(req: Request) {
       );
     } catch (error) {
       console.error("Error in user creation:", error);
+      console.error("User data:", { id, email });
       return new Response("Internal server error during user creation", {
         status: 500,
       });
@@ -95,7 +97,7 @@ export async function POST(req: Request) {
   // Handle user updates
   if (eventType === "user.updated") {
     const { id, email_addresses } = evt.data;
-    const email = email_addresses[0]?.email_address;
+    const email = email_addresses?.[0]?.email_address;
 
     if (!email) {
       console.error("No email found for user update:", id);
@@ -123,10 +125,10 @@ export async function POST(req: Request) {
   if (eventType === "user.deleted") {
     // Note: Clerk might send a user.deleted event for a user that was never created in your DB,
     // for example, if the user was deleted from the Clerk dashboard before the initial webhook succeeded.
-    const { id, deleted } = evt.data;
+    const { id } = evt.data;
 
     // The `id` can be undefined for deleted events, so we must check for it.
-    if (!id || !deleted) {
+    if (!id) {
       return new Response("Error: Invalid payload for user deletion", {
         status: 400,
       });

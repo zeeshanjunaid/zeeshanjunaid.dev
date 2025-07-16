@@ -53,14 +53,22 @@ export default async function DashboardPage() {
   if (!dbUser) {
     return (
       <Container className="px-4 lg:px-0 py-12">
-        <div className="text-center">
+        <div className="text-center space-y-6">
           <h1 className="text-2xl font-bold text-dark dark:text-light mb-4">
-            User not found
+            Setting up your account...
           </h1>
           <p className="text-dark/70 dark:text-light/70">
-            There was an issue loading your account data. This can sometimes
-            happen right after signing up. Please try refreshing the page.
+            We're setting up your account. This usually takes just a moment.
           </p>
+          <div className="flex justify-center">
+            <Button 
+              onClick={() => window.location.reload()} 
+              variant="purple" 
+              className="rounded-xl"
+            >
+              Refresh Page
+            </Button>
+          </div>
         </div>
       </Container>
     );

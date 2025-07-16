@@ -97,6 +97,74 @@ export default function RootLayout({
           switzer.variable,
         )}
       >
+          appearance={{
+            baseTheme: undefined,
+            elements: {
+              // Modal and card styling
+              modalContent: `
+                bg-light dark:bg-dark 
+                border border-lightBorderColor dark:border-darkBorderColor 
+                rounded-3xl
+              `,
+              card: `
+                bg-light dark:bg-dark 
+                border border-lightBorderColor dark:border-darkBorderColor 
+                rounded-3xl shadow-lg
+              `,
+              
+              // Header styling
+              headerTitle: "text-dark dark:text-light font-ao text-2xl font-bold",
+              headerSubtitle: "text-dark/70 dark:text-light/70 font-light",
+              
+              // Form elements
+              formFieldLabel: "text-dark dark:text-light font-medium",
+              formFieldInput: `
+                bg-light dark:bg-dark 
+                border border-lightBorderColor dark:border-darkBorderColor 
+                text-dark dark:text-light 
+                rounded-xl
+                focus:border-purple focus:ring-purple
+              `,
+              
+              // Buttons
+              formButtonPrimary: `
+                bg-purple hover:bg-purple/80 
+                text-dark dark:text-light 
+                rounded-xl font-medium
+                transition-colors duration-200
+              `,
+              
+              // Social buttons
+              socialButtonsBlockButton: `
+                bg-light dark:bg-dark 
+                border border-lightBorderColor dark:border-darkBorderColor 
+                text-dark dark:text-light 
+                rounded-xl
+                hover:bg-purple/10 hover:border-purple/30
+                transition-all duration-200
+              `,
+              socialButtonsBlockButtonText: "text-dark dark:text-light font-medium",
+              
+              // Links and text
+              footerActionLink: "text-purple hover:text-purple/80",
+              identityPreviewText: "text-dark dark:text-light",
+              identityPreviewEditButton: "text-purple hover:text-purple/80",
+              
+              // Dividers
+              dividerLine: "bg-lightBorderColor dark:bg-darkBorderColor",
+              dividerText: "text-dark/50 dark:text-light/50",
+              
+              // Alert and error messages
+              alertText: "text-red-600 dark:text-red-400",
+              formFieldErrorText: "text-red-600 dark:text-red-400",
+              
+              // Loading states
+              spinner: "text-purple",
+              
+              // Footer
+              footer: "text-dark/70 dark:text-light/70"
+            }
+          }}
         <ClerkProvider>
           <ThemeProvider attribute="class" defaultTheme="dark">
             <NextTopLoader
