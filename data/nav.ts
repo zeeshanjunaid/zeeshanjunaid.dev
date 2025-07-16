@@ -1,9 +1,8 @@
 const navLinks = [
   { label: "About", link: "/about" },
-  { label: "Services", link: "/services" },
   { label: "Work", link: "/work" },
-  { label: "Feedback", link: "/reviews" },
-  { label: "Hire Me", link: "/hire-me" },
+  { label: "Services", link: "/services" },
+  { label: "Reviews", link: "/reviews" },
   { label: "Contact", link: "/contact" },
 ];
 

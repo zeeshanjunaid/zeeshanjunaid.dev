@@ -10,21 +10,21 @@ export function AuthButtons() {
 
   if (isSignedIn) {
     return (
-      <div className="flex items-center gap-3">
+      <div className="flex items-center gap-2">
         <Link href="/dashboard">
           <Button
             variant="ghost"
             size="sm"
-            className="text-dark dark:text-light hover:text-purple hover:bg-transparent rounded-xl"
+            className="text-dark dark:text-light hover:text-purple hover:bg-transparent rounded-lg text-xs px-2 py-1 h-7"
           >
-            <Settings className="w-4 h-4 mr-2" />
-            Dashboard
+            <Settings className="w-3 h-3 mr-1" />
+            Dash
           </Button>
         </Link>
         <UserButton 
           appearance={{
             elements: {
-              avatarBox: "w-8 h-8",
+              avatarBox: "w-7 h-7",
               userButtonPopoverCard: "bg-light dark:bg-dark border border-lightBorderColor dark:border-darkBorderColor",
               userButtonPopoverActionButton: "text-dark dark:text-light hover:bg-purple/20",
               userButtonPopoverActionButtonText: "text-dark dark:text-light",
@@ -37,23 +37,23 @@ export function AuthButtons() {
   }
 
   return (
-    <div className="flex items-center gap-2">
+    <div className="flex items-center gap-1">
       <SignInButton mode="modal">
         <Button
           variant="ghost"
           size="sm"
-          className="text-dark dark:text-light hover:text-purple hover:bg-transparent rounded-xl"
+          className="text-dark dark:text-light hover:text-purple hover:bg-transparent rounded-lg text-xs px-2 py-1 h-7"
         >
-          Sign In
+          Login
         </Button>
       </SignInButton>
       <SignUpButton mode="modal">
         <Button
           variant="purple"
           size="sm"
-          className="rounded-xl"
+          className="rounded-lg text-xs px-2 py-1 h-7"
         >
-          Sign Up
+          Join
         </Button>
       </SignUpButton>
     </div>

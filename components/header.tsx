@@ -52,29 +52,29 @@ export const Header = () => {
       // animate={{ opacity: 1 }}
       // transition={{ ease: "easeInOut", duration: 0.2, delay: 0.2 }}
       className={cn(
-        "fixed z-40 top-0 left-0 right-0 w-full px-4 md:px-8 lg:px-0 pt-6 pb-4 border-b-[1px] border-b-transparent transition-all duration-200 bg-transparent",
+        "fixed z-40 top-0 left-0 right-0 w-full px-4 md:px-8 lg:px-0 pt-4 pb-4 border-b-[1px] border-b-transparent transition-all duration-200 bg-transparent",
         scrolledClasses,
       )}
     >
       <Container className="flex items-center justify-between">
         <Link
-          className="font-ao text-lg lg:text-xl text-dark dark:text-light font-bold tracking-tighter flex items-center gap-x-2 header-logo"
+          className="font-ao text-base lg:text-lg text-dark dark:text-light font-bold tracking-tight flex items-center gap-x-2 header-logo"
           href="/"
         >
           <LogoIcon />
-          Zeeshan Junaid
+          ZJ
         </Link>
 
-        <div className="flex items-center space-x-5 ">
-          <div className="hidden lg:flex items-center gap-x-3">
+        <div className="flex items-center space-x-3 lg:space-x-4">
+          <div className="hidden lg:flex items-center gap-x-1">
             {navLinks.map(({ link, label }) => (
               <Button
                 variant="ghost"
                 key={label}
                 className={cn(
-                  "font-switzer font-dark dark:font-light text-sm uppercase font-medium transition-color duration-200 hover:text-purple hover:bg-transparent rounded-xl",
+                  "font-switzer font-dark dark:font-light text-xs uppercase font-medium transition-color duration-200 hover:text-purple hover:bg-transparent rounded-lg px-3 py-2 h-8",
                   pathname === link &&
-                    "bg-purple text-dark dark:text-light hover:text-dark dark:hover:text-light hover:bg-purple active:bg-purple focus:bg-purple ",
+                    "bg-purple text-dark dark:text-light hover:text-dark dark:hover:text-light hover:bg-purple active:bg-purple focus:bg-purple",
                 )}
                 asChild
               >
@@ -85,8 +85,10 @@ export const Header = () => {
             ))}
           </div>
           <NavMobile data={navLinks} />
-          <ModeToggle />
-          <AuthButtons />
+          <div className="flex items-center gap-x-2">
+            <ModeToggle />
+            <AuthButtons />
+          </div>
         </div>
       </Container>
     </header>
