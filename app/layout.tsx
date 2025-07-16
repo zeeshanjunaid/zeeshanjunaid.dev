@@ -97,6 +97,7 @@ export default function RootLayout({
           switzer.variable,
         )}
       >
+        <ClerkProvider
           appearance={{
             baseTheme: undefined,
             elements: {
@@ -165,7 +166,7 @@ export default function RootLayout({
               footer: "text-dark/70 dark:text-light/70"
             }
           }}
-        <ClerkProvider>
+        >
           <ThemeProvider attribute="class" defaultTheme="dark">
             <NextTopLoader
               color="#A374FF"
