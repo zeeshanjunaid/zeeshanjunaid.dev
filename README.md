@@ -1,37 +1,92 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# Zeeshan Junaid's Portfolio Website
+
+This is the repository for my personal portfolio website, where I showcase my work, skills, and experience as a UI/UX Designer and Frontend Developer.
+
+## About The Project
+
+This project is a personal portfolio website built with [Next.js](https://nextjs.org/) and deployed on [Vercel](https://vercel.com/). It's designed to be a clean, modern, and performant showcase of my projects and abilities.
+
+### Built With
+
+- [Next.js](https://nextjs.org/)
+- [React](https://reactjs.org/)
+- [TypeScript](https://www.typescriptlang.org/)
+- [Tailwind CSS](https://tailwindcss.com/)
+- [Framer Motion](https://www.framer.com/motion/)
 
 ## Getting Started
 
-First, run the development server:
+To get a local copy up and running, follow these simple steps.
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+### Prerequisites
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+You need to have Node.js and npm (or yarn/pnpm/bun) installed on your machine.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+### Installation
 
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
+1.  Clone the repo
+    ```sh
+    git clone [https://github.com/zeeshanjunaid/zeeshanjunaid.dev.git](https://github.com/zeeshanjunaid/zeeshanjunaid.dev.git)
+    ```
+2.  Install NPM packages
+    ```sh
+    npm install
+    ```
 
-## Learn More
+## Available Scripts
 
-To learn more about Next.js, take a look at the following resources:
+In the project directory, you can run:
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+### `npm run dev`
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
+Runs the app in the development mode.
+Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
 
-## Deploy on Vercel
+The page will reload if you make edits.
+You will also see any lint errors in the console.
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+### `npm run build`
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
-# zeeshanjunaid.dev
+Builds the app for production to the `.next` folder.
+It correctly bundles React in production mode and optimizes the build for the best performance.
+
+### `npm run start`
+
+Starts the application in production mode. The application should be compiled with `npm run build` first.
+
+### `npm run lint`
+
+Runs the linter to catch any code style issues.
+
+## Features
+
+- **Responsive Design:** Fully responsive layout that looks great on all devices.
+- **Dark Mode:** Theme toggling between light and dark modes.
+- **Animations:** Smooth animations and transitions using Framer Motion.
+- **Component-Based Architecture:** Built with a modular and reusable component structure.
+- **Contact Form:** A functional contact form that sends emails using Resend.
+
+## Dependencies
+
+This project uses a variety of modern technologies and libraries, including:
+
+- **`@radix-ui/react-*`**: A collection of low-level UI components for building high-quality, accessible design systems.
+- **`class-variance-authority` & `clsx`**: For creating flexible and maintainable UI components with Tailwind CSS.
+- **`framer-motion`**: For creating beautiful animations.
+- **`lucide-react`**: A library of simply beautiful icons.
+- **`next-themes`**: For handling themes in a Next.js application.
+- **`react-hook-form` & `zod`**: For building and validating forms.
+- **`tailwind-merge`**: A utility for merging Tailwind CSS classes.
+- **`tailwindcss-animate`**: A plugin for adding animations to Tailwind CSS.
+
+For a full list of dependencies, please see the `package.json` file.
+
+## License
+
+This project is licensed under the MIT License. See the `LICENSE` file for more information.
+
+## Contact
+
+Zeeshan Junaid - [@ZeeshanJunaid](https://twitter.com/your-twitter) - hello@zeeshanjunaid.dev
+
+Project Link: [https://github.com/zeeshanjunaid/zeeshanjunaid.dev](https://github.com/zeeshanjunaid/zeeshanjunaid.dev)

@@ -30,7 +30,7 @@
     "framer-motion": "^10.18.0",
     "locomotive-scroll": "^5.0.0-beta.11",
     "lucide-react": "^0.309.0",
-    "next": "14.1.0",
+    "next": "^14.2.30",
     "next-themes": "^0.2.1",
     "nextjs-toploader": "^1.6.6",
     "react": "^18",
@@ -41,7 +41,7 @@
     "react-masonry-css": "^1.0.16",
     "react-player": "^2.14.1",
     "resend": "^3.0.0",
-    "shadcn-ui": "^0.8.0",
+    "shadcn-ui": "^0.9.5",
     "tailwind-merge": "^2.2.1",
     "tailwindcss-animate": "^1.0.7",
     "zod": "^3.22.4"
