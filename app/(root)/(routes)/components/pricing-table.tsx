@@ -87,30 +87,51 @@ const PricingTable = () => {
     <div className="flex flex-col gap-8">
       {/* Payment Method Toggle */}
       <div className="flex justify-center">
-        <div className="relative rounded-xl p-1 overflow-hidden">
+        <div className="relative rounded-xl p-1 overflow-hidden bg-light dark:bg-dark border border-lightBorderColor dark:border-darkBorderColor">
           <BlurBG className="rounded-xl" />
+          
+          {/* Sliding Background */}
+          <div 
+            className={cn(
+              "absolute top-1 bottom-1 rounded-lg bg-purple transition-all duration-300 ease-in-out z-10",
+              paymentMethod === "stripe" 
+                ? "left-1 right-1/2 mr-0.5" 
+                : "right-1 left-1/2 ml-0.5"
+            )}
+          />
+          
           <div className="relative z-20 flex bg-transparent">
             <button
               onClick={() => setPaymentMethod("stripe")}
               className={cn(
-                "px-6 py-3 rounded-xl text-sm font-medium transition-all duration-200",
+                "px-6 py-3 rounded-lg text-sm font-medium transition-all duration-300 relative z-20 flex-1 text-center",
                 paymentMethod === "stripe"
-                  ? "bg-purple text-dark dark:text-light"
+                  ? "text-white"
                   : "text-dark dark:text-light hover:bg-purple/20"
               )}
             >
-              Pay with Card (Stripe)
+              <span className="flex items-center justify-center gap-2">
+                <svg className="w-4 h-4" viewBox="0 0 24 24" fill="currentColor">
+                  <path d="M2 12C2 6.48 6.48 2 12 2s10 4.48 10 10-4.48 10-10 10S2 17.52 2 12zm4.64-1.96l3.54 3.54c.78.78 2.05.78 2.83 0l7.07-7.07c.78-.78.78-2.05 0-2.83-.78-.78-2.05-.78-2.83 0L12 9.93 8.75 6.68c-.78-.78-2.05-.78-2.83 0-.78.78-.78 2.05 0 2.83z"/>
+                </svg>
+                Card (Stripe)
+              </span>
             </button>
             <button
               onClick={() => setPaymentMethod("crypto")}
               className={cn(
-                "px-6 py-3 rounded-xl text-sm font-medium transition-all duration-200",
+                "px-6 py-3 rounded-lg text-sm font-medium transition-all duration-300 relative z-20 flex-1 text-center",
                 paymentMethod === "crypto"
-                  ? "bg-purple text-dark dark:text-light"
+                  ? "text-white"
                   : "text-dark dark:text-light hover:bg-purple/20"
               )}
             >
-              Pay with Crypto (Coinbase)
+              <span className="flex items-center justify-center gap-2">
+                <svg className="w-4 h-4" viewBox="0 0 24 24" fill="currentColor">
+                  <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/>
+                </svg>
+                Crypto (Coinbase)
+              </span>
             </button>
           </div>
         </div>
