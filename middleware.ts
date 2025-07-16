@@ -1,16 +1,15 @@
-import { clerkMiddleware, createRouteMatcher } from '@clerk/nextjs/server'
+// /middleware.ts
+import { authMiddleware } from '@clerk/nextjs';
 
-const isProtectedRoute = createRouteMatcher([
-  '/dashboard(.*)',
-  '/api/webhooks/clerk'
-])
-
-export default clerkMiddleware(async (auth, req) => {
-  if (isProtectedRoute(req)) {
-    await auth.protect()
-  }
-})
+export default authMiddleware({
+  // Add routes that should be accessible to both signed-in and signed-out users.
+  // The an API webhook route for Clerk is also made public here.
+  publicRoutes: ['/', '/about', '/services', '/work', '/reviews', '/hire-me', '/contact', '/api/webhooks/clerk'],
+});
 
 export const config = {
-  matcher: ['/((?!.*\\..*|_next).*)', '/', '/(api|trpc)(.*)'],
-}
+  // Protects all routes, including api/trpc.
+  // See https://clerk.com/docs/references/nextjs/auth-middleware
+  // for more information about configuring your Middleware.
+  matcher: ['/((?!.+\\.[\\w]+$|_next).*)', '/', '/(api|trpc)(.*)'],
+};
