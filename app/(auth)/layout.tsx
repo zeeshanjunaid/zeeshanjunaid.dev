@@ -6,11 +6,11 @@ export default function AuthLayout({
   children: React.ReactNode
 }) {
   return (
-    <>
+    <div className="min-h-screen">
       <Header />
-      <main className="pt-[100px]">
+      <div className="pt-[100px]">
         {children}
-      </main>
-    </>
+      </div>
+    </div>
   )
 }
