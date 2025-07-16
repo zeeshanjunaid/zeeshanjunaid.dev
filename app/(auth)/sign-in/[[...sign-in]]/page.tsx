@@ -31,25 +31,25 @@ export default function SignInPage() {
           {/* Sign In Form Container */}
           <div className="relative rounded-3xl overflow-hidden">
             <BlurBG className="rounded-3xl" />
-            <div className="relative z-20 p-8">
+            <div className="relative z-20 p-6 md:p-8">
               <SignIn 
                 appearance={{
                   elements: {
                     // Remove default styling to use our custom container
                     rootBox: "w-full",
-                    card: "bg-transparent shadow-none border-none p-0",
+                    card: "bg-transparent shadow-none border-none p-0 rounded-none",
                     
                     // Header styling
                     headerTitle: "hidden", // We have our own header
                     headerSubtitle: "hidden",
                     
                     // Form elements
-                    formFieldLabel: "text-dark dark:text-light font-medium text-sm mb-2",
+                    formFieldLabel: "text-dark dark:text-light font-medium text-sm mb-2 font-switzer",
                     formFieldInput: `
                       bg-light dark:bg-dark 
                       border border-lightBorderColor dark:border-darkBorderColor 
                       text-dark dark:text-light 
-                      rounded-xl px-4 py-3
+                      rounded-xl px-4 py-3 font-switzer
                       focus:border-purple focus:ring-1 focus:ring-purple
                       transition-colors duration-200
                     `,
@@ -57,7 +57,7 @@ export default function SignInPage() {
                     // Buttons
                     formButtonPrimary: `
                       bg-purple hover:bg-purple/80 
-                      text-white font-medium
+                      text-white font-medium font-switzer
                       rounded-xl px-6 py-3 w-full
                       transition-colors duration-200
                       border-none
@@ -68,26 +68,33 @@ export default function SignInPage() {
                       bg-light dark:bg-dark 
                       border border-lightBorderColor dark:border-darkBorderColor 
                       text-dark dark:text-light 
+                      font-switzer font-medium
                       rounded-xl px-4 py-3 w-full
-                      hover:bg-purple/10 hover:border-purple/30
+                      hover:bg-lightBorderColor dark:hover:bg-darkBorderColor
                       transition-all duration-200
                     `,
-                    socialButtonsBlockButtonText: "text-dark dark:text-light font-medium",
+                    socialButtonsBlockButtonText: "text-dark dark:text-light font-medium font-switzer",
                     
                     // Links and text
-                    footerActionLink: "text-purple hover:text-purple/80 font-medium",
+                    footerActionLink: "text-purple hover:text-purple/80 font-medium font-switzer",
                     identityPreviewText: "text-dark dark:text-light",
                     
                     // Dividers
                     dividerLine: "bg-lightBorderColor dark:bg-darkBorderColor",
-                    dividerText: "text-dark/50 dark:text-light/50 text-sm",
+                    dividerText: "text-dark/50 dark:text-light/50 text-sm font-switzer",
                     
                     // Error messages
-                    formFieldErrorText: "text-red-600 dark:text-red-400 text-sm mt-1",
+                    formFieldErrorText: "text-red-600 dark:text-red-400 text-sm mt-1 font-switzer",
                     
                     // Footer
                     footer: "text-center mt-6",
-                    footerText: "text-dark/70 dark:text-light/70 text-sm"
+                    footerText: "text-dark/70 dark:text-light/70 text-sm font-switzer",
+                    
+                    // Additional styling
+                    main: "space-y-4",
+                    formContainer: "space-y-4",
+                    socialButtons: "space-y-3",
+                    socialButtonsProviderIcon: "w-5 h-5"
                   }
                 }}
                 redirectUrl="/dashboard"
