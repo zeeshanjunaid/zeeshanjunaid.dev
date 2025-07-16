@@ -1,5 +1,5 @@
 import { supabaseAdmin } from './supabase'
-import type { User, UserInsert, Subscription, SubscriptionInsert } from './types'
+import type { User, UserInsert, Subscription, SubscriptionInsert, Task, TaskInsert } from './types'
 
 // User operations
 export async function createUser(userData: UserInsert): Promise<User | null> {
@@ -160,6 +160,68 @@ export async function getSubscriptionByStripeId(stripeSubscriptionId: string): P
     return data
   } catch (error) {
     console.error('Error in getSubscriptionByStripeId:', error)
+    return null
+  }
+}
+
+// Task operations
+export async function createTask(taskData: TaskInsert): Promise<Task | null> {
+  try {
+    const { data, error } = await supabaseAdmin
+      .from('tasks')
+      .insert(taskData)
+      .select()
+      .single()
+
+    if (error) {
+      console.error('Error creating task:', error)
+      return null
+    }
+
+    return data
+  } catch (error) {
+    console.error('Error in createTask:', error)
+    return null
+  }
+}
+
+export async function getUserTasks(userId: string): Promise<Task[]> {
+  try {
+    const { data, error } = await supabaseAdmin
+      .from('tasks')
+      .select('*')
+      .eq('user_id', userId)
+      .order('created_at', { ascending: false })
+
+    if (error) {
+      console.error('Error fetching tasks:', error)
+      return []
+    }
+
+    return data || []
+  } catch (error) {
+    console.error('Error in getUserTasks:', error)
+    return []
+  }
+}
+
+export async function updateTask(taskId: string, updates: Partial<Task>): Promise<Task | null> {
+  try {
+    const { data, error } = await supabaseAdmin
+      .from('tasks')
+      .update({ ...updates, updated_at: new Date().toISOString() })
+      .eq('id', taskId)
+      .select()
+      .single()
+
+    if (error) {
+      console.error('Error updating task:', error)
+      return null
+    }
+
+    return data
+  } catch (error) {
+    console.error('Error in updateTask:', error)
     return null
   }
 }

@@ -50,9 +50,9 @@ export type Database = {
           id: string
           user_id: string
           plan_name: string
-          status: 'active' | 'canceled' | 'past_due' | 'incomplete' | 'trialing'
+          status: string
           current_period_end: string | null
-          payment_method: 'stripe' | 'crypto'
+          payment_method: string
           stripe_subscription_id: string | null
           created_at: string
           updated_at: string
@@ -61,9 +61,9 @@ export type Database = {
           id?: string
           user_id: string
           plan_name: string
-          status: 'active' | 'canceled' | 'past_due' | 'incomplete' | 'trialing'
+          status: string
           current_period_end?: string | null
-          payment_method: 'stripe' | 'crypto'
+          payment_method: string
           stripe_subscription_id?: string | null
           created_at?: string
           updated_at?: string
@@ -72,10 +72,39 @@ export type Database = {
           id?: string
           user_id?: string
           plan_name?: string
-          status?: 'active' | 'canceled' | 'past_due' | 'incomplete' | 'trialing'
+          status?: string
           current_period_end?: string | null
-          payment_method?: 'stripe' | 'crypto'
+          payment_method?: string
           stripe_subscription_id?: string | null
+          created_at?: string
+          updated_at?: string
+        }
+      }
+      tasks: {
+        Row: {
+          id: string
+          user_id: string
+          title: string
+          description: string | null
+          status: string
+          created_at: string
+          updated_at: string
+        }
+        Insert: {
+          id?: string
+          user_id: string
+          title: string
+          description?: string | null
+          status?: string
+          created_at?: string
+          updated_at?: string
+        }
+        Update: {
+          id?: string
+          user_id?: string
+          title?: string
+          description?: string | null
+          status?: string
           created_at?: string
           updated_at?: string
         }

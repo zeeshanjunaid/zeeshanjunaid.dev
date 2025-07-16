@@ -8,6 +8,10 @@ export type Subscription = Database['public']['Tables']['subscriptions']['Row']
 export type SubscriptionInsert = Database['public']['Tables']['subscriptions']['Insert']
 export type SubscriptionUpdate = Database['public']['Tables']['subscriptions']['Update']
 
+export type Task = Database['public']['Tables']['tasks']['Row']
+export type TaskInsert = Database['public']['Tables']['tasks']['Insert']
+export type TaskUpdate = Database['public']['Tables']['tasks']['Update']
+
 export interface PricingTier {
   id: string
   name: string

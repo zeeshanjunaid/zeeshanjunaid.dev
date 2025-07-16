@@ -138,6 +138,56 @@ export default async function DashboardPage() {
             )}
           </div>
         </div>
+
+        {/* Tasks Section */}
+        <div className="bg-light dark:bg-dark rounded-3xl p-6 relative overflow-hidden">
+          <div className="backdrop-blur-md bg-lightBorderColor dark:bg-darkBorderColor opacity-25 absolute top-0 left-0 right-0 bottom-0 w-full h-full z-10 rounded-3xl" />
+          <div className="relative z-20">
+            <h2 className="text-xl font-bold font-ao text-dark dark:text-light mb-4">
+              Your Tasks
+            </h2>
+            
+            {tasks.length === 0 ? (
+              <div className="text-center py-8">
+                <p className="text-dark/70 dark:text-light/70 mb-4">
+                  No tasks assigned yet. Once you subscribe to a plan, I'll create tasks for your project.
+                </p>
+              </div>
+            ) : (
+              <div className="space-y-4">
+                {tasks.map((task) => (
+                  <div 
+                    key={task.id}
+                    className="border border-lightBorderColor dark:border-darkBorderColor rounded-xl p-4"
+                  >
+                    <div className="flex justify-between items-start mb-2">
+                      <h3 className="font-medium text-dark dark:text-light">
+                        {task.title}
+                      </h3>
+                      <span className={`px-3 py-1 rounded-full text-xs font-medium ${
+                        task.status === 'Completed' 
+                          ? 'bg-green-100 text-green-800 dark:bg-green-900 dark:text-green-200'
+                          : task.status === 'In Progress'
+                          ? 'bg-blue-100 text-blue-800 dark:bg-blue-900 dark:text-blue-200'
+                          : 'bg-yellow-100 text-yellow-800 dark:bg-yellow-900 dark:text-yellow-200'
+                      }`}>
+                        {task.status}
+                      </span>
+                    </div>
+                    {task.description && (
+                      <p className="text-sm text-dark/70 dark:text-light/70 mb-2">
+                        {task.description}
+                      </p>
+                    )}
+                    <p className="text-xs text-dark/50 dark:text-light/50">
+                      Created: {new Date(task.created_at).toLocaleDateString()}
+                    </p>
+                  </div>
+                ))}
+              </div>
+            )}
+          </div>
+        </div>
       </div>
     </Container>
   )
