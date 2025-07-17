@@ -51,11 +51,11 @@ export async function getUserById(userId: string): Promise<User | null> {
 
 export async function getCurrentUser(): Promise<User | null> {
   try {
-    const { data: { user } } = await supabase.auth.getUser();
+    const { data: { user } } = await supabaseAdmin.auth.getUser();
     
     if (!user) return null;
 
-    const { data, error } = await supabase
+    const { data, error } = await supabaseAdmin
       .from("users")
       .select("*")
       .eq("id", user.id)
