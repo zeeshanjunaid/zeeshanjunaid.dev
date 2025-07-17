@@ -7,9 +7,9 @@ import { ArrowRight } from "lucide-react";
 import { AspectRatio } from "./ui/aspect-ratio";
 import { BlurBG } from "./blur-bg";
 import Image from "next/image";
+import Link from "next/link";
 import { Skeleton } from "./ui/skeleton";
 import { cn } from "@/lib/utils";
-import Link from "next/link";
 
 interface WorkItemProps {
   name: string;
