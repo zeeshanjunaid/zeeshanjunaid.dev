@@ -4,7 +4,13 @@ import { notFound, useRouter } from "next/navigation";
 import { Container } from "@/components/container";
 import { BlurBG } from "@/components/blur-bg";
 import { Button } from "@/components/ui/button";
-import { ArrowLeft, ExternalLink, Calendar, ArrowRight, ChevronDown } from "lucide-react";
+import {
+  ArrowLeft,
+  ExternalLink,
+  Calendar,
+  ArrowRight,
+  ChevronDown,
+} from "lucide-react";
 import Link from "next/link";
 import Image from "next/image";
 import ProjectsList from "@/data/work";
@@ -21,6 +27,7 @@ export default function ProjectPage({ params }: ProjectPageProps) {
   const router = useRouter();
   const project = ProjectsList.find((p) => p.slug === params.slug);
   const { scrollYProgress } = useScroll();
+  const y = useTransform(scrollYProgress, [0, 1], [0, -100]); // Moved hook to top level
 
   if (!project) {
     notFound();
@@ -39,28 +46,31 @@ export default function ProjectPage({ params }: ProjectPageProps) {
     if (totalImages === 1) {
       return "Complete project overview showcasing the design and functionality";
     }
-    
+
     const descriptions = [
       "Homepage design showcasing the main user interface and navigation",
-      "Detailed view of core functionality and user interactions", 
+      "Detailed view of core functionality and user interactions",
       "Mobile responsive design and cross-device compatibility",
       "Additional interface elements and user experience details",
       "Advanced features and interactive components",
-      "Final implementation and polished user experience"
+      "Final implementation and polished user experience",
     ];
-    
-    return descriptions[index] || `Interface design and user experience details (${index + 1}/${totalImages})`;
+
+    return (
+      descriptions[index] ||
+      `Interface design and user experience details (${
+        index + 1
+      }/${totalImages})`
+    );
   };
   return (
     <>
       {/* Hero Section with Parallax */}
       <section className="relative min-h-screen flex items-center justify-center overflow-hidden">
         {project.imgUrl && (
-          <motion.div 
+          <motion.div
             className="absolute inset-0 z-0"
-            style={{
-              y: useTransform(scrollYProgress, [0, 1], [0, -100])
-            }}
+            style={{ y }} // Use the variable here
           >
             <Image
               src={project.imgUrl}
@@ -73,7 +83,7 @@ export default function ProjectPage({ params }: ProjectPageProps) {
             <div className="absolute inset-0 bg-black/60" />
           </motion.div>
         )}
-        
+
         <Container className="relative z-10 px-4 lg:px-0 text-center">
           <motion.div
             initial={{ opacity: 0, y: 50 }}
@@ -83,11 +93,16 @@ export default function ProjectPage({ params }: ProjectPageProps) {
             <div className="flex items-center justify-center gap-4 mb-6">
               <div className="flex items-center gap-2 text-white/80">
                 <Calendar className="w-4 h-4" />
-                <span className="text-[12px] md:text-[14px] font-switzer font-light uppercase tracking-wider">{project.year}</span>
+                <span className="text-[12px] md:text-[14px] font-switzer font-light uppercase tracking-wider">
+                  {project.year}
+                </span>
               </div>
               <div className="flex items-center gap-2">
                 {project.tags.slice(0, 3).map((tag, index) => (
-                  <div key={index} className="px-3 py-1 bg-white/20 backdrop-blur-sm rounded-xl text-white text-[10px] md:text-[12px] uppercase font-switzer font-light">
+                  <div
+                    key={index}
+                    className="px-3 py-1 bg-white/20 backdrop-blur-sm rounded-xl text-white text-[10px] md:text-[12px] uppercase font-switzer font-light"
+                  >
                     {tag}
                   </div>
                 ))}
@@ -103,11 +118,7 @@ export default function ProjectPage({ params }: ProjectPageProps) {
             </p>
 
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <a
-                href={project.link}
-                target="_blank"
-                rel="noopener noreferrer"
-              >
+              <a href={project.link} target="_blank" rel="noopener noreferrer">
                 <Button
                   variant="purple"
                   size="lg"
@@ -132,7 +143,7 @@ export default function ProjectPage({ params }: ProjectPageProps) {
         </Container>
 
         {/* Scroll indicator */}
-        <motion.div 
+        <motion.div
           className="absolute bottom-8 left-1/2 transform -translate-x-1/2 text-white"
           animate={{ y: [0, 10, 0] }}
           transition={{ duration: 2, repeat: Infinity }}
@@ -274,7 +285,7 @@ export default function ProjectPage({ params }: ProjectPageProps) {
       {project.images && project.images.length > 0 && (
         <section className="py-16 md:py-20">
           <Container className="px-4 md:px-7 lg:px-0 mb-12">
-            <motion.h2 
+            <motion.h2
               initial={{ opacity: 0, y: 30 }}
               whileInView={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8 }}
@@ -287,14 +298,15 @@ export default function ProjectPage({ params }: ProjectPageProps) {
               </div>
               Visual Journey
             </motion.h2>
-            <motion.p 
+            <motion.p
               initial={{ opacity: 0, y: 30 }}
               whileInView={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8, delay: 0.1 }}
               viewport={{ once: true }}
               className="text-dark/70 dark:text-light/70 font-switzer font-light text-[14px] md:text-[16px] lg:text-[18px] max-w-2xl"
             >
-              Explore the complete visual story of this project through detailed screens and interactions.
+              Explore the complete visual story of this project through detailed
+              screens and interactions.
             </motion.p>
           </Container>
 
@@ -312,32 +324,33 @@ export default function ProjectPage({ params }: ProjectPageProps) {
                 <div className="relative w-full group overflow-hidden rounded-3xl mx-4 md:mx-7 lg:mx-0">
                   {/* Dynamic height container based on image aspect ratio */}
                   <div className="relative w-full min-h-[40vh] max-h-[90vh]">
-                  <Image
-                    src={image}
-                    alt={`${project.name} screen ${index + 1}`}
-                    fill
+                    <Image
+                      src={image}
+                      alt={`${project.name} screen ${index + 1}`}
+                      fill
                       className="object-contain object-center group-hover:scale-[1.02] transition-transform duration-700"
-                    sizes="100vw"
+                      sizes="100vw"
                       priority={index < 2}
                       onLoad={(e) => {
                         const img = e.target as HTMLImageElement;
                         const container = img.parentElement;
                         if (container) {
-                          const aspectRatio = img.naturalWidth / img.naturalHeight;
+                          const aspectRatio =
+                            img.naturalWidth / img.naturalHeight;
                           // Adjust container height based on aspect ratio
                           if (aspectRatio > 2) {
                             // Wide images (like desktop screens)
-                            container.style.height = '50vh';
+                            container.style.height = "50vh";
                           } else if (aspectRatio < 0.8) {
                             // Tall images (like mobile screens)
-                            container.style.height = '70vh';
+                            container.style.height = "70vh";
                           } else {
                             // Square-ish images
-                            container.style.height = '60vh';
+                            container.style.height = "60vh";
                           }
                         }
                       }}
-                  />
+                    />
                   </div>
                   <div className="absolute inset-0 bg-gradient-to-t from-black/5 to-transparent rounded-3xl pointer-events-none" />
                 </div>
@@ -346,7 +359,9 @@ export default function ProjectPage({ params }: ProjectPageProps) {
                 <Container className="px-4 md:px-7 lg:px-0 mt-6">
                   <div className="text-center">
                     <h3 className="text-[16px] md:text-[18px] lg:text-[20px] font-ao font-bold text-dark dark:text-light mb-2">
-                      {project.images && project.images.length > 1 ? `Screen ${index + 1}` : 'Project Overview'}
+                      {project.images && project.images.length > 1
+                        ? `Screen ${index + 1}`
+                        : "Project Overview"}
                     </h3>
                     <p className="text-dark/70 dark:text-light/70 font-switzer font-light text-[14px] md:text-[16px] max-w-2xl mx-auto">
                       {getImageDescription(index, project.images?.length || 0)}
@@ -378,7 +393,8 @@ export default function ProjectPage({ params }: ProjectPageProps) {
                 Results & Impact
               </h2>
               <p className="text-dark/70 dark:text-light/70 font-switzer font-light text-[14px] md:text-[16px] lg:text-[18px] max-w-2xl">
-                The measurable outcomes and positive impact this project delivered.
+                The measurable outcomes and positive impact this project
+                delivered.
               </p>
             </motion.div>
 
@@ -445,11 +461,8 @@ export default function ProjectPage({ params }: ProjectPageProps) {
             <p className="text-white/80 font-switzer font-light text-[14px] md:text-[16px] lg:text-[18px] leading-relaxed max-w-2xl mx-auto mb-8">
               {nextProject.description}
             </p>
-            
-            <motion.div
-              whileHover={{ scale: 1.05 }}
-              whileTap={{ scale: 0.95 }}
-            >
+
+            <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
               <Button
                 onClick={navigateToNextProject}
                 variant="purple"
