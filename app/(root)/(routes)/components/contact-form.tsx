@@ -28,7 +28,7 @@ const formSchema = z.object({
   phone: z.string().refine((val) => /^\+\d{1,3}\d{10}$/.test(val), {
     message: "Invalid phone number",
   }),
-  referral: z.string().optional(),
+  referral: z.string(),
   message: z.string().nonempty({ message: "Message is required" }),
 });
 type FormValues = z.infer<typeof formSchema>;

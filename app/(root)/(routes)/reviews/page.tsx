@@ -1,9 +1,7 @@
 import ReviewsList, { VideoReviewsList } from "@/data/reviews";
 
-import { Button } from "@/components/ui/button";
 import { Container } from "@/components/container";
 import MasonryLayout from "../components/masonry-layout";
-import { PenBoxIcon } from "lucide-react";
 import React from "react";
 import TestimonialCard from "../components/testimonial-card";
 import VideoModal from "../components/video-modal";
@@ -31,16 +29,6 @@ const ReviewsPage = () => {
               products/services
             </p>
           </div>
-          {/* <div>
-            <Button
-              disabled
-              variant="highlight"
-              className="flex items-center gap-x-1 bg-purple hover:bg-purple/80 text-dark dark:text-light transition duration-200 dark:bg-purple dark:hover:bg-purple/80"
-            >
-              <PenBoxIcon size={14} />
-              Share your story
-            </Button>
-          </div> */}
         </Container>
       </div>
       <section className="mt-12">

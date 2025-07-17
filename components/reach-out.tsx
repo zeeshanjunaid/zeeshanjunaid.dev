@@ -1,6 +1,6 @@
 "use client";
 
-import { ResumeButton, SocialLinks } from "@/components/social-connect";
+import { SocialLinks } from "@/components/social-connect";
 
 import { BlurBG } from "@/components/blur-bg";
 import { Container } from "@/components/container";

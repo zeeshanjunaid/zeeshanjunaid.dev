@@ -9,13 +9,6 @@ import { Home, ArrowLeft, Search, Mail } from "lucide-react";
 import navLinks from "@/data/nav";
 
 export default function NotFound() {
-  const quickLinks = [
-    { label: "Home", href: "/", icon: Home },
-    { label: "About", href: "/about", icon: Search },
-    { label: "Work", href: "/work", icon: Search },
-    { label: "Contact", href: "/contact", icon: Mail },
-  ];
-
   return (
     <div className="min-h-screen flex items-center justify-center">
       <Container className="px-4 lg:px-0">

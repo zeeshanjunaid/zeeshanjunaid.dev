@@ -54,7 +54,9 @@ const ExperienceCard = ({ experience }: ExperienceCardProps) => {
         <motion.a
           initial="initial"
           whileHover="whileHover"
-          href="https://passage.xyz/"
+          href={companyLink}
+          target="_blank"
+          rel="noreferrer noopener"
           variants={{
             initial: {
               opacity: 0.25,

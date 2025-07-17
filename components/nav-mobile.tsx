@@ -1,7 +1,7 @@
 "use client";
 
 import React, { useEffect } from "react";
-import { ResumeButton, SocialLinks } from "./social-connect";
+import { SocialLinks } from "./social-connect";
 import { Sheet, SheetContent, SheetTrigger } from "./ui/sheet";
 
 import { Button } from "./ui/button";
@@ -63,7 +63,6 @@ const NavMobile = ({ data }: NavMobileProps) => {
               {label}
             </Link>
           ))}
-          {/* <ResumeButton /> */}
         </div>
         <div className="flex flex-col items-start border-t-[1px] pt-6 min-w-max flex-wrap justify-between">
           <h4 className="font-ao text-xs">Reach out via:</h4>
