@@ -1,7 +1,7 @@
 "use client";
 
 import { notFound, useRouter } from "next/navigation";
-import { useState, useEffect, useCallback } from "react";
+import { useEffect } from "react";
 import { Container } from "@/components/container";
 import { BlurBG } from "@/components/blur-bg";
 import { Button } from "@/components/ui/button";
@@ -9,9 +9,7 @@ import { ArrowLeft, ExternalLink, Calendar, ArrowRight, ChevronDown } from "luci
 import Link from "next/link";
 import Image from "next/image";
 import ProjectsList from "@/data/work";
-import { AspectRatio } from "@/components/ui/aspect-ratio";
 import { WorkTag } from "@/components/work-item";
-import { Lightbox } from "@/components/ui/lightbox";
 import { motion, useScroll, useTransform } from "framer-motion";
 
 interface ProjectPageProps {
@@ -23,8 +21,6 @@ interface ProjectPageProps {
 export default function ProjectPage({ params }: ProjectPageProps) {
   const router = useRouter();
   const project = ProjectsList.find((p) => p.slug === params.slug);
-  const [lightboxOpen, setLightboxOpen] = useState(false);
-  const [currentImageIndex, setCurrentImageIndex] = useState(0);
   const { scrollYProgress } = useScroll();
 
   if (!project) {
@@ -35,50 +31,9 @@ export default function ProjectPage({ params }: ProjectPageProps) {
   const currentIndex = ProjectsList.findIndex((p) => p.slug === params.slug);
   const nextProject = ProjectsList[(currentIndex + 1) % ProjectsList.length];
 
-  const openLightbox = (index: number) => {
-    setCurrentImageIndex(index);
-    setLightboxOpen(true);
-  };
-
-  const closeLightbox = () => {
-    setLightboxOpen(false);
-  };
-
-  const nextImage = useCallback(() => {
-    if (project.images) {
-      setCurrentImageIndex((prev) => (prev + 1) % project.images!.length);
-    }
-  }, [project.images]);
-
-  const previousImage = useCallback(() => {
-    if (project.images) {
-      setCurrentImageIndex((prev) =>
-        prev === 0 ? project.images!.length - 1 : prev - 1
-      );
-    }
-  }, [project.images]);
-
   const navigateToNextProject = () => {
     router.push(`/work/${nextProject.slug}`);
   };
-
-  // Keyboard navigation
-  useEffect(() => {
-    const handleKeyDown = (e: KeyboardEvent) => {
-      if (!lightboxOpen) return;
-
-      if (e.key === "Escape") {
-        closeLightbox();
-      } else if (e.key === "ArrowRight") {
-        nextImage();
-      } else if (e.key === "ArrowLeft") {
-        previousImage();
-      }
-    };
-
-    window.addEventListener("keydown", handleKeyDown);
-    return () => window.removeEventListener("keydown", handleKeyDown);
-  }, [lightboxOpen, nextImage, previousImage]);
 
   return (
     <>
@@ -333,21 +288,15 @@ export default function ProjectPage({ params }: ProjectPageProps) {
                 className="relative"
               >
                 {/* Full-width image container */}
-                <div className="relative w-full h-[60vh] md:h-[70vh] lg:h-[80vh] cursor-pointer group overflow-hidden">
+                <div className="relative w-full h-[60vh] md:h-[70vh] lg:h-[80vh] group overflow-hidden">
                   <Image
                     src={image}
                     alt={`${project.name} screen ${index + 1}`}
                     fill
                     className="object-cover object-top group-hover:scale-105 transition-transform duration-700"
                     sizes="100vw"
-                    onClick={() => openLightbox(index)}
                   />
-                  <div className="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
-                  <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-                    <div className="bg-black/50 backdrop-blur-sm text-white px-6 py-3 rounded-full text-sm font-medium">
-                      Click to view full size
-                    </div>
-                  </div>
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/10 to-transparent" />
                 </div>
 
                 {/* Image caption/description */}
@@ -471,18 +420,6 @@ export default function ProjectPage({ params }: ProjectPageProps) {
         </Container>
       </section>
 
-      {/* Lightbox */}
-      {project.images && (
-        <Lightbox
-          images={project.images}
-          isOpen={lightboxOpen}
-          currentIndex={currentImageIndex}
-          onClose={closeLightbox}
-          onNext={nextImage}
-          onPrevious={previousImage}
-          projectName={project.name}
-        />
-      )}
     </>
   );
 }
