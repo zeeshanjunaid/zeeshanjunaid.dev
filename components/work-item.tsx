@@ -51,7 +51,10 @@ export const WorkItem = ({
   };
 
   // Create slug from name for internal linking
-  const slug = name.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/(^-|-$)/g, '');
+  const slug = name
+    .toLowerCase()
+    .replace(/[^a-z0-9]+/g, "-")
+    .replace(/(^-|-$)/g, "");
 
   return (
     <motion.li
@@ -60,7 +63,7 @@ export const WorkItem = ({
       initial="initial"
       whileHover="whileHover"
       className={cn(
-        "group relative w-full rounded-3xl p-[2px] transition duration-200",
+        "group relative w-full rounded-3xl p-[2px] transition duration-200"
       )}
     >
       <Link href={`/work/${slug}`}>
@@ -192,13 +195,13 @@ export const WorkTag = ({
   selectedSkill,
 }: {
   tag: string;
-  selectedSkill: string | undefined;
+  selectedSkill?: string; // Changed to optional
 }) => (
   <div
     className={cn(
       "inline-flex uppercase px-4 py-2 text-[10px] md:text-[12px] text-dark/70 dark:text-light/70 border border-solid border-dark/15 dark:border-light/15 rounded-xl leading-[125%]",
       selectedSkill === tag &&
-        "bg-purple/40 border-transparent dark:border-transparent",
+        "bg-purple/40 border-transparent dark:border-transparent"
     )}
   >
     {tag}

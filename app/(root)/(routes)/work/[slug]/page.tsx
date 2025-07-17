@@ -1,7 +1,7 @@
 "use client";
 
 import { notFound } from "next/navigation";
-import { useState, useEffect } from "react";
+import { useState, useEffect, useCallback } from "react"; // Import useCallback
 import { Container } from "@/components/container";
 import { BlurBG } from "@/components/blur-bg";
 import { Button } from "@/components/ui/button";
@@ -37,19 +37,19 @@ export default function ProjectPage({ params }: ProjectPageProps) {
     setLightboxOpen(false);
   };
 
-  const nextImage = () => {
+  const nextImage = useCallback(() => {
     if (project.images) {
       setCurrentImageIndex((prev) => (prev + 1) % project.images!.length);
     }
-  };
+  }, [project.images]);
 
-  const previousImage = () => {
+  const previousImage = useCallback(() => {
     if (project.images) {
       setCurrentImageIndex((prev) =>
         prev === 0 ? project.images!.length - 1 : prev - 1
       );
     }
-  };
+  }, [project.images]);
 
   // Keyboard navigation
   useEffect(() => {
@@ -67,7 +67,7 @@ export default function ProjectPage({ params }: ProjectPageProps) {
 
     window.addEventListener("keydown", handleKeyDown);
     return () => window.removeEventListener("keydown", handleKeyDown);
-  }, [lightboxOpen]);
+  }, [lightboxOpen, nextImage, previousImage]); // Add nextImage and previousImage to dependency array
 
   return (
     <>
@@ -370,5 +370,4 @@ export default function ProjectPage({ params }: ProjectPageProps) {
       )}
     </>
   );
-  ("use client");
 }
