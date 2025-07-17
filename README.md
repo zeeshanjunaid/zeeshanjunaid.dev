@@ -78,6 +78,7 @@ This project uses a variety of modern technologies and libraries, including:
 - **`react-hook-form` & `zod`**: For building and validating forms.
 - **`tailwind-merge`**: A utility for merging Tailwind CSS classes.
 - **`tailwindcss-animate`**: A plugin for adding animations to Tailwind CSS.
+- **`resend`**: For handling contact form email functionality.
 
 For a full list of dependencies, please see the `package.json` file.
 
