@@ -237,3 +237,13 @@ html {
     max-height: 70vh;
   }
 }
+
+/* Hide scrollbar for video reviews section */
+.scrollbar-hide {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+.scrollbar-hide::-webkit-scrollbar {
+  display: none;
+}
