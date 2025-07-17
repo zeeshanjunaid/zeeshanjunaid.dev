@@ -34,6 +34,23 @@ export default function ProjectPage({ params }: ProjectPageProps) {
     router.push(`/work/${nextProject.slug}`);
   };
 
+  // Dynamic image descriptions based on project context
+  const getImageDescription = (index: number, totalImages: number) => {
+    if (totalImages === 1) {
+      return "Complete project overview showcasing the design and functionality";
+    }
+    
+    const descriptions = [
+      "Homepage design showcasing the main user interface and navigation",
+      "Detailed view of core functionality and user interactions", 
+      "Mobile responsive design and cross-device compatibility",
+      "Additional interface elements and user experience details",
+      "Advanced features and interactive components",
+      "Final implementation and polished user experience"
+    ];
+    
+    return descriptions[index] || `Interface design and user experience details (${index + 1}/${totalImages})`;
+  };
   return (
     <>
       {/* Hero Section with Parallax */}
@@ -281,7 +298,7 @@ export default function ProjectPage({ params }: ProjectPageProps) {
             </motion.p>
           </Container>
 
-          <div className="space-y-16 md:space-y-20">
+          <div className="space-y-12 md:space-y-16 lg:space-y-20">
             {project.images.map((image, index) => (
               <motion.div
                 key={index}
@@ -289,31 +306,50 @@ export default function ProjectPage({ params }: ProjectPageProps) {
                 whileInView={{ opacity: 1, y: 0 }}
                 transition={{ duration: 1, delay: index * 0.1 }}
                 viewport={{ once: true, margin: "-100px" }}
-                className="relative"
+                className="relative w-full"
               >
-                {/* Full-width image container */}
-                <div className="relative w-full h-[50vh] md:h-[60vh] lg:h-[70vh] group overflow-hidden rounded-3xl mx-4 md:mx-7 lg:mx-0">
+                {/* Adaptive image container */}
+                <div className="relative w-full group overflow-hidden rounded-3xl mx-4 md:mx-7 lg:mx-0">
+                  {/* Dynamic height container based on image aspect ratio */}
+                  <div className="relative w-full min-h-[40vh] max-h-[90vh]">
                   <Image
                     src={image}
                     alt={`${project.name} screen ${index + 1}`}
                     fill
-                    className="object-cover object-top group-hover:scale-105 transition-transform duration-700"
+                      className="object-contain object-center group-hover:scale-[1.02] transition-transform duration-700"
                     sizes="100vw"
+                      priority={index < 2}
+                      onLoad={(e) => {
+                        const img = e.target as HTMLImageElement;
+                        const container = img.parentElement;
+                        if (container) {
+                          const aspectRatio = img.naturalWidth / img.naturalHeight;
+                          // Adjust container height based on aspect ratio
+                          if (aspectRatio > 2) {
+                            // Wide images (like desktop screens)
+                            container.style.height = '50vh';
+                          } else if (aspectRatio < 0.8) {
+                            // Tall images (like mobile screens)
+                            container.style.height = '70vh';
+                          } else {
+                            // Square-ish images
+                            container.style.height = '60vh';
+                          }
+                        }
+                      }}
                   />
-                  <div className="absolute inset-0 bg-gradient-to-t from-black/10 to-transparent rounded-3xl" />
+                  </div>
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/5 to-transparent rounded-3xl pointer-events-none" />
                 </div>
 
                 {/* Image caption/description */}
                 <Container className="px-4 md:px-7 lg:px-0 mt-6">
                   <div className="text-center">
                     <h3 className="text-[16px] md:text-[18px] lg:text-[20px] font-ao font-bold text-dark dark:text-light mb-2">
-                      Screen {index + 1}
+                      {project.images && project.images.length > 1 ? `Screen ${index + 1}` : 'Project Overview'}
                     </h3>
                     <p className="text-dark/70 dark:text-light/70 font-switzer font-light text-[14px] md:text-[16px] max-w-2xl mx-auto">
-                      {index === 0 && "Homepage design showcasing the main user interface and navigation"}
-                      {index === 1 && "Detailed view of core functionality and user interactions"}
-                      {index === 2 && "Mobile responsive design and cross-device compatibility"}
-                      {index > 2 && `Additional interface elements and user experience details`}
+                      {getImageDescription(index, project.images?.length || 0)}
                     </p>
                   </div>
                 </Container>
