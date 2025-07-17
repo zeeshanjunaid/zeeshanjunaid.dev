@@ -2,7 +2,7 @@
 
 import React, { useState } from "react";
 import { Check, Code, Headphones, Palette, Rocket, Shield, Zap } from "lucide-react";
-import { useUser } from "@clerk/nextjs";
+import { useAuth } from "@/hooks/useAuth";
 import { useRouter } from "next/navigation";
 
 import { BlurBG } from "@/components/blur-bg";
@@ -84,12 +84,12 @@ type PaymentMethod = "stripe" | "crypto";
 const PricingTable = () => {
   const [paymentMethod, setPaymentMethod] = useState<PaymentMethod>("stripe");
   const [loadingTier, setLoadingTier] = useState<string | null>(null);
-  const { isSignedIn, user } = useUser();
+  const { user } = useAuth();
   const router = useRouter();
   const { toast } = useToast();
 
   const handleSubscribe = async (tierId: string) => {
-    if (!isSignedIn) {
+    if (!user) {
       router.push('/sign-up');
       return;
     }
@@ -289,7 +289,7 @@ const PricingTable = () => {
           All plans include a 7-day free trial. Cancel anytime. 
           {paymentMethod === "crypto" && " Cryptocurrency payments are processed securely."}
         </p>
-        {!isSignedIn && (
+        {!user && (
           <p className="text-dark/50 dark:text-light/50 text-xs mt-2">
             You&apos;ll need to sign up or sign in to subscribe to a plan.
           </p>

@@ -8,7 +8,7 @@ import { Container } from "./container";
 import Link from "next/link";
 import { ModeToggle } from "./theme-toggle";
 import NavMobile from "./nav-mobile";
-import { AuthButtons } from "./auth-buttons";
+import { AuthButtons } from "./auth/auth-buttons";
 import { cn } from "@/lib/utils";
 import navLinks from "@/data/nav";
 import { usePathname } from "next/navigation";
@@ -48,9 +48,6 @@ export const Header = () => {
     : "bg-transparent";
   return (
     <header
-      // initial={{ opacity: 0 }}
-      // animate={{ opacity: 1 }}
-      // transition={{ ease: "easeInOut", duration: 0.2, delay: 0.2 }}
       className={cn(
         "fixed z-40 top-0 left-0 right-0 w-full px-4 md:px-8 lg:px-0 pt-4 pb-4 border-b-[1px] border-b-transparent transition-all duration-200 bg-transparent",
         scrolledClasses,

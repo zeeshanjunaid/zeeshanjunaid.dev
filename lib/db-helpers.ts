@@ -1,4 +1,4 @@
-import { supabaseAdmin } from "./supabase";
+import { supabaseAdmin, supabase } from "./supabase";
 import type {
   User,
   UserInsert,
@@ -29,16 +29,14 @@ export async function createUser(userData: UserInsert): Promise<User | null> {
   }
 }
 
-export async function getUserByClerkId(clerkId: string): Promise<User | null> {
+export async function getUserById(userId: string): Promise<User | null> {
   try {
     const { data, error } = await supabaseAdmin
       .from("users")
       .select("*")
-      .eq("clerk_id", clerkId)
+      .eq("id", userId)
       .single();
 
-    // The .single() method throws an error if no row is found.
-    // If there's an error (like the PGRST116 you're seeing), we'll log it and return null.
     if (error && error.code !== "PGRST116") {
       console.error("Error fetching user:", error);
       return null;
@@ -46,21 +44,44 @@ export async function getUserByClerkId(clerkId: string): Promise<User | null> {
 
     return data;
   } catch (error) {
-    // This will catch other unexpected errors
-    console.error("Exception in getUserByClerkId:", error);
+    console.error("Exception in getUserById:", error);
+    return null;
+  }
+}
+
+export async function getCurrentUser(): Promise<User | null> {
+  try {
+    const { data: { user } } = await supabase.auth.getUser();
+    
+    if (!user) return null;
+
+    const { data, error } = await supabase
+      .from("users")
+      .select("*")
+      .eq("id", user.id)
+      .single();
+
+    if (error && error.code !== "PGRST116") {
+      console.error("Error fetching current user:", error);
+      return null;
+    }
+
+    return data;
+  } catch (error) {
+    console.error("Exception in getCurrentUser:", error);
     return null;
   }
 }
 
 export async function updateUser(
-  clerkId: string,
+  userId: string,
   updates: Partial<User>
 ): Promise<User | null> {
   try {
     const { data, error } = await supabaseAdmin
       .from("users")
       .update({ ...updates, updated_at: new Date().toISOString() })
-      .eq("clerk_id", clerkId)
+      .eq("id", userId)
       .select()
       .single();
 
@@ -76,12 +97,12 @@ export async function updateUser(
   }
 }
 
-export async function deleteUser(clerkId: string): Promise<boolean> {
+export async function deleteUser(userId: string): Promise<boolean> {
   try {
     const { error } = await supabaseAdmin
       .from("users")
       .delete()
-      .eq("clerk_id", clerkId);
+      .eq("id", userId);
 
     if (error) {
       console.error("Error deleting user:", error);
@@ -249,4 +270,36 @@ export async function updateTask(
     console.error("Error in updateTask:", error);
     return null;
   }
+}
+
+// Auth helpers
+export async function signUp(email: string, password: string) {
+  const { data, error } = await supabase.auth.signUp({
+    email,
+    password,
+  });
+
+  return { data, error };
+}
+
+export async function signIn(email: string, password: string) {
+  const { data, error } = await supabase.auth.signInWithPassword({
+    email,
+    password,
+  });
+
+  return { data, error };
+}
+
+export async function signOut() {
+  const { error } = await supabase.auth.signOut();
+  return { error };
+}
+
+export async function resetPassword(email: string) {
+  const { data, error } = await supabase.auth.resetPasswordForEmail(email, {
+    redirectTo: `${window.location.origin}/reset-password`,
+  });
+
+  return { data, error };
 }

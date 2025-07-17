@@ -15,22 +15,20 @@ export const supabaseAdmin = createClient(supabaseUrl, supabaseServiceKey, {
 // Client for client-side operations
 export const supabase = createClient(supabaseUrl, supabaseAnonKey)
 
-// Database types (generated from your schema)
+// Database types (updated for Supabase Auth)
 export type Database = {
   public: {
     Tables: {
       users: {
         Row: {
           id: string
-          clerk_id: string
           email: string
           stripe_customer_id: string | null
           created_at: string
           updated_at: string
         }
         Insert: {
-          id?: string
-          clerk_id: string
+          id: string
           email: string
           stripe_customer_id?: string | null
           created_at?: string
@@ -38,7 +36,6 @@ export type Database = {
         }
         Update: {
           id?: string
-          clerk_id?: string
           email?: string
           stripe_customer_id?: string | null
           created_at?: string

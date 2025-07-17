@@ -1,6 +1,5 @@
 import "./globals.css";
 
-import { ClerkProvider } from '@clerk/nextjs'
 import { Analytics } from "@vercel/analytics/react";
 import BackToTop from "@/components/back-to-top";
 import { Footer } from "@/components/footer";
@@ -8,7 +7,6 @@ import { Header } from "@/components/header";
 import type { Metadata } from "next";
 import NextTopLoader from "nextjs-toploader";
 import ReachOut from "@/components/reach-out";
-// import SmoothScroll from "@/components/smooth-scroll";
 import { SpeedInsights } from "@vercel/speed-insights/next";
 import { ThemeProvider } from "@/components/theme-provider";
 import { Toaster } from "@/components/ui/toaster";
@@ -97,104 +95,33 @@ export default function RootLayout({
           switzer.variable,
         )}
       >
-        <ClerkProvider
-          appearance={{
-            baseTheme: undefined,
-            elements: {
-              // Modal and card styling
-              modalContent: `
-                bg-light dark:bg-dark 
-                border border-lightBorderColor dark:border-darkBorderColor 
-                rounded-3xl
-              `,
-              card: `
-                bg-light dark:bg-dark 
-                border border-lightBorderColor dark:border-darkBorderColor 
-                rounded-3xl shadow-lg
-              `,
-              
-              // Header styling
-              headerTitle: "text-dark dark:text-light font-ao text-2xl font-bold",
-              headerSubtitle: "text-dark/70 dark:text-light/70 font-light",
-              
-              // Form elements
-              formFieldLabel: "text-dark dark:text-light font-medium",
-              formFieldInput: `
-                bg-light dark:bg-dark 
-                border border-lightBorderColor dark:border-darkBorderColor 
-                text-dark dark:text-light 
-                rounded-xl
-                focus:border-purple focus:ring-purple
-              `,
-              
-              // Buttons
-              formButtonPrimary: `
-                bg-purple hover:bg-purple/80 
-                text-dark dark:text-light 
-                rounded-xl font-medium
-                transition-colors duration-200
-              `,
-              
-              // Social buttons
-              socialButtonsBlockButton: `
-                bg-light dark:bg-dark 
-                border border-lightBorderColor dark:border-darkBorderColor 
-                text-dark dark:text-light 
-                rounded-xl
-                hover:bg-purple/10 hover:border-purple/30
-                transition-all duration-200
-              `,
-              socialButtonsBlockButtonText: "text-dark dark:text-light font-medium",
-              
-              // Links and text
-              footerActionLink: "text-purple hover:text-purple/80",
-              identityPreviewText: "text-dark dark:text-light",
-              identityPreviewEditButton: "text-purple hover:text-purple/80",
-              
-              // Dividers
-              dividerLine: "bg-lightBorderColor dark:bg-darkBorderColor",
-              dividerText: "text-dark/50 dark:text-light/50",
-              
-              // Alert and error messages
-              alertText: "text-red-600 dark:text-red-400",
-              formFieldErrorText: "text-red-600 dark:text-red-400",
-              
-              // Loading states
-              spinner: "text-purple",
-              
-              // Footer
-              footer: "text-dark/70 dark:text-light/70"
-            }
-          }}
-        >
-          <ThemeProvider attribute="class" defaultTheme="dark">
-            <NextTopLoader
-              color="#A374FF"
-              initialPosition={0.08}
-              crawlSpeed={200}
-              height={4}
-              crawl={true}
-              showSpinner={false}
-              easing="ease"
-              speed={250}
-              shadow="0 0 16px #A374FF,0 0 8px #A374FF"
-              template='<div class="bar" role="bar"><div class="peg"></div></div> 
-  <div class="spinner" role="spinner"><div class="spinner-icon"></div></div>'
-              zIndex={1600}
-              showAtBottom={false}
-            />
+        <ThemeProvider attribute="class" defaultTheme="dark">
+          <NextTopLoader
+            color="#A374FF"
+            initialPosition={0.08}
+            crawlSpeed={200}
+            height={4}
+            crawl={true}
+            showSpinner={false}
+            easing="ease"
+            speed={250}
+            shadow="0 0 16px #A374FF,0 0 8px #A374FF"
+            template='<div class="bar" role="bar"><div class="peg"></div></div> 
+<div class="spinner" role="spinner"><div class="spinner-icon"></div></div>'
+            zIndex={1600}
+            showAtBottom={false}
+          />
 
-            <Header />
-            <main className="pt-[100px]">
-              {children}
-              <ReachOut />
-            </main>
-            <Footer />
-            <BackToTop />
+          <Header />
+          <main className="pt-[100px]">
+            {children}
+            <ReachOut />
+          </main>
+          <Footer />
+          <BackToTop />
 
-            <Toaster />
-          </ThemeProvider>
-        </ClerkProvider>
+          <Toaster />
+        </ThemeProvider>
         <Analytics />
         <SpeedInsights />
       </body>
