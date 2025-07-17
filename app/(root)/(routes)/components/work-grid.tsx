@@ -7,6 +7,7 @@ import { ArrowRight } from "lucide-react";
 import { AspectRatio } from "@/components/ui/aspect-ratio";
 import { Container } from "@/components/container";
 import Image from "next/image";
+import Link from "next/link";
 import type { Project } from "@/data/work";
 import { Skeleton } from "@/components/ui/skeleton";
 import { cn } from "@/lib/utils";
@@ -26,11 +27,10 @@ export const WorkGrid = ({ projects, selectedSkill }: WorkGridProps) => {
       <Container className="mt-8 lg:mt-12 px-5 lg:px-0">
         <div className="grid grid-cols-1 md:grid-cols-2 gap-x-5 gap-y-12">
           {projects.map(
-            ({ name, link, imgUrl, tags, year }) =>
+            ({ name, slug, link, imgUrl, tags, year }) =>
               imgUrl && (
-                <a
-                  href={link}
-                  target="_blank"
+                <Link
+                  href={`/work/${slug}`}
                   key={name}
                   className={cn(
                     "flex flex-col gap-y-1.5 lg:gap-y-2.5 group",
@@ -71,7 +71,7 @@ export const WorkGrid = ({ projects, selectedSkill }: WorkGridProps) => {
                       ))}
                     </div>
                   </div>
-                </a>
+                </Link>
               ),
           )}
         </div>

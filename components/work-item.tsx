@@ -9,6 +9,7 @@ import { BlurBG } from "./blur-bg";
 import Image from "next/image";
 import { Skeleton } from "./ui/skeleton";
 import { cn } from "@/lib/utils";
+import Link from "next/link";
 
 interface WorkItemProps {
   name: string;
@@ -48,6 +49,10 @@ export const WorkItem = ({
       yValue.set(yPct);
     }
   };
+
+  // Create slug from name for internal linking
+  const slug = name.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/(^-|-$)/g, '');
+
   return (
     <motion.li
       onMouseMove={handleMouseMove}
@@ -58,7 +63,7 @@ export const WorkItem = ({
         "group relative w-full rounded-3xl p-[2px] transition duration-200",
       )}
     >
-      <a href={link} target="_blank" rel="noreferrer noopener">
+      <Link href={`/work/${slug}`}>
         <div className="relative px-6 md:px-8 py-6  rounded-3xl">
           <motion.div
             variants={{
@@ -118,7 +123,7 @@ export const WorkItem = ({
           </div>
         </div>
         <WorkImg top={top} left={left} imgUrl={imgUrl} />
-      </a>
+      </Link>
     </motion.li>
   );
 };
