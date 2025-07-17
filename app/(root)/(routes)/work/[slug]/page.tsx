@@ -1,3 +1,5 @@
+"use client";
+
 import { notFound } from "next/navigation";
 import { useState, useEffect } from "react";
 import { Container } from "@/components/container";
