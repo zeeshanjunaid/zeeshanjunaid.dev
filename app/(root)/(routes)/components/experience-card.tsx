@@ -1,85 +1,165 @@
 "use client";
 
-import { ArrowRight } from "lucide-react";
+import { ArrowRight, ExternalLink, Calendar, MapPin } from "lucide-react";
 import { BlurBG } from "@/components/blur-bg";
 import CustomLink from "@/components/custom-link";
 import React from "react";
 import { WorkExperienceProps } from "@/data/about";
 import { cn } from "@/lib/utils";
 import { motion } from "framer-motion";
+
 const ExperienceTag = ({ children }: { children: React.ReactNode }) => (
   <div
     className={cn(
-      "inline-flex uppercase px-4 py-2 text-[10px] md:text-[12px] text-dark/70 dark:text-light/70 border border-solid border-dark/15 dark:border-light/15 rounded-xl leading-[125%]",
+      "inline-flex uppercase px-3 py-1.5 text-[10px] md:text-[12px] text-dark/70 dark:text-light/70 border border-solid border-dark/15 dark:border-light/15 rounded-xl leading-[125%] hover:border-purple/30 hover:text-purple/80 transition-all duration-200",
     )}
   >
     {children}
   </div>
 );
+
 interface ExperienceCardProps {
   experience: WorkExperienceProps;
+  index: number;
 }
-const ExperienceCard = ({ experience }: ExperienceCardProps) => {
+
+const ExperienceCard = ({ experience, index }: ExperienceCardProps) => {
   const { duration, role, company, companyLink, description, technologies } =
     experience;
+
+  const cardVariants = {
+    hidden: { opacity: 0, y: 50 },
+    visible: {
+      opacity: 1,
+      y: 0,
+      transition: {
+        duration: 0.8,
+        delay: index * 0.2,
+        ease: "easeOut",
+      },
+    },
+  };
+
+  const tagVariants = {
+    hidden: { opacity: 0, scale: 0.8 },
+    visible: {
+      opacity: 1,
+      scale: 1,
+      transition: {
+        duration: 0.4,
+        delay: 0.3 + index * 0.1,
+      },
+    },
+  };
+
   return (
-    <div className="relative rounded-3xl overflow-hidden w-full py-8 px-5 md:p-12  lg:p-16">
-      <BlurBG className="rounded-3xl" />
-      <div className="relative z-20 flex gap-x-2 justify-between items-start">
-        <div className=" flex lg:justify-between lg:items-start lg:gap-4 flex-col lg:flex-row">
-          <span className="min-w-max font-light text-[12px] md:text-[14px] leading-loose text-dark/60 dark:text-light/60 lg:pt-[2px] flex-1">
-            {duration}
-          </span>
-          <div className="flex flex-col">
-            <h3 className="font-ao font-bold text-[18px] md:text-[20px] lg:text-[22px] mb-4 inline-flex flex-wrap">
-              {role} @
-              <CustomLink
-                text={company}
-                link={companyLink}
-                target="_blank"
-                rel="noreferrer noopener"
-                className="ml-1"
-              />
-            </h3>
-            <div className="text-dark/90 dark:text-light/90 text-[14px] leading-relaxed md:text-[16px] flex flex-col gap-y-2.5">
-              <p>{description}</p>
+    <motion.div
+      initial="hidden"
+      whileInView="visible"
+      viewport={{ once: true, margin: "-50px" }}
+      variants={cardVariants}
+      className="relative rounded-3xl overflow-hidden w-full group"
+    >
+      <div className="relative py-8 px-6 md:p-10 lg:p-12 bg-light dark:bg-dark rounded-3xl overflow-hidden border border-lightBorderColor dark:border-darkBorderColor">
+        <BlurBG className="rounded-3xl" />
+        
+        {/* Hover Background Effect */}
+        <div className="absolute inset-0 bg-gradient-to-br from-purple/5 via-transparent to-purple/10 rounded-3xl opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+        
+        {/* Decorative Elements */}
+        <div className="absolute top-6 right-6 w-2 h-2 bg-purple/30 rounded-full group-hover:scale-150 transition-transform duration-500" />
+        <div className="absolute bottom-6 left-6 w-1 h-1 bg-purple/20 rounded-full group-hover:scale-200 transition-transform duration-700" />
+
+        <div className="relative z-20">
+          {/* Header */}
+          <div className="flex flex-col lg:flex-row lg:items-start lg:justify-between gap-4 mb-6">
+            <div className="flex-1">
+              {/* Duration Badge */}
+              <div className="inline-flex items-center gap-2 bg-purple/10 px-4 py-2 rounded-xl mb-4">
+                <Calendar className="w-4 h-4 text-purple" />
+                <span className="text-[12px] md:text-[14px] font-switzer font-medium text-purple uppercase tracking-wider">
+                  {duration}
+                </span>
+              </div>
+
+              {/* Role & Company */}
+              <h3 className="font-ao font-bold text-[20px] md:text-[24px] lg:text-[28px] text-dark dark:text-light mb-3 leading-tight">
+                {role}
+              </h3>
+              
+              <div className="flex items-center gap-2 mb-4">
+                <span className="text-dark/60 dark:text-light/60 font-switzer font-light text-[14px] md:text-[16px]">
+                  at
+                </span>
+                <CustomLink
+                  text={company}
+                  link={companyLink}
+                  target="_blank"
+                  rel="noreferrer noopener"
+                  className="font-switzer font-medium text-[14px] md:text-[16px] text-dark dark:text-light hover:text-purple"
+                />
+                <ExternalLink className="w-4 h-4 text-dark/40 dark:text-light/40" />
+              </div>
             </div>
-            <div className="flex items-center flex-wrap gap-2.5 mt-5">
-              {technologies.map((tech, index) => (
-                <ExperienceTag key={index}>{tech}</ExperienceTag>
+
+            {/* External Link Button */}
+            <motion.a
+              href={companyLink}
+              target="_blank"
+              rel="noreferrer noopener"
+              className="hidden lg:flex items-center justify-center w-12 h-12 bg-light dark:bg-dark rounded-2xl border border-lightBorderColor dark:border-darkBorderColor hover:border-purple/30 hover:bg-purple/5 transition-all duration-300 group/link"
+              whileHover={{ scale: 1.05 }}
+              whileTap={{ scale: 0.95 }}
+            >
+              <ArrowRight className="w-5 h-5 text-dark dark:text-light group-hover/link:text-purple group-hover/link:-rotate-45 transition-all duration-300" />
+            </motion.a>
+          </div>
+
+          {/* Description */}
+          <div className="mb-6">
+            <p className="text-dark/90 dark:text-light/90 text-[14px] md:text-[16px] lg:text-[18px] leading-relaxed font-light">
+              {description}
+            </p>
+          </div>
+
+          {/* Technologies */}
+          <div>
+            <h4 className="text-[12px] md:text-[14px] font-switzer font-medium text-dark/60 dark:text-light/60 uppercase tracking-wider mb-4">
+              Technologies Used
+            </h4>
+            <motion.div
+              initial="hidden"
+              whileInView="visible"
+              viewport={{ once: true }}
+              className="flex items-center flex-wrap gap-2.5"
+            >
+              {technologies.map((tech, techIndex) => (
+                <motion.div
+                  key={techIndex}
+                  variants={tagVariants}
+                  custom={techIndex}
+                >
+                  <ExperienceTag>{tech}</ExperienceTag>
+                </motion.div>
               ))}
-            </div>
+            </motion.div>
           </div>
         </div>
-        <motion.a
-          initial="initial"
-          whileHover="whileHover"
-          href={companyLink}
-          target="_blank"
-          rel="noreferrer noopener"
-          variants={{
-            initial: {
-              opacity: 0.25,
-              rotate: "0deg",
-              scale: 1,
-            },
-            whileHover: {
-              opacity: 1,
-              rotate: "-25deg",
-              scale: 1.125,
-            },
-          }}
-          transition={{
-            duration: 0.2,
-            type: "tween",
-            ease: "easeInOut",
-          }}
-          className="text-dark dark:text-light hidden md:block"
-        >
-          <ArrowRight size={28} />
-        </motion.a>
+
+        {/* Mobile External Link */}
+        <div className="lg:hidden mt-6 relative z-20">
+          <a
+            href={companyLink}
+            target="_blank"
+            rel="noreferrer noopener"
+            className="inline-flex items-center gap-2 text-[14px] font-switzer font-medium text-purple hover:text-purple/80 transition-colors duration-200"
+          >
+            Visit {company}
+            <ArrowRight className="w-4 h-4" />
+          </a>
+        </div>
       </div>
-    </div>
+    </motion.div>
   );
 };
 

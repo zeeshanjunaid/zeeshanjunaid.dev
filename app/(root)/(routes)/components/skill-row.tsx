@@ -3,39 +3,91 @@
 import { BlurBG } from "@/components/blur-bg";
 import React from "react";
 import { SkillProps } from "@/data/about";
+import { motion } from "framer-motion";
+
 interface SkillRowProps {
   skillset: any;
 }
+
 const SkillRow = ({ skillset }: SkillRowProps) => {
+  const containerVariants = {
+    hidden: { opacity: 0 },
+    visible: {
+      opacity: 1,
+      transition: {
+        staggerChildren: 0.05,
+        delayChildren: 0.1,
+      },
+    },
+  };
+
+  const itemVariants = {
+    hidden: { opacity: 0, y: 20 },
+    visible: {
+      opacity: 1,
+      y: 0,
+      transition: {
+        duration: 0.4,
+        ease: "easeOut",
+      },
+    },
+  };
+
   return (
-    <div>
-      <h3 className="font-medium relative inline-block px-4 py-2.5 bg-light dark:bg-dark rounded-xl overflow-hidden text-dark/80 dark:text-light/80 text-[12px]">
-        <BlurBG className="rounded-xl" />
-        <span className="relative z-20">{skillset.name}</span>
-      </h3>
-      <ul className="flex flex-wrap gap-x-6 gap-y-2.5">
+    <motion.div
+      initial="hidden"
+      whileInView="visible"
+      viewport={{ once: true }}
+      variants={containerVariants}
+    >
+      <motion.ul 
+        variants={containerVariants}
+        className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4"
+      >
         {skillset.skills.map(({ link, name, icon: Icon }: SkillProps) => (
-          <li key={name} className="">
+          <motion.li 
+            key={name} 
+            variants={itemVariants}
+            className="group"
+          >
             {link ? (
               <a
-                className="text-dark dark:text-light text-[16px] font-light px-3 py-1.5 hover:bg-purple/20 rounded-xl flex gap-x-1 transition duration-200 items-center"
+                className="relative flex items-center gap-3 p-4 bg-light dark:bg-dark rounded-2xl border border-lightBorderColor dark:border-darkBorderColor hover:border-purple/30 hover:bg-purple/5 transition-all duration-300 group overflow-hidden"
                 href={link}
                 target="_blank"
                 rel="noopener noreferrer"
               >
-                {Icon && <Icon size="18" />}
-                {name}
+                <BlurBG className="rounded-2xl" />
+                <div className="relative z-20 flex items-center gap-3 w-full">
+                  {Icon && (
+                    <div className="w-8 h-8 flex items-center justify-center bg-purple/10 rounded-lg group-hover:bg-purple/20 group-hover:scale-110 transition-all duration-300">
+                      <Icon size="16" className="text-purple" />
+                    </div>
+                  )}
+                  <span className="text-dark dark:text-light text-[14px] md:text-[16px] font-light group-hover:text-purple transition-colors duration-300 flex-1">
+                    {name}
+                  </span>
+                </div>
               </a>
             ) : (
-              <p className="text-dark dark:text-light text-[16px] font-light px-3 py-1.5 hover:bg-purple/20 rounded-xl flex gap-x-1 transition duration-200 items-center">
-                {Icon && <Icon size="18" />}
-                {name}
-              </p>
+              <div className="relative flex items-center gap-3 p-4 bg-light dark:bg-dark rounded-2xl border border-lightBorderColor dark:border-darkBorderColor hover:border-purple/30 hover:bg-purple/5 transition-all duration-300 group overflow-hidden cursor-default">
+                <BlurBG className="rounded-2xl" />
+                <div className="relative z-20 flex items-center gap-3 w-full">
+                  {Icon && (
+                    <div className="w-8 h-8 flex items-center justify-center bg-purple/10 rounded-lg group-hover:bg-purple/20 group-hover:scale-110 transition-all duration-300">
+                      <Icon size="16" className="text-purple" />
+                    </div>
+                  )}
+                  <span className="text-dark dark:text-light text-[14px] md:text-[16px] font-light group-hover:text-purple transition-colors duration-300 flex-1">
+                    {name}
+                  </span>
+                </div>
+              </div>
             )}
-          </li>
+          </motion.li>
         ))}
-      </ul>
-    </div>
+      </motion.ul>
+    </motion.div>
   );
 };
 
