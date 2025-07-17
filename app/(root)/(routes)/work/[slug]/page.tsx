@@ -45,7 +45,7 @@ export default function ProjectPage({ params }: ProjectPageProps) {
 
   const previousImage = () => {
     if (project.images) {
-      setCurrentImageIndex((prev) => 
+      setCurrentImageIndex((prev) =>
         prev === 0 ? project.images!.length - 1 : prev - 1
       );
     }
@@ -55,7 +55,7 @@ export default function ProjectPage({ params }: ProjectPageProps) {
   useEffect(() => {
     const handleKeyDown = (e: KeyboardEvent) => {
       if (!lightboxOpen) return;
-      
+
       if (e.key === "Escape") {
         closeLightbox();
       } else if (e.key === "ArrowRight") {
@@ -102,17 +102,21 @@ export default function ProjectPage({ params }: ProjectPageProps) {
                     ))}
                   </div>
                 </div>
-                
+
                 <h1 className="text-[32px] md:text-[42px] lg:text-[54px] font-bold font-ao text-dark dark:text-light mb-4 capitalize">
                   {project.name}
                 </h1>
-                
+
                 <p className="text-[16px] md:text-[18px] lg:text-[20px] text-dark/80 dark:text-light/80 leading-relaxed mb-6">
                   {project.description}
                 </p>
 
                 <div className="flex flex-col sm:flex-row gap-4">
-                  <a href={project.link} target="_blank" rel="noopener noreferrer">
+                  <a
+                    href={project.link}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
                     <Button
                       variant="purple"
                       size="lg"
@@ -291,7 +295,7 @@ export default function ProjectPage({ params }: ProjectPageProps) {
                   Like this project?
                 </h3>
                 <p className="text-dark/70 dark:text-light/70 text-sm mb-4">
-                  Let's discuss how I can help bring your vision to life.
+                  Let&apos;s discuss how I can help bring your vision to life.
                 </p>
                 <Link href="/contact">
                   <Button
@@ -335,7 +339,7 @@ export default function ProjectPage({ params }: ProjectPageProps) {
               </div>
             ))}
           </div>
-          
+
           {/* View Live Project CTA */}
           <div className="text-center mt-12">
             <a href={project.link} target="_blank" rel="noopener noreferrer">
@@ -366,5 +370,5 @@ export default function ProjectPage({ params }: ProjectPageProps) {
       )}
     </>
   );
-"use client";
+  ("use client");
 }
