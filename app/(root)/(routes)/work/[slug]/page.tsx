@@ -1,4 +1,5 @@
 import { notFound } from "next/navigation";
+import { useState, useEffect } from "react";
 import { Container } from "@/components/container";
 import { BlurBG } from "@/components/blur-bg";
 import { Button } from "@/components/ui/button";
@@ -8,6 +9,7 @@ import Image from "next/image";
 import ProjectsList from "@/data/work";
 import { AspectRatio } from "@/components/ui/aspect-ratio";
 import { WorkTag } from "@/components/work-item";
+import { Lightbox } from "@/components/ui/lightbox";
 
 interface ProjectPageProps {
   params: {
@@ -38,10 +40,53 @@ export async function generateMetadata({ params }: ProjectPageProps) {
 
 export default function ProjectPage({ params }: ProjectPageProps) {
   const project = ProjectsList.find((p) => p.slug === params.slug);
+  const [lightboxOpen, setLightboxOpen] = useState(false);
+  const [currentImageIndex, setCurrentImageIndex] = useState(0);
 
   if (!project) {
     notFound();
   }
+
+  const openLightbox = (index: number) => {
+    setCurrentImageIndex(index);
+    setLightboxOpen(true);
+  };
+
+  const closeLightbox = () => {
+    setLightboxOpen(false);
+  };
+
+  const nextImage = () => {
+    if (project.images) {
+      setCurrentImageIndex((prev) => (prev + 1) % project.images!.length);
+    }
+  };
+
+  const previousImage = () => {
+    if (project.images) {
+      setCurrentImageIndex((prev) => 
+        prev === 0 ? project.images!.length - 1 : prev - 1
+      );
+    }
+  };
+
+  // Keyboard navigation
+  useEffect(() => {
+    const handleKeyDown = (e: KeyboardEvent) => {
+      if (!lightboxOpen) return;
+      
+      if (e.key === "Escape") {
+        closeLightbox();
+      } else if (e.key === "ArrowRight") {
+        nextImage();
+      } else if (e.key === "ArrowLeft") {
+        previousImage();
+      }
+    };
+
+    window.addEventListener("keydown", handleKeyDown);
+    return () => window.removeEventListener("keydown", handleKeyDown);
+  }, [lightboxOpen]);
 
   return (
     <>
@@ -107,8 +152,9 @@ export default function ProjectPage({ params }: ProjectPageProps) {
                         src={project.imgUrl}
                         alt={project.name}
                         fill
-                        className="object-cover rounded-xl"
+                        className="object-cover rounded-xl cursor-pointer hover:scale-105 transition-transform duration-300"
                         sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+                        onClick={() => openLightbox(0)}
                       />
                     </AspectRatio>
                   </div>
@@ -282,28 +328,62 @@ export default function ProjectPage({ params }: ProjectPageProps) {
       </Container>
 
       {/* Additional Images */}
-      {project.images && project.images.length > 0 && (
+      {project.images && project.images.length > 1 && (
         <Container className="px-4 lg:px-0 mb-12">
           <h2 className="text-[28px] md:text-[36px] font-bold font-ao text-dark dark:text-light mb-8 text-center">
             Project Gallery
           </h2>
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-            {project.images.map((image, index) => (
-              <div key={index} className="relative w-full">
-                <AspectRatio ratio={16 / 10}>
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+            {project.images.slice(1).map((image, index) => (
+              <div key={index} className="relative w-full cursor-pointer group">
+                <AspectRatio ratio={16 / 9}>
                   <Image
                     src={image}
-                    alt={`${project.name} screenshot ${index + 1}`}
+                    alt={`${project.name} screenshot ${index + 2}`}
                     fill
-                    className="object-cover rounded-xl"
+                    className="object-cover rounded-xl group-hover:scale-105 transition-transform duration-300"
                     sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+                    onClick={() => openLightbox(index + 1)}
                   />
                 </AspectRatio>
+                <div className="absolute inset-0 bg-black/0 group-hover:bg-black/20 transition-colors duration-300 rounded-xl flex items-center justify-center">
+                  <div className="opacity-0 group-hover:opacity-100 transition-opacity duration-300 text-white text-sm font-medium">
+                    Click to enlarge
+                  </div>
+                </div>
               </div>
             ))}
           </div>
+          
+          {/* View Live Project CTA */}
+          <div className="text-center mt-12">
+            <a href={project.link} target="_blank" rel="noopener noreferrer">
+              <Button
+                variant="purple"
+                size="lg"
+                className="rounded-xl uppercase font-medium flex items-center gap-2 mx-auto"
+              >
+                <ExternalLink className="w-4 h-4" />
+                View Live Project
+              </Button>
+            </a>
+          </div>
         </Container>
+      )}
+
+      {/* Lightbox */}
+      {project.images && (
+        <Lightbox
+          images={project.images}
+          isOpen={lightboxOpen}
+          currentIndex={currentImageIndex}
+          onClose={closeLightbox}
+          onNext={nextImage}
+          onPrevious={previousImage}
+          projectName={project.name}
+        />
       )}
     </>
   );
+"use client";
 }
