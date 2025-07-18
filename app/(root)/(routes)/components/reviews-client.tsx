@@ -151,14 +151,14 @@ const ReviewsPageClient = () => {
             whileInView="visible"
             viewport={{ once: true }}
             variants={containerVariants}
-            className="flex justify-start items-center gap-6 overflow-x-auto pb-6 scrollbar-hide"
+            className="flex justify-start items-start gap-8 overflow-x-auto pb-8 scrollbar-hide px-2"
           >
             {VideoReviewsList.map(
               ({ client, video, profile, country }, index) => (
                 <motion.div
                   key={index}
                   variants={itemVariants}
-                  className="flex-shrink-0"
+                  className="flex-shrink-0 group"
                 >
                   <VideoModal
                     client={client}
