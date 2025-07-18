@@ -77,7 +77,7 @@ const VideoModal = ({
                 </motion.div>
 
                 {/* Profile Image Container */}
-                <div className="absolute inset-[3px] rounded-3xl overflow-hidden bg-light dark:bg-dark">
+                <div className="absolute inset-[3px] rounded-3xl overflow-hidden bg-light dark:bg-dark z-30">
                   <BlurBG className="rounded-3xl" />
                   
                   {profile ? (
@@ -95,7 +95,7 @@ const VideoModal = ({
                       />
                       
                       {/* Gradient Overlay */}
-                      <div className="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-transparent z-30" />
+                      <div className="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-transparent z-25" />
                     </div>
                   ) : (
                     <div className="w-full h-full flex items-center justify-center relative z-20">
@@ -106,7 +106,7 @@ const VideoModal = ({
                 
                 {/* Play Button Overlay */}
                 <motion.div 
-                  className="absolute inset-0 flex items-center justify-center z-40"
+                  className="absolute inset-[3px] flex items-center justify-center z-40 rounded-3xl"
                   initial={{ opacity: 0 }}
                   animate={{ opacity: isHovered ? 1 : 0.8 }}
                   transition={{ duration: 0.3 }}
