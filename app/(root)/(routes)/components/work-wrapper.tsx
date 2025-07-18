@@ -6,20 +6,13 @@ import { motion } from "framer-motion";
 import { Container } from "@/components/container";
 import { FilterBar } from "./filter-bar";
 import ProjectsList from "@/data/work";
-import { ViewToggle } from "./view-toggle";
 import { WorkGrid } from "./work-grid";
-import { WorkList } from "./work-list";
 import { BlurBG } from "@/components/blur-bg";
 import { Briefcase, Calendar, Code, Palette, Search, Filter } from "lucide-react";
 
 const WorkWrapper = () => {
   const [isMounted, setIsMounted] = useState(false);
   const projectsNum = ProjectsList.length;
-  const [gridView, setGridView] = useState(
-    typeof localStorage !== "undefined"
-      ? JSON.parse(localStorage.getItem("zsGridView") || "true")
-      : false,
-  );
   const [skillValue, setSkillValue] = useState("");
   const [projects, setProjects] = useState(ProjectsList);
 
@@ -37,12 +30,6 @@ const WorkWrapper = () => {
 
     setProjects(filteredProjects);
   }, [skillValue]);
-
-  useEffect(() => {
-    if (typeof localStorage !== "undefined") {
-      localStorage.setItem("zsGridView", JSON.stringify(gridView));
-    }
-  }, [gridView]);
 
   useEffect(() => {
     setIsMounted(true);
@@ -155,7 +142,7 @@ const WorkWrapper = () => {
               {/* Filter Controls */}
               <motion.div
                 variants={itemVariants}
-                className="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-6"
+                className="flex flex-col sm:flex-row justify-start items-start sm:items-center gap-6"
               >
                 <div className="flex items-center gap-4">
                   <div className="flex items-center gap-2">
@@ -169,13 +156,6 @@ const WorkWrapper = () => {
                     setSkillValue={setSkillValue}
                     skills={skills}
                   />
-                </div>
-
-                <div className="flex items-center gap-4">
-                  <span className="text-dark/60 dark:text-light/60 font-switzer font-medium text-[14px] uppercase tracking-wider">
-                    View:
-                  </span>
-                  <ViewToggle gridView={gridView} setGridView={setGridView} />
                 </div>
               </motion.div>
 
@@ -217,41 +197,7 @@ const WorkWrapper = () => {
         transition={{ duration: 0.8, delay: 0.3 }}
         className="py-8 md:py-12"
       >
-        {gridView ? (
-          <WorkGrid selectedSkill={skillValue} projects={projects} />
-        ) : (
-          <>
-            {/* List Header */}
-            <div className="border-b-[1px] border-b-lightBorderColor dark:border-b-darkBorderColor pb-6 mb-8">
-              <Container className="px-4 md:px-7 lg:px-0">
-                <div className="relative bg-light dark:bg-dark rounded-2xl p-6 md:p-8 overflow-hidden">
-                  <BlurBG className="rounded-2xl" />
-                  <div className="relative z-20">
-                    <div className="flex items-center gap-x-8 justify-between">
-                      <span className="text-dark/60 dark:text-light/60 uppercase text-[12px] font-light font-switzer tracking-wider">
-                        Year
-                      </span>
-                      <div className="flex md:justify-between items-center gap-y-3 flex-1">
-                        <span className="text-dark/60 dark:text-light/60 uppercase text-[12px] font-light font-switzer tracking-wider">
-                          Project Name
-                        </span>
-                        <div className="flex items-center flex-wrap gap-2 md:gap-2.5 md:w-[290px]">
-                          <span className="ml-2 text-dark/60 dark:text-light/60 uppercase text-[16px] font-light font-switzer md:hidden">
-                            +
-                          </span>
-                          <span className="text-dark/60 dark:text-light/60 uppercase text-[12px] font-light font-switzer tracking-wider">
-                            Technologies
-                          </span>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </Container>
-            </div>
-            <WorkList selectedSkill={skillValue} projects={projects} />
-          </>
-        )}
+        <WorkGrid selectedSkill={skillValue} projects={projects} />
       </motion.section>
 
       {/* Empty State */}
