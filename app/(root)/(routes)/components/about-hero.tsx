@@ -83,7 +83,7 @@ const AboutHero = () => {
             </div>
             
             <h1 className="text-left text-[28px] md:text-[36px] lg:text-[44px] font-bold font-ao text-dark dark:text-light leading-tight mb-6">
-              I'm Zeeshan. A designer, developer and{" "}
+              I&apos;m Zeeshan. A designer, developer and{" "}
               <span className="text-gradient">problem solver</span>.
             </h1>
 
@@ -139,7 +139,7 @@ const AboutHero = () => {
           {/* Story Content */}
           <motion.div variants={containerVariants} className="space-y-6 mb-8">
             <motion.p variants={itemVariants} className={paragraphStyles}>
-              Hello! I'm a passionate and innovative Frontend Developer with a rich 
+              Hello! I&apos;m a passionate and innovative Frontend Developer with a rich 
               background in building sophisticated web applications and digital solutions. 
               My journey through the tech industry has led me to work with forward-thinking 
               companies like Passage Protocol, Ledgy, Mindable Media, and The Bureau Dubai.
@@ -159,11 +159,11 @@ const AboutHero = () => {
               <div className="relative z-20">
                 <div className="flex items-start gap-4">
                   <div className="w-8 h-8 bg-purple/10 rounded-full flex items-center justify-center flex-shrink-0 mt-1">
-                    <span className="text-purple text-[18px]">"</span>
+                    <span className="text-purple text-[18px]">&quot;</span>
                   </div>
                   <div>
                     <p className="font-ao text-[18px] md:text-[20px] text-dark dark:text-light leading-relaxed italic mb-2">
-                      "Technology is best when it brings people together."
+                      &quot;Technology is best when it brings people together.&quot;
                     </p>
                     <p className="text-[14px] font-switzer font-light text-dark/60 dark:text-light/60">
                       — Matt Mullenweg
@@ -174,7 +174,7 @@ const AboutHero = () => {
             </motion.div>
 
             <motion.p variants={itemVariants} className={paragraphStyles}>
-              Outside of work, I'm an avid learner, always seeking out new knowledge and 
+              Outside of work, I&apos;m an avid learner, always seeking out new knowledge and 
               skills in both technology and design. I believe in giving back to the community 
               and often participate in tech meetups and conferences.
             </motion.p>
@@ -214,7 +214,7 @@ const AboutHero = () => {
                 size="lg"
                 className="rounded-xl uppercase font-medium font-switzer flex items-center gap-2"
               >
-                Let's Work Together
+                Let&apos;s Work Together
                 <ArrowRight className="w-4 h-4" />
               </Button>
             </Link>
