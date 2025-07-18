@@ -54,7 +54,7 @@ const TestimonialCard = ({ review, className }: TestimonialCardProps) => {
           {/* Header Section */}
           <div className="flex items-start gap-4">
             {/* Profile Image */}
-            <motion.div 
+            <motion.div
               className="relative w-16 h-16 md:w-20 md:h-20 rounded-2xl overflow-hidden flex-shrink-0 group-hover:scale-105 transition-transform duration-300"
               whileHover={{ scale: 1.1 }}
             >
@@ -67,7 +67,7 @@ const TestimonialCard = ({ review, className }: TestimonialCardProps) => {
                 alt={review.client}
                 onLoad={() => setIsLoaded(true)}
               />
-              
+
               {/* Profile Border */}
               <div className="absolute inset-0 rounded-2xl border-2 border-purple/20 opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
             </motion.div>
@@ -79,7 +79,7 @@ const TestimonialCard = ({ review, className }: TestimonialCardProps) => {
                   <h3 className="text-dark dark:text-light font-switzer font-semibold text-[16px] md:text-[18px] flex items-center gap-2 mb-1">
                     {review.client}
                     {review.country && (
-                      <motion.span 
+                      <motion.span
                         className="flex-shrink-0"
                         whileHover={{ scale: 1.2 }}
                       >
@@ -140,15 +140,15 @@ const TestimonialCard = ({ review, className }: TestimonialCardProps) => {
                     key={i}
                     initial={{ scale: 0 }}
                     animate={{ scale: 1 }}
-                    transition={{ 
-                      duration: 0.3, 
+                    transition={{
+                      duration: 0.3,
                       delay: i * 0.1,
                       type: "spring",
-                      stiffness: 200 
+                      stiffness: 200,
                     }}
                   >
-                    <Star 
-                      className="w-4 h-4 text-yellow-400 fill-yellow-400 group-hover:scale-110 transition-transform duration-300" 
+                    <Star
+                      className="w-4 h-4 text-yellow-400 fill-yellow-400 group-hover:scale-110 transition-transform duration-300"
                       style={{ transitionDelay: `${i * 50}ms` }}
                     />
                   </motion.div>
@@ -162,13 +162,13 @@ const TestimonialCard = ({ review, className }: TestimonialCardProps) => {
 
           {/* Review Content */}
           <div className="relative">
-            <motion.p 
+            <motion.p
               className="text-dark dark:text-light font-switzer font-light italic text-[14px] md:text-[16px] lg:text-[17px] leading-relaxed"
               initial={{ opacity: 0.8 }}
               animate={{ opacity: isHovered ? 1 : 0.9 }}
               transition={{ duration: 0.3 }}
             >
-              "{review.review}"
+              &quot;{review.review}&quot;
             </motion.p>
           </div>
 
@@ -200,9 +200,9 @@ const TestimonialCard = ({ review, className }: TestimonialCardProps) => {
         <motion.div
           className="absolute inset-0 rounded-3xl border-2 border-purple/40"
           initial={{ opacity: 0, scale: 0.95 }}
-          animate={{ 
+          animate={{
             opacity: isHovered ? 1 : 0,
-            scale: isHovered ? 1 : 0.95
+            scale: isHovered ? 1 : 0.95,
           }}
           transition={{ duration: 0.3 }}
         />
