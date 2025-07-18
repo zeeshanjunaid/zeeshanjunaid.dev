@@ -193,7 +193,7 @@ const Skills = () => {
                   Ready to Build Something Amazing?
                 </h3>
                 <p className="text-dark/80 dark:text-light/80 font-switzer font-light text-[16px] md:text-[18px] leading-relaxed max-w-2xl mx-auto mb-8">
-                  Let's combine these skills and technologies to create exceptional digital experiences for your project.
+                  Let&apos;s combine these skills and technologies to create exceptional digital experiences for your project.
                 </p>
                 
                 <div className="flex flex-col sm:flex-row gap-4 justify-center">
