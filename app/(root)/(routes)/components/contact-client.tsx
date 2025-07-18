@@ -116,6 +116,26 @@ const ContactPageClient = () => {
               </motion.div>
 
               {/* Stats Grid */}
+              <motion.div variants={itemVariants} className="grid grid-cols-2 md:grid-cols-4 gap-6">
+                {stats.map((stat, index) => (
+                  <div key={index} className="text-center">
+                    <div className="w-12 h-12 bg-purple/10 rounded-xl flex items-center justify-center mx-auto mb-3">
+                      <stat.icon className="w-6 h-6 text-purple" />
+                    </div>
+                    <div className="text-[24px] md:text-[28px] font-bold font-ao text-dark dark:text-light">
+                      {stat.number}
+                    </div>
+                    <div className="text-dark/70 dark:text-light/70 font-switzer font-light text-[14px]">
+                      {stat.label}
+                    </div>
+                  </div>
+                ))}
+              </motion.div>
+            </motion.div>
+          </Container>
+        </div>
+      </motion.section>
+
       {/* Contact Methods Section */}
       <motion.section
         initial="hidden"
