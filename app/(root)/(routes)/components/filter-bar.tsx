@@ -37,13 +37,13 @@ export function FilterBar({
       <PopoverTrigger
         disabled={skills.length === 0}
         asChild
-        className="relative hover:bg-purple/40"
+        className="relative"
       >
         <Button
           variant="outline"
           role="combobox"
           aria-expanded={open}
-          className="justify-between bg-transparent rounded-xl overflow-hidden relative w-[260px] md:w-[300px] uppercase font-switzer font-light text-dark dark:text-light text-xs md:text-sm"
+          className="justify-between bg-light dark:bg-dark rounded-xl overflow-hidden relative w-[200px] md:w-[240px] uppercase font-switzer font-medium text-dark dark:text-light text-xs md:text-sm border-lightBorderColor dark:border-darkBorderColor hover:border-purple/30 hover:bg-purple/5 transition-all duration-300"
         >
           <BlurBG />
           <div className="z-20 relative flex justify-between w-full">
@@ -54,16 +54,16 @@ export function FilterBar({
           </div>
         </Button>
       </PopoverTrigger>
-      <PopoverContent className="w-full min-w-[200px] md:min-w-[300px] py-0 rounded-xl bg-light dark:bg-dark">
+      <PopoverContent className="w-full min-w-[200px] md:min-w-[240px] py-0 rounded-xl bg-light dark:bg-dark border-lightBorderColor dark:border-darkBorderColor">
         <Command className="rounded-xl bg-light dark:bg-dark ">
-          <CommandInput placeholder="Search skill..." />
+          <CommandInput placeholder="Search technology..." className="border-0" />
           <CommandEmpty>No Skill found.</CommandEmpty>
           <CommandGroup>
             {skills.map((skill, index) => (
               <CommandItem
                 key={index}
                 value={skill}
-                className="uppercase font-switzer font-light text-dark dark:text-light hover:bg-purple/40 aria-selected:bg-purple/40"
+                className="uppercase font-switzer font-medium text-dark dark:text-light hover:bg-purple/10 aria-selected:bg-purple/20 rounded-lg mx-1 my-0.5"
                 onSelect={(currentValue) => {
                   setSkillValue(
                     currentValue === skillValue ? "" : currentValue,
