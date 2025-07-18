@@ -109,10 +109,10 @@ const ContactForm = () => {
               <MessageSquare className="w-8 h-8 text-purple" />
             </div>
             <h3 className="text-[24px] md:text-[28px] lg:text-[32px] font-ao font-bold text-dark dark:text-light mb-4">
-              Let's Discuss Your Project
+              Let&apos;s Discuss Your Project
             </h3>
             <p className="text-dark/70 dark:text-light/70 font-switzer font-light text-[16px] md:text-[18px] leading-relaxed max-w-2xl mx-auto">
-              Fill out the form below with your project details. I'll review your requirements 
+              Fill out the form below with your project details. I&apos;ll review your requirements 
               and get back to you within <strong className="text-purple">24 hours</strong> with a detailed response.
             </p>
           </motion.div>
@@ -127,7 +127,7 @@ const ContactForm = () => {
                   <FormItem className="space-y-3">
                     <FormLabel className="flex items-center gap-2 text-dark dark:text-light font-switzer font-medium text-[16px]">
                       <User className="w-4 h-4 text-purple" />
-                      What's your name?
+                      What&apos;s your name?
                     </FormLabel>
                     <FormControl>
                       <Input
@@ -152,7 +152,7 @@ const ContactForm = () => {
                   <FormItem className="space-y-3">
                     <FormLabel className="flex items-center gap-2 text-dark dark:text-light font-switzer font-medium text-[16px]">
                       <Mail className="w-4 h-4 text-purple" />
-                      What's your email?
+                      What&apos;s your email?
                     </FormLabel>
                     <FormControl>
                       <Input
@@ -233,6 +233,7 @@ const ContactForm = () => {
                       <Textarea
                         className="border-0 focus-visible:ring-0 text-dark dark:text-light font-switzer text-[16px] font-light focus-visible:ring-offset-0 relative min-h-[120px]"
                         placeholder="I'm looking for a React developer for my e-commerce project. My budget is around $5,000 and I need it completed in 6 weeks..."
+                        placeholder="I&apos;m looking for a React developer for my e-commerce project. My budget is around $5,000 and I need it completed in 6 weeks..."
                         {...field}
                         disabled={isLoading}
                       />
