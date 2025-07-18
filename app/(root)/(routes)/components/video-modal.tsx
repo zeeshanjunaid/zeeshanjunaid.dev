@@ -35,21 +35,29 @@ const VideoModal = ({
   const [isLoaded, setIsLoaded] = useState(false);
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [isHovered, setIsHovered] = useState(false);
-  const [isPlaying, setIsPlaying] = useState(false);
+  const [isPlaying, setIsPlaying] = useState(true);
   const [isMuted, setIsMuted] = useState(false);
 
   const handleVideoEnd = () => {
     setIsPlaying(false);
-    // Don't auto-close modal, let user decide
   };
 
   const handleVideoStart = () => {
     setIsPlaying(true);
   };
 
+  const handleModalOpen = (open: boolean) => {
+    setIsModalOpen(open);
+    if (open) {
+      setIsPlaying(true); // Auto-start video when modal opens
+    } else {
+      setIsPlaying(false); // Stop video when modal closes
+    }
+  };
+
   return (
     <div className="group">
-      <Dialog open={isModalOpen} onOpenChange={setIsModalOpen}>
+      <Dialog open={isModalOpen} onOpenChange={handleModalOpen}>
         <div className="flex flex-col gap-4 justify-center items-center min-w-[160px] max-w-[200px]">
           <DialogTrigger asChild>
             <motion.button 
@@ -175,13 +183,13 @@ const VideoModal = ({
         </div>
 
         {/* Enhanced Modal */}
-        <DialogContent className="bg-light dark:bg-dark max-w-4xl w-[95vw] border border-lightBorderColor dark:border-darkBorderColor rounded-3xl p-0 overflow-hidden">
+        <DialogContent className="bg-light dark:bg-dark max-w-5xl w-[95vw] border border-lightBorderColor dark:border-darkBorderColor rounded-3xl p-0 overflow-hidden">
           <div className="relative">
             <BlurBG className="rounded-3xl" />
             
             {/* Modal Header */}
-            <DialogHeader className="relative z-20 p-6 pb-4">
-              <div className="flex items-center justify-between">
+            <DialogHeader className="relative z-20 p-6 pb-4 border-b border-lightBorderColor dark:border-darkBorderColor">
+              <div className="flex items-center justify-between gap-4">
                 <DialogTitle className="flex items-center gap-3 font-ao font-bold text-[18px] md:text-[20px] text-dark dark:text-light">
                   <div className="w-10 h-10 rounded-2xl overflow-hidden relative">
                     {profile ? (
@@ -218,18 +226,28 @@ const VideoModal = ({
                 </DialogTitle>
 
                 {/* Video Controls */}
-                <div className="flex items-center gap-2">
+                <div className="flex items-center gap-3">
                   <Button
                     variant="ghost"
                     size="icon"
                     onClick={() => setIsMuted(!isMuted)}
-                    className="w-10 h-10 rounded-2xl hover:bg-purple/10"
+                    className="w-10 h-10 rounded-2xl hover:bg-purple/10 text-dark dark:text-light"
                   >
                     {isMuted ? (
-                      <VolumeX className="w-5 h-5 text-dark dark:text-light" />
+                      <VolumeX className="w-4 h-4" />
                     ) : (
-                      <Volume2 className="w-5 h-5 text-dark dark:text-light" />
+                      <Volume2 className="w-4 h-4" />
                     )}
+                  </Button>
+                  
+                  {/* Close Button */}
+                  <Button
+                    variant="ghost"
+                    size="icon"
+                    onClick={() => handleModalOpen(false)}
+                    className="w-10 h-10 rounded-2xl hover:bg-red-500/10 text-dark dark:text-light hover:text-red-500"
+                  >
+                    <X className="w-4 h-4" />
                   </Button>
                 </div>
               </div>
@@ -244,51 +262,32 @@ const VideoModal = ({
                     height="100%"
                     controls={true}
                     playsinline={true}
-                    playing={isModalOpen && isPlaying}
+                    playing={isModalOpen}
                     muted={isMuted}
                     url={video}
                     onStart={handleVideoStart}
                     onEnded={handleVideoEnd}
+                    onPlay={() => setIsPlaying(true)}
+                    onPause={() => setIsPlaying(false)}
                     config={{
                       youtube: {
                         playerVars: {
                           showinfo: 1,
                           modestbranding: 1,
                           rel: 0,
+                          autoplay: 1,
                         }
                       }
                     }}
                   />
                 </div>
-
-                {/* Custom Play Overlay for when video is paused */}
-                <AnimatePresence>
-                  {!isPlaying && (
-                    <motion.div
-                      initial={{ opacity: 0 }}
-                      animate={{ opacity: 1 }}
-                      exit={{ opacity: 0 }}
-                      className="absolute inset-0 flex items-center justify-center bg-black/20 backdrop-blur-sm"
-                    >
-                      <motion.button
-                        onClick={() => setIsPlaying(true)}
-                        className="w-16 h-16 bg-white/90 rounded-full flex items-center justify-center shadow-lg"
-                        whileHover={{ scale: 1.1 }}
-                        whileTap={{ scale: 0.9 }}
-                      >
-                        <Play className="w-6 h-6 text-purple ml-1" fill="currentColor" />
-                      </motion.button>
-                    </motion.div>
-                  )}
-                </AnimatePresence>
               </div>
             </DialogDescription>
 
             {/* Video Info Footer */}
             <div className="relative z-20 px-6 pb-6">
-              <div className="flex items-center justify-between text-[12px] text-dark/60 dark:text-light/60">
-                <span>Client Testimonial Video</span>
-                <span>Click anywhere outside to close</span>
+              <div className="flex items-center justify-center text-[12px] text-dark/60 dark:text-light/60">
+                <span>Client Testimonial Video • Click outside or press ESC to close</span>
               </div>
             </div>
           </div>
