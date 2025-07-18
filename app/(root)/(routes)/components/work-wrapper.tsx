@@ -195,8 +195,27 @@ const WorkWrapper = () => {
         initial={{ opacity: 0, y: 50 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.8, delay: 0.3 }}
-        className="py-8 md:py-12"
+        className="py-16 md:py-20"
       >
+        <Container className="px-4 md:px-7 lg:px-0 mb-12">
+          <motion.div
+            initial={{ opacity: 0, y: 30 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8, delay: 0.4 }}
+          >
+            <h2 className="inline-flex center gap-x-[10px] items-center font-normal text-dark dark:text-light uppercase text-[14px] tracking-[.42px] mb-6">
+              <div className="flex flex-col space-y-[6px]">
+                <span className="bg-dark dark:bg-light w-[18px] h-[1px]" />
+                <span className="bg-dark dark:bg-light w-[18px] h-[1px]" />
+              </div>
+              Featured Work
+            </h2>
+            <p className="text-dark/70 dark:text-light/70 font-switzer font-light text-[14px] md:text-[16px] lg:text-[18px] max-w-2xl">
+              Each project tells a unique story of challenges overcome and solutions delivered. Explore the creative process behind every build.
+            </p>
+          </motion.div>
+        </Container>
+        
         <WorkGrid selectedSkill={skillValue} projects={projects} />
       </motion.section>
 
