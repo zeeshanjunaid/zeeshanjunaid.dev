@@ -140,38 +140,6 @@ const ServicesPageClient = () => {
         </div>
       </motion.section>
 
-      {/* Stats Section */}
-      <motion.section
-        initial="hidden"
-        whileInView="visible"
-        viewport={{ once: true, margin: "-100px" }}
-        variants={containerVariants}
-        className="py-16 md:py-20"
-      >
-        <Container className="px-5 md:px-7 lg:px-0">
-          <div className="grid grid-cols-2 lg:grid-cols-4 gap-8">
-            {stats.map((stat, index) => (
-              <motion.div
-                key={index}
-                variants={itemVariants}
-                className="text-center group"
-              >
-                <div className="relative mb-4 mx-auto w-16 h-16 flex items-center justify-center rounded-2xl bg-light dark:bg-dark overflow-hidden">
-                  <BlurBG className="rounded-2xl" />
-                  <stat.icon className="w-8 h-8 text-purple relative z-20 group-hover:scale-110 transition-transform duration-300" />
-                </div>
-                <div className="text-[28px] md:text-[32px] lg:text-[36px] font-bold font-ao text-dark dark:text-light mb-2">
-                  {stat.number}
-                </div>
-                <div className="text-[12px] md:text-[14px] font-switzer font-light text-dark/70 dark:text-light/70 uppercase tracking-wider">
-                  {stat.label}
-                </div>
-              </motion.div>
-            ))}
-          </div>
-        </Container>
-      </motion.section>
-
       {/* Services Grid */}
       <section className="py-16 md:py-20">
         <Container className="px-5 md:px-7 lg:px-0">

@@ -170,49 +170,6 @@ export const WorkGrid = ({ projects, selectedSkill }: WorkGridProps) => {
         </motion.div>
       </Container>
 
-      {/* Skills Showcase */}
-      <Container className="px-4 md:px-7 lg:px-0">
-        <motion.div
-          initial={{ opacity: 0, y: 50 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8 }}
-          viewport={{ once: true }}
-          className="text-center space-y-12"
-        >
-          <div>
-            <h2 className="text-[28px] md:text-[36px] lg:text-[42px] font-bold font-ao text-dark dark:text-light mb-4">
-              Technologies Used
-            </h2>
-            <p className="text-dark/70 dark:text-light/70 font-switzer font-light text-[16px] md:text-[18px] max-w-2xl mx-auto">
-              The tools and technologies that power these exceptional projects
-            </p>
-          </div>
-
-          <div className="flex flex-wrap justify-center gap-4">
-            {Array.from(new Set(projects.flatMap(p => p.tags))).map((tech, index) => (
-              <motion.button
-                key={tech}
-                initial={{ opacity: 0, scale: 0.8 }}
-                whileInView={{ opacity: 1, scale: 1 }}
-                transition={{ duration: 0.5, delay: index * 0.05 }}
-                viewport={{ once: true }}
-                whileHover={{ scale: 1.1, y: -2 }}
-                className={`relative px-6 py-3 rounded-2xl font-switzer font-medium text-[14px] md:text-[16px] uppercase tracking-wider transition-all duration-300 ${
-                  selectedSkill === tech
-                    ? "bg-purple text-white shadow-lg shadow-purple/25"
-                    : "bg-light dark:bg-dark border border-lightBorderColor dark:border-darkBorderColor text-dark dark:text-light hover:border-purple/50 hover:text-purple"
-                }`}
-              >
-                <BlurBG className="rounded-2xl" />
-                <span className="relative z-20">{tech}</span>
-                
-                {/* Floating icon based on tech */}
-                <div className="absolute -top-1 -right-1 w-3 h-3 bg-purple/20 rounded-full opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
-              </motion.button>
-            ))}
-          </div>
-        </motion.div>
-      </Container>
     </div>
   );
 };

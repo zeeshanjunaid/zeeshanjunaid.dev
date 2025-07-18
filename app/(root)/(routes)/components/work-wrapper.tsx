@@ -110,35 +110,6 @@ const WorkWrapper = () => {
                 </p>
               </motion.div>
 
-              {/* Stats Grid */}
-              <motion.div
-                variants={itemVariants}
-                className="grid grid-cols-2 lg:grid-cols-4 gap-6"
-              >
-                {stats.map((stat, index) => (
-                  <motion.div
-                    key={index}
-                    initial={{ opacity: 0, scale: 0.8 }}
-                    animate={{ opacity: 1, scale: 1 }}
-                    transition={{ duration: 0.6, delay: 0.8 + index * 0.1 }}
-                    className="relative bg-light dark:bg-dark rounded-2xl p-6 overflow-hidden group hover:scale-105 transition-transform duration-300"
-                  >
-                    <BlurBG className="rounded-2xl" />
-                    <div className="relative z-20 text-center">
-                      <div className="w-12 h-12 mx-auto mb-3 bg-purple/10 rounded-2xl flex items-center justify-center group-hover:scale-110 transition-transform duration-300">
-                        <stat.icon className="w-6 h-6 text-purple" />
-                      </div>
-                      <div className="text-[24px] md:text-[28px] font-bold font-ao text-dark dark:text-light mb-1">
-                        {stat.number}
-                      </div>
-                      <div className="text-[10px] md:text-[12px] font-switzer font-light text-dark/70 dark:text-light/70 uppercase tracking-wider">
-                        {stat.label}
-                      </div>
-                    </div>
-                  </motion.div>
-                ))}
-              </motion.div>
-
               {/* Filter Controls */}
               <motion.div
                 variants={itemVariants}
