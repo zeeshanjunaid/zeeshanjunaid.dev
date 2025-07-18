@@ -190,15 +190,10 @@ const WorkWrapper = () => {
         </div>
       </motion.section>
 
-      {/* Creative Projects Showcase */}
-      <motion.section
-        initial={{ opacity: 0, y: 50 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.8, delay: 0.3 }}
-        className="py-16 md:py-20"
-      >
+      {/* Projects Showcase */}
+      <section className="py-16 md:py-20">
         <WorkGrid selectedSkill={skillValue} projects={projects} />
-      </motion.section>
+      </section>
 
       {/* Empty State */}
       {projects.length === 0 && (
