@@ -183,13 +183,13 @@ const VideoModal = ({
         </div>
 
         {/* Enhanced Modal */}
-        <DialogContent className="bg-light dark:bg-dark max-w-5xl w-[95vw] border border-lightBorderColor dark:border-darkBorderColor rounded-3xl p-0 overflow-hidden">
+        <DialogContent className="bg-light dark:bg-dark max-w-4xl w-[95vw] border border-lightBorderColor dark:border-darkBorderColor rounded-3xl p-0 overflow-hidden [&>button]:hidden">
           <div className="relative">
             <BlurBG className="rounded-3xl" />
             
             {/* Modal Header */}
-            <DialogHeader className="relative z-20 p-6 pb-4 border-b border-lightBorderColor dark:border-darkBorderColor">
-              <div className="flex items-center justify-between gap-4">
+            <DialogHeader className="relative z-20 p-6 pb-4">
+              <div className="flex items-center gap-4">
                 <DialogTitle className="flex items-center gap-3 font-ao font-bold text-[18px] md:text-[20px] text-dark dark:text-light">
                   <div className="w-10 h-10 rounded-2xl overflow-hidden relative">
                     {profile ? (
@@ -224,38 +224,22 @@ const VideoModal = ({
                     )}
                   </div>
                 </DialogTitle>
-
-                {/* Video Controls */}
-                <div className="flex items-center gap-3">
-                  <Button
-                    variant="ghost"
-                    size="icon"
-                    onClick={() => setIsMuted(!isMuted)}
-                    className="w-10 h-10 rounded-2xl hover:bg-purple/10 text-dark dark:text-light"
-                  >
-                    {isMuted ? (
-                      <VolumeX className="w-4 h-4" />
-                    ) : (
-                      <Volume2 className="w-4 h-4" />
-                    )}
-                  </Button>
-                  
-                  {/* Close Button */}
-                  <Button
-                    variant="ghost"
-                    size="icon"
-                    onClick={() => handleModalOpen(false)}
-                    className="w-10 h-10 rounded-2xl hover:bg-red-500/10 text-dark dark:text-light hover:text-red-500"
-                  >
-                    <X className="w-4 h-4" />
-                  </Button>
-                </div>
+                
+                {/* Custom Close Button */}
+                <Button
+                  variant="ghost"
+                  size="icon"
+                  onClick={() => handleModalOpen(false)}
+                  className="absolute top-4 right-4 w-10 h-10 rounded-2xl hover:bg-red-500/10 text-dark dark:text-light hover:text-red-500 z-50"
+                >
+                  <X className="w-5 h-5" />
+                </Button>
               </div>
             </DialogHeader>
 
             {/* Video Container */}
-            <DialogDescription asChild className="relative z-20 px-6 pb-6">
-              <div className="relative rounded-2xl overflow-hidden bg-black">
+            <DialogDescription asChild className="relative z-20 p-6">
+              <div className="relative rounded-2xl overflow-hidden bg-black mb-4">
                 <div className="aspect-video">
                   <ReactPlayer
                     width="100%"
@@ -281,13 +265,29 @@ const VideoModal = ({
                     }}
                   />
                 </div>
+                
+                {/* Video Controls Overlay */}
+                <div className="absolute top-4 right-4 flex items-center gap-2">
+                  <Button
+                    variant="ghost"
+                    size="icon"
+                    onClick={() => setIsMuted(!isMuted)}
+                    className="w-10 h-10 rounded-2xl bg-black/50 backdrop-blur-sm hover:bg-black/70 text-white border border-white/20"
+                  >
+                    {isMuted ? (
+                      <VolumeX className="w-4 h-4" />
+                    ) : (
+                      <Volume2 className="w-4 h-4" />
+                    )}
+                  </Button>
+                </div>
               </div>
             </DialogDescription>
 
             {/* Video Info Footer */}
-            <div className="relative z-20 px-6 pb-6">
-              <div className="flex items-center justify-center text-[12px] text-dark/60 dark:text-light/60">
-                <span>Client Testimonial Video • Click outside or press ESC to close</span>
+            <div className="relative z-20 px-6 pb-6 border-t border-lightBorderColor dark:border-darkBorderColor pt-4">
+              <div className="flex items-center justify-center">
+                <span className="text-[12px] text-dark/60 dark:text-light/60">Client Testimonial Video • Click outside or press ESC to close</span>
               </div>
             </div>
           </div>
