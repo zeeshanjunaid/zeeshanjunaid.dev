@@ -2,7 +2,7 @@
 
 import React, { useState } from "react";
 import { WorkTag, WorkYear } from "@/components/work-item";
-
+import { motion } from "framer-motion";
 import { ArrowRight } from "lucide-react";
 import { AspectRatio } from "@/components/ui/aspect-ratio";
 import { Container } from "@/components/container";
@@ -11,6 +11,7 @@ import Link from "next/link";
 import type { Project } from "@/data/work";
 import { Skeleton } from "@/components/ui/skeleton";
 import { cn } from "@/lib/utils";
+import { BlurBG } from "@/components/blur-bg";
 
 interface WorkGridProps {
   projects: Project[];
@@ -125,10 +126,10 @@ export const WorkGrid = ({ projects, selectedSkill }: WorkGridProps) => {
               ),
           )}
         </motion.div>
-      </Container>
-    </>
-  );
-};
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-8">
+          {projectsWithImages.map(
+            ({ name, slug, link, imgUrl, tags, year }) => (
+              <Link
                   href={`/work/${slug}`}
                   key={name}
                   className={cn(
@@ -171,7 +172,7 @@ export const WorkGrid = ({ projects, selectedSkill }: WorkGridProps) => {
                     </div>
                   </div>
                 </Link>
-              ),
+            ),
           )}
         </div>
       </Container>
