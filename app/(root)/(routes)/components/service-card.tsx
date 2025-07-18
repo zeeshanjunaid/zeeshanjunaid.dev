@@ -205,7 +205,7 @@ const ServiceCard = ({
                 Ready to get started?
               </p>
               <p className="text-[14px] md:text-[16px] font-switzer font-light text-dark/80 dark:text-light/80">
-                Let's discuss your project and bring your vision to life
+                Let&apos;s discuss your project and bring your vision to life
               </p>
             </div>
             
