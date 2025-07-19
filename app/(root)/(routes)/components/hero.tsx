@@ -97,7 +97,7 @@ export const Hero = () => {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.6 }}
-            className="flex items-center space-x-3 min-w-max justify-start z-20 relative"
+            className="flex items-center space-x-6 min-w-max justify-start z-20 relative"
           >
             <Link href="/hire-me">
               <motion.div
