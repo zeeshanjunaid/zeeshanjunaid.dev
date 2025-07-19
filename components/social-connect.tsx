@@ -27,21 +27,24 @@ export function SocialLinks() {
   return (
     <div className="flex items-center space-x-3">
       {socialLinks.map(({ name, link, icon }, index) => (
-        <a 
+        <motion.a 
           key={name} 
           href={link} 
           target="_blank" 
           rel="noopener noreferrer"
+          whileHover={{ scale: 1.02 }}
+          whileTap={{ scale: 0.98 }}
+          transition={{ duration: 0.2 }}
         >
           <Button
             aria-label={name}
             role="link"
             size="icon"
-            className="rounded-xl h-12 w-12"
+            className="rounded-xl h-12 w-12 transition-all duration-200 hover:shadow-md"
           >
             {icon}
           </Button>
-        </a>
+        </motion.a>
       ))}
     </div>
   );

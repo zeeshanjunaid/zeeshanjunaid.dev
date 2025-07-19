@@ -11,10 +11,10 @@ const AvailabilityBadge = ({ className }: { className?: string }) => {
       opacity: 1,
     },
     animate: {
-      scale: [1, 1.25, 1],
-      opacity: [0.8, 1, 0.8],
+      scale: [1, 1.1, 1],
+      opacity: [0.9, 1, 0.9],
       transition: {
-        duration: 2,
+        duration: 3,
         ease: "easeInOut",
         repeat: Infinity,
       },

@@ -49,22 +49,22 @@ export const Hero = () => {
         <motion.div
           initial={{ opacity: 0, x: -50 }}
           animate={{ opacity: 1, x: 0 }}
-          transition={{ duration: 0.8, ease: "easeOut" }}
+          transition={{ duration: 0.6, ease: "easeOut" }}
           className="hidden lg:flex flex-col w-2/3 rounded-3xl px-16 py-12 justify-between flex-1 mr-5 relative overflow-hidden group"
         >
           {/* Animated Background */}
           <motion.div
             initial={{ opacity: 0.25 }}
-            whileHover={{ opacity: 0.35 }}
-            transition={{ duration: 0.3 }}
+            whileHover={{ opacity: 0.3 }}
+            transition={{ duration: 0.2 }}
             className="backdrop-blur-md bg-lightBorderColor dark:bg-darkBorderColor absolute top-0 left-0 right-0 bottom-0 w-full h-full z-10 rounded-3xl"
           />
           
           {/* Subtle gradient overlay on hover */}
           <motion.div
             initial={{ opacity: 0 }}
-            whileHover={{ opacity: 0.1 }}
-            transition={{ duration: 0.3 }}
+            whileHover={{ opacity: 0.05 }}
+            transition={{ duration: 0.2 }}
             className="absolute inset-0 bg-gradient-to-br from-purple/20 via-transparent to-purple/10 rounded-3xl z-10"
           />
 
@@ -72,20 +72,20 @@ export const Hero = () => {
           <motion.div 
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, delay: 0.2 }}
+            transition={{ duration: 0.5, delay: 0.1 }}
             className="z-20 relative"
           >
             <motion.div
               initial={{ opacity: 0, scale: 0.9 }}
               animate={{ opacity: 1, scale: 1 }}
-              transition={{ duration: 0.6, delay: 0.3 }}
+              transition={{ duration: 0.4, delay: 0.15 }}
             >
               <AvailabilityBadge className="mb-2.5" />
             </motion.div>
             <motion.h1
               initial={{ opacity: 0, y: 30 }}
               animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.8, delay: 0.4 }}
+              transition={{ duration: 0.5, delay: 0.2 }}
               className="text-left text-[32px] 2xl:text-[36px] font-bold font-ao text-dark dark:text-light leading-tight mb-8"
             >
               {heroTitle}
@@ -96,17 +96,17 @@ export const Hero = () => {
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, delay: 0.6 }}
+            transition={{ duration: 0.5, delay: 0.25 }}
             className="flex items-center space-x-6 min-w-max justify-start z-20 relative"
           >
             <Link href="/hire-me">
               <motion.div
-                whileHover={{ scale: 1.05 }}
-                whileTap={{ scale: 0.95 }}
+                whileHover={{ scale: 1.02 }}
+                whileTap={{ scale: 0.98 }}
                 transition={{ duration: 0.2 }}
               >
                 <Button
-                  className="h-12 rounded-xl uppercase transition-all duration-300 hover:shadow-lg hover:shadow-purple/25"
+                  className="h-12 rounded-xl uppercase transition-all duration-200 hover:shadow-md hover:shadow-purple/20"
                   size="lg"
                   variant="purple"
                 >
@@ -117,7 +117,7 @@ export const Hero = () => {
             <motion.div
               initial={{ opacity: 0, scale: 0.8 }}
               animate={{ opacity: 1, scale: 1 }}
-              transition={{ duration: 0.6, delay: 0.8 }}
+              transition={{ duration: 0.4, delay: 0.3 }}
             >
               <SocialLinks />
             </motion.div>
@@ -128,7 +128,7 @@ export const Hero = () => {
         <motion.div
           initial={{ opacity: 0, x: 50 }}
           animate={{ opacity: 1, x: 0 }}
-          transition={{ duration: 0.8, delay: 0.2 }}
+          transition={{ duration: 0.6, delay: 0.1 }}
           className="w-full max-w-[360px] lg:max-w-full h-[265px] sm:h-[355px] rounded-3xl relative mx-auto lg:w-1/3 -order-1 lg:order-1 group"
         >
           <BlurBG className="rounded-3xl" />
@@ -136,7 +136,7 @@ export const Hero = () => {
           <motion.div 
             initial={{ scale: 0.9 }}
             animate={{ scale: 1 }}
-            transition={{ duration: 1, delay: 0.4 }}
+            transition={{ duration: 0.6, delay: 0.2 }}
             className="absolute bottom-0 left-2/3 lg:left-auto lg:right-0 -translate-x-3/4 lg:translate-x-0 w-full h-full z-20"
           >
             <Image
@@ -155,15 +155,15 @@ export const Hero = () => {
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8, delay: 0.6 }}
+          transition={{ duration: 0.5, delay: 0.25 }}
           className="flex flex-col sm:flex-row lg:hidden items-center gap-2 min-w-max justify-center"
         >
           <Link href="/hire-me">
             <motion.div
-              whileHover={{ scale: 1.05 }}
-              whileTap={{ scale: 0.95 }}
+              whileHover={{ scale: 1.02 }}
+              whileTap={{ scale: 0.98 }}
             >
-              <Button className="rounded-xl uppercase transition-all duration-300 hover:shadow-lg hover:shadow-purple/25" size="lg" variant="purple">
+              <Button className="rounded-xl uppercase transition-all duration-200 hover:shadow-md hover:shadow-purple/20" size="lg" variant="purple">
                 Start a Project
               </Button>
             </motion.div>

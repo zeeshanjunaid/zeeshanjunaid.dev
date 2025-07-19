@@ -40,7 +40,7 @@ const Services = () => {
       opacity: 1,
       scale: 1,
       transition: {
-        duration: 0.4,
+        duration: 0.3,
         ease: "easeOut",
       },
     },
@@ -66,12 +66,12 @@ const Services = () => {
         
         <motion.div 
           variants={itemVariants}
-          className="px-5 md:px-6 py-8 w-full bg-light dark:bg-dark rounded-3xl relative overflow-hidden group hover:shadow-lg transition-all duration-300"
+          className="px-5 md:px-6 py-8 w-full bg-light dark:bg-dark rounded-3xl relative overflow-hidden group hover:shadow-md transition-all duration-200"
         >
           <BlurBG className="rounded-3xl" />
           
           {/* Subtle hover gradient */}
-          <div className="absolute inset-0 bg-gradient-to-r from-purple/5 via-transparent to-purple/5 opacity-0 group-hover:opacity-100 transition-opacity duration-500 rounded-3xl z-10" />
+          <div className="absolute inset-0 bg-gradient-to-r from-purple/3 via-transparent to-purple/3 opacity-0 group-hover:opacity-100 transition-opacity duration-200 rounded-3xl z-10" />
           
           <motion.ul 
             variants={containerVariants}
@@ -81,13 +81,13 @@ const Services = () => {
               <React.Fragment key={index}>
                 <motion.li 
                   variants={serviceItemVariants}
-                  whileHover={{ scale: 1.05, y: -2 }}
+                  whileHover={{ scale: 1.02, y: -1 }}
                   transition={{ duration: 0.2 }}
-                  className="uppercase font-ao text-dark dark:text-light text-[12px] md:text-[14px] flex items-center gap-x-1 md:gap-x-2 px-4 py-2 w-max rounded-xl hover:bg-purple/10 transition-all duration-200 cursor-default"
+                  className="uppercase font-ao text-dark dark:text-light text-[12px] md:text-[14px] flex items-center gap-x-1 md:gap-x-2 px-4 py-2 w-max rounded-xl hover:bg-purple/5 transition-all duration-200 cursor-default"
                 >
                   {Icon && (
                     <motion.div
-                      whileHover={{ rotate: 5 }}
+                      whileHover={{ rotate: 3 }}
                       transition={{ duration: 0.2 }}
                     >
                       <Icon className="text-purple -mt-[3px]" size="18" />
