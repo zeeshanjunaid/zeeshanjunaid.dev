@@ -1,14 +1,13 @@
 "use client";
 
 import React, { useEffect, useState } from "react";
-
+import { motion } from "framer-motion";
 import { BsGithub } from "react-icons/bs";
 import { Button } from "./ui/button";
 import { RiLinkedinLine } from "react-icons/ri";
 import { cn } from "@/lib/utils";
 
 export function SocialLinks() {
-
   const styles =
     "dark:text-dark text-light w-4 h-4 md:w-5 md:h-5 lg:w-6 lg:h-6";
   const socialLinks = [
@@ -27,10 +26,10 @@ export function SocialLinks() {
   return (
     <div className="flex items-center space-x-3">
       {socialLinks.map(({ name, link, icon }, index) => (
-        <motion.a 
-          key={name} 
-          href={link} 
-          target="_blank" 
+        <motion.a
+          key={name}
+          href={link}
+          target="_blank"
           rel="noopener noreferrer"
           whileHover={{ scale: 1.02 }}
           whileTap={{ scale: 0.98 }}
