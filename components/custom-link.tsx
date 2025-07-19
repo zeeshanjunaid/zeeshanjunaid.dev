@@ -34,7 +34,7 @@ const CustomLink = ({
       >
         <span
           className={cn(
-            "absolute bottom-0 left-0 right-0 bg-purple w-full z-10 transition-all duration-200",
+            "absolute bottom-0 left-0 right-0 bg-purple w-full z-10 transition-all duration-150",
             isHovered ? "h-full" : "h-0.5",
           )}
         />
@@ -54,7 +54,7 @@ const CustomLink = ({
     >
       <span
         className={cn(
-          "absolute bottom-0 left-0 right-0 bg-purple w-full z-10 transition-all duration-200",
+          "absolute bottom-0 left-0 right-0 bg-purple w-full z-10 transition-all duration-150",
           isHovered ? "h-full" : "h-0.5",
         )}
       />

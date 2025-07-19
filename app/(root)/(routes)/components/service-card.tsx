@@ -29,7 +29,7 @@ const ServiceCard = ({
     <motion.div 
       initial={{ opacity: 0, y: 50 }}
       whileInView={{ opacity: 1, y: 0 }}
-      transition={{ duration: 0.8 }}
+      transition={{ duration: 0.6 }}
       viewport={{ once: true, margin: "-50px" }}
       className="group relative"
       onMouseEnter={() => setIsHovered(true)}
@@ -53,8 +53,8 @@ const ServiceCard = ({
             {/* Image Section */}
             <motion.div 
               className="shrink-0 overflow-hidden rounded-2xl relative w-full h-[240px] lg:w-[320px] lg:h-[240px]"
-              whileHover={{ scale: 1.02 }}
-              transition={{ duration: 0.3 }}
+              whileHover={{ scale: 1.01 }}
+              transition={{ duration: 0.2 }}
             >
               {!isLoaded && <Skeleton className="w-full h-full rounded-2xl" />}
               <Image
@@ -84,7 +84,7 @@ const ServiceCard = ({
                   className="text-[24px] md:text-[28px] lg:text-[32px] text-dark dark:text-light font-ao font-bold mb-3 leading-tight"
                   initial={{ opacity: 0, y: 20 }}
                   whileInView={{ opacity: 1, y: 0 }}
-                  transition={{ duration: 0.6, delay: 0.2 }}
+                  transition={{ duration: 0.4, delay: 0.1 }}
                   viewport={{ once: true }}
                 >
                   {name}
@@ -94,7 +94,7 @@ const ServiceCard = ({
                   className="text-[16px] md:text-[18px] lg:text-[20px] leading-relaxed font-light text-purple/90 mb-4"
                   initial={{ opacity: 0, y: 20 }}
                   whileInView={{ opacity: 1, y: 0 }}
-                  transition={{ duration: 0.6, delay: 0.3 }}
+                  transition={{ duration: 0.4, delay: 0.15 }}
                   viewport={{ once: true }}
                 >
                   {tagline}
@@ -104,7 +104,7 @@ const ServiceCard = ({
                   className="text-[14px] md:text-[16px] leading-relaxed font-light text-dark/80 dark:text-light/80"
                   initial={{ opacity: 0, y: 20 }}
                   whileInView={{ opacity: 1, y: 0 }}
-                  transition={{ duration: 0.6, delay: 0.4 }}
+                  transition={{ duration: 0.4, delay: 0.2 }}
                   viewport={{ once: true }}
                 >
                   {description}
@@ -135,7 +135,7 @@ const ServiceCard = ({
             <motion.div
               initial={{ opacity: 0, x: -20 }}
               whileInView={{ opacity: 1, x: 0 }}
-              transition={{ duration: 0.6, delay: 0.3 }}
+              transition={{ duration: 0.4, delay: 0.2 }}
               viewport={{ once: true }}
             >
               <h4 className="text-[18px] md:text-[20px] lg:text-[22px] text-dark dark:text-light font-ao font-bold mb-6 flex items-center gap-3">
@@ -149,14 +149,14 @@ const ServiceCard = ({
                     key={index}
                     initial={{ opacity: 0, x: -20 }}
                     whileInView={{ opacity: 1, x: 0 }}
-                    transition={{ duration: 0.4, delay: 0.1 * index }}
+                    transition={{ duration: 0.3, delay: 0.05 * index }}
                     viewport={{ once: true }}
                     className="flex items-start gap-3 group/item"
                   >
                     <div className="mt-1">
-                      <CheckCircle className="w-5 h-5 text-purple group-hover/item:scale-110 transition-transform duration-200" />
+                      <CheckCircle className="w-5 h-5 text-purple group-hover/item:scale-105 transition-transform duration-150" />
                     </div>
-                    <span className="text-[14px] md:text-[16px] font-light text-dark/80 dark:text-light/80 leading-relaxed group-hover/item:text-dark dark:group-hover/item:text-light transition-colors duration-200">
+                    <span className="text-[14px] md:text-[16px] font-light text-dark/80 dark:text-light/80 leading-relaxed group-hover/item:text-dark dark:group-hover/item:text-light transition-colors duration-150">
                       {subService}
                     </span>
                   </motion.div>
@@ -168,7 +168,7 @@ const ServiceCard = ({
             <motion.div
               initial={{ opacity: 0, x: 20 }}
               whileInView={{ opacity: 1, x: 0 }}
-              transition={{ duration: 0.6, delay: 0.4 }}
+              transition={{ duration: 0.4, delay: 0.25 }}
               viewport={{ once: true }}
             >
               <h4 className="text-[18px] md:text-[20px] lg:text-[22px] text-dark dark:text-light font-ao font-bold mb-6 flex items-center gap-3">
@@ -197,7 +197,7 @@ const ServiceCard = ({
             className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 pt-6 border-t border-lightBorderColor dark:border-darkBorderColor"
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, delay: 0.5 }}
+            transition={{ duration: 0.4, delay: 0.3 }}
             viewport={{ once: true }}
           >
             <div className="flex-1">
@@ -211,16 +211,16 @@ const ServiceCard = ({
             
             <Link href="/contact">
               <motion.div
-                whileHover={{ scale: 1.05 }}
-                whileTap={{ scale: 0.95 }}
+                whileHover={{ scale: 1.02 }}
+                whileTap={{ scale: 0.98 }}
               >
                 <Button
                   variant="purple"
                   size="lg"
-                  className="rounded-xl uppercase font-medium font-switzer flex items-center gap-2 shadow-lg hover:shadow-xl transition-shadow duration-300"
+                  className="rounded-xl uppercase font-medium font-switzer flex items-center gap-2 shadow-lg hover:shadow-xl transition-shadow duration-200"
                 >
                   Get Started
-                  <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform duration-200" />
+                  <ArrowRight className="w-4 h-4 group-hover:translate-x-0.5 transition-transform duration-150" />
                 </Button>
               </motion.div>
             </Link>

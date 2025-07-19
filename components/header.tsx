@@ -68,7 +68,7 @@ export const Header = () => {
                 variant="ghost"
                 key={label}
                 className={cn(
-                  "font-switzer font-dark dark:font-light text-sm uppercase font-medium transition-color duration-200 hover:text-purple hover:bg-transparent rounded-lg px-4 py-2 h-9",
+                  "font-switzer font-dark dark:font-light text-sm uppercase font-medium transition-all duration-150 hover:text-purple hover:bg-purple/5 rounded-lg px-4 py-2 h-9",
                   pathname === link &&
                     "bg-purple text-dark dark:text-light hover:text-dark dark:hover:text-light hover:bg-purple",
                 )}

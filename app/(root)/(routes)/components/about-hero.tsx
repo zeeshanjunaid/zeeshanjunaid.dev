@@ -32,7 +32,7 @@ const AboutHero = () => {
       opacity: 1,
       y: 0,
       transition: {
-        duration: 0.8,
+        duration: 0.6,
         ease: "easeOut",
       },
     },
@@ -44,7 +44,7 @@ const AboutHero = () => {
       opacity: 1,
       scale: 1,
       transition: {
-        duration: 1,
+        duration: 0.7,
         ease: "easeOut",
       },
     },

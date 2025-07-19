@@ -33,7 +33,7 @@ const ExperienceCard = ({ experience, index }: ExperienceCardProps) => {
       opacity: 1,
       y: 0,
       transition: {
-        duration: 0.8,
+        duration: 0.6,
         delay: index * 0.2,
         ease: "easeOut",
       },
@@ -46,7 +46,7 @@ const ExperienceCard = ({ experience, index }: ExperienceCardProps) => {
       opacity: 1,
       scale: 1,
       transition: {
-        duration: 0.4,
+        duration: 0.3,
         delay: 0.3 + index * 0.1,
       },
     },
@@ -108,8 +108,8 @@ const ExperienceCard = ({ experience, index }: ExperienceCardProps) => {
               target="_blank"
               rel="noreferrer noopener"
               className="hidden lg:flex items-center justify-center w-12 h-12 bg-light dark:bg-dark rounded-2xl border border-lightBorderColor dark:border-darkBorderColor hover:border-purple/30 hover:bg-purple/5 transition-all duration-300 group/link"
-              whileHover={{ scale: 1.05 }}
-              whileTap={{ scale: 0.95 }}
+              whileHover={{ scale: 1.02 }}
+              whileTap={{ scale: 0.98 }}
             >
               <ArrowRight className="w-5 h-5 text-dark dark:text-light group-hover/link:text-purple group-hover/link:-rotate-45 transition-all duration-300" />
             </motion.a>

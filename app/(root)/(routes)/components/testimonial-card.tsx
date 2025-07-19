@@ -25,7 +25,7 @@ const TestimonialCard = ({ review, className }: TestimonialCardProps) => {
     <motion.div
       initial={{ opacity: 0, y: 30 }}
       whileInView={{ opacity: 1, y: 0 }}
-      transition={{ duration: 0.6 }}
+      transition={{ duration: 0.4 }}
       viewport={{ once: true }}
       onMouseEnter={() => setIsHovered(true)}
       onMouseLeave={() => setIsHovered(false)}
@@ -56,7 +56,7 @@ const TestimonialCard = ({ review, className }: TestimonialCardProps) => {
             {/* Profile Image */}
             <motion.div
               className="relative w-16 h-16 md:w-20 md:h-20 rounded-2xl overflow-hidden flex-shrink-0 group-hover:scale-105 transition-transform duration-300"
-              whileHover={{ scale: 1.1 }}
+              whileHover={{ scale: 1.05 }}
             >
               {!isLoaded && <Skeleton className="w-full h-full rounded-2xl" />}
               <Image
@@ -81,7 +81,7 @@ const TestimonialCard = ({ review, className }: TestimonialCardProps) => {
                     {review.country && (
                       <motion.span
                         className="flex-shrink-0"
-                        whileHover={{ scale: 1.2 }}
+                        whileHover={{ scale: 1.1 }}
                       >
                         <ReactCountryFlag
                           countryCode={review.country.code}
@@ -127,7 +127,7 @@ const TestimonialCard = ({ review, className }: TestimonialCardProps) => {
                 {/* Quote Icon */}
                 <motion.div
                   className="w-8 h-8 bg-purple/10 rounded-xl flex items-center justify-center flex-shrink-0"
-                  whileHover={{ scale: 1.1, rotate: 5 }}
+                  whileHover={{ scale: 1.05, rotate: 3 }}
                 >
                   <Quote className="w-4 h-4 text-purple" />
                 </motion.div>
@@ -141,14 +141,14 @@ const TestimonialCard = ({ review, className }: TestimonialCardProps) => {
                     initial={{ scale: 0 }}
                     animate={{ scale: 1 }}
                     transition={{
-                      duration: 0.3,
+                      duration: 0.2,
                       delay: i * 0.1,
                       type: "spring",
                       stiffness: 200,
                     }}
                   >
                     <Star
-                      className="w-4 h-4 text-yellow-400 fill-yellow-400 group-hover:scale-110 transition-transform duration-300"
+                      className="w-4 h-4 text-yellow-400 fill-yellow-400 group-hover:scale-105 transition-transform duration-200"
                       style={{ transitionDelay: `${i * 50}ms` }}
                     />
                   </motion.div>
@@ -185,7 +185,7 @@ const TestimonialCard = ({ review, className }: TestimonialCardProps) => {
             {review.featured && (
               <motion.div
                 className="flex items-center gap-1.5 bg-purple/10 px-3 py-1 rounded-xl"
-                whileHover={{ scale: 1.05 }}
+                whileHover={{ scale: 1.02 }}
               >
                 <Award className="w-3 h-3 text-purple" />
                 <span className="text-purple font-switzer font-medium text-[10px] md:text-[11px] uppercase tracking-wider">

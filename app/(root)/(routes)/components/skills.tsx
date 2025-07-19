@@ -26,7 +26,7 @@ const Skills = () => {
       opacity: 1,
       y: 0,
       transition: {
-        duration: 0.8,
+        duration: 0.6,
         ease: "easeOut",
       },
     },
@@ -84,7 +84,7 @@ const Skills = () => {
               <BlurBG className="rounded-3xl" />
               <div className="relative z-20">
                 <div className="flex items-center gap-4 mb-4">
-                  <div className="w-12 h-12 bg-purple/10 rounded-2xl flex items-center justify-center group-hover:scale-110 transition-transform duration-300">
+                  <div className="w-12 h-12 bg-purple/10 rounded-2xl flex items-center justify-center group-hover:scale-105 transition-transform duration-200">
                     <Code className="w-6 h-6 text-purple" />
                   </div>
                   <div>
@@ -106,7 +106,7 @@ const Skills = () => {
               <BlurBG className="rounded-3xl" />
               <div className="relative z-20">
                 <div className="flex items-center gap-4 mb-4">
-                  <div className="w-12 h-12 bg-purple/10 rounded-2xl flex items-center justify-center group-hover:scale-110 transition-transform duration-300">
+                  <div className="w-12 h-12 bg-purple/10 rounded-2xl flex items-center justify-center group-hover:scale-105 transition-transform duration-200">
                     <Palette className="w-6 h-6 text-purple" />
                   </div>
                   <div>
@@ -128,7 +128,7 @@ const Skills = () => {
               <BlurBG className="rounded-3xl" />
               <div className="relative z-20">
                 <div className="flex items-center gap-4 mb-4">
-                  <div className="w-12 h-12 bg-purple/10 rounded-2xl flex items-center justify-center group-hover:scale-110 transition-transform duration-300">
+                  <div className="w-12 h-12 bg-purple/10 rounded-2xl flex items-center justify-center group-hover:scale-105 transition-transform duration-200">
                     <Database className="w-6 h-6 text-purple" />
                   </div>
                   <div>

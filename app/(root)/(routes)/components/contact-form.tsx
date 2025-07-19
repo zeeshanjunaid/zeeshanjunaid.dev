@@ -82,7 +82,7 @@ const ContactForm = () => {
       opacity: 1,
       y: 0,
       transition: {
-        duration: 0.6,
+        duration: 0.4,
         ease: "easeOut",
       },
     },
@@ -137,11 +137,11 @@ const ContactForm = () => {
                 key={index}
                 initial={{ opacity: 0, x: -20 }}
                 whileInView={{ opacity: 1, x: 0 }}
-                transition={{ duration: 0.6, delay: index * 0.1 }}
+                transition={{ duration: 0.4, delay: index * 0.1 }}
                 viewport={{ once: true }}
                 className="flex items-start gap-4 group"
               >
-                <div className="w-12 h-12 bg-purple/10 rounded-2xl flex items-center justify-center flex-shrink-0 group-hover:bg-purple/20 group-hover:scale-110 transition-all duration-300">
+                <div className="w-12 h-12 bg-purple/10 rounded-2xl flex items-center justify-center flex-shrink-0 group-hover:bg-purple/20 group-hover:scale-105 transition-all duration-200">
                   <benefit.icon className="w-6 h-6 text-purple" />
                 </div>
                 <div>
@@ -344,7 +344,7 @@ const ContactForm = () => {
                       <Button
                         disabled={isLoading}
                         size="lg"
-                        className="px-8 py-4 text-[16px] font-switzer font-medium rounded-xl uppercase tracking-wider shadow-lg hover:shadow-xl transition-all duration-300 min-w-[180px]"
+                        className="px-8 py-4 text-[16px] font-switzer font-medium rounded-xl uppercase tracking-wider shadow-lg hover:shadow-xl transition-all duration-200 min-w-[180px]"
                         variant="purple"
                       >
                         {isLoading ? (

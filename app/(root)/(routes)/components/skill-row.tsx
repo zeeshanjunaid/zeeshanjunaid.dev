@@ -27,7 +27,7 @@ const SkillRow = ({ skillset }: SkillRowProps) => {
       opacity: 1,
       y: 0,
       transition: {
-        duration: 0.4,
+        duration: 0.3,
         ease: "easeOut",
       },
     },
@@ -74,11 +74,11 @@ const SkillRow = ({ skillset }: SkillRowProps) => {
                 <BlurBG className="rounded-2xl" />
                 <div className="relative z-20 flex items-center gap-3 w-full">
                   {Icon && (
-                    <div className="w-8 h-8 flex items-center justify-center bg-purple/10 rounded-lg group-hover:bg-purple/20 group-hover:scale-110 transition-all duration-300">
+                    <div className="w-8 h-8 flex items-center justify-center bg-purple/10 rounded-lg group-hover:bg-purple/20 group-hover:scale-105 transition-all duration-200">
                       <Icon size="16" className="text-purple" />
                     </div>
                   )}
-                  <span className="text-dark dark:text-light text-[14px] md:text-[16px] font-light group-hover:text-purple transition-colors duration-300 flex-1">
+                  <span className="text-dark dark:text-light text-[14px] md:text-[16px] font-light group-hover:text-purple transition-colors duration-200 flex-1">
                     {name}
                   </span>
                 </div>

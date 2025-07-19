@@ -124,12 +124,12 @@ const VideoModal = ({
                 >
                   <motion.div
                     className="w-12 h-12 lg:w-14 lg:h-14 bg-white/95 backdrop-blur-sm rounded-full flex items-center justify-center shadow-lg"
-                    whileHover={{ scale: 1.1 }}
+                    whileHover={{ scale: 1.05 }}
                     animate={{
-                      scale: isHovered ? [1, 1.1, 1] : 1,
+                      scale: isHovered ? [1, 1.05, 1] : 1,
                     }}
                     transition={{
-                      duration: 1.5,
+                      duration: 2,
                       repeat: isHovered ? Infinity : 0,
                       ease: "easeInOut",
                     }}
@@ -145,11 +145,11 @@ const VideoModal = ({
                 <motion.div
                   className="absolute inset-0 rounded-3xl border-2 border-purple/30"
                   animate={{
-                    scale: isHovered ? [1, 1.1, 1] : 1,
+                    scale: isHovered ? [1, 1.05, 1] : 1,
                     opacity: isHovered ? [0.5, 0, 0.5] : 0,
                   }}
                   transition={{
-                    duration: 2,
+                    duration: 3,
                     repeat: isHovered ? Infinity : 0,
                     ease: "easeInOut",
                   }}
@@ -162,8 +162,8 @@ const VideoModal = ({
           <motion.div
             className="text-center"
             initial={{ opacity: 0, y: 10 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.5, delay: 0.2 }}
+            whileHover={{ scale: 1.02 }}
+            transition={{ duration: 0.4, delay: 0.1 }}
           >
             <h3 className="text-dark dark:text-light font-switzer font-semibold text-[14px] md:text-[16px] mb-2 leading-tight">
               {client}
@@ -171,7 +171,7 @@ const VideoModal = ({
             {country && (
               <motion.div
                 className="flex items-center justify-center gap-2"
-                whileHover={{ scale: 1.05 }}
+                whileHover={{ scale: 1.02 }}
               >
                 <ReactCountryFlag
                   countryCode={country.code}

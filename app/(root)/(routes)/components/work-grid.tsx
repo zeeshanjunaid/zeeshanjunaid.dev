@@ -60,7 +60,7 @@ export const WorkGrid = ({ projects, selectedSkill }: WorkGridProps) => {
       opacity: 1,
       y: 0,
       transition: {
-        duration: 0.8,
+        duration: 0.6,
         ease: "easeOut",
       },
     },
@@ -86,8 +86,8 @@ export const WorkGrid = ({ projects, selectedSkill }: WorkGridProps) => {
               <Link href={`/work/${project.slug}`}>
                 <motion.div
                   className="relative bg-light dark:bg-dark rounded-3xl overflow-hidden border border-lightBorderColor dark:border-darkBorderColor group cursor-pointer h-full"
-                  whileHover={{ y: -8, scale: 1.02 }}
-                  transition={{ duration: 0.3 }}
+                  whileHover={{ y: -4, scale: 1.01 }}
+                  transition={{ duration: 0.2 }}
                 >
                   <BlurBG className="rounded-3xl" />
 
@@ -124,11 +124,11 @@ export const WorkGrid = ({ projects, selectedSkill }: WorkGridProps) => {
                       className="absolute inset-0 bg-purple/20 flex items-center justify-center"
                       initial={{ opacity: 0 }}
                       whileHover={{ opacity: 1 }}
-                      transition={{ duration: 0.3 }}
+                      transition={{ duration: 0.2 }}
                     >
                       <motion.div
                         className="w-16 h-16 bg-white/90 backdrop-blur-sm rounded-full flex items-center justify-center"
-                        whileHover={{ scale: 1.1 }}
+                        whileHover={{ scale: 1.05 }}
                         transition={{ duration: 0.2 }}
                       >
                         <Eye className="w-6 h-6 text-purple" />

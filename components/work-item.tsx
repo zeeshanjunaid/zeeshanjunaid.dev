@@ -110,8 +110,8 @@ export const WorkItem = ({
                 },
                 whileHover: {
                   opacity: 1,
-                  rotate: "-25deg",
-                  scale: 1.125,
+                  rotate: "-15deg",
+                  scale: 1.05,
                 },
               }}
               transition={{
@@ -147,19 +147,19 @@ export const WorkImg = ({
     <motion.div
       variants={{
         initial: {
-          rotate: "-6.5deg",
+          rotate: "-3deg",
           scale: 0,
           zIndex: "11",
         },
         whileHover: {
-          rotate: "6.5deg",
+          rotate: "3deg",
           scale: 1,
           zIndex: 40,
         },
       }}
       transition={{
         type: "spring",
-        duration: 0.2,
+        duration: 0.3,
       }}
       style={{ top, left, transform: "translate(-50%, -50%)" }}
       className="absolute w-[350px] transition origin-center shadow-3xl -mt-[60px] hidden md:block"
