@@ -37,7 +37,7 @@ export const Hero = () => {
   const handIcon = <span className="animate-waver">👋🏻</span>;
   const heroTitle = (
     <>
-      Hello {handIcon}, I'm Zeeshan Junaid, Frontend Engineer with 8+ years of
+      Hello {handIcon}, I&apos;m Zeeshan Junaid, Frontend Engineer with 8+ years of
       experience
     </>
   );
