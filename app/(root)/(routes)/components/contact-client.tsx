@@ -104,13 +104,13 @@ const ContactPageClient = () => {
                 </div>
 
                 <h1 className="text-[32px] md:text-[42px] lg:text-[54px] font-bold font-ao text-dark dark:text-light leading-tight mb-6">
-                  Let's Create Something{" "}
+                  Let&apos;s Create Something{" "}
                   <span className="text-gradient">Amazing Together</span>
                 </h1>
 
                 <p className="font-light text-[16px] md:text-[18px] lg:text-[20px] leading-relaxed text-dark/80 dark:text-light/80 max-w-3xl">
-                  Ready to bring your digital vision to life? I'm here to help you create 
-                  exceptional web experiences that drive results. Let's discuss your project 
+                  Ready to bring your digital vision to life? I&apos;m here to help you create 
+                  exceptional web experiences that drive results. Let&apos;s discuss your project 
                   and explore how we can work together.
                 </p>
               </motion.div>
@@ -154,7 +154,7 @@ const ContactPageClient = () => {
               Contact Methods
             </h2>
             <p className="text-dark/70 dark:text-light/70 font-switzer font-light text-[14px] md:text-[16px] lg:text-[18px] max-w-2xl">
-              Choose your preferred way to reach out. I'm available through multiple channels 
+              Choose your preferred way to reach out. I&apos;m available through multiple channels 
               to make communication as convenient as possible for you.
             </p>
           </motion.div>
@@ -225,7 +225,7 @@ const ContactPageClient = () => {
               </div>
               
               <p className="text-dark/70 dark:text-light/70 font-switzer font-light text-[16px] md:text-[18px] leading-relaxed mb-8">
-                I'm available during these hours for calls, meetings, and urgent project discussions.
+                I&apos;m available during these hours for calls, meetings, and urgent project discussions.
               </p>
 
               <div className="space-y-4">
@@ -280,7 +280,7 @@ const ContactPageClient = () => {
                       📍 Based in Pakistan
                     </h4>
                     <p className="text-dark/70 dark:text-light/70 font-switzer font-light text-[16px] leading-relaxed">
-                      Working remotely with clients worldwide. I'm experienced in collaborating 
+                      Working remotely with clients worldwide. I&apos;m experienced in collaborating 
                       across different time zones and cultures.
                     </p>
                   </div>
@@ -338,7 +338,7 @@ const ContactPageClient = () => {
               Ready to Start Your Project?
             </h3>
             <p className="text-dark/70 dark:text-light/70 font-switzer font-light text-[16px] md:text-[18px] leading-relaxed max-w-2xl mx-auto">
-              Fill out the form below with your project details, and I'll get back to you 
+              Fill out the form below with your project details, and I&apos;ll get back to you 
               within 24 hours with a detailed response.
             </p>
           </motion.div>

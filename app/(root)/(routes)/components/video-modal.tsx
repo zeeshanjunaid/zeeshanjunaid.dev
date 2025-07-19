@@ -60,7 +60,7 @@ const VideoModal = ({
       <Dialog open={isModalOpen} onOpenChange={handleModalOpen}>
         <div className="flex flex-col gap-4 justify-center items-center min-w-[160px] max-w-[200px]">
           <DialogTrigger asChild>
-            <motion.button 
+            <motion.button
               className="relative group/button focus:outline-none focus:ring-2 focus:ring-purple focus:ring-offset-2 rounded-3xl"
               onMouseEnter={() => setIsHovered(true)}
               onMouseLeave={() => setIsHovered(false)}
@@ -70,7 +70,7 @@ const VideoModal = ({
               {/* Main Container */}
               <div className="relative w-[120px] h-[120px] lg:h-[140px] lg:w-[140px] rounded-3xl overflow-hidden">
                 {/* Background Gradient Border */}
-                <motion.div 
+                <motion.div
                   className="absolute inset-0 video-cta-gradient p-[3px] rounded-3xl"
                   animate={{
                     rotate: isHovered ? 360 : 0,
@@ -87,7 +87,7 @@ const VideoModal = ({
                 {/* Profile Image Container */}
                 <div className="absolute inset-[3px] rounded-3xl overflow-hidden bg-light dark:bg-dark z-30">
                   <BlurBG className="rounded-3xl" />
-                  
+
                   {profile ? (
                     <div className="relative w-full h-full">
                       {!isLoaded && (
@@ -101,25 +101,28 @@ const VideoModal = ({
                         alt={client}
                         onLoad={() => setIsLoaded(true)}
                       />
-                      
+
                       {/* Gradient Overlay */}
                       <div className="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-transparent z-25" />
                     </div>
                   ) : (
                     <div className="w-full h-full flex items-center justify-center relative z-20">
-                      <User2Icon size={48} className="text-dark dark:text-light group-hover/button:scale-110 transition-transform duration-300" />
+                      <User2Icon
+                        size={48}
+                        className="text-dark dark:text-light group-hover/button:scale-110 transition-transform duration-300"
+                      />
                     </div>
                   )}
                 </div>
-                
+
                 {/* Play Button Overlay */}
-                <motion.div 
+                <motion.div
                   className="absolute inset-[3px] flex items-center justify-center z-40 rounded-3xl"
                   initial={{ opacity: 0 }}
                   animate={{ opacity: isHovered ? 1 : 0.8 }}
                   transition={{ duration: 0.3 }}
                 >
-                  <motion.div 
+                  <motion.div
                     className="w-12 h-12 lg:w-14 lg:h-14 bg-white/95 backdrop-blur-sm rounded-full flex items-center justify-center shadow-lg"
                     whileHover={{ scale: 1.1 }}
                     animate={{
@@ -131,7 +134,10 @@ const VideoModal = ({
                       ease: "easeInOut",
                     }}
                   >
-                    <Play className="w-5 h-5 lg:w-6 lg:h-6 text-purple ml-1" fill="currentColor" />
+                    <Play
+                      className="w-5 h-5 lg:w-6 lg:h-6 text-purple ml-1"
+                      fill="currentColor"
+                    />
                   </motion.div>
                 </motion.div>
 
@@ -151,9 +157,9 @@ const VideoModal = ({
               </div>
             </motion.button>
           </DialogTrigger>
-          
+
           {/* Client Info */}
-          <motion.div 
+          <motion.div
             className="text-center"
             initial={{ opacity: 0, y: 10 }}
             animate={{ opacity: 1, y: 0 }}
@@ -163,7 +169,7 @@ const VideoModal = ({
               {client}
             </h3>
             {country && (
-              <motion.div 
+              <motion.div
                 className="flex items-center justify-center gap-2"
                 whileHover={{ scale: 1.05 }}
               >
@@ -186,7 +192,7 @@ const VideoModal = ({
         <DialogContent className="bg-light dark:bg-dark max-w-4xl w-[95vw] border border-lightBorderColor dark:border-darkBorderColor rounded-3xl p-0 overflow-hidden [&>button]:hidden">
           <div className="relative">
             <BlurBG className="rounded-3xl" />
-            
+
             {/* Modal Header */}
             <DialogHeader className="relative z-20 p-6 pb-4">
               <div className="flex items-center gap-4">
@@ -224,7 +230,7 @@ const VideoModal = ({
                     )}
                   </div>
                 </DialogTitle>
-                
+
                 {/* Custom Close Button */}
                 <Button
                   variant="ghost"
@@ -238,7 +244,7 @@ const VideoModal = ({
             </DialogHeader>
 
             {/* Video Container */}
-            <DialogDescription asChild className="relative z-20 p-6">
+            <DialogDescription className="relative z-20 p-6">
               <div className="relative rounded-2xl overflow-hidden bg-black mb-4">
                 <div className="aspect-video">
                   <ReactPlayer
@@ -254,18 +260,16 @@ const VideoModal = ({
                     onPlay={() => setIsPlaying(true)}
                     onPause={() => setIsPlaying(false)}
                     config={{
-                      youtube: {
-                        playerVars: {
-                          showinfo: 1,
-                          modestbranding: 1,
-                          rel: 0,
-                          autoplay: 1,
-                        }
-                      }
+                      playerVars: {
+                        showinfo: 1,
+                        modestbranding: 1,
+                        rel: 0,
+                        autoplay: 1,
+                      },
                     }}
                   />
                 </div>
-                
+
                 {/* Video Controls Overlay */}
                 <div className="absolute top-4 right-4 flex items-center gap-2">
                   <Button
@@ -287,7 +291,9 @@ const VideoModal = ({
             {/* Video Info Footer */}
             <div className="relative z-20 px-6 pb-6 border-t border-lightBorderColor dark:border-darkBorderColor pt-4">
               <div className="flex items-center justify-center">
-                <span className="text-[12px] text-dark/60 dark:text-light/60">Client Testimonial Video • Click outside or press ESC to close</span>
+                <span className="text-[12px] text-dark/60 dark:text-light/60">
+                  Client Testimonial Video • Click outside or press ESC to close
+                </span>
               </div>
             </div>
           </div>

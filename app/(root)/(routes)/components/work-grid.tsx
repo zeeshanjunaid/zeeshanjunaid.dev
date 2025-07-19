@@ -1,6 +1,23 @@
+"use client";
+
 import React, { useState, useRef, useEffect } from "react";
-import { motion, useScroll, useTransform, AnimatePresence } from "framer-motion";
-import { ArrowRight, Calendar, ExternalLink, Eye, Play, Code, Palette, Zap, Star } from "lucide-react";
+import {
+  motion,
+  useScroll,
+  useTransform,
+  AnimatePresence,
+} from "framer-motion";
+import {
+  ArrowRight,
+  Calendar,
+  ExternalLink,
+  Eye,
+  Play,
+  Code,
+  Palette,
+  Zap,
+  Star,
+} from "lucide-react";
 import { Container } from "@/components/container";
 import Image from "next/image";
 import Link from "next/link";
@@ -19,7 +36,11 @@ export const WorkGrid = ({ projects, selectedSkill }: WorkGridProps) => {
   const containerRef = useRef<HTMLDivElement>(null);
 
   const handleImageLoad = (projectName: string) => {
-    setLoadedImages(prev => new Set([...prev, projectName]));
+    setLoadedImages((prev) => {
+      const newSet = new Set(prev);
+      newSet.add(projectName);
+      return newSet;
+    });
   };
 
   const containerVariants = {
@@ -69,7 +90,7 @@ export const WorkGrid = ({ projects, selectedSkill }: WorkGridProps) => {
                   transition={{ duration: 0.3 }}
                 >
                   <BlurBG className="rounded-3xl" />
-                  
+
                   {/* Project Image */}
                   <div className="relative aspect-[4/3] overflow-hidden">
                     {project.imgUrl && (
@@ -121,7 +142,7 @@ export const WorkGrid = ({ projects, selectedSkill }: WorkGridProps) => {
                       <h3 className="text-[20px] md:text-[22px] font-bold font-ao text-dark dark:text-light capitalize mb-2 group-hover:text-purple transition-colors duration-300">
                         {project.name}
                       </h3>
-                      
+
                       <p className="text-dark/70 dark:text-light/70 font-switzer font-light text-[14px] leading-relaxed line-clamp-2">
                         {project.description}
                       </p>
@@ -156,7 +177,7 @@ export const WorkGrid = ({ projects, selectedSkill }: WorkGridProps) => {
                           {project.year}
                         </span>
                       </div>
-                      
+
                       <ArrowRight className="w-5 h-5 text-dark/40 dark:text-light/40 group-hover:text-purple group-hover:translate-x-1 group-hover:-rotate-45 transition-all duration-300" />
                     </div>
                   </div>
@@ -169,7 +190,6 @@ export const WorkGrid = ({ projects, selectedSkill }: WorkGridProps) => {
           ))}
         </motion.div>
       </Container>
-
     </div>
   );
 };

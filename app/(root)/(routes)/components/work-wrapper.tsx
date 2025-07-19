@@ -141,7 +141,7 @@ const WorkWrapper = () => {
                     {projects.length} {projects.length === 1 ? 'Project' : 'Projects'} Found
                     {skillValue && (
                       <span className="text-dark/60 dark:text-light/60 font-light">
-                        {' '}for "{skillValue}"
+                        {' '}for &quot;{skillValue}&quot;
                       </span>
                     )}
                   </span>
