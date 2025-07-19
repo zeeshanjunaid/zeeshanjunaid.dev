@@ -146,7 +146,7 @@ export const Hero = () => {
               alt="profile"
               src={heroImg}
               priority={true}
-              className="scale-125 lg:scale-[135%] 2xl:scale-[120%] origin-bottom object-contain object-bottom transition-all duration-1000 user-select-none pointer-events-none group-hover:scale-[130%] lg:group-hover:scale-[140%]"
+              className="scale-125 lg:scale-[135%] 2xl:scale-[120%] origin-bottom object-contain object-bottom user-select-none pointer-events-none"
             />
           </motion.div>
         </motion.div>
