@@ -24,14 +24,14 @@ const BackToTop = () => {
         })
       }
       initial={{
-        y: "120%",
+        y: "150%",
       }}
       variants={{
         visible: {
           y: 0,
         },
         hidden: {
-          y: "120%",
+          y: "150%",
         },
       }}
       animate={hidden ? "hidden" : "visible"}
