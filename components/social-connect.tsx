@@ -25,7 +25,7 @@ export function SocialLinks() {
   ];
 
   return (
-    <>
+    <div className="flex items-center space-x-3">
       {socialLinks.map(({ name, link, icon }, index) => (
         <a 
           key={name} 
@@ -43,6 +43,6 @@ export function SocialLinks() {
           </Button>
         </a>
       ))}
-    </>
+    </div>
   );
 }
