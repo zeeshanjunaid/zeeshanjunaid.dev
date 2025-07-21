@@ -170,7 +170,7 @@ const TestimonialCard = ({ review, className }: TestimonialCardProps) => {
                 animate={{ opacity: isHovered ? 1 : 0.9 }}
                 transition={{ duration: 0.3 }}
               >
-                "{review.headline}"
+                &quot;{review.headline}&quot;
               </motion.h4>
             )}
             

@@ -77,8 +77,8 @@ const ReviewsPageClient = () => {
               </h1>
 
               <p className="font-light text-[16px] md:text-[18px] lg:text-[20px] leading-relaxed text-dark/80 dark:text-light/80 max-w-3xl">
-                I'm proud to have partnered with incredible clients from around the world. 
-                Here's what they have to say about our collaboration and the results we've achieved together.
+                I&apos;m proud to have partnered with incredible clients from around the world. 
+                Here&apos;s what they have to say about our collaboration and the results we&apos;ve achieved together.
               </p>
             </motion.div>
           </Container>
