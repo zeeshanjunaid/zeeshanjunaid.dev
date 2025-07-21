@@ -65,9 +65,9 @@ export const servicesCards: ServicesCardProps[] = [
   {
     slug: "uiux-design",
     name: "UI/UX Design",
-    tagline: "Empower Your Digital Presence with Intuitive Design",
+    tagline: "Solve User Problems with Intuitive, Goal-Driven Design",
     description:
-      "At the heart of every successful digital project lies exceptional UI/UX design. Our approach combines aesthetics with functionality, creating seamless experiences that drive user engagement and satisfaction. From initial research to final implementation, we ensure every design element is crafted to meet your business goals and delight your users.",
+      "Great design isn't just about looking good; it's about solving problems. I partner with you to understand your users' needs and your business goals, creating interfaces that are not only beautiful but also intuitive, engaging, and designed to convert.",
     img: "/images/services/design.webp",
     subServicesTitle: "What do i Offer",
     subServices: [
@@ -87,9 +87,9 @@ export const servicesCards: ServicesCardProps[] = [
   {
     slug: "frontend-development",
     name: "Frontend Development in React",
-    tagline: "Build Fast, Scalable, and Interactive Web Experiences",
+    tagline: "Turn Your Vision into a High-Performance Web Application",
     description:
-      "Leverage the power of modern web technologies with our React, NextJS, and GatsbyJS development services. Specializing in creating high-performance, SEO-friendly websites and applications, we ensure your project not only looks great but also ranks well and loads quickly across all platforms.",
+      "Your website or application is your most important digital asset. I specialize in building fast, secure, and scalable frontends using modern technologies like React and Next.js, ensuring your users have a seamless experience that works flawlessly on every device.",
     img: "/images/services/frontend-dev.webp",
     subServicesTitle: "What do i Offer",
     subServices: [
@@ -109,9 +109,9 @@ export const servicesCards: ServicesCardProps[] = [
   {
     slug: 'wordpress-development',
     name: "WordPress Development",
-    tagline: "Custom WordPress Solutions Tailored to Your Needs",
+    tagline: "Transform Your Content Management into a Growth Engine",
     description:
-      "From bespoke themes to custom plugins, our WordPress development services are designed to elevate your website's functionality and aesthetic appeal. Whether you're looking to launch a blog, an e-commerce platform, or a corporate website, we provide tailored solutions that align with your vision and business objectives.",
+      "WordPress powers 40% of the web, but most businesses barely scratch the surface of its potential. I create custom WordPress solutions that not only look professional but also give you complete control over your content, SEO, and user experience—without the technical headaches.",
     img: "/images/services/wp-dev.webp",
     subServicesTitle: "What do i Offer",
     subServices: [
@@ -130,9 +130,9 @@ export const servicesCards: ServicesCardProps[] = [
   {
     slug: 'webflow-development',
     name: "Webflow Development",
-    tagline: "Unlock the Potential of Webflow for Stunning Websites",
+    tagline: "Launch Faster with Designer-Friendly, Code-Quality Results",
     description:
-      "Embrace the flexibility and power of Webflow with our custom development services. Ideal for businesses looking for visually impressive, easily manageable websites without the complexity of traditional development processes. Our expertise ensures your site is not just a visual masterpiece but also a robust digital asset optimized for performance and conversions.",
+      "Webflow bridges the gap between design flexibility and development power. I leverage this platform to deliver pixel-perfect, responsive websites in half the time of traditional development, while giving you an intuitive CMS that your team will actually enjoy using.",
     img: "/images/services/webflow-dev.webp",
     subServicesTitle: "What do i Offer",
     subServices: [
@@ -152,9 +152,9 @@ export const servicesCards: ServicesCardProps[] = [
   {
     slug: 'shopify-development',
     name: "Shopify Development",
-    tagline: "Elevate Your E-commerce Experience with Shopify",
+    tagline: "Build an E-commerce Store That Actually Converts",
     description:
-      "Maximize your online store's potential with our Shopify development services. From custom theme designs to advanced feature integrations, we ensure your Shopify site is not just another store but a powerful, user-friendly e-commerce platform that stands out in the digital marketplace.",
+      "A beautiful online store means nothing if it doesn't convert visitors into customers. I specialize in creating Shopify experiences that not only showcase your products beautifully but also guide customers smoothly from discovery to purchase, maximizing your revenue per visitor.",
     img: "/images/services/shopify-dev.webp",
     subServicesTitle: "What do i Offer",
     subServices: [
@@ -174,9 +174,9 @@ export const servicesCards: ServicesCardProps[] = [
   {
     slug: 'seo-optimization',
     name: "SEO Optimization",
-    tagline: "Boost Your Visibility and Outrank Your Competitors",
+    tagline: "Get Found by Customers Who Are Ready to Buy",
     description:
-      "In the digital age, visibility is key to success. Our comprehensive SEO optimization packages are designed to increase your website's rankings, attract more traffic, and convert visitors into loyal customers. We use data-driven strategies and white-hat SEO techniques to improve your online presence and keep you ahead of the competition.",
+      "The best website in the world is useless if your ideal customers can't find it. I implement proven SEO strategies that don't just increase your rankings—they attract high-intent visitors who are actively searching for what you offer, leading to more qualified leads and sales.",
     img: "/images/services/seo-opt.webp",
     subServicesTitle: "What do i Offer",
     subServices: [
@@ -196,9 +196,9 @@ export const servicesCards: ServicesCardProps[] = [
   {
     slug: 'speed-optimization',
     name: "Performance Optimization",
-    tagline: "Maximize Speed, Efficiency, and Conversion",
+    tagline: "Turn Page Speed into Profit with Lightning-Fast Performance",
     description:
-      "Slow load times and poor website performance can drastically affect your user experience and conversion rates. Our performance optimization services focus on enhancing your site's speed, responsiveness, and overall efficiency, ensuring visitors stay engaged and convert.",
+      "Every second of delay costs you customers. Studies show that a 1-second delay in page load time can reduce conversions by 7%. I optimize your website's performance to ensure lightning-fast load times that keep visitors engaged and boost your bottom line.",
     img: "/images/services/speed-opt.webp",
     subServicesTitle: "What do i Offer",
     subServices: [

@@ -98,15 +98,12 @@ const ServicesPageClient = () => {
               </div>
 
               <h1 className="leading-tight text-[32px] md:text-[42px] lg:text-[54px] font-bold font-ao text-dark dark:text-light">
-                Creating Digital Experiences That{" "}
-                <span className="text-gradient">Drive Results</span>
+                I Build Digital Solutions That{" "}
+                <span className="text-gradient">Drive Business Growth</span>
               </h1>
 
               <p className="font-light text-[16px] md:text-[18px] lg:text-[20px] leading-relaxed text-dark/80 dark:text-light/80 max-w-3xl">
-                From concept to launch, I provide comprehensive digital
-                solutions that help businesses thrive in the modern web. Each
-                service is tailored to meet your unique needs and deliver
-                measurable results.
+                Below are the core solutions I provide to help my clients succeed. Each service is a partnership, tailored to solve your unique challenges and deliver a tangible return on your investment.
               </p>
 
               <motion.div
@@ -273,7 +270,7 @@ const ServicesPageClient = () => {
                     <ArrowRight className="w-4 h-4" />
                   </Button>
                 </Link>
-                <Link href="/hire-me">
+                <Link href="/contact">
                   <Button
                     variant="ghost"
                     size="lg"
