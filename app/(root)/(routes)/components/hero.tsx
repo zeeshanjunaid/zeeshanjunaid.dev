@@ -128,7 +128,6 @@ export const Hero = () => {
               <SocialLinks />
             </motion.div>
           </motion.div>
-            <Link href="/contact">
         {/* Image Section */}
         <motion.div
           initial={{ opacity: 0, x: 50 }}
@@ -177,5 +176,4 @@ export const Hero = () => {
       </Container>
     </section>
   );
-  )
 }
