@@ -78,7 +78,7 @@ const FeaturedCaseStudies = ({ projects }: FeaturedCaseStudiesProps) => {
             Real Projects, Real Results
           </h3>
           <p className="text-dark/70 dark:text-light/70 font-switzer font-light text-[16px] md:text-[18px] leading-relaxed max-w-3xl">
-            See how I've helped businesses like yours achieve their goals through strategic design and development.
+            See how I&apos;ve helped businesses like yours achieve their goals through strategic design and development.
           </p>
         </motion.div>
 

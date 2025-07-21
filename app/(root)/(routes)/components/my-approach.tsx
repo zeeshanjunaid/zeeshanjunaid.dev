@@ -71,7 +71,7 @@ const MyApproach = () => {
             From Idea to Impact: My 3-Step Process
           </h3>
           <p className="text-dark/70 dark:text-light/70 font-switzer font-light text-[16px] md:text-[18px] leading-relaxed max-w-3xl mx-auto">
-            I don't just code—I partner with you to create strategic solutions that drive real business results.
+            I don&apos;t just code—I partner with you to create strategic solutions that drive real business results.
           </p>
         </motion.div>
 
