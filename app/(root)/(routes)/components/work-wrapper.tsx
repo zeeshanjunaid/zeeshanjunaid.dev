@@ -100,13 +100,13 @@ const WorkWrapper = () => {
                 </div>
 
                 <h1 className="text-[32px] md:text-[42px] lg:text-[54px] font-bold font-ao text-dark dark:text-light leading-tight mb-6">
-                  Featured Projects &{" "}
-                  <span className="text-gradient">Case Studies</span>
+                  From Vision to Value: A{" "}
+                  <span className="text-gradient">Portfolio of Results</span>
                 </h1>
 
                 <p className="font-light text-[16px] md:text-[18px] lg:text-[20px] leading-relaxed text-dark/80 dark:text-light/80 max-w-3xl">
-                  Explore my collection of web applications, digital experiences, and creative solutions. 
-                  Each project represents a unique challenge solved through innovative design and development.
+                  I partner with businesses to build digital solutions that not only look great but also deliver measurable success. 
+                  Below are a few examples of how I've helped clients overcome challenges and achieve their goals.
                 </p>
               </motion.div>
 
