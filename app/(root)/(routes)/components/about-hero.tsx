@@ -204,7 +204,7 @@ const AboutHero = () => {
                 size="lg"
                 className="rounded-xl uppercase font-medium font-switzer flex items-center gap-2"
               >
-                Let&apos;s Work Together
+                Start Your Project
                 <ArrowRight className="w-4 h-4" />
               </Button>
             </Link>

@@ -116,7 +116,7 @@ export const Hero = () => {
                   size="lg"
                   variant="purple"
                 >
-                  Book a Free Consultation
+                  Start Your Project
                 </Button>
               </motion.div>
             </Link>
@@ -170,7 +170,7 @@ export const Hero = () => {
               whileTap={{ scale: 0.98 }}
             >
               <Button className="rounded-xl uppercase transition-all duration-200 hover:shadow-md hover:shadow-purple/20" size="lg" variant="purple">
-                Book a Free Consultation
+                Start Your Project
               </Button>
             </motion.div>
           </Link>

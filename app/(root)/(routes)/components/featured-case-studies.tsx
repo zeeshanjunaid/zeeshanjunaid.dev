@@ -206,7 +206,7 @@ const FeaturedCaseStudies = ({ projects }: FeaturedCaseStudiesProps) => {
               size="lg"
               className="rounded-xl uppercase font-medium font-switzer text-dark dark:text-light hover:text-purple flex items-center gap-2 mx-auto"
             >
-              View All Projects
+              See All Case Studies
               <ArrowRight className="w-4 h-4" />
             </Button>
           </Link>

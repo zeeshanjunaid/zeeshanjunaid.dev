@@ -110,7 +110,7 @@ const Services = () => {
               <CustomLink
                 className="text-[14px] font-ao text-dark dark:text-light uppercase px-2 py-2 flex items-center hover:text-purple transition-colors duration-200"
                 link="/services"
-                text="View All"
+                text="See All Solutions"
                 internal
               />
             </motion.li>

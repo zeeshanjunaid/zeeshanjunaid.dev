@@ -20,11 +20,11 @@ const ReachOut = () => {
         
         <div className="relative z-[30]">
           <h2 className="mb-6 font-ao text-[24px] md:text-[36px] lg:text-[42px] font-bold text-gradient">
-            Want to work together?
+            Ready to Start Your Project?
           </h2>
           <div className="flex flex-col gap-y-2">
             <p className="text-[14px] md:text-[18px] lg:text-5 font-switzer text-dark dark:text-light">
-              Feel free to reach out for collaborations or just a friendly hello
+              Let&apos;s discuss how we can bring your vision to life
             </p>
             <div>
               <CustomLink

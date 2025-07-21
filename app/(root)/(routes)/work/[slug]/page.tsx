@@ -135,7 +135,7 @@ export default function ProjectPage({ params }: ProjectPageProps) {
                   className="rounded-xl uppercase font-medium font-switzer text-white border-white/30 hover:bg-white/10"
                 >
                   <ArrowLeft className="w-4 h-4 mr-2" />
-                  Back to Work
+                  Back to Case Studies
                 </Button>
               </Link>
             </div>

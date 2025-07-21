@@ -203,7 +203,7 @@ const Skills = () => {
                     whileTap={{ scale: 0.95 }}
                     className="inline-flex items-center justify-center px-8 py-3 bg-purple hover:bg-purple/80 text-white rounded-xl uppercase font-medium font-switzer text-[14px] transition-colors duration-300"
                   >
-                    Start Our Conversation
+                    Start Your Project
                   </motion.a>
                   <motion.a
                     href="/work"

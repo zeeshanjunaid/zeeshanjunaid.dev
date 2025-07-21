@@ -47,7 +47,7 @@ export default function NotFound() {
                       className="rounded-xl uppercase font-medium flex items-center gap-2"
                     >
                       <Home className="w-4 h-4" />
-                      BACK TO HOME
+                      Back to Home
                     </Button>
                   </Link>
 
