@@ -128,7 +128,10 @@ export const Hero = () => {
               <SocialLinks />
             </motion.div>
           </motion.div>
+        </motion.div> {/* FIX: This closing tag was missing, which caused the image section to be nested incorrectly. */}
+
         {/* Image Section */}
+        {/* FIX: This entire block was moved out of the 'Desktop Hero Content' div to be its sibling. */}
         <motion.div
           initial={{ opacity: 0, x: 50 }}
           animate={{ opacity: 1, x: 0 }}
@@ -162,7 +165,8 @@ export const Hero = () => {
           transition={{ duration: 0.5, delay: 0.25 }}
           className="flex flex-col sm:flex-row lg:hidden items-center gap-2 min-w-max justify-center"
         >
-          <Link href="/hire-me">
+          {/* FIX: Changed href from "/hire-me" to "/contact" for consistency. */}
+          <Link href="/contact">
             <motion.div
               whileHover={{ scale: 1.02 }}
               whileTap={{ scale: 0.98 }}
@@ -176,6 +180,4 @@ export const Hero = () => {
       </Container>
     </section>
   );
-}
-  )
-}
+}; // FIX: Removed the extra ')' and '}' that were here.
