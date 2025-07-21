@@ -111,7 +111,7 @@ export const Hero = () => {
                 whileTap={{ scale: 0.98 }}
                 transition={{ duration: 0.2 }}
               >
-                <Button
+                <Link href="/contact">
                   className="h-12 rounded-xl uppercase transition-all duration-200 hover:shadow-md hover:shadow-purple/20"
                   size="lg"
                   variant="purple"
@@ -129,7 +129,7 @@ export const Hero = () => {
             </motion.div>
           </motion.div>
         </motion.div>
-
+            <Link href="/contact">
         {/* Image Section */}
         <motion.div
           initial={{ opacity: 0, x: 50 }}
