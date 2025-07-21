@@ -1,6 +1,7 @@
 import ContactPageClient from "../components/contact-client";
 
 import PricingTable from "../components/pricing-table";
+import Container from "@/components/container";
 import { BlurBG } from "@/components/blur-bg";
 import { CheckCircle, HelpCircle, ArrowRight } from "lucide-react";
 import { Button } from "@/components/ui/button";
