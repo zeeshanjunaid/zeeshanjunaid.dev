@@ -105,13 +105,13 @@ export const Hero = () => {
             transition={{ duration: 0.5, delay: 0.25 }}
             className="flex items-center space-x-6 min-w-max justify-start z-20 relative"
           >
-            <Link href="/hire-me">
+            <Link href="/contact">
               <motion.div
                 whileHover={{ scale: 1.02 }}
                 whileTap={{ scale: 0.98 }}
                 transition={{ duration: 0.2 }}
               >
-                <Link href="/contact">
+                <Button
                   className="h-12 rounded-xl uppercase transition-all duration-200 hover:shadow-md hover:shadow-purple/20"
                   size="lg"
                   variant="purple"
@@ -128,7 +128,6 @@ export const Hero = () => {
               <SocialLinks />
             </motion.div>
           </motion.div>
-        </motion.div>
             <Link href="/contact">
         {/* Image Section */}
         <motion.div
