@@ -180,4 +180,4 @@ export const Hero = () => {
       </Container>
     </section>
   );
-}; // FIX: Removed the extra ')' and '}' that were here.
+};
