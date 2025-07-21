@@ -162,13 +162,25 @@ const TestimonialCard = ({ review, className }: TestimonialCardProps) => {
 
           {/* Review Content */}
           <div className="relative">
+            {/* Headline */}
+            {review.headline && (
+              <motion.h4
+                className="text-dark dark:text-light font-switzer font-semibold text-[16px] md:text-[18px] lg:text-[19px] leading-tight mb-4"
+                initial={{ opacity: 0.8 }}
+                animate={{ opacity: isHovered ? 1 : 0.9 }}
+                transition={{ duration: 0.3 }}
+              >
+                "{review.headline}"
+              </motion.h4>
+            )}
+            
             <motion.p
-              className="text-dark dark:text-light font-switzer font-light italic text-[14px] md:text-[16px] lg:text-[17px] leading-relaxed"
+              className="text-dark/90 dark:text-light/90 font-switzer font-light italic text-[14px] md:text-[16px] lg:text-[17px] leading-relaxed"
               initial={{ opacity: 0.8 }}
               animate={{ opacity: isHovered ? 1 : 0.9 }}
               transition={{ duration: 0.3 }}
             >
-              &quot;{review.review}&quot;
+              {review.review}
             </motion.p>
           </div>
 

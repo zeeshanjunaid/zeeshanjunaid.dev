@@ -1,5 +1,6 @@
 export interface Review {
   client: string;
+  headline?: string;
   logo?: string;
   company?: string;
   profile: string;
@@ -68,6 +69,7 @@ export const VideoReviewsList: VideoReview[] = [
 const ReviewsList: Review[] = [
   {
     client: "Arthur Carrion",
+    headline: "My go-to developer and designer with very high attention to details",
     profile: "/images/testimonials/arthur.jpeg",
     company: "BluHorn Media",
     logo: "/images/testimonials/bluhorn.png",
@@ -80,6 +82,7 @@ const ReviewsList: Review[] = [
   },
   {
     client: "Josh Peters",
+    headline: "Outstanding attention to detail, timely communication, and professionalism",
     logo: "/images/testimonials/pp.png",
     company: "Passage Protocol",
     profile: "/images/testimonials/josh-pic.jpg",
@@ -93,6 +96,7 @@ const ReviewsList: Review[] = [
   },
   {
     client: "Liane Schild",
+    headline: "Extremely skilled in many areas - you will not be disappointed!",
     profile: "/images/testimonials/liane-pic.jpeg",
     review:
       "I hired Zeeshan to do two web projects - one full web design from scratch - and was extremely pleased with his work. Zeeshan is very skilled in many areas of development. Highly recommend him - you will not be dissapointed!",
@@ -104,6 +108,7 @@ const ReviewsList: Review[] = [
   },
   {
     client: "Mac Cassity",
+    headline: "Excellent provider with extreme attention to detail and knowledge",
     profile: "/images/testimonials/mac.jpeg",
     review:
       "Excellent provider...attention to detail, extremely knowledgeable and a pleasure to work with. HIGHLY recommended!",
@@ -114,6 +119,7 @@ const ReviewsList: Review[] = [
   },
   {
     client: "Chad Yesilova",
+    headline: "Over-delivered from the get go! Incredible communicator",
     profile: "/images/testimonials/chad.jpeg",
     logo: "/images/testimonials/bs.jpeg",
     company: "Blue Studies",
@@ -126,6 +132,7 @@ const ReviewsList: Review[] = [
   },
   {
     client: "Veronica Runyon",
+    headline: "Quick, efficient and accurate - went over and above",
     profile: "/images/testimonials/veronica.jpg",
     review:
       "The service was exactly what I needed. Very quick, efficient and accurate. He went over and above to deliver on what I needed",
@@ -136,6 +143,7 @@ const ReviewsList: Review[] = [
   },
   {
     client: "Natalie Soto-Wright",
+    headline: "A pleasure to work with - would recommend for frontend development",
     profile: "/images/testimonials/natalie.png",
     review:
       "Zeeshan is a pleasure to work with. We appreciated his work and would recommend for anyone looking for a front end developer!",
@@ -146,6 +154,7 @@ const ReviewsList: Review[] = [
   },
   {
     client: "Matheo Masschelein",
+    headline: "Always perfect work - problems resolved within 48 hours",
     profile: "/images/testimonials/matheo.webp",
     review:
       "That's a many time I have work with Zeeshan and that's always perfect, all my problems are resolved within 48 hours and he explain me really well all the things to do to don't have the same error on the future. He is one of the best freelancer wich I have work, professionnal and efficient.",
@@ -156,6 +165,7 @@ const ReviewsList: Review[] = [
   },
   {
     client: "Amanda Clarke",
+    headline: "Professional and efficient - one of the best freelancers",
     logo: "/images/testimonials/allegra.png",
     company: "Allegra Dawn",
     profile: "/images/testimonials/amanda.jpg",
@@ -169,6 +179,7 @@ const ReviewsList: Review[] = [
   },
   {
     client: "Suliman Hassan",
+    headline: "Talented React Developer - great guy to work with",
     profile: "/images/testimonials/allegra.png",
     review:
       "If you are looking for a talented React Developer, I would recommend considering this freelancer for your project.Great guy to work with. I will consider him for future projects",
