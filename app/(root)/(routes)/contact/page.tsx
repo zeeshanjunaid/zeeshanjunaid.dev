@@ -48,7 +48,7 @@ const ContactPage = () => {
               How We Can Work Together
             </h2>
             <p className="text-dark/70 dark:text-light/70 font-switzer font-light text-[16px] md:text-[18px] leading-relaxed max-w-2xl mx-auto">
-              Choose the package that best fits your needs, or let's discuss a custom solution for your unique project.
+              Choose the package that best fits your needs, or let&apos;s discuss a custom solution for your unique project.
             </p>
           </div>
 
@@ -63,8 +63,8 @@ const ContactPage = () => {
                   Have a Custom Project in Mind?
                 </h3>
                 <p className="text-dark/80 dark:text-light/80 font-switzer font-light text-[16px] md:text-[18px] leading-relaxed mb-6">
-                  If your project doesn't fit into one of the packages above, I'd still love to hear about it.
-                  Fill out the form below with your project details, and I'll get back to you with a custom proposal.
+                  If your project doesn&apos;t fit into one of the packages above, I&apos;d still love to hear about it.
+                  Fill out the form below with your project details, and I&apos;ll get back to you with a custom proposal.
                 </p>
                 <Link href="#contact-form">
                   <Button
@@ -132,7 +132,7 @@ const ContactPage = () => {
                 What Happens Next?
               </h2>
               <p className="text-dark/70 dark:text-light/70 font-switzer font-light text-[16px] md:text-[18px] leading-relaxed">
-                Here's exactly what you can expect after reaching out:
+                Here&apos;s exactly what you can expect after reaching out:
               </p>
             </div>
 
@@ -154,10 +154,10 @@ const ContactPage = () => {
                   <span className="text-purple font-ao font-bold text-[24px]">2</span>
                 </div>
                 <h3 className="text-[18px] md:text-[20px] font-ao font-bold text-dark dark:text-light mb-3">
-                  I'll Reply within 24 Hours
+                  I&apos;ll Reply within 24 Hours
                 </h3>
                 <p className="text-dark/80 dark:text-light/80 font-switzer font-light text-[14px] md:text-[16px] leading-relaxed">
-                  I'll review your submission and reach out to schedule a free, 30-minute discovery call.
+                  I&apos;ll review your submission and reach out to schedule a free, 30-minute discovery call.
                 </p>
               </div>
 
@@ -166,10 +166,10 @@ const ContactPage = () => {
                   <span className="text-purple font-ao font-bold text-[24px]">3</span>
                 </div>
                 <h3 className="text-[18px] md:text-[20px] font-ao font-bold text-dark dark:text-light mb-3">
-                  Let's Build
+                  Let&apos;s Build
                 </h3>
                 <p className="text-dark/80 dark:text-light/80 font-switzer font-light text-[14px] md:text-[16px] leading-relaxed">
-                  If we're a good fit, we'll finalize the details and start building your success story.
+                  If we&apos;re a good fit, we&apos;ll finalize the details and start building your success story.
                 </p>
               </div>
             </div>
