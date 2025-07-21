@@ -13,13 +13,8 @@ import { motion } from "framer-motion";
 const heroImg = "/images/zeeshan.png";
 
 export const Hero = () => {
-  const handIcon = <span className="animate-waver">👋🏻</span>;
-  const heroTitle = (
-    <>
-      Hello {handIcon}, I&apos;m Zeeshan Junaid, Frontend Engineer with 8+ years of
-      experience
-    </>
-  );
+  const heroTitle = "I build high-performance web applications that turn visitors into customers.";
+  const heroSubtitle = "I'm Zeeshan Junaid, a freelance frontend developer with 8+ years of experience helping businesses like yours succeed online. I specialize in React, Next.js, and modern web technologies.";
 
   return (
     <section className="overflow-x-hidden w-full md:pt-5 relative">
@@ -43,6 +38,9 @@ export const Hero = () => {
           >
             {heroTitle}
           </h1>
+          <p className="text-center text-[14px] sm:text-[16px] md:text-[18px] font-light text-dark/80 dark:text-light/80 mt-4 leading-relaxed max-w-2xl">
+            {heroSubtitle}
+          </p>
         </div>
 
         {/* Desktop Hero Content */}
@@ -90,6 +88,14 @@ export const Hero = () => {
             >
               {heroTitle}
             </motion.h1>
+            <motion.p
+              initial={{ opacity: 0, y: 30 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.5, delay: 0.25 }}
+              className="text-left text-[16px] lg:text-[18px] font-light text-dark/80 dark:text-light/80 mb-8 leading-relaxed max-w-2xl"
+            >
+              {heroSubtitle}
+            </motion.p>
           </motion.div>
 
           {/* CTA Section */}
@@ -110,7 +116,7 @@ export const Hero = () => {
                   size="lg"
                   variant="purple"
                 >
-                  Start a Project
+                  Book a Free Consultation
                 </Button>
               </motion.div>
             </Link>
@@ -164,7 +170,7 @@ export const Hero = () => {
               whileTap={{ scale: 0.98 }}
             >
               <Button className="rounded-xl uppercase transition-all duration-200 hover:shadow-md hover:shadow-purple/20" size="lg" variant="purple">
-                Start a Project
+                Book a Free Consultation
               </Button>
             </motion.div>
           </Link>
