@@ -174,7 +174,6 @@ const ContactPage = () => {
           </div>
         </Container>
       </section>
-};
 
       {/* Contact Form Section */}
       <section id="contact-form" className="py-16 md:py-20">
@@ -184,4 +183,6 @@ const ContactPage = () => {
       </section>
     </>
   );
+};
+
 export default ContactPage;
