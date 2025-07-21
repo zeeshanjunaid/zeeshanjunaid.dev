@@ -1,11 +1,12 @@
 import ContactPageClient from "../components/contact-client";
 
 import PricingTable from "../components/pricing-table";
-import Container from "@/components/container";
+import { Container } from "@/components/container";
 import { BlurBG } from "@/components/blur-bg";
 import { CheckCircle, HelpCircle, ArrowRight } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import Link from "next/link";
+import ContactForm from "../components/contact-form";
 
 export const metadata = {
   title: "Start a Project",
@@ -34,13 +35,13 @@ const ContactPage = () => {
   return (
     <>
       <ContactPageClient />
-      
+
       {/* Pricing Section */}
       <section className="py-16 md:py-20 relative overflow-hidden">
         <div className="absolute inset-0 -z-10">
           <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] bg-purple/3 rounded-full blur-3xl" />
         </div>
-        
+
         <Container className="px-4 md:px-7 lg:px-0">
           <div className="mb-16 text-center">
             <h2 className="text-[28px] md:text-[36px] lg:text-[42px] font-bold font-ao text-dark dark:text-light mb-6">
@@ -50,9 +51,9 @@ const ContactPage = () => {
               Choose the package that best fits your needs, or let's discuss a custom solution for your unique project.
             </p>
           </div>
-          
+
           <PricingTable />
-          
+
           {/* Custom Project Option */}
           <div className="mt-16 text-center">
             <div className="relative bg-light dark:bg-dark rounded-3xl p-8 md:p-12 overflow-hidden max-w-3xl mx-auto">
@@ -62,7 +63,7 @@ const ContactPage = () => {
                   Have a Custom Project in Mind?
                 </h3>
                 <p className="text-dark/80 dark:text-light/80 font-switzer font-light text-[16px] md:text-[18px] leading-relaxed mb-6">
-                  If your project doesn't fit into one of the packages above, I'd still love to hear about it. 
+                  If your project doesn't fit into one of the packages above, I'd still love to hear about it.
                   Fill out the form below with your project details, and I'll get back to you with a custom proposal.
                 </p>
                 <Link href="#contact-form">
@@ -92,7 +93,7 @@ const ContactPage = () => {
               Got questions? Here are answers to the most common ones I receive from potential clients.
             </p>
           </div>
-          
+
           <div className="max-w-4xl mx-auto space-y-6">
             {faqs.map((faq, index) => (
               <div key={index} className="relative bg-light dark:bg-dark rounded-3xl p-8 overflow-hidden">
@@ -123,7 +124,7 @@ const ContactPage = () => {
         <div className="absolute inset-0 -z-10">
           <div className="absolute top-1/4 right-1/4 w-64 h-64 bg-purple/5 rounded-full blur-3xl" />
         </div>
-        
+
         <Container className="px-4 md:px-7 lg:px-0">
           <div className="max-w-4xl mx-auto">
             <div className="mb-12 text-center">
@@ -134,7 +135,7 @@ const ContactPage = () => {
                 Here's exactly what you can expect after reaching out:
               </p>
             </div>
-            
+
             <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-12">
               <div className="text-center">
                 <div className="w-16 h-16 bg-purple/10 rounded-2xl flex items-center justify-center mx-auto mb-4">
@@ -147,7 +148,7 @@ const ContactPage = () => {
                   Fill in your project details below with as much information as possible.
                 </p>
               </div>
-              
+
               <div className="text-center">
                 <div className="w-16 h-16 bg-purple/10 rounded-2xl flex items-center justify-center mx-auto mb-4">
                   <span className="text-purple font-ao font-bold text-[24px]">2</span>
@@ -159,7 +160,7 @@ const ContactPage = () => {
                   I'll review your submission and reach out to schedule a free, 30-minute discovery call.
                 </p>
               </div>
-              
+
               <div className="text-center">
                 <div className="w-16 h-16 bg-purple/10 rounded-2xl flex items-center justify-center mx-auto mb-4">
                   <span className="text-purple font-ao font-bold text-[24px]">3</span>

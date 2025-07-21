@@ -106,7 +106,7 @@ const WorkWrapper = () => {
 
                 <p className="font-light text-[16px] md:text-[18px] lg:text-[20px] leading-relaxed text-dark/80 dark:text-light/80 max-w-3xl">
                   I partner with businesses to build digital solutions that not only look great but also deliver measurable success. 
-                  Below are a few examples of how I've helped clients overcome challenges and achieve their goals.
+                  Below are a few examples of how I&apos;ve helped clients overcome challenges and achieve their goals.
                 </p>
               </motion.div>
 
