@@ -177,3 +177,5 @@ export const Hero = () => {
       </Container>
     </section>
   );
+  )
+}
