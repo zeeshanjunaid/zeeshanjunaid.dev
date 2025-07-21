@@ -176,13 +176,6 @@ const ContactPage = () => {
           </div>
         </Container>
       </section>
-
-      {/* Contact Form Section */}
-      <section id="contact-form" className="py-16 md:py-20">
-        <Container className="px-4 lg:px-0">
-          <ContactForm />
-        </Container>
-      </section>
     </>
   );
 };
