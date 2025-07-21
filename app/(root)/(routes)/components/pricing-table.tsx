@@ -25,10 +25,10 @@ interface PricingTier {
 const pricingTiers: PricingTier[] = [
   {
     id: "maintenance",
-    name: "The Maintenance Plan",
+    name: "Optimize & Grow",
     price: "$500",
     priceValue: 500,
-    description: "Perfect for established businesses who need ongoing website maintenance and minor updates.",
+    description: "For businesses that need a reliable partner to keep their website secure, fast, and constantly improving.",
     features: [
       { icon: <Shield className="w-4 h-4" />, text: "Monthly website maintenance" },
       { icon: <Zap className="w-4 h-4" />, text: "Performance optimization" },
@@ -37,14 +37,14 @@ const pricingTiers: PricingTier[] = [
       { icon: <Check className="w-4 h-4" />, text: "Security monitoring" },
       { icon: <Check className="w-4 h-4" />, text: "Monthly performance reports" },
     ],
-    ctaText: "Start Maintenance Plan",
+    ctaText: "Choose Optimize & Grow",
   },
   {
     id: "development",
-    name: "The Development Plan",
+    name: "Innovation Partner",
     price: "$1,500",
     priceValue: 1500,
-    description: "Ideal for growing companies that need regular feature development and design updates.",
+    description: "For growing companies that need a dedicated partner for feature development and strategic improvements.",
     features: [
       { icon: <Code className="w-4 h-4" />, text: "Everything in Maintenance Plan" },
       { icon: <Palette className="w-4 h-4" />, text: "Custom feature development" },
@@ -55,14 +55,14 @@ const pricingTiers: PricingTier[] = [
       { icon: <Check className="w-4 h-4" />, text: "Mobile optimization" },
     ],
     popular: true,
-    ctaText: "Start Development Plan",
+    ctaText: "Choose Innovation Partner",
   },
   {
     id: "enterprise",
-    name: "The Enterprise Plan",
+    name: "Dedicated Tech Lead",
     price: "$3,000",
     priceValue: 3000,
-    description: "For large organizations requiring dedicated development resources and premium support.",
+    description: "For organizations that need a dedicated technical leader to drive their digital initiatives forward.",
     features: [
       { icon: <Code className="w-4 h-4" />, text: "Everything in Development Plan" },
       { icon: <Rocket className="w-4 h-4" />, text: "Dedicated development time" },
@@ -73,7 +73,7 @@ const pricingTiers: PricingTier[] = [
       { icon: <Check className="w-4 h-4" />, text: "Team collaboration tools" },
       { icon: <Check className="w-4 h-4" />, text: "Custom integrations" },
     ],
-    ctaText: "Start Enterprise Plan",
+    ctaText: "Choose Dedicated Tech Lead",
   },
 ];
 

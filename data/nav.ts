@@ -3,7 +3,7 @@ const navLinks = [
   { label: "Work", link: "/work" },
   { label: "Services", link: "/services" },
   { label: "Reviews", link: "/reviews" },
-  { label: "Contact", link: "/contact" },
+  { label: "Start a Project", link: "/contact" },
 ];
 
 export default navLinks;

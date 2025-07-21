@@ -104,14 +104,14 @@ const ContactPageClient = () => {
                 </div>
 
                 <h1 className="text-[32px] md:text-[42px] lg:text-[54px] font-bold font-ao text-dark dark:text-light leading-tight mb-6">
-                  Let&apos;s Create Something{" "}
-                  <span className="text-gradient">Amazing Together</span>
+                  Ready to Build Your{" "}
+                  <span className="text-gradient">Next Success Story?</span>
                 </h1>
 
                 <p className="font-light text-[16px] md:text-[18px] lg:text-[20px] leading-relaxed text-dark/80 dark:text-light/80 max-w-3xl">
-                  Ready to bring your digital vision to life? I&apos;m here to help you create 
-                  exceptional web experiences that drive results. Let&apos;s discuss your project 
-                  and explore how we can work together.
+                  Whether you need ongoing support or a brand-new application, I offer clear, 
+                  value-driven packages to bring your vision to life. Let&apos;s find the perfect 
+                  fit for your project.
                 </p>
               </motion.div>
 
