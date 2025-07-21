@@ -3,7 +3,7 @@
 import React from "react";
 import { Container } from "@/components/container";
 import SkillRow from "./skill-row";
-import { Skillset } from "@/data/about";
+import { CoreSkillset } from "@/data/about";
 import { motion } from "framer-motion";
 import { BlurBG } from "@/components/blur-bg";
 import { Code, Palette, Database, Cloud, Wrench, Shield } from "lucide-react";
@@ -68,10 +68,10 @@ const Skills = () => {
                 <span className="bg-dark dark:bg-light w-[18px] h-[1px]" />
                 <span className="bg-dark dark:bg-light w-[18px] h-[1px]" />
               </div>
-              Technical Skills & Expertise
+              My Core Technologies
             </h2>
             <p className="text-dark/70 dark:text-light/70 font-switzer font-light text-[14px] md:text-[16px] lg:text-[18px] max-w-2xl">
-              A comprehensive overview of the technologies, tools, and frameworks I work with to build exceptional digital experiences.
+              I specialize in a modern, high-performance tech stack designed to build scalable and beautiful web applications.
             </p>
           </motion.div>
 
@@ -149,7 +149,7 @@ const Skills = () => {
 
           {/* Detailed Skills */}
           <div className="space-y-12">
-            {Skillset.map((skillset, index) => (
+            {CoreSkillset.map((skillset, index) => (
               <motion.div
                 key={index}
                 variants={itemVariants}
@@ -190,10 +190,10 @@ const Skills = () => {
               
               <div className="relative z-20">
                 <h3 className="font-ao font-bold text-[24px] md:text-[28px] lg:text-[32px] text-dark dark:text-light mb-4">
-                  Ready to Build Something Amazing?
+                  Let&apos;s Build Something Amazing Together
                 </h3>
                 <p className="text-dark/80 dark:text-light/80 font-switzer font-light text-[16px] md:text-[18px] leading-relaxed max-w-2xl mx-auto mb-8">
-                  Let&apos;s combine these skills and technologies to create exceptional digital experiences for your project.
+                  Ready to leverage this specialized tech stack for your next project? Let&apos;s discuss how we can create something exceptional together.
                 </p>
                 
                 <div className="flex flex-col sm:flex-row gap-4 justify-center">
@@ -203,7 +203,7 @@ const Skills = () => {
                     whileTap={{ scale: 0.95 }}
                     className="inline-flex items-center justify-center px-8 py-3 bg-purple hover:bg-purple/80 text-white rounded-xl uppercase font-medium font-switzer text-[14px] transition-colors duration-300"
                   >
-                    Start a Project
+                    Start Our Conversation
                   </motion.a>
                   <motion.a
                     href="/work"

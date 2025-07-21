@@ -83,8 +83,9 @@ const AboutHero = () => {
             </div>
             
             <h1 className="text-left text-[28px] md:text-[36px] lg:text-[44px] font-bold font-ao text-dark dark:text-light leading-tight mb-6">
-              I&apos;m Zeeshan. A designer, developer and{" "}
-              <span className="text-gradient">problem solver</span>.
+              More Than a Developer—I&apos;m Your{" "}
+              <span className="text-gradient">Partner in Building</span>{" "}
+              Digital Excellence.
             </h1>
 
             {/* Quick Info Cards */}
@@ -139,16 +140,11 @@ const AboutHero = () => {
           {/* Story Content */}
           <motion.div variants={containerVariants} className="space-y-6 mb-8">
             <motion.p variants={itemVariants} className={paragraphStyles}>
-              Hello! I&apos;m a passionate and innovative Frontend Developer with a rich 
-              background in building sophisticated web applications and digital solutions. 
-              My journey through the tech industry has led me to work with forward-thinking 
-              companies like Passage Protocol, Ledgy, Mindable Media, and The Bureau Dubai.
+              Hello! I&apos;m Zeeshan. I believe that the best websites and applications are born from a deep understanding of the business goals they serve. My passion isn&apos;t just about writing clean code; it&apos;s about building digital solutions that drive growth, engage users, and deliver measurable results.
             </motion.p>
 
             <motion.p variants={itemVariants} className={paragraphStyles}>
-              Specializing in React, TypeScript, and Node.js, my expertise spans the full 
-              spectrum of web development, from conceptualizing and designing user-centric 
-              interfaces to developing robust, scalable applications.
+              My approach is collaborative and transparent. I work closely with you to understand your vision, challenge assumptions, and transform your ideas into a robust, scalable, and beautiful final product. Whether you&apos;re a startup launching an MVP or an established brand needing a refresh, I bring over 8 years of experience to the table to ensure your project&apos;s success.
             </motion.p>
 
             <motion.div
@@ -163,21 +159,15 @@ const AboutHero = () => {
                   </div>
                   <div>
                     <p className="font-ao text-[18px] md:text-[20px] text-dark dark:text-light leading-relaxed italic mb-2">
-                      &quot;Technology is best when it brings people together.&quot;
+                      &quot;The best digital solutions are born from understanding business goals, not just technical requirements.&quot;
                     </p>
                     <p className="text-[14px] font-switzer font-light text-dark/60 dark:text-light/60">
-                      — Matt Mullenweg
+                      — My Philosophy
                     </p>
                   </div>
                 </div>
               </div>
             </motion.div>
-
-            <motion.p variants={itemVariants} className={paragraphStyles}>
-              Outside of work, I&apos;m an avid learner, always seeking out new knowledge and 
-              skills in both technology and design. I believe in giving back to the community 
-              and often participate in tech meetups and conferences.
-            </motion.p>
           </motion.div>
 
           {/* Stats Grid */}
