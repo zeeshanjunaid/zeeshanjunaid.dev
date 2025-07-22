@@ -18,6 +18,13 @@ import { Input } from "@/components/ui/input";
 import React from "react";
 import { SendHorizonal, User, Mail, Phone, MessageSquare, HelpCircle, CheckCircle, Clock, Shield } from "lucide-react";
 import { Textarea } from "@/components/ui/textarea";
+import {
+  Select,
+  SelectContent,
+  SelectItem,
+  SelectTrigger,
+  SelectValue,
+} from "@/components/ui/select";
 import axios from "axios";
 import { useSearchParams } from "next/navigation";
 import { useToast } from "@/components/ui/use-toast";
@@ -239,20 +246,27 @@ const ContactForm = () => {
                         Service Needed *
                       </FormLabel>
                       <FormControl>
-                        <div className="relative h-14 rounded-xl overflow-hidden bg-light dark:bg-dark border-[1px] border-solid border-lightBorderColor dark:border-darkBorderColor">
-                          <BlurBG className="rounded-xl" />
-                          <select
-                            disabled={isLoading}
-                            className="flex w-full h-full rounded-md border border-input px-3 py-2 text-md ring-offset-background placeholder:text-dark/70 dark:placeholder:text-light/70 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50 relative z-20 bg-transparent text-dark dark:text-light font-switzer text-[16px] font-light appearance-none cursor-pointer"
-                            {...field}
-                          >
+                        <Select onValueChange={field.onChange} defaultValue={field.value} disabled={isLoading}>
+                          <SelectTrigger className="h-14 border-0 focus:ring-0 text-dark dark:text-light font-switzer text-[16px] font-light focus:ring-offset-0 relative bg-light dark:bg-dark border-[1px] border-solid border-lightBorderColor dark:border-darkBorderColor rounded-xl">
+                            <div className="relative w-full">
+                              <BlurBG className="rounded-xl" />
+                              <div className="relative z-20">
+                                <SelectValue placeholder="Select a service..." />
+                              </div>
+                            </div>
+                          </SelectTrigger>
+                          <SelectContent className="bg-light dark:bg-dark border-lightBorderColor dark:border-darkBorderColor rounded-xl">
                             {serviceOptions.map((option) => (
-                              <option key={option.value} value={option.value} className="bg-light dark:bg-dark text-dark dark:text-light">
+                              <SelectItem 
+                                key={option.value} 
+                                value={option.value}
+                                className="text-dark dark:text-light font-switzer font-light hover:bg-purple/10 focus:bg-purple/20 rounded-lg mx-1 my-0.5"
+                              >
                                 {option.label}
-                              </option>
+                              </SelectItem>
                             ))}
-                          </select>
-                        </div>
+                          </SelectContent>
+                        </Select>
                       </FormControl>
                       <FormMessage />
                     </FormItem>
