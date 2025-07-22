@@ -198,7 +198,7 @@ const PricingTable = () => {
           <div
             key={tier.id}
             className={cn(
-              "relative rounded-3xl overflow-hidden",
+              "relative rounded-3xl overflow-x-hidden",
               tier.popular && "ring-2 ring-purple"
             )}
           >
