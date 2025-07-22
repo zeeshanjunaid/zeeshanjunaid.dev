@@ -68,19 +68,6 @@ export const VideoReviewsList: VideoReview[] = [
 ];
 const ReviewsList: Review[] = [
   {
-    client: "Arthur Carrion",
-    headline: "My go-to developer and designer with very high attention to details",
-    profile: "/images/testimonials/arthur.jpeg",
-    company: "BluHorn Media",
-    logo: "/images/testimonials/bluhorn.png",
-    review:
-      "I hired Zeeshan for multiple projects. He is my go to developer and designer right now. I highly recommend working with him. He is very responsive when it comes to communicating. He has done all my tasks in a timely manner with very high attention to details. If you are looking for an all around developer Zeeshan is your guy!",
-    country: {
-      code: "us",
-      name: "United States",
-    },
-  },
-  {
     client: "Josh Peters",
     headline: "Outstanding attention to detail, timely communication, and professionalism",
     logo: "/images/testimonials/pp.png",
@@ -89,6 +76,19 @@ const ReviewsList: Review[] = [
     review:
       "Worked with Zeeshan for a project in React, Next.js 13, and Tailwind to build a frontend. His attention to detail, timely communication, and professionalism were outstanding. I recommend his services to anyone seeking top-notch frontend development.",
     featured: true,
+    country: {
+      code: "us",
+      name: "United States",
+    },
+  },
+  {
+    client: "Arthur Carrion",
+    headline: "My go-to developer and designer with very high attention to details",
+    profile: "/images/testimonials/arthur.jpeg",
+    company: "BluHorn Media",
+    logo: "/images/testimonials/bluhorn.png",
+    review:
+      "I hired Zeeshan for multiple projects. He is my go to developer and designer right now. I highly recommend working with him. He is very responsive when it comes to communicating. He has done all my tasks in a timely manner with very high attention to details. If you are looking for an all around developer Zeeshan is your guy!",
     country: {
       code: "us",
       name: "United States",

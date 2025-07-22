@@ -60,7 +60,7 @@ const pricingTiers: PricingTier[] = [
   {
     id: "enterprise",
     name: "Dedicated Tech Lead",
-    price: "$3,000",
+    price: "$3,000 USD",
     priceValue: 3000,
     description: "For organizations that need a dedicated technical leader to drive their digital initiatives forward.",
     features: [

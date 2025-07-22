@@ -289,7 +289,7 @@ const ContactPageClient = () => {
                     </h4>
                     <p className="text-dark/70 dark:text-light/70 font-switzer font-light text-[16px] leading-relaxed">
                       Working remotely with clients worldwide. I&apos;m experienced in collaborating 
-                      across different time zones and cultures.
+                      with US-based teams and am flexible in scheduling key meetings to accommodate your time zone.
                     </p>
                   </div>
                 </div>

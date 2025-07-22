@@ -144,7 +144,7 @@ const AboutHero = () => {
             </motion.p>
 
             <motion.p variants={itemVariants} className={paragraphStyles}>
-              My approach is collaborative and transparent. I work closely with you to understand your vision, challenge assumptions, and transform your ideas into a robust, scalable, and beautiful final product. Whether you&apos;re a startup launching an MVP or an established brand needing a refresh, I bring over 8 years of experience to the table to ensure your project&apos;s success.
+              My approach is collaborative and transparent. I work closely with you to understand your vision, challenge assumptions, and transform your ideas into a robust, scalable, and beautiful final product. I particularly enjoy partnering with innovative US-based startups and brands to bring their ambitious ideas to life on a global scale.
             </motion.p>
 
             <motion.div
