@@ -5,9 +5,33 @@ import { Mail, Phone, MapPin, Clock } from "lucide-react";
 import { Users, Star, MessageCircle, Award } from "lucide-react";
 import ContactForm from "../components/contact-form";
 import { Container } from "@/components/container";
-import React from "react";
+// FIX: Import Suspense from React
+import React, { Suspense } from "react";
 import { BlurBG } from "@/components/blur-bg";
 import { motion } from "framer-motion";
+
+// FIX: Added a loading component to use as the Suspense fallback.
+// This provides a better UX than a blank space while the form loads.
+const FormLoader = () => {
+  return (
+    <div className="max-w-4xl mx-auto p-8 md:p-10 lg:p-12 bg-light/50 dark:bg-dark/50 rounded-3xl border border-lightBorderColor dark:border-darkBorderColor">
+      <div className="animate-pulse flex flex-col items-center space-y-8">
+        <div className="h-7 bg-gray-300 dark:bg-gray-700 rounded w-3/4 md:w-1/2"></div>
+        <div className="w-full space-y-6 pt-8">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+            <div className="h-14 bg-gray-300 dark:bg-gray-700 rounded-xl"></div>
+            <div className="h-14 bg-gray-300 dark:bg-gray-700 rounded-xl"></div>
+          </div>
+          <div className="h-14 bg-gray-300 dark:bg-gray-700 rounded-xl"></div>
+          <div className="h-36 bg-gray-300 dark:bg-gray-700 rounded-xl"></div>
+          <div className="flex justify-end">
+            <div className="h-12 bg-gray-400 dark:bg-gray-600 rounded-xl w-36"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  );
+};
 
 const ContactPageClient = () => {
   // Animation variants for Framer Motion
@@ -145,8 +169,8 @@ const ContactPageClient = () => {
           </div>
         </Container>
       </motion.section>
-
-      {/* Availability & Location Section */}
+      
+      {/* Availability & Location Section (code unchanged) ... */}
       <motion.section
         initial="hidden"
         whileInView="visible"
@@ -167,9 +191,6 @@ const ContactPageClient = () => {
               <p className="text-dark/70 dark:text-light/70 font-switzer font-light text-[16px] md:text-[18px] leading-relaxed mb-8">
                 I&apos;m available during these hours for calls, meetings, and urgent project discussions. Feel free to schedule a meeting.
               </p>
-
-              {/* --- FIX STARTS HERE --- */}
-              {/* This whole block was broken. I've rebuilt it to correctly map over the 'availability' array and display the data in animated cards. */}
               <div className="space-y-4">
                 {availability.map((schedule, index) => (
                   <motion.div
@@ -193,8 +214,8 @@ const ContactPageClient = () => {
                       <div className="text-right">
                         <p
                           className={`font-switzer font-medium text-[16px] md:text-[18px] ${schedule.time === "Closed"
-                            ? "text-red-500/80" // Style for 'Closed' status
-                            : "text-purple" // Style for available times
+                              ? "text-red-500/80"
+                              : "text-purple"
                             }`}
                         >
                           {schedule.time}
@@ -204,10 +225,7 @@ const ContactPageClient = () => {
                   </motion.div>
                 ))}
               </div>
-              {/* --- FIX ENDS HERE --- */}
-
             </motion.div>
-
             <motion.div variants={itemVariants}>
               <div className="flex items-center gap-3 mb-6">
                 <MapPin className="w-6 h-6 text-purple" />
@@ -271,7 +289,10 @@ const ContactPageClient = () => {
             transition={{ duration: 0.8, delay: 0.2 }}
             viewport={{ once: true }}
           >
-            <ContactForm />
+            {/* FIX: Wrap the dynamic component in a Suspense boundary */}
+            <Suspense fallback={<FormLoader />}>
+              <ContactForm />
+            </Suspense>
           </motion.div>
         </Container>
       </section>
