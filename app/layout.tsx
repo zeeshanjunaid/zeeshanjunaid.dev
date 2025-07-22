@@ -15,7 +15,7 @@ import localFont from "next/font/local";
 export const metadata: Metadata = {
   metadataBase: new URL("https://zeeshanjunaid.dev"),
   title: {
-    default: "Zeeshan Junaid - UI/UX Designer and Frontend Developer",
+    default: "Zeeshan Junaid - UI/UX Designer and Frontend Developer", 
     template: "%s | Zeeshan Junaid",
   },
   description:
