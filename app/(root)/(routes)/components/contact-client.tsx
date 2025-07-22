@@ -39,8 +39,8 @@ const ContactPageClient = () => {
   ];
 
   const availability = [
-    { day: "Monday - Friday", time: "9:00 AM - 6:00 PM PKT" },
-    { day: "Saturday", time: "10:00 AM - 4:00 PM PKT" },
+    { day: "Monday - Friday", time: "Available for US collaboration" },
+    { day: "Saturday", time: "Limited availability" },
     { day: "Sunday", time: "Closed" },
   ];
 
