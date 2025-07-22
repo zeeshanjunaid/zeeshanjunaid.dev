@@ -66,8 +66,16 @@ const ContactPageClient = () => {
   ];
 
   const availability = [
-    { day: "Monday - Friday", time: "9:00 AM - 6:00 PM", timezone: "PKT" },
-    { day: "Saturday", time: "10:00 AM - 4:00 PM", timezone: "PKT" },
+    { 
+      day: "Monday - Friday", 
+      time: "9:00 AM - 6:00 PM PKT", 
+      timezone: "(11:00 PM - 8:00 AM EST / 8:00 PM - 5:00 AM PST on previous day)" 
+    },
+    { 
+      day: "Saturday", 
+      time: "10:00 AM - 4:00 PM PKT", 
+      timezone: "(12:00 AM - 6:00 AM EST / 9:00 PM - 3:00 AM PST on previous day)" 
+    },
     { day: "Sunday", time: "Closed", timezone: "" },
   ];
 
