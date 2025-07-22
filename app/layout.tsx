@@ -6,7 +6,6 @@ import { Footer } from "@/components/footer";
 import { Header } from "@/components/header";
 import type { Metadata } from "next";
 import NextTopLoader from "nextjs-toploader";
-import ReachOut from "@/components/reach-out";
 import { SpeedInsights } from "@vercel/speed-insights/next";
 import { ThemeProvider } from "@/components/theme-provider";
 import { Toaster } from "@/components/ui/toaster";
@@ -115,7 +114,6 @@ export default function RootLayout({
           <Header />
           <main className="pt-[100px]">
             {children}
-            <ReachOut />
           </main>
           <Footer />
           <BackToTop />
