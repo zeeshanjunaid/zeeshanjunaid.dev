@@ -136,7 +136,7 @@ export const Hero = () => {
           initial={{ opacity: 0, x: 50 }}
           animate={{ opacity: 1, x: 0 }}
           transition={{ duration: 0.6, delay: 0.1 }}
-          className="w-full max-w-[360px] lg:max-w-full h-[265px] sm:h-[355px] rounded-3xl relative mx-auto lg:w-1/3 -order-1 lg:order-1 group"
+          className="w-full max-w-[360px] lg:max-w-full h-[265px] sm:h-[355px] md:!h-[481px]  rounded-3xl relative mx-auto lg:w-1/3 -order-1 lg:order-1 group"
         >
           <BlurBG className="rounded-3xl" />
 
@@ -144,7 +144,7 @@ export const Hero = () => {
             initial={{ scale: 0.9 }}
             animate={{ scale: 1 }}
             transition={{ duration: 0.6, delay: 0.2 }}
-            className="absolute bottom-0 left-2/3 lg:left-auto lg:right-0 -translate-x-3/4 lg:translate-x-0 w-full h-full z-20"
+            className="absolute bottom-0 lg:left-auto lg:right-0 -translate-x-3/4 lg:translate-x-0 w-full h-full z-20"
           >
             <Image
               sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
@@ -153,7 +153,7 @@ export const Hero = () => {
               alt="profile"
               src={heroImg}
               priority={true}
-              className="scale-125 lg:scale-[135%] 2xl:scale-[120%] origin-bottom object-contain object-bottom transition-all duration-1000 user-select-none pointer-events-none group-hover:scale-[130%] lg:group-hover:scale-[140%]"
+              className="scale-[120%] md:scale-[135%] origin-bottom object-contain object-bottom transition-all duration-1000 user-select-none pointer-events-none"
             />
           </motion.div>
         </motion.div>
