@@ -281,6 +281,7 @@ export default function ProjectPage({ params }: ProjectPageProps) {
           </div>
         </Container>
       </section>
+      )}
 
       {/* Full-Screen Image Showcase */}
       {project.images && project.images.length > 0 && (
@@ -373,6 +374,7 @@ export default function ProjectPage({ params }: ProjectPageProps) {
             ))}
           </div>
         </section>
+      )}
 
       {/* Results Section */}
       {project.results && (
