@@ -1,5 +1,6 @@
 import { getAllPostsMeta, getPostBySlug } from "@/lib/posts";
 import { notFound } from "next/navigation";
+import type { Metadata } from 'next';
 import { Container } from "@/components/container";
 import { BlurBG } from "@/components/blur-bg";
 import { Button } from "@/components/ui/button";
@@ -9,6 +10,35 @@ import Link from "next/link";
 export async function generateStaticParams() {
   const posts = await getAllPostsMeta();
   return posts.map((post) => ({ slug: post.slug }));
+}
+
+export async function generateMetadata({ params }: { params: { slug: string } }): Promise<Metadata> {
+  try {
+    const { meta } = await getPostBySlug(params.slug);
+    return {
+      title: `${meta.title} - Blog`,
+      description: meta.excerpt,
+      openGraph: {
+        title: meta.title,
+        description: meta.excerpt,
+        url: `https://zeeshanjunaid.dev/blog/${params.slug}`,
+        type: 'article',
+        publishedTime: meta.date,
+        authors: [meta.author || 'Zeeshan Junaid'],
+        tags: meta.tags,
+      },
+      twitter: {
+        card: 'summary_large_image',
+        title: meta.title,
+        description: meta.excerpt,
+      }
+    };
+  } catch {
+    return {
+      title: "Post Not Found",
+      description: "This post could not be found."
+    };
+  }
 }
 
 export async function generateMetadata({ params }: { params: { slug: string } }) {

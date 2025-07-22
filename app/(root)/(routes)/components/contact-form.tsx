@@ -53,8 +53,8 @@ const ContactForm = () => {
       await axios.post("/api/send", values);
       form.reset();
       toast({
-        title: "Thank you for your message.",
-        description: "I&apos;ll get back to you within 24 hours.",
+        title: "Message Sent!",
+        description: "Thank you for reaching out. I'll personally review your project details and get back to you within one business day.",
       });
     } catch (error) {
       toast({

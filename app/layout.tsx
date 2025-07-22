@@ -16,7 +16,7 @@ export const metadata: Metadata = {
   metadataBase: new URL("https://zeeshanjunaid.dev"),
   title: {
     default: "Zeeshan Junaid - UI/UX Designer and Frontend Developer",
-    template: "%s | ZJ Portfolio",
+    template: "%s | Zeeshan Junaid",
   },
   description:
     "Experienced freelance UI/UX designer and frontend developer with over 8 years of expertise in creating engaging digital experiences, innovative design solutions and seamless user interfaces.",
