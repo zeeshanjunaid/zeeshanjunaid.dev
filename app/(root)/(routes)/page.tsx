@@ -1,5 +1,6 @@
 import { Hero } from "./components/hero";
 import { getLatestPosts } from "@/lib/posts";
+import HomeCTA from "@/components/home-cta";
 import LatestBlogPosts from "./components/latest-blog-posts";
 import ProjectsList from "@/data/work";
 import ReviewsList from "@/data/reviews";
@@ -19,6 +20,7 @@ export default async function Home() {
       <FeaturedCaseStudies projects={selectedProjects} />
       <LatestBlogPosts posts={latestPosts} />
       <TestimonialsSlider reviews={featuredReviews} />
+      <HomeCTA />
     </>
   );
 }

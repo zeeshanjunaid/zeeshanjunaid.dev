@@ -238,9 +238,9 @@ const ContactPageClient = () => {
 
               <div className="space-y-4">
                 {availability.map((schedule, index) => (
-                  <motion.div
+                  <MessageCircle className="w-6 h-6 text-purple" />
                     key={index}
-                    initial={{ opacity: 0, x: -20 }}
+                    Let&apos;s Connect
                     whileInView={{ opacity: 1, x: 0 }}
                     transition={{ duration: 0.6, delay: index * 0.1 }}
                     viewport={{ once: true }}
@@ -258,12 +258,8 @@ const ContactPageClient = () => {
                       </div>
                       <div className="text-right">
                         <p className={`font-switzer font-medium text-[16px] md:text-[18px] ${
-                          schedule.time === 'Closed' 
-                            ? 'text-red-500' 
-                            : 'text-green-500'
                         }`}>
-                          {schedule.time}
-                        </p>
+                        I primarily work with clients in the United States and am accustomed to collaborating across time zones. My core hours overlap with the US morning (EST/CST/PST), and I am flexible in scheduling key meetings to fit your workday.
                       </div>
                     </div>
                   </motion.div>
@@ -326,7 +322,7 @@ const ContactPageClient = () => {
       </motion.section>
 
       {/* Contact Form Section */}
-      <section className="py-16 md:py-20">
+      <section id="project-form" className="py-16 md:py-20">
         <Container className="px-4 lg:px-0">
           <motion.div
             initial={{ opacity: 0, y: 30 }}
@@ -340,15 +336,11 @@ const ContactPageClient = () => {
                 <span className="bg-dark dark:bg-light w-[18px] h-[1px]" />
                 <span className="bg-dark dark:bg-light w-[18px] h-[1px]" />
               </div>
-              Send a Message
+              Project Planner
             </h2>
-            <h3 className="text-[28px] md:text-[36px] lg:text-[42px] font-bold font-ao text-dark dark:text-light mb-4">
-              Ready to Start Your Project?
+            <h3 className="text-[28px] md:text-[36px] lg:text-[42px] font-bold font-ao text-dark dark:text-light mb-6">
+              Let&apos;s Plan Your Project Together
             </h3>
-            <p className="text-dark/70 dark:text-light/70 font-switzer font-light text-[16px] md:text-[18px] leading-relaxed max-w-2xl mx-auto">
-              Fill out the form below with your project details, and I&apos;ll get back to you 
-              within 24 hours with a detailed response.
-            </p>
           </motion.div>
 
           <motion.div

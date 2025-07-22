@@ -153,7 +153,8 @@ export default function ProjectPage({ params }: ProjectPageProps) {
       </section>
 
       {/* Story Section */}
-      <section className="py-16 md:py-20">
+      {project.images && project.images.length > 0 && (
+        <section className="py-16 md:py-20">
         <Container className="px-4 md:px-7 lg:px-0">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 items-start">
             {/* Story Content */}
@@ -372,7 +373,6 @@ export default function ProjectPage({ params }: ProjectPageProps) {
             ))}
           </div>
         </section>
-      )}
 
       {/* Results Section */}
       {project.results && (
