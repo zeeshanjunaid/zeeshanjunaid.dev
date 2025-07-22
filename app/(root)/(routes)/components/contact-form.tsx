@@ -24,7 +24,7 @@ import {
   SelectItem,
   SelectTrigger,
   SelectValue,
-} from "@/components/ui/select";
+} from "@/components/ui/select"
 import axios from "axios";
 import { useSearchParams } from "next/navigation";
 import { useToast } from "@/components/ui/use-toast";
@@ -79,7 +79,7 @@ const ContactForm = () => {
   };
 
   const serviceOptions = [
-    { value: "", label: "I'm not sure yet - let's discuss" },
+    { value: "none", label: "I'm not sure yet - let's discuss" },
     ...pricingTiers.map(tier => ({
       value: tier.id,
       label: `${tier.name} - $${tier.price}/month`
