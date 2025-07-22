@@ -41,20 +41,6 @@ export async function generateMetadata({ params }: { params: { slug: string } })
   }
 }
 
-export async function generateMetadata({ params }: { params: { slug: string } }) {
-  try {
-    const { meta } = await getPostBySlug(params.slug);
-    return {
-      title: `${meta.title} - Blog`,
-      description: meta.excerpt,
-    };
-  } catch {
-    return {
-      title: "Post Not Found",
-    };
-  }
-}
-
 export default async function BlogPostPage({ params }: { params: { slug: string } }) {
   const { slug } = params;
   
