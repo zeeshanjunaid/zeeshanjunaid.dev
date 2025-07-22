@@ -5,6 +5,7 @@ interface EmailTemplateProps {
   email: string;
   message: string;
   phone: string;
+  service: string;
   referral: string;
 }
 
@@ -13,6 +14,7 @@ export const EmailTemplate: React.FC<Readonly<EmailTemplateProps>> = ({
   email,
   message,
   phone,
+  service,
   referral,
 }) => (
   <table
@@ -81,6 +83,26 @@ export const EmailTemplate: React.FC<Readonly<EmailTemplateProps>> = ({
         }}
       >
         <a href={`tel:${phone}`}>{phone}</a>
+      </td>
+    </tr>
+    <tr>
+      <td
+        style={{
+          border: "1px solid #dddddd",
+          textAlign: "left",
+          padding: "8px",
+        }}
+      >
+        Service:
+      </td>
+      <td
+        style={{
+          border: "1px solid #dddddd",
+          textAlign: "left",
+          padding: "8px",
+        }}
+      >
+        {service}
       </td>
     </tr>
     <tr>

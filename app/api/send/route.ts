@@ -7,7 +7,7 @@ const resend = new Resend(process.env.RESEND_API_KEY || "");
 export async function POST(req: Request) {
   try {
     const body = await req.json();
-    const { name, email, message, phone, referral } = body;
+    const { name, email, message, phone, service, referral } = body;
     const { data, error } = await resend.emails.send({
       from: name + "<hello@zeeshanjunaid.dev>",
       to: ["hello@zeeshanjunaid.dev"],
@@ -17,6 +17,7 @@ export async function POST(req: Request) {
         email,
         message,
         phone,
+        service,
         referral,
       }) as ReactElement,
     });

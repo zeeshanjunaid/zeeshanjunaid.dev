@@ -19,9 +19,11 @@ import React from "react";
 import { SendHorizonal, User, Mail, Phone, MessageSquare, HelpCircle, CheckCircle, Clock, Shield } from "lucide-react";
 import { Textarea } from "@/components/ui/textarea";
 import axios from "axios";
+import { useSearchParams } from "next/navigation";
 import { useToast } from "@/components/ui/use-toast";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { motion } from "framer-motion";
+import { pricingTiers } from "./pricing-table";
 
 const formSchema = z.object({
   name: z.string().min(1, { message: "Name is required" }),
@@ -29,6 +31,7 @@ const formSchema = z.object({
   phone: z.string().refine((val) => /^\+\d{1,3}\d{10}$/.test(val), {
     message: "Invalid phone number",
   }),
+  service: z.string(),
   referral: z.string(),
   message: z.string().nonempty({ message: "Message is required" }),
 });
@@ -36,6 +39,8 @@ type FormValues = z.infer<typeof formSchema>;
 
 const ContactForm = () => {
   const { toast } = useToast();
+  const searchParams = useSearchParams();
+  const serviceParam = searchParams.get('service');
 
   const form = useForm({
     resolver: zodResolver(formSchema),
@@ -43,6 +48,7 @@ const ContactForm = () => {
       name: "",
       email: "",
       phone: "",
+      service: serviceParam || "",
       referral: "",
       message: "",
     },
@@ -64,6 +70,15 @@ const ContactForm = () => {
       });
     }
   };
+
+  const serviceOptions = [
+    { value: "", label: "I'm not sure yet - let's discuss" },
+    ...pricingTiers.map(tier => ({
+      value: tier.id,
+      label: `${tier.name} - $${tier.price}/month`
+    })),
+    { value: "custom", label: "Custom project (one-time)" },
+  ];
 
   const containerVariants = {
     hidden: { opacity: 0 },
@@ -213,29 +228,60 @@ const ContactForm = () => {
                   )}
                 />
 
-                {/* Referral Field */}
+                {/* Service Selection Field */}
                 <FormField
                   control={form.control}
-                  name="referral"
+                  name="service"
                   render={({ field }) => (
                     <FormItem className="space-y-3">
                       <FormLabel className="flex items-center gap-2 text-dark dark:text-light font-switzer font-medium text-[16px]">
-                        <HelpCircle className="w-4 h-4 text-purple" />
-                        How did you find me?
+                        <CheckCircle className="w-4 h-4 text-purple" />
+                        Service Needed *
                       </FormLabel>
                       <FormControl>
-                        <Input
-                          disabled={isLoading}
-                          placeholder="Google, LinkedIn, referral..."
-                          className="border-0 focus-visible:ring-0 text-dark dark:text-light font-switzer text-[16px] font-light focus-visible:ring-offset-0 relative h-14"
-                          {...field}
-                        />
+                        <div className="relative h-14 rounded-xl overflow-hidden bg-light dark:bg-dark border-[1px] border-solid border-lightBorderColor dark:border-darkBorderColor">
+                          <BlurBG className="rounded-xl" />
+                          <select
+                            disabled={isLoading}
+                            className="flex w-full h-full rounded-md border border-input px-3 py-2 text-md ring-offset-background placeholder:text-dark/70 dark:placeholder:text-light/70 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50 relative z-20 bg-transparent text-dark dark:text-light font-switzer text-[16px] font-light appearance-none cursor-pointer"
+                            {...field}
+                          >
+                            {serviceOptions.map((option) => (
+                              <option key={option.value} value={option.value} className="bg-light dark:bg-dark text-dark dark:text-light">
+                                {option.label}
+                              </option>
+                            ))}
+                          </select>
+                        </div>
                       </FormControl>
                       <FormMessage />
                     </FormItem>
                   )}
                 />
               </div>
+
+              {/* Referral Field */}
+              <FormField
+                control={form.control}
+                name="referral"
+                render={({ field }) => (
+                  <FormItem className="space-y-3">
+                    <FormLabel className="flex items-center gap-2 text-dark dark:text-light font-switzer font-medium text-[16px]">
+                      <HelpCircle className="w-4 h-4 text-purple" />
+                      How did you find me?
+                    </FormLabel>
+                    <FormControl>
+                      <Input
+                        disabled={isLoading}
+                        placeholder="Google, LinkedIn, referral..."
+                        className="border-0 focus-visible:ring-0 text-dark dark:text-light font-switzer text-[16px] font-light focus-visible:ring-offset-0 relative h-14"
+                        {...field}
+                      />
+                    </FormControl>
+                    <FormMessage />
+                  </FormItem>
+                )}
+              />
 
               {/* Message Field */}
               <FormField
@@ -250,7 +296,7 @@ const ContactForm = () => {
                     <FormControl>
                       <Textarea
                         className="border-0 focus-visible:ring-0 text-dark dark:text-light font-switzer text-[16px] font-light focus-visible:ring-offset-0 relative min-h-[140px] resize-none"
-                        placeholder="I&apos;m looking for a React developer to build an e-commerce website. My budget is around $5,000 and I need it completed within 8 weeks. The site should have user authentication, payment processing, and an admin dashboard..."
+                        placeholder="I'm looking for a React developer to build an e-commerce website. My budget is around $5,000 and I need it completed within 8 weeks. The site should have user authentication, payment processing, and an admin dashboard..."
                         {...field}
                         disabled={isLoading}
                       />
