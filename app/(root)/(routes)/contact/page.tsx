@@ -70,7 +70,7 @@ const ContactPage = () => {
                   <Button
                     variant="purple"
                     size="lg"
-                    className="rounded-xl uppercase font-medium font-switzer flex items-center gap-2 mx-auto"
+                    className="rounded-xl uppercase font-medium font-switzer flex items-center gap-2 mx-auto w-full sm:w-auto justify-center min-w-[200px]"
                   >
                     Discuss Custom Project
                     <ArrowRight className="w-4 h-4" />

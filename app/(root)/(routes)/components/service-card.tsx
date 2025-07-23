@@ -151,7 +151,7 @@ const ServiceCard = ({
                     whileInView={{ opacity: 1, x: 0 }}
                     transition={{ duration: 0.3, delay: 0.05 * index }}
                     viewport={{ once: true }}
-                    className="flex items-start gap-3 group/item"
+                    className="rounded-xl uppercase font-medium font-switzer flex items-center gap-2 shadow-lg hover:shadow-xl transition-shadow duration-200 w-full sm:w-auto justify-center min-w-[200px]"
                   >
                     <div className="mt-1">
                       <CheckCircle className="w-5 h-5 text-purple group-hover/item:scale-105 transition-transform duration-150" />

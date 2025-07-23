@@ -149,7 +149,7 @@ const FeaturedCaseStudies = ({ projects }: FeaturedCaseStudiesProps) => {
                         <Button
                           variant="purple"
                           size="lg"
-                          className="rounded-xl uppercase font-medium font-switzer flex items-center gap-2 w-full sm:w-auto"
+                          className="rounded-xl uppercase font-medium font-switzer flex items-center gap-2 w-full sm:w-auto justify-center min-w-[200px]"
                         >
                           View Case Study
                           <ArrowRight className="w-4 h-4" />
@@ -159,7 +159,7 @@ const FeaturedCaseStudies = ({ projects }: FeaturedCaseStudiesProps) => {
                         <Button
                           variant="ghost"
                           size="lg"
-                          className="rounded-xl uppercase font-medium font-switzer text-dark dark:text-light hover:text-purple flex items-center gap-2 w-full sm:w-auto"
+                          className="rounded-xl uppercase font-medium font-switzer text-dark dark:text-light hover:text-purple flex items-center gap-2 w-full sm:w-auto justify-center min-w-[200px]"
                         >
                           View Live Site
                           <ExternalLink className="w-4 h-4" />

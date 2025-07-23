@@ -305,7 +305,7 @@ const ReviewsPageClient = () => {
                   href="/contact"
                   whileHover={{ scale: 1.05 }}
                   whileTap={{ scale: 0.95 }}
-                  className="inline-flex items-center justify-center px-8 py-4 bg-purple hover:bg-purple/80 text-white rounded-xl uppercase font-medium font-switzer text-[14px] transition-colors duration-300"
+                  className="inline-flex items-center justify-center px-8 py-4 bg-purple hover:bg-purple/80 text-white rounded-xl uppercase font-medium font-switzer text-[14px] transition-colors duration-300 w-full sm:w-auto min-w-[200px]"
                 >
                   Start Your Project
                 </motion.a>
@@ -313,7 +313,7 @@ const ReviewsPageClient = () => {
                   href="/work"
                   whileHover={{ scale: 1.05 }}
                   whileTap={{ scale: 0.95 }}
-                  className="inline-flex items-center justify-center px-8 py-4 bg-transparent border border-lightBorderColor dark:border-darkBorderColor hover:border-purple text-dark dark:text-light hover:text-purple rounded-xl uppercase font-medium font-switzer text-[14px] transition-all duration-300"
+                  className="inline-flex items-center justify-center px-8 py-4 bg-transparent border border-lightBorderColor dark:border-darkBorderColor hover:border-purple text-dark dark:text-light hover:text-purple rounded-xl uppercase font-medium font-switzer text-[14px] transition-all duration-300 w-full sm:w-auto min-w-[200px]"
                 >
                   View My Work
                 </motion.a>
