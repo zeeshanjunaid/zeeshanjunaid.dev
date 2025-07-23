@@ -264,7 +264,7 @@ const ServicesPageClient = () => {
                   <Button
                     variant="purple"
                     size="lg"
-                    className="rounded-xl uppercase font-medium font-switzer flex items-center gap-2"
+                    className="rounded-xl uppercase font-medium font-switzer flex items-center gap-2 w-full sm:w-auto justify-center min-w-[200px]"
                   >
                     Get Started Today
                     <ArrowRight className="w-4 h-4" />
@@ -274,7 +274,7 @@ const ServicesPageClient = () => {
                   <Button
                     variant="ghost"
                     size="lg"
-                    className="rounded-xl uppercase font-medium font-switzer text-dark dark:text-light hover:text-purple"
+                    className="rounded-xl uppercase font-medium font-switzer text-dark dark:text-light hover:text-purple w-full sm:w-auto justify-center min-w-[200px]"
                   >
                     View Pricing Plans
                   </Button>

@@ -112,7 +112,7 @@ export const Hero = () => {
                 transition={{ duration: 0.2 }}
               >
                 <Button
-                  className="h-12 rounded-xl uppercase transition-all duration-200 hover:shadow-md hover:shadow-purple/20"
+                  className="rounded-xl uppercase transition-all duration-200 hover:shadow-md hover:shadow-purple/20 w-full sm:w-auto justify-center min-w-[200px]"
                   size="lg"
                   variant="purple"
                 >

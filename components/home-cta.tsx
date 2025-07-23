@@ -37,7 +37,7 @@ const HomeCTA = () => {
               <Button 
                 variant="purple" 
                 size="lg" 
-                className="rounded-xl uppercase font-medium font-switzer flex items-center gap-2 mx-auto shadow-lg hover:shadow-xl transition-shadow duration-200"
+                className="rounded-xl uppercase font-medium font-switzer flex items-center gap-2 mx-auto shadow-lg hover:shadow-xl transition-shadow duration-200 w-full sm:w-auto justify-center min-w-[200px]"
               >
                 Start Your Project
                 <ArrowRight className="w-4 h-4" />
