@@ -196,13 +196,13 @@ const AboutHero = () => {
           {/* CTA Buttons */}
           <motion.div
             variants={itemVariants}
-            className="flex flex-col sm:flex-row gap-4 items-center sm:items-start"
+            className="flex flex-col sm:flex-row gap-4 items-center justify-center sm:justify-start"
           >
             <Link href="/contact">
               <Button
                 variant="purple"
                 size="lg"
-                className="rounded-xl uppercase font-medium font-switzer flex items-center gap-2 w-full sm:w-auto justify-center"
+                className="rounded-xl uppercase font-medium font-switzer flex items-center gap-2 w-full sm:w-auto justify-center min-w-[200px]"
               >
                 Start Your Project
                 <ArrowRight className="w-4 h-4" />
@@ -212,7 +212,7 @@ const AboutHero = () => {
               <Button
                 variant="ghost"
                 size="lg"
-                className="rounded-xl uppercase font-medium font-switzer text-dark dark:text-light hover:text-purple w-full sm:w-auto justify-center"
+                className="rounded-xl uppercase font-medium font-switzer text-dark dark:text-light hover:text-purple w-full sm:w-auto justify-center min-w-[200px]"
               >
                 View My Work
               </Button>
