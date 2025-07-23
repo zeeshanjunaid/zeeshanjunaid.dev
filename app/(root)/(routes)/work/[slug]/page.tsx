@@ -122,7 +122,7 @@ export default function ProjectPage({ params }: ProjectPageProps) {
                 <Button
                   variant="purple"
                   size="lg"
-                  className="rounded-xl uppercase font-medium font-switzer flex items-center gap-2"
+                  className="rounded-xl uppercase font-medium font-switzer flex items-center gap-2 w-full sm:w-auto justify-center min-w-[200px]"
                 >
                   <ExternalLink className="w-4 h-4" />
                   View Live Project
@@ -132,7 +132,7 @@ export default function ProjectPage({ params }: ProjectPageProps) {
                 <Button
                   variant="ghost"
                   size="lg"
-                  className="rounded-xl uppercase font-medium font-switzer text-white border-white/30 hover:bg-white/10"
+                  className="rounded-xl uppercase font-medium font-switzer text-white border-white/30 hover:bg-white/10 w-full sm:w-auto justify-center min-w-[200px]"
                 >
                   <ArrowLeft className="w-4 h-4 mr-2" />
                   Back to Case Studies
