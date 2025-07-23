@@ -248,12 +248,7 @@ const ContactForm = () => {
                       <FormControl>
                         <Select onValueChange={field.onChange} defaultValue={field.value} disabled={isLoading}>
                           <SelectTrigger className="h-14 border-0 focus:ring-0 text-dark dark:text-light font-switzer text-[16px] font-light focus:ring-offset-0 relative bg-light dark:bg-dark border-[1px] border-solid border-lightBorderColor dark:border-darkBorderColor rounded-xl">
-                            <div className="relative w-full">
-                              <BlurBG className="rounded-xl" />
-                              <div className="relative z-20">
-                                <SelectValue placeholder="Select a service..." />
-                              </div>
-                            </div>
+                            <SelectValue placeholder="Select a service..." />
                           </SelectTrigger>
                           <SelectContent className="bg-light dark:bg-dark border-lightBorderColor dark:border-darkBorderColor rounded-xl">
                             {serviceOptions.map((option) => (
