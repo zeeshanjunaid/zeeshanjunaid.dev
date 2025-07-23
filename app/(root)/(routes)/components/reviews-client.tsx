@@ -57,7 +57,7 @@ const ReviewsPageClient = () => {
         </div>
 
         <div className="border-b-[1px] border-b-lightBorderColor dark:border-b-darkBorderColor pb-16 md:pb-20">
-          <Container className="px-4 md:px-7 lg:px-0 flex flex-col justify-between items-start">
+          <Container className="px-4 md:px-7 py-4 md:py-7 lg:px-0 flex flex-col justify-between items-start">
             <motion.div
               initial={{ opacity: 0, y: 50 }}
               animate={{ opacity: 1, y: 0 }}
@@ -84,99 +84,6 @@ const ReviewsPageClient = () => {
           </Container>
         </div>
       </motion.section>
-
-      {/* Why Clients Choose Me Section */}
-      <section className="py-16 md:py-20 relative overflow-hidden">
-        <div className="absolute inset-0 -z-10">
-          <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-purple/3 rounded-full blur-3xl" />
-        </div>
-
-        <Container className="px-4 md:px-7 lg:px-0">
-          <motion.div
-            initial={{ opacity: 0, y: 30 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8 }}
-            viewport={{ once: true }}
-            className="mb-12"
-          >
-            <h2 className="inline-flex center gap-x-[10px] items-center font-normal text-dark dark:text-light uppercase text-[14px] tracking-[.42px] mb-6">
-              <div className="flex flex-col space-y-[6px]">
-                <span className="bg-dark dark:bg-light w-[18px] h-[1px]" />
-                <span className="bg-dark dark:bg-light w-[18px] h-[1px]" />
-              </div>
-              Common Themes from My Clients
-            </h2>
-            <p className="text-dark/70 dark:text-light/70 font-switzer font-light text-[14px] md:text-[16px] lg:text-[18px] max-w-2xl">
-              These are the qualities clients consistently highlight when describing their experience working with me.
-            </p>
-          </motion.div>
-
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-            <motion.div
-              initial={{ opacity: 0, y: 30 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6, delay: 0.1 }}
-              viewport={{ once: true }}
-              className="relative bg-light dark:bg-dark rounded-3xl p-8 overflow-hidden"
-            >
-              <BlurBG className="rounded-3xl" />
-              <div className="relative z-20 text-center">
-                <div className="w-16 h-16 bg-purple/10 rounded-2xl flex items-center justify-center mx-auto mb-6">
-                  <MessageCircle className="w-8 h-8 text-purple" />
-                </div>
-                <h3 className="text-[20px] md:text-[24px] font-ao font-bold text-dark dark:text-light mb-4">
-                  Expert Communication
-                </h3>
-                <p className="text-dark/80 dark:text-light/80 font-switzer font-light text-[14px] md:text-[16px] leading-relaxed">
-                  Clients consistently praise my clear, timely, and proactive communication, ensuring projects stay on track and aligned with their vision.
-                </p>
-              </div>
-            </motion.div>
-
-            <motion.div
-              initial={{ opacity: 0, y: 30 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6, delay: 0.2 }}
-              viewport={{ once: true }}
-              className="relative bg-light dark:bg-dark rounded-3xl p-8 overflow-hidden"
-            >
-              <BlurBG className="rounded-3xl" />
-              <div className="relative z-20 text-center">
-                <div className="w-16 h-16 bg-purple/10 rounded-2xl flex items-center justify-center mx-auto mb-6">
-                  <CheckCircle className="w-8 h-8 text-purple" />
-                </div>
-                <h3 className="text-[20px] md:text-[24px] font-ao font-bold text-dark dark:text-light mb-4">
-                  Attention to Detail
-                </h3>
-                <p className="text-dark/80 dark:text-light/80 font-switzer font-light text-[14px] md:text-[16px] leading-relaxed">
-                  My meticulous approach to design and development means a polished, professional final product, every single time.
-                </p>
-              </div>
-            </motion.div>
-
-            <motion.div
-              initial={{ opacity: 0, y: 30 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6, delay: 0.3 }}
-              viewport={{ once: true }}
-              className="relative bg-light dark:bg-dark rounded-3xl p-8 overflow-hidden"
-            >
-              <BlurBG className="rounded-3xl" />
-              <div className="relative z-20 text-center">
-                <div className="w-16 h-16 bg-purple/10 rounded-2xl flex items-center justify-center mx-auto mb-6">
-                  <Users className="w-8 h-8 text-purple" />
-                </div>
-                <h3 className="text-[20px] md:text-[24px] font-ao font-bold text-dark dark:text-light mb-4">
-                  A True Partner
-                </h3>
-                <p className="text-dark/80 dark:text-light/80 font-switzer font-light text-[14px] md:text-[16px] leading-relaxed">
-                  I go beyond being just a developer; I become a dedicated partner invested in the success of your project and your business.
-                </p>
-              </div>
-            </motion.div>
-          </div>
-        </Container>
-      </section>
 
       {/* Why Clients Choose Me Section */}
       <section className="py-16 md:py-20 relative overflow-hidden">

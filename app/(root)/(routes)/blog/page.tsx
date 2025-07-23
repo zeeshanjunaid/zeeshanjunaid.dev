@@ -23,7 +23,7 @@ export default async function BlogPage() {
         </div>
 
         <div className="border-b-[1px] border-b-lightBorderColor dark:border-b-darkBorderColor pb-16 md:pb-20">
-          <Container className="px-4 md:px-7 lg:px-0">
+          <Container className="px-4 pt-4 md:pt-7 md:px-7 lg:px-0">
             <div className="max-w-4xl">
               <div className="flex items-center gap-3 mb-4">
                 <div className="w-12 h-[2px] bg-purple" />
@@ -87,9 +87,9 @@ export default async function BlogPage() {
 
       {/* Articles Section */}
       <section className="py-16 md:py-20">
-        <Container className="px-4 md:px-7 lg:px-0">
+        <Container className="px-4 md:px-7 lg:px-0 flex flex-col">
           {posts.length > 0 ? (
-            <div className="space-y-8">
+            <div className="flex flex-col space-y-6 md:space-y-8">
               {posts.map((post, index) => (
                 <Link href={`/blog/${post.slug}`} key={post.slug}>
                   <article className="group relative bg-light dark:bg-dark rounded-3xl p-8 md:p-10 overflow-hidden border border-lightBorderColor dark:border-darkBorderColor hover:border-purple/30 transition-all duration-300 hover:scale-[1.01]">

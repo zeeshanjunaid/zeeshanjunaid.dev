@@ -83,7 +83,7 @@ const WorkWrapper = () => {
         </div>
 
         <div className="border-b-[1px] border-b-lightBorderColor dark:border-b-darkBorderColor pb-16 md:pb-20">
-          <Container className="px-4 md:px-7 lg:px-0">
+          <Container className="px-4 pt-4 md:pt-7 md:px-7 lg:px-0">
             <motion.div
               initial="hidden"
               animate="visible"

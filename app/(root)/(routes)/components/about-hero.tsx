@@ -225,7 +225,7 @@ const AboutHero = () => {
           initial="hidden"
           animate="visible"
           variants={imageVariants}
-          className="w-full max-w-[360px] lg:max-w-full h-[265px] sm:h-[355px] rounded-3xl relative mx-auto lg:w-1/3 -order-1 md:order-1 md:sticky md:top-[140px] group"
+          className="w-full max-w-[360px] lg:max-w-full h-[265px] sm:h-[355px] rounded-3xl relative mx-auto lg:w-1/3 -order-1 md:order-1 md:sticky md:top-[140px] group mt-4 sm:mt-6 md:mt-0"
         >
           <BlurBG className="rounded-3xl" />
           
@@ -239,7 +239,7 @@ const AboutHero = () => {
               sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
               alt="Zeeshan Junaid - Frontend Developer"
               src={heroImg}
-              className="scale-125 lg:scale-[135%] 2xl:scale-[120%] origin-bottom object-contain object-bottom transition-all duration-1000 user-select-none pointer-events-none group-hover:scale-[130%] lg:group-hover:scale-[140%]"
+              className="scale-125 lg:scale-[135%] 2xl:scale-[120%] origin-bottom object-contain object-bottom transition-all duration-1000 user-select-none pointer-events-none md:group-hover:scale-[140%]"
               priority
             />
           </div>

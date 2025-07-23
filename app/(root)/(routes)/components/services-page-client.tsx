@@ -83,7 +83,7 @@ const ServicesPageClient = () => {
         </div>
 
         <div className="border-b-[1px] border-b-borderDarkColor pb-16 md:pb-20">
-          <Container className="px-5 md:px-7 lg:px-0 flex flex-col justify-between items-start">
+          <Container className="px-5 pt-5 md:pt-7 md:px-7 lg:px-0 flex flex-col justify-between items-start">
             <motion.div
               initial={{ opacity: 0, y: 50 }}
               animate={{ opacity: 1, y: 0 }}
