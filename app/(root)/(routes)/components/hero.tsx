@@ -7,14 +7,16 @@ import { Container } from "@/components/container";
 import Image from "next/image";
 import Link from "next/link";
 import React from "react";
-import { SocialLinks } from "@/components/social-connect";
+import { SocialLinks } from "@/components/social-connect"; // Note: This import is unused in the provided snippet.
 import { motion } from "framer-motion";
 
 const heroImg = "/images/zeeshan.png";
 
 export const Hero = () => {
-  const heroTitle = "I build high-performance web applications that turn visitors into customers.";
-  const heroSubtitle = "I'm Zeeshan Junaid, a freelance frontend developer with 8+ years of experience helping businesses like yours succeed online. I specialize in React, Next.js, and modern web technologies.";
+  const heroTitle =
+    "I build high-performance web applications that turn visitors into customers.";
+  const heroSubtitle =
+    "I'm Zeeshan Junaid, a freelance frontend developer with 8+ years of experience helping businesses like yours succeed online. I specialize in React, Next.js, and modern web technologies.";
 
   return (
     <section className="overflow-x-hidden w-full md:pt-5 relative">
@@ -28,14 +30,14 @@ export const Hero = () => {
         relative
     "
       >
-        {/* Mobile Hero */}
+        {/* ======================================================================= */}
+        {/* Mobile Hero Text (Visible only on small screens)                      */}
+        {/* ======================================================================= */}
         <div className="lg:hidden px-2 w-full sm:w-[80%] md:w-[90%] mx-auto mt-6 flex flex-col justify-center items-center">
           <div>
             <AvailabilityBadge className="mb-2.5" />
           </div>
-          <h1
-            className="text-center text-[22px] leading-tight sm:text-[28px] md:text-[36px] font-bold font-ao text-dark dark:text-light"
-          >
+          <h1 className="text-center text-[22px] leading-tight sm:text-[28px] md:text-[36px] font-bold font-ao text-dark dark:text-light">
             {heroTitle}
           </h1>
           <p className="text-center text-[14px] sm:text-[16px] md:text-[18px] font-light text-dark/80 dark:text-light/80 mt-4 leading-relaxed max-w-2xl">
@@ -43,7 +45,9 @@ export const Hero = () => {
           </p>
         </div>
 
-        {/* Desktop Hero Content */}
+        {/* ======================================================================= */}
+        {/* Desktop Hero Content (Left Panel - Hidden on small screens)           */}
+        {/* ======================================================================= */}
         <motion.div
           initial={{ opacity: 0, x: -50 }}
           animate={{ opacity: 1, x: 0 }}
@@ -57,7 +61,7 @@ export const Hero = () => {
             transition={{ duration: 0.2 }}
             className="backdrop-blur-md bg-lightBorderColor dark:bg-darkBorderColor absolute top-0 left-0 right-0 bottom-0 w-full h-full z-10 rounded-3xl"
           />
-          
+
           {/* Subtle gradient overlay on hover */}
           <motion.div
             initial={{ opacity: 0 }}
@@ -67,7 +71,7 @@ export const Hero = () => {
           />
 
           {/* Content */}
-          <motion.div 
+          <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5, delay: 0.1 }}
@@ -98,23 +102,42 @@ export const Hero = () => {
             </motion.p>
           </motion.div>
 
-          {/* CTA Section */}
+          {/* Desktop CTA Section */}
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5, delay: 0.25 }}
             className="flex items-center space-x-3 min-w-max justify-start z-20 relative"
           >
-        {/* Image Section */}
+            <Link href="/contact">
+              <motion.div
+                whileHover={{ scale: 1.02 }}
+                whileTap={{ scale: 0.98 }}
+              >
+                <Button
+                  className="rounded-xl uppercase transition-all duration-200 hover:shadow-md hover:shadow-purple/20"
+                  size="lg"
+                  variant="purple"
+                >
+                  Start Your Project
+                </Button>
+              </motion.div>
+            </Link>
+          </motion.div>
+        </motion.div>
+
+        {/* ======================================================================= */}
+        {/* Image Section (Right Panel on Desktop)                                */}
+        {/* ======================================================================= */}
         <motion.div
           initial={{ opacity: 0, x: 50 }}
           animate={{ opacity: 1, x: 0 }}
           transition={{ duration: 0.6, delay: 0.1 }}
-          className="w-full max-w-[360px] lg:max-w-full h-[265px] sm:h-[355px] md:!h-[481px]  rounded-3xl relative mx-auto lg:w-1/3 -order-1 lg:order-1 group"
+          className="w-full max-w-[360px] lg:max-w-full h-[265px] sm:h-[355px] md:!h-[481px] rounded-3xl relative mx-auto lg:w-1/3 -order-1 lg:order-1 group"
         >
           <BlurBG className="rounded-3xl" />
 
-          <motion.div 
+          <motion.div
             initial={{ scale: 0.9 }}
             animate={{ scale: 1 }}
             transition={{ duration: 0.6, delay: 0.2 }}
@@ -132,7 +155,9 @@ export const Hero = () => {
           </motion.div>
         </motion.div>
 
-        {/* Mobile CTA */}
+        {/* ======================================================================= */}
+        {/* Mobile CTA (Visible only on small screens)                            */}
+        {/* ======================================================================= */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
@@ -140,34 +165,12 @@ export const Hero = () => {
           className="flex flex-col sm:flex-row lg:hidden items-center gap-2 min-w-max justify-center"
         >
           <Link href="/contact">
-            <motion.div
-              whileHover={{ scale: 1.02 }}
-              whileTap={{ scale: 0.98 }}
-            >
-              <Button className="rounded-xl uppercase transition-all duration-200 hover:shadow-md hover:shadow-purple/20" size="lg" variant="purple">
-                Start Your Project
-              </Button>
-            </motion.div>
-          </Link>
-        </motion.div>
-      </Container>
-    </section>
-  );
-};
-        {/* Mobile CTA */}
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.5, delay: 0.25 }}
-          className="flex flex-col sm:flex-row lg:hidden items-center gap-2 min-w-max justify-center"
-        >
-          {/* FIX: Changed href from "/hire-me" to "/contact" for consistency. */}
-          <Link href="/contact">
-            <motion.div
-              whileHover={{ scale: 1.02 }}
-              whileTap={{ scale: 0.98 }}
-            >
-              <Button className="rounded-xl uppercase transition-all duration-200 hover:shadow-md hover:shadow-purple/20" size="lg" variant="purple">
+            <motion.div whileHover={{ scale: 1.02 }} whileTap={{ scale: 0.98 }}>
+              <Button
+                className="rounded-xl uppercase transition-all duration-200 hover:shadow-md hover:shadow-purple/20"
+                size="lg"
+                variant="purple"
+              >
                 Start Your Project
               </Button>
             </motion.div>

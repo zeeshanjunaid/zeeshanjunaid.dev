@@ -16,7 +16,17 @@ import { BlurBG } from "@/components/blur-bg";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import React from "react";
-import { SendHorizonal, User, Mail, Phone, MessageSquare, HelpCircle, CheckCircle, Clock, Shield } from "lucide-react";
+import {
+  SendHorizonal,
+  User,
+  Mail,
+  Phone,
+  MessageSquare,
+  HelpCircle,
+  CheckCircle,
+  Clock,
+  Shield,
+} from "lucide-react";
 import { Textarea } from "@/components/ui/textarea";
 import {
   Select,
@@ -24,7 +34,7 @@ import {
   SelectItem,
   SelectTrigger,
   SelectValue,
-} from "@/components/ui/select"
+} from "@/components/ui/select";
 import axios from "axios";
 import { useSearchParams } from "next/navigation";
 import { useToast } from "@/components/ui/use-toast";
@@ -35,8 +45,8 @@ import { pricingTiers } from "./pricing-table";
 const formSchema = z.object({
   name: z.string().min(1, { message: "Name is required" }),
   email: z.string().email("Invalid email address"),
-  phone: z.string().refine((val) => /^\+\d{1,3}\d{10}$/.test(val), {
-    message: "Invalid phone number",
+  phone: z.string().refine((val) => /^\+?[\d\s\-\(\)]{7,15}$/.test(val), {
+    message: "Please enter a valid phone number",
   }),
   service: z.string(),
   referral: z.string(),
@@ -47,7 +57,7 @@ type FormValues = z.infer<typeof formSchema>;
 const ContactForm = () => {
   const { toast } = useToast();
   const searchParams = useSearchParams();
-  const serviceParam = searchParams.get('service');
+  const serviceParam = searchParams.get("service");
 
   const form = useForm({
     resolver: zodResolver(formSchema),
@@ -67,7 +77,8 @@ const ContactForm = () => {
       form.reset();
       toast({
         title: "Message Sent!",
-        description: "Thank you for reaching out. I'll personally review your project details and get back to you within one business day.",
+        description:
+          "Thank you for reaching out. I'll personally review your project details and get back to you within one business day.",
       });
     } catch (error) {
       toast({
@@ -80,9 +91,9 @@ const ContactForm = () => {
 
   const serviceOptions = [
     { value: "none", label: "I'm not sure yet - let's discuss" },
-    ...pricingTiers.map(tier => ({
+    ...pricingTiers.map((tier) => ({
       value: tier.id,
-      label: `${tier.name} - $${tier.price}/month`
+      label: `${tier.name} - $${tier.price}/month`,
     })),
     { value: "custom", label: "Custom project (one-time)" },
   ];
@@ -114,18 +125,18 @@ const ContactForm = () => {
     {
       icon: Clock,
       title: "Quick Response",
-      description: "24-hour response guarantee"
+      description: "24-hour response guarantee",
     },
     {
       icon: Shield,
       title: "Secure & Private",
-      description: "Your data is protected"
+      description: "Your data is protected",
     },
     {
       icon: CheckCircle,
       title: "Free Consultation",
-      description: "No obligation discussion"
-    }
+      description: "No obligation discussion",
+    },
   ];
 
   return (
@@ -149,14 +160,15 @@ const ContactForm = () => {
             className="bg-light dark:bg-dark relative overflow-hidden rounded-3xl p-8 md:p-10 lg:p-12 border border-lightBorderColor dark:border-darkBorderColor max-w-4xl mx-auto"
           >
             <BlurBG className="rounded-3xl" />
-            
+
             {/* Form Header */}
             <div className="relative z-20 mb-8 text-center">
               <h4 className="text-[24px] md:text-[28px] font-ao font-bold text-dark dark:text-light mb-3">
                 Tell Me About Your Project
               </h4>
               <p className="text-dark/70 dark:text-light/70 font-switzer font-light text-[16px] leading-relaxed">
-                Fill out the form below and I&apos;ll get back to you within 24 hours with a detailed response tailored to your project needs.
+                Fill out the form below and I&apos;ll get back to you within 24
+                hours with a detailed response tailored to your project needs.
               </p>
             </div>
 
@@ -246,14 +258,18 @@ const ContactForm = () => {
                         Service Needed *
                       </FormLabel>
                       <FormControl>
-                        <Select onValueChange={field.onChange} defaultValue={field.value} disabled={isLoading}>
-                          <SelectTrigger className="h-14 border-0 focus:ring-0 text-dark dark:text-light font-switzer text-[16px] font-light focus:ring-offset-0 relative bg-light dark:bg-dark border-[1px] border-solid border-lightBorderColor dark:border-darkBorderColor rounded-xl">
+                        <Select
+                          onValueChange={field.onChange}
+                          defaultValue={field.value}
+                          disabled={isLoading}
+                        >
+                          <SelectTrigger className="h-14 focus:ring-0 text-dark dark:text-light font-switzer text-[16px] font-light focus:ring-offset-0 relative bg-light dark:bg-dark border-[1px] border-solid border-lightBorderColor dark:border-darkBorderColor rounded-xl">
                             <SelectValue placeholder="Select a service..." />
                           </SelectTrigger>
                           <SelectContent className="bg-light dark:bg-dark border-lightBorderColor dark:border-darkBorderColor rounded-xl">
                             {serviceOptions.map((option) => (
-                              <SelectItem 
-                                key={option.value} 
+                              <SelectItem
+                                key={option.value}
                                 value={option.value}
                                 className="text-dark dark:text-light font-switzer font-light hover:bg-purple/10 focus:bg-purple/20 rounded-lg mx-1 my-0.5"
                               >
@@ -326,7 +342,7 @@ const ContactForm = () => {
                       Your information is secure and will never be shared
                     </p>
                   </div>
-                  
+
                   <motion.div
                     whileHover={{ scale: 1.05 }}
                     whileTap={{ scale: 0.95 }}
