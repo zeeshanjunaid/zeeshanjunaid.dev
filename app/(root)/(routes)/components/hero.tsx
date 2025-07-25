@@ -105,33 +105,7 @@ export const Hero = () => {
             transition={{ duration: 0.5, delay: 0.25 }}
             className="flex items-center space-x-3 min-w-max justify-start z-20 relative"
           >
-            <Link href="/contact">
-              <motion.div
-                whileHover={{ scale: 1.02 }}
-                whileTap={{ scale: 0.98 }}
-                transition={{ duration: 0.2 }}
-              >
-                <Button
-                  className="rounded-xl uppercase transition-all duration-200 hover:shadow-md hover:shadow-purple/20 w-full sm:w-auto justify-center min-w-[200px]"
-                  size="lg"
-                  variant="purple"
-                >
-                  Start Your Project
-                </Button>
-              </motion.div>
-            </Link>
-            <motion.div
-              initial={{ opacity: 0, scale: 0.8 }}
-              animate={{ opacity: 1, scale: 1 }}
-              transition={{ duration: 0.4, delay: 0.3 }}
-            >
-              <SocialLinks />
-            </motion.div>
-          </motion.div>
-        </motion.div> {/* FIX: This closing tag was missing, which caused the image section to be nested incorrectly. */}
-
         {/* Image Section */}
-        {/* FIX: This entire block was moved out of the 'Desktop Hero Content' div to be its sibling. */}
         <motion.div
           initial={{ opacity: 0, x: 50 }}
           animate={{ opacity: 1, x: 0 }}
@@ -158,6 +132,28 @@ export const Hero = () => {
           </motion.div>
         </motion.div>
 
+        {/* Mobile CTA */}
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.5, delay: 0.25 }}
+          className="flex flex-col sm:flex-row lg:hidden items-center gap-2 min-w-max justify-center"
+        >
+          <Link href="/contact">
+            <motion.div
+              whileHover={{ scale: 1.02 }}
+              whileTap={{ scale: 0.98 }}
+            >
+              <Button className="rounded-xl uppercase transition-all duration-200 hover:shadow-md hover:shadow-purple/20" size="lg" variant="purple">
+                Start Your Project
+              </Button>
+            </motion.div>
+          </Link>
+        </motion.div>
+      </Container>
+    </section>
+  );
+};
         {/* Mobile CTA */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}

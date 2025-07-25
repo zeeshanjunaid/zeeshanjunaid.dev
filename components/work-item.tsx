@@ -139,7 +139,7 @@ export const WorkImg = ({
   top: any;
   left: any;
 }) => {
-  const [isLoaded, setIsLoaded] = useState(true);
+  const [isLoaded, setIsLoaded] = useState(false);
   if (!imgUrl) {
     return null;
   }
@@ -173,7 +173,7 @@ export const WorkImg = ({
             className="object-cover"
             alt="work image"
             src={imgUrl}
-            onLoad={() => setIsLoaded(false)}
+            onLoad={() => setIsLoaded(true)}
           />
         </AspectRatio>
       </div>

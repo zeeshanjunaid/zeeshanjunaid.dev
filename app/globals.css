@@ -213,31 +213,6 @@ html {
   background: hsl(260, 100%, 65%);
 }
 
-/* Project image containers - responsive and adaptive */
-.project-image-container {
-  position: relative;
-  width: 100%;
-  min-height: 40vh;
-  max-height: 90vh;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
-/* Ensure images maintain quality at different sizes */
-.project-image-container img {
-  image-rendering: -webkit-optimize-contrast;
-  image-rendering: crisp-edges;
-}
-
-/* Mobile optimizations for project images */
-@media (max-width: 768px) {
-  .project-image-container {
-    min-height: 30vh;
-    max-height: 70vh;
-  }
-}
-
 /* Hide scrollbar for video reviews section */
 .scrollbar-hide {
   -ms-overflow-style: none;

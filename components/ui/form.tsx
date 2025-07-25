@@ -18,8 +18,8 @@ const Form = FormProvider;
 
 type FormFieldContextValue<
   TFieldValues extends FieldValues = FieldValues,
-  TName extends FieldPath<TFieldValues> = FieldPath<TFieldValues>,
-> = {
+  phone: z.string().refine((val) => /^\+?[\d\s\-\(\)]{7,15}$/.test(val), {
+    message: "Please enter a valid phone number",
   name: TName;
 };
 

@@ -5,12 +5,11 @@ import { Mail, Phone, MapPin, Clock } from "lucide-react";
 import { Users, Star, MessageCircle, Award } from "lucide-react";
 import ContactForm from "../components/contact-form";
 import { Container } from "@/components/container";
-// FIX: Import Suspense from React
 import React, { Suspense } from "react";
 import { BlurBG } from "@/components/blur-bg";
 import { motion } from "framer-motion";
 
-// FIX: Added a loading component to use as the Suspense fallback.
+// Loading component to use as the Suspense fallback.
 // This provides a better UX than a blank space while the form loads.
 const FormLoader = () => {
   return (
@@ -289,7 +288,7 @@ const ContactPageClient = () => {
             transition={{ duration: 0.8, delay: 0.2 }}
             viewport={{ once: true }}
           >
-            {/* FIX: Wrap the dynamic component in a Suspense boundary */}
+            {/* Wrap the dynamic component in a Suspense boundary */}
             <Suspense fallback={<FormLoader />}>
               <ContactForm />
             </Suspense>

@@ -69,7 +69,7 @@ export const servicesCards: ServicesCardProps[] = [
     description:
       "Great design isn't just about looking good; it's about solving problems. I partner with you to understand your users' needs and your business goals, creating interfaces that are not only beautiful but also intuitive, engaging, and designed to convert.",
     img: "/images/services/design.webp",
-    subServicesTitle: "What do i Offer",
+    subServicesTitle: "What do I Offer",
     subServices: [
       "User Research & Persona Development",
       "Wireframing & Prototyping",
@@ -91,7 +91,7 @@ export const servicesCards: ServicesCardProps[] = [
     description:
       "Your website or application is your most important digital asset. I specialize in building fast, secure, and scalable frontends using modern technologies like React and Next.js, ensuring your users have a seamless experience that works flawlessly on every device.",
     img: "/images/services/frontend-dev.webp",
-    subServicesTitle: "What do i Offer",
+    subServicesTitle: "What do I Offer",
     subServices: [
       "Single Page Applications (SPA)",
       "Static Site Generation (SSG)",
@@ -113,7 +113,7 @@ export const servicesCards: ServicesCardProps[] = [
     description:
       "WordPress powers 40% of the web, but most businesses barely scratch the surface of its potential. I create custom WordPress solutions that not only look professional but also give you complete control over your content, SEO, and user experience—without the technical headaches.",
     img: "/images/services/wp-dev.webp",
-    subServicesTitle: "What do i Offer",
+    subServicesTitle: "What do I Offer",
     subServices: [
       "Website Redesigning & Theme Customization",
       "Performance Optimization & SEO",
@@ -134,7 +134,7 @@ export const servicesCards: ServicesCardProps[] = [
     description:
       "Webflow bridges the gap between design flexibility and development power. I leverage this platform to deliver pixel-perfect, responsive websites in half the time of traditional development, while giving you an intuitive CMS that your team will actually enjoy using.",
     img: "/images/services/webflow-dev.webp",
-    subServicesTitle: "What do i Offer",
+    subServicesTitle: "What do I Offer",
     subServices: [
       "Custom Design & Animation",
       "E-commerce Solutions",
@@ -156,7 +156,7 @@ export const servicesCards: ServicesCardProps[] = [
     description:
       "A beautiful online store means nothing if it doesn't convert visitors into customers. I specialize in creating Shopify experiences that not only showcase your products beautifully but also guide customers smoothly from discovery to purchase, maximizing your revenue per visitor.",
     img: "/images/services/shopify-dev.webp",
-    subServicesTitle: "What do i Offer",
+    subServicesTitle: "What do I Offer",
     subServices: [
       "Store Setup & Customization",
       "Theme Design & Development",
@@ -178,7 +178,7 @@ export const servicesCards: ServicesCardProps[] = [
     description:
       "The best website in the world is useless if your ideal customers can't find it. I implement proven SEO strategies that don't just increase your rankings—they attract high-intent visitors who are actively searching for what you offer, leading to more qualified leads and sales.",
     img: "/images/services/seo-opt.webp",
-    subServicesTitle: "What do i Offer",
+    subServicesTitle: "What do I Offer",
     subServices: [
       "Keyword Research & Strategy",
       "On-Page Optimization & Content Strategy",
@@ -200,7 +200,7 @@ export const servicesCards: ServicesCardProps[] = [
     description:
       "Every second of delay costs you customers. Studies show that a 1-second delay in page load time can reduce conversions by 7%. I optimize your website's performance to ensure lightning-fast load times that keep visitors engaged and boost your bottom line.",
     img: "/images/services/speed-opt.webp",
-    subServicesTitle: "What do i Offer",
+    subServicesTitle: "What do I Offer",
     subServices: [
       "Comprehensive Performance Audits",
       "Image and Asset Optimization",

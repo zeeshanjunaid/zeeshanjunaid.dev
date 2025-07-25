@@ -26,7 +26,7 @@ You need to have Node.js and npm (or yarn/pnpm/bun) installed on your machine.
 
 1.  Clone the repo
     ```sh
-    git clone [https://github.com/zeeshanjunaid/zeeshanjunaid.dev.git](https://github.com/zeeshanjunaid/zeeshanjunaid.dev.git)
+    git clone https://github.com/zeeshanjunaid/zeeshanjunaid.dev.git
     ```
 2.  Install NPM packages
     ```sh
