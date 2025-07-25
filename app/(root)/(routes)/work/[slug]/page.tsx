@@ -400,7 +400,7 @@ export default function ProjectPage({ params }: ProjectPageProps) {
               </p>
             </motion.div>
 
-            <div className="relative rounded-3xl overflow-hidden max-w-4xl bg-light dark:bg-dark p-8 md:p-12">
+            <div className="relative rounded-3xl overflow-hidden max-w-4xl mx-auto bg-light dark:bg-dark p-8 md:p-12">
               <BlurBG className="rounded-3xl" />
               <div className="relative z-20">
                 {Array.isArray(project.results) ? (
