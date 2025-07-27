@@ -10,13 +10,13 @@ import { SpeedInsights } from "@vercel/speed-insights/next";
 import { ThemeProvider } from "@/components/theme-provider";
 import { Toaster } from "@/components/ui/toaster";
 import { cn } from "@/lib/utils";
-import { SchemaMarkup, generateWebSiteSchema, generatePersonSchema, generateOrganizationSchema } from "@/components/schema-markup";
 import localFont from "next/font/local";
+import { Schema } from "@/components/Schema";
 
 export const metadata: Metadata = {
   metadataBase: new URL("https://zeeshanjunaid.dev"),
   title: {
-    default: "Zeeshan Junaid - UI/UX Designer and Frontend Developer", 
+    default: "Zeeshan Junaid - UI/UX Designer and Frontend Developer",
     template: "%s | Zeeshan Junaid",
   },
   description:
@@ -92,7 +92,7 @@ export default function RootLayout({
         className={cn(
           "bg-light dark:bg-dark font-switzer",
           antiqueOlive.variable,
-          switzer.variable,
+          switzer.variable
         )}
       >
         <ThemeProvider attribute="class" defaultTheme="dark">
@@ -113,9 +113,7 @@ export default function RootLayout({
           />
 
           <Header />
-          <main className="pt-[100px]">
-            {children}
-          </main>
+          <main className="pt-[100px]">{children}</main>
           <Footer />
           <BackToTop />
 
@@ -123,11 +121,8 @@ export default function RootLayout({
         </ThemeProvider>
         <Analytics />
         <SpeedInsights />
-        
-        {/* Global Schema Markup */}
-        <SchemaMarkup schema={generateWebSiteSchema()} />
-        <SchemaMarkup schema={generatePersonSchema()} />
-        <SchemaMarkup schema={generateOrganizationSchema()} />
+
+        <Schema />
       </body>
     </html>
   );
