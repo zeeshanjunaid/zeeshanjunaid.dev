@@ -3,7 +3,6 @@ import { Container } from "@/components/container";
 import { BlurBG } from "@/components/blur-bg";
 import { SchemaMarkup } from "@/components/schema-markup";
 import Link from "next/link";
-import { motion } from "framer-motion";
 import { Calendar, Clock, ArrowRight, BookOpen, TrendingUp } from "lucide-react";
 
 export const metadata = {

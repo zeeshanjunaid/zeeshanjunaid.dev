@@ -15,8 +15,9 @@ import Link from "next/link";
 import Image from "next/image";
 import ProjectsList from "@/data/work";
 import { WorkTag } from "@/components/work-item";
-import { SchemaMarkup, generateProjectSchema } from "@/components/schema-markup";
+import { SchemaMarkup } from "@/components/schema-markup";
 import { motion, useScroll, useTransform } from "framer-motion";
+import { generateProjectSchema } from "@/lib/schema";
 
 interface ProjectPageProps {
   params: {
@@ -68,7 +69,7 @@ export default function ProjectPage({ params }: ProjectPageProps) {
     <>
       {/* Project Schema Markup */}
       <SchemaMarkup schema={generateProjectSchema(project)} />
-      
+
       {/* Hero Section with Parallax */}
       <section className="relative min-h-screen flex items-center justify-center overflow-hidden">
         {project.imgUrl && (
@@ -159,132 +160,132 @@ export default function ProjectPage({ params }: ProjectPageProps) {
       {/* Story Section */}
       {project.images && project.images.length > 0 && (
         <section className="py-16 md:py-20">
-        <Container className="px-4 md:px-7 lg:px-0">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 items-start">
-            {/* Story Content */}
-            <motion.div
-              initial={{ opacity: 0, x: -50 }}
-              whileInView={{ opacity: 1, x: 0 }}
-              transition={{ duration: 0.8 }}
-              viewport={{ once: true }}
-              className="space-y-8"
-            >
-              <div>
-                <h2 className="text-[24px] md:text-[32px] lg:text-[36px] font-bold font-ao text-dark dark:text-light mb-6">
-                  The Story
-                </h2>
-                <p className="text-[14px] md:text-[16px] lg:text-[18px] font-switzer font-light leading-relaxed text-dark/80 dark:text-light/80">
-                  {project.overview || project.description}
-                </p>
-              </div>
-
-              {project.challenge && (
+          <Container className="px-4 md:px-7 lg:px-0">
+            <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 items-start">
+              {/* Story Content */}
+              <motion.div
+                initial={{ opacity: 0, x: -50 }}
+                whileInView={{ opacity: 1, x: 0 }}
+                transition={{ duration: 0.8 }}
+                viewport={{ once: true }}
+                className="space-y-8"
+              >
                 <div>
-                  <h3 className="text-[18px] md:text-[20px] lg:text-[24px] font-ao font-bold text-dark dark:text-light mb-4">
-                    The Challenge
-                  </h3>
+                  <h2 className="text-[24px] md:text-[32px] lg:text-[36px] font-bold font-ao text-dark dark:text-light mb-6">
+                    The Story
+                  </h2>
                   <p className="text-[14px] md:text-[16px] lg:text-[18px] font-switzer font-light leading-relaxed text-dark/80 dark:text-light/80">
-                    {project.challenge}
+                    {project.overview || project.description}
                   </p>
                 </div>
-              )}
 
-              {project.solution && (
-                <div>
-                  <h3 className="text-[18px] md:text-[20px] lg:text-[24px] font-ao font-bold text-dark dark:text-light mb-4">
-                    The Solution
-                  </h3>
-                  <p className="text-[14px] md:text-[16px] lg:text-[18px] font-switzer font-light leading-relaxed text-dark/80 dark:text-light/80">
-                    {project.solution}
-                  </p>
-                </div>
-              )}
-            </motion.div>
+                {project.challenge && (
+                  <div>
+                    <h3 className="text-[18px] md:text-[20px] lg:text-[24px] font-ao font-bold text-dark dark:text-light mb-4">
+                      The Challenge
+                    </h3>
+                    <p className="text-[14px] md:text-[16px] lg:text-[18px] font-switzer font-light leading-relaxed text-dark/80 dark:text-light/80">
+                      {project.challenge}
+                    </p>
+                  </div>
+                )}
 
-            {/* Project Info Sidebar */}
-            <motion.div
-              initial={{ opacity: 0, x: 50 }}
-              whileInView={{ opacity: 1, x: 0 }}
-              transition={{ duration: 0.8 }}
-              viewport={{ once: true }}
-              className="space-y-6"
-            >
-              <div className="relative rounded-3xl overflow-hidden bg-light dark:bg-dark p-8">
-                <BlurBG className="rounded-3xl" />
-                <div className="relative z-20">
-                  <h3 className="text-[18px] md:text-[20px] lg:text-[24px] font-ao font-bold text-dark dark:text-light mb-6">
-                    Project Details
-                  </h3>
-                  <div className="space-y-4">
-                    <div>
-                      <span className="text-dark/60 dark:text-light/60 text-[12px] md:text-[14px] font-switzer font-light uppercase tracking-wider block mb-1">
-                        Year
-                      </span>
-                      <p className="text-dark dark:text-light font-switzer font-medium text-[16px] md:text-[18px]">
-                        {project.year}
-                      </p>
+                {project.solution && (
+                  <div>
+                    <h3 className="text-[18px] md:text-[20px] lg:text-[24px] font-ao font-bold text-dark dark:text-light mb-4">
+                      The Solution
+                    </h3>
+                    <p className="text-[14px] md:text-[16px] lg:text-[18px] font-switzer font-light leading-relaxed text-dark/80 dark:text-light/80">
+                      {project.solution}
+                    </p>
+                  </div>
+                )}
+              </motion.div>
+
+              {/* Project Info Sidebar */}
+              <motion.div
+                initial={{ opacity: 0, x: 50 }}
+                whileInView={{ opacity: 1, x: 0 }}
+                transition={{ duration: 0.8 }}
+                viewport={{ once: true }}
+                className="space-y-6"
+              >
+                <div className="relative rounded-3xl overflow-hidden bg-light dark:bg-dark p-8">
+                  <BlurBG className="rounded-3xl" />
+                  <div className="relative z-20">
+                    <h3 className="text-[18px] md:text-[20px] lg:text-[24px] font-ao font-bold text-dark dark:text-light mb-6">
+                      Project Details
+                    </h3>
+                    <div className="space-y-4">
+                      <div>
+                        <span className="text-dark/60 dark:text-light/60 text-[12px] md:text-[14px] font-switzer font-light uppercase tracking-wider block mb-1">
+                          Year
+                        </span>
+                        <p className="text-dark dark:text-light font-switzer font-medium text-[16px] md:text-[18px]">
+                          {project.year}
+                        </p>
+                      </div>
+                      {project.client && (
+                        <div>
+                          <span className="text-dark/60 dark:text-light/60 text-[12px] md:text-[14px] font-switzer font-light uppercase tracking-wider block mb-1">
+                            Client
+                          </span>
+                          <p className="text-dark dark:text-light font-switzer font-medium text-[16px] md:text-[18px]">
+                            {project.client}
+                          </p>
+                        </div>
+                      )}
+                      {project.duration && (
+                        <div>
+                          <span className="text-dark/60 dark:text-light/60 text-[12px] md:text-[14px] font-switzer font-light uppercase tracking-wider block mb-1">
+                            Duration
+                          </span>
+                          <p className="text-dark dark:text-light font-switzer font-medium text-[16px] md:text-[18px]">
+                            {project.duration}
+                          </p>
+                        </div>
+                      )}
+                      <div>
+                        <span className="text-dark/60 dark:text-light/60 text-[12px] md:text-[14px] font-switzer font-light uppercase tracking-wider block mb-2">
+                          Services
+                        </span>
+                        <div className="flex flex-wrap gap-2">
+                          {project.tags.map((tag, index) => (
+                            <WorkTag key={index} tag={tag} />
+                          ))}
+                        </div>
+                      </div>
                     </div>
-                    {project.client && (
-                      <div>
-                        <span className="text-dark/60 dark:text-light/60 text-[12px] md:text-[14px] font-switzer font-light uppercase tracking-wider block mb-1">
-                          Client
-                        </span>
-                        <p className="text-dark dark:text-light font-switzer font-medium text-[16px] md:text-[18px]">
-                          {project.client}
-                        </p>
-                      </div>
-                    )}
-                    {project.duration && (
-                      <div>
-                        <span className="text-dark/60 dark:text-light/60 text-[12px] md:text-[14px] font-switzer font-light uppercase tracking-wider block mb-1">
-                          Duration
-                        </span>
-                        <p className="text-dark dark:text-light font-switzer font-medium text-[16px] md:text-[18px]">
-                          {project.duration}
-                        </p>
-                      </div>
-                    )}
-                    <div>
-                      <span className="text-dark/60 dark:text-light/60 text-[12px] md:text-[14px] font-switzer font-light uppercase tracking-wider block mb-2">
-                        Services
-                      </span>
-                      <div className="flex flex-wrap gap-2">
-                        {project.tags.map((tag, index) => (
-                          <WorkTag key={index} tag={tag} />
+                  </div>
+                </div>
+
+                {project.technologies && (
+                  <div className="relative rounded-3xl overflow-hidden bg-light dark:bg-dark p-8">
+                    <BlurBG className="rounded-3xl" />
+                    <div className="relative z-20">
+                      <h3 className="text-[16px] md:text-[18px] lg:text-[20px] font-ao font-bold text-dark dark:text-light mb-4">
+                        Technologies
+                      </h3>
+                      <div className="grid grid-cols-2 gap-3">
+                        {project.technologies.map((tech, index) => (
+                          <div
+                            key={index}
+                            className="bg-light dark:bg-dark rounded-xl p-3 border border-lightBorderColor dark:border-darkBorderColor text-center relative overflow-hidden"
+                          >
+                            <BlurBG className="rounded-xl" />
+                            <span className="text-dark dark:text-light text-[12px] md:text-[14px] font-switzer font-medium relative z-20">
+                              {tech}
+                            </span>
+                          </div>
                         ))}
                       </div>
                     </div>
                   </div>
-                </div>
-              </div>
-
-              {project.technologies && (
-                <div className="relative rounded-3xl overflow-hidden bg-light dark:bg-dark p-8">
-                  <BlurBG className="rounded-3xl" />
-                  <div className="relative z-20">
-                    <h3 className="text-[16px] md:text-[18px] lg:text-[20px] font-ao font-bold text-dark dark:text-light mb-4">
-                      Technologies
-                    </h3>
-                    <div className="grid grid-cols-2 gap-3">
-                      {project.technologies.map((tech, index) => (
-                        <div
-                          key={index}
-                          className="bg-light dark:bg-dark rounded-xl p-3 border border-lightBorderColor dark:border-darkBorderColor text-center relative overflow-hidden"
-                        >
-                          <BlurBG className="rounded-xl" />
-                          <span className="text-dark dark:text-light text-[12px] md:text-[14px] font-switzer font-medium relative z-20">
-                            {tech}
-                          </span>
-                        </div>
-                      ))}
-                    </div>
-                  </div>
-                </div>
-              )}
-            </motion.div>
-          </div>
-        </Container>
-      </section>
+                )}
+              </motion.div>
+            </div>
+          </Container>
+        </section>
       )}
 
       {/* Full-Screen Image Showcase */}

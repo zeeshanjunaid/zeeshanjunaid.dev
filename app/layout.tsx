@@ -11,7 +11,7 @@ import { ThemeProvider } from "@/components/theme-provider";
 import { Toaster } from "@/components/ui/toaster";
 import { cn } from "@/lib/utils";
 import localFont from "next/font/local";
-import { Schema } from "@/components/Schema";
+import { Schema } from "@/components/schema";
 
 export const metadata: Metadata = {
   metadataBase: new URL("https://zeeshanjunaid.dev"),

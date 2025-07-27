@@ -13,8 +13,6 @@ export default async function Home() {
   const selectedProjects = ProjectsList.filter((project) => project.selected);
   const featuredReviews = ReviewsList.filter((review) => review.featured);
   const latestPosts = await getLatestPosts(3);
-
-  // Homepage schema
   const homepageSchema = {
     "@context": "https://schema.org",
     "@type": "WebPage",

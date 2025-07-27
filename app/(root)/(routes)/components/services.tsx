@@ -1,11 +1,8 @@
 "use client";
 
-import { MdCode, MdDesignServices } from "react-icons/md";
-
 import { BlurBG } from "@/components/blur-bg";
 import { Container } from "@/components/container";
 import CustomLink from "@/components/custom-link";
-import Link from "next/link";
 import React from "react";
 import { servicesCategories } from "@/data/services";
 import { motion } from "framer-motion";

@@ -5,8 +5,9 @@ import { Container } from "@/components/container";
 import { BlurBG } from "@/components/blur-bg";
 import { Button } from "@/components/ui/button";
 import { ArrowLeft, Calendar, Clock, Share2, BookOpen } from "lucide-react";
-import { SchemaMarkup, generateBlogPostSchema } from "@/components/schema-markup";
+import { SchemaMarkup } from "@/components/schema-markup";
 import Link from "next/link";
+import { generateBlogPostSchema } from "@/lib/schema";
 
 export async function generateStaticParams() {
   const posts = await getAllPostsMeta();

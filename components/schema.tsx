@@ -1,11 +1,10 @@
 "use client";
-
+import { SchemaMarkup } from "@/components/schema-markup"; // Assuming SchemaMarkup is also in this file
 import {
-  generateWebSiteSchema,
+  generateOrganizationSchema,
   generatePersonSchema,
-  generateOrganizationSchema
-} from '@/components/schema-markup';
-import { SchemaMarkup } from '@/components/schema-markup'; // Assuming SchemaMarkup is also in this file
+  generateWebSiteSchema,
+} from "@/lib/schema";
 
 export function Schema() {
   return (
