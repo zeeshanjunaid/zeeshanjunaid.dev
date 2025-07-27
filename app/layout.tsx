@@ -10,6 +10,7 @@ import { SpeedInsights } from "@vercel/speed-insights/next";
 import { ThemeProvider } from "@/components/theme-provider";
 import { Toaster } from "@/components/ui/toaster";
 import { cn } from "@/lib/utils";
+import { SchemaMarkup, generateWebSiteSchema, generatePersonSchema, generateOrganizationSchema } from "@/components/schema-markup";
 import localFont from "next/font/local";
 
 export const metadata: Metadata = {
@@ -122,6 +123,11 @@ export default function RootLayout({
         </ThemeProvider>
         <Analytics />
         <SpeedInsights />
+        
+        {/* Global Schema Markup */}
+        <SchemaMarkup schema={generateWebSiteSchema()} />
+        <SchemaMarkup schema={generatePersonSchema()} />
+        <SchemaMarkup schema={generateOrganizationSchema()} />
       </body>
     </html>
   );

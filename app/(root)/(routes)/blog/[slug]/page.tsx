@@ -5,6 +5,7 @@ import { Container } from "@/components/container";
 import { BlurBG } from "@/components/blur-bg";
 import { Button } from "@/components/ui/button";
 import { ArrowLeft, Calendar, Clock, Share2, BookOpen } from "lucide-react";
+import { SchemaMarkup, generateBlogPostSchema } from "@/components/schema-markup";
 import Link from "next/link";
 
 export async function generateStaticParams() {
@@ -49,6 +50,9 @@ export default async function BlogPostPage({ params }: { params: { slug: string 
 
     return (
       <>
+        {/* Blog Post Schema Markup */}
+        <SchemaMarkup schema={generateBlogPostSchema(meta)} />
+        
         {/* Hero Section */}
         <section className="relative overflow-hidden">
           <div className="absolute inset-0 -z-10">

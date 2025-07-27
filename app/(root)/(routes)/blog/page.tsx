@@ -1,6 +1,7 @@
 import { getAllPostsMeta } from "@/lib/posts";
 import { Container } from "@/components/container";
 import { BlurBG } from "@/components/blur-bg";
+import { SchemaMarkup } from "@/components/schema-markup";
 import Link from "next/link";
 import { motion } from "framer-motion";
 import { Calendar, Clock, ArrowRight, BookOpen, TrendingUp } from "lucide-react";
@@ -13,8 +14,38 @@ export const metadata = {
 export default async function BlogPage() {
   const posts = await getAllPostsMeta();
 
+  // Blog page schema
+  const blogSchema = {
+    "@context": "https://schema.org",
+    "@type": "Blog",
+    name: "Zeeshan Junaid - Blog & Articles",
+    description: "Expert insights on web development, UI/UX design, and digital strategy. Learn from real-world projects and industry best practices.",
+    url: "https://zeeshanjunaid.dev/blog",
+    author: {
+      "@type": "Person",
+      name: "Zeeshan Junaid",
+      url: "https://zeeshanjunaid.dev/about",
+    },
+    publisher: {
+      "@type": "Person",
+      name: "Zeeshan Junaid",
+    },
+    blogPost: posts.map(post => ({
+      "@type": "BlogPosting",
+      headline: post.title,
+      url: `https://zeeshanjunaid.dev/blog/${post.slug}`,
+      datePublished: post.date,
+      author: {
+        "@type": "Person",
+        name: post.author || "Zeeshan Junaid",
+      },
+    })),
+  };
+
   return (
     <>
+      <SchemaMarkup schema={blogSchema} />
+      
       {/* Hero Section */}
       <section className="relative overflow-hidden">
         <div className="absolute inset-0 -z-10">

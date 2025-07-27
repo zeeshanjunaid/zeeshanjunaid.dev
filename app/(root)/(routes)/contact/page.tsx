@@ -1,6 +1,7 @@
 import ContactPageClient from "../components/contact-client";
 
 import PricingTable from "../components/pricing-table";
+import { SchemaMarkup } from "@/components/schema-markup";
 import { Container } from "@/components/container";
 import { BlurBG } from "@/components/blur-bg";
 import { CheckCircle, HelpCircle, ArrowRight } from "lucide-react";
@@ -13,6 +14,26 @@ export const metadata = {
 };
 
 const ContactPage = () => {
+  // Contact page schema
+  const contactSchema = {
+    "@context": "https://schema.org",
+    "@type": "ContactPage",
+    name: "Contact Zeeshan Junaid - Start Your Project",
+    description: "Get in touch with Zeeshan Junaid to discuss your web development project. Professional UI/UX design and frontend development services.",
+    url: "https://zeeshanjunaid.dev/contact",
+    mainEntity: {
+      "@type": "ContactPoint",
+      contactType: "customer service",
+      email: "hello@zeeshanjunaid.dev",
+      telephone: "+92 340 8563525",
+      availableLanguage: ["English"],
+      serviceArea: {
+        "@type": "Place",
+        name: "Worldwide",
+      },
+    },
+  };
+
   const faqs = [
     {
       question: "What kind of clients do you typically work with?",
@@ -34,6 +55,7 @@ const ContactPage = () => {
 
   return (
     <>
+      <SchemaMarkup schema={contactSchema} />
       <ContactPageClient />
 
       {/* Pricing Section */}

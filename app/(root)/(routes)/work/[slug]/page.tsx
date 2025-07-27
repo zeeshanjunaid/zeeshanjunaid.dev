@@ -15,6 +15,7 @@ import Link from "next/link";
 import Image from "next/image";
 import ProjectsList from "@/data/work";
 import { WorkTag } from "@/components/work-item";
+import { SchemaMarkup, generateProjectSchema } from "@/components/schema-markup";
 import { motion, useScroll, useTransform } from "framer-motion";
 
 interface ProjectPageProps {
@@ -65,6 +66,9 @@ export default function ProjectPage({ params }: ProjectPageProps) {
   };
   return (
     <>
+      {/* Project Schema Markup */}
+      <SchemaMarkup schema={generateProjectSchema(project)} />
+      
       {/* Hero Section with Parallax */}
       <section className="relative min-h-screen flex items-center justify-center overflow-hidden">
         {project.imgUrl && (
