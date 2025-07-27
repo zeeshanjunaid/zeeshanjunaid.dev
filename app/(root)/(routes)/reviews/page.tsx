@@ -1,41 +1,29 @@
-import { SchemaMarkup } from "@/components/schema-markup";
-import ReviewsList from "@/data/reviews";
+// In: app/(root)/(routes)/reviews/page.tsx
+
+import { generateReviewsPageSchema } from "@/lib/schema";
+import ReviewsList from "@/data/reviews"; // Using the default export from your data file
 import ReviewsPageClient from "../components/reviews-client";
 
 export const metadata = {
-  title: "Feedback",
+  title: "Feedback & Reviews",
+  description:
+    "Read testimonials and reviews from clients who have worked with Zeeshan Junaid for web development and design projects.",
 };
 
-const ReviewsPage = () => {
-  // Reviews page schema
-  const reviewsSchema = {
-    "@context": "https://schema.org",
-    "@type": "ProfilePage",
-    name: "Client Reviews - Zeeshan Junaid",
-    description: "Read testimonials and reviews from clients who have worked with Zeeshan Junaid for web development and design projects.",
-    url: "https://zeeshanjunaid.dev/reviews",
-    mainEntity: {
-      "@type": "Person",
-      name: "Zeeshan Junaid",
-      review: ReviewsList.filter(review => review.featured).map(review => ({
-        "@type": "Review",
-        author: {
-          "@type": "Person",
-          name: review.client,
-        },
-        reviewBody: review.review,
-        reviewRating: {
-          "@type": "Rating",
-          ratingValue: "5",
-          bestRating: "5",
-        },
-      })),
-    },
-  };
+function ReviewsPageSchema() {
+  const schema = generateReviewsPageSchema(ReviewsList);
+  return (
+    <script
+      type="application/ld+json"
+      dangerouslySetInnerHTML={{ __html: JSON.stringify(schema) }}
+    />
+  );
+}
 
+const ReviewsPage = () => {
   return (
     <>
-      <SchemaMarkup schema={reviewsSchema} />
+      <ReviewsPageSchema />
       <ReviewsPageClient />
     </>
   );

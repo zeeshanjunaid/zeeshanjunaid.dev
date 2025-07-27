@@ -1,3 +1,5 @@
+import { Review } from "@/data/reviews";
+
 export const generateWebSiteSchema = () => ({
   "@context": "https://schema.org",
   "@type": "WebSite",
@@ -177,3 +179,50 @@ export const generateOrganizationSchema = () => ({
   },
   priceRange: "$$",
 });
+
+export const generateReviewsPageSchema = (reviews: Review[]) => {
+  if (!reviews || reviews.length === 0) {
+    return {}; // Return empty object if no reviews
+  }
+
+  const totalReviews = reviews.length;
+  const averageRating = (
+    reviews.reduce((sum, review) => sum + review.rating, 0) / totalReviews
+  ).toFixed(1);
+
+  return {
+    "@context": "https://schema.org",
+    "@type": "ProfessionalService",
+    name: "Zeeshan Junaid - Freelance Developer",
+    image: "https://zeeshanjunaid.dev/images/opengraph-image.jpg",
+    url: "https://zeeshanjunaid.dev/reviews",
+    telephone: "+92 340 8563525",
+    priceRange: "$$",
+    address: {
+      "@type": "PostalAddress",
+      addressCountry: "Pakistan",
+    },
+
+    aggregateRating: {
+      "@type": "AggregateRating",
+      ratingValue: averageRating,
+      bestRating: "5",
+      ratingCount: totalReviews,
+    },
+
+    review: reviews.map((reviewItem) => ({
+      "@type": "Review",
+      author: {
+        "@type": "Person",
+        name: reviewItem.client,
+      },
+      reviewRating: {
+        "@type": "Rating",
+        ratingValue: reviewItem.rating.toString(),
+        bestRating: "5",
+      },
+      reviewBody: reviewItem.review,
+      headline: reviewItem.headline || "A review for Zeeshan Junaid's services",
+    })),
+  };
+};
