@@ -57,18 +57,17 @@ export const generatePersonSchema = () => ({
     name: "Frontend Developer",
     description:
       "Designs and develops user-facing web applications using modern technologies like React and Next.js.",
+    mainEntityOfPage: "https://zeeshanjunaid.dev/about",
     occupationLocation: {
       "@type": "Country",
       name: "Pakistan",
     },
     estimatedSalary: {
-      "@type": "MonetaryAmount",
+      "@type": "MonetaryAmountDistribution",
+      name: "Estimated Annual Salary",
       currency: "USD",
-      value: {
-        "@type": "QuantitativeValue",
-        value: 80000,
-        unitText: "YEAR",
-      },
+      duration: "P1Y",
+      median: "80000",
     },
     skills: [
       "React Development",
