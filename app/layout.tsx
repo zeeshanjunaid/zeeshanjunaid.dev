@@ -12,7 +12,6 @@ import { Toaster } from "@/components/ui/toaster";
 import { cn } from "@/lib/utils";
 import localFont from "next/font/local";
 import { Schema } from "@/components/schema";
-
 export const metadata: Metadata = {
   metadataBase: new URL("https://zeeshanjunaid.dev"),
   title: {
@@ -26,15 +25,40 @@ export const metadata: Metadata = {
     shortcut: "/favicons/favicon-16x16.png",
     apple: "/favicons/apple-touch-icon.png",
   },
+  authors: [{ name: "Zeeshan Junaid", url: "https://zeeshanjunaid.dev" }],
+  keywords: [
+    "UI/UX Design",
+    "Frontend Development",
+    "React",
+    "Next.js",
+    "TypeScript",
+    "Web Developer",
+    "Portfolio",
+    "Zeeshan Junaid",
+  ],
   openGraph: {
     title: "Zeeshan Junaid - UI/UX Designer and Frontend Developer",
     description:
       "Experienced freelance UI/UX designer and frontend developer with over 8 years of expertise in creating engaging digital experiences, innovative design solutions and seamless user interfaces.",
     url: "https://zeeshanjunaid.dev",
     siteName: "Zeeshan Junaid",
-    images: "/images/opengraph-image.jpg",
-    locale: "en-US",
+    images: [
+      {
+        url: "/images/opengraph-image.jpg", 
+        width: 1200,
+        height: 630,
+        alt: "Zeeshan Junaid - UI/UX Designer and Frontend Developer",
+      },
+    ],
+    locale: "en_US",
     type: "website",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Zeeshan Junaid - UI/UX Designer and Frontend Developer",
+    description:
+      "Experienced freelance UI/UX designer and frontend developer with over 8 years of expertise in creating engaging digital experiences.",
+    images: ["/images/opengraph-image.jpg"],
   },
   robots: {
     index: true,
