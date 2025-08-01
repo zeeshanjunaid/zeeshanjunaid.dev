@@ -1,6 +1,6 @@
 import { getAllPostsMeta, getPostBySlug } from "@/lib/posts";
 import { notFound } from "next/navigation";
-import type { Metadata } from 'next';
+import type { Metadata } from "next";
 import { Container } from "@/components/container";
 import { BlurBG } from "@/components/blur-bg";
 import { Button } from "@/components/ui/button";
@@ -14,38 +14,49 @@ export async function generateStaticParams() {
   return posts.map((post) => ({ slug: post.slug }));
 }
 
-export async function generateMetadata({ params }: { params: { slug: string } }): Promise<Metadata> {
+export async function generateMetadata({
+  params,
+}: {
+  params: { slug: string };
+}): Promise<Metadata> {
   try {
     const { meta } = await getPostBySlug(params.slug);
     return {
       title: `${meta.title} - Blog`,
       description: meta.excerpt,
+      alternates: {
+        canonical: `/blog/${params.slug}`,
+      },
       openGraph: {
         title: meta.title,
         description: meta.excerpt,
         url: `https://zeeshanjunaid.dev/blog/${params.slug}`,
-        type: 'article',
+        type: "article",
         publishedTime: meta.date,
-        authors: [meta.author || 'Zeeshan Junaid'],
+        authors: [meta.author || "Zeeshan Junaid"],
         tags: meta.tags,
       },
       twitter: {
-        card: 'summary_large_image',
+        card: "summary_large_image",
         title: meta.title,
         description: meta.excerpt,
-      }
+      },
     };
   } catch {
     return {
       title: "Post Not Found",
-      description: "This post could not be found."
+      description: "This post could not be found.",
     };
   }
 }
 
-export default async function BlogPostPage({ params }: { params: { slug: string } }) {
+export default async function BlogPostPage({
+  params,
+}: {
+  params: { slug: string };
+}) {
   const { slug } = params;
-  
+
   try {
     const { meta, content } = await getPostBySlug(slug);
 
@@ -53,7 +64,7 @@ export default async function BlogPostPage({ params }: { params: { slug: string 
       <>
         {/* Blog Post Schema Markup */}
         <SchemaMarkup schema={generateBlogPostSchema(meta)} />
-        
+
         {/* Hero Section */}
         <section className="relative overflow-hidden">
           <div className="absolute inset-0 -z-10">
@@ -101,10 +112,10 @@ export default async function BlogPostPage({ params }: { params: { slug: string 
                 <div className="flex items-center gap-2">
                   <Calendar className="w-5 h-5" />
                   <span className="font-switzer font-light text-[16px]">
-                    {new Date(meta.date).toLocaleDateString('en-US', {
-                      year: 'numeric',
-                      month: 'long',
-                      day: 'numeric'
+                    {new Date(meta.date).toLocaleDateString("en-US", {
+                      year: "numeric",
+                      month: "long",
+                      day: "numeric",
                     })}
                   </span>
                 </div>
@@ -145,7 +156,7 @@ export default async function BlogPostPage({ params }: { params: { slug: string 
           <Container className="px-4 md:px-7 lg:px-0">
             <div className="relative bg-light dark:bg-dark rounded-3xl p-8 md:p-12 lg:p-16 overflow-hidden">
               <BlurBG className="rounded-3xl" />
-              
+
               <article className="relative z-20 prose prose-lg dark:prose-invert max-w-none prose-headings:font-ao prose-headings:text-dark dark:prose-headings:text-light prose-p:text-dark/90 dark:prose-p:text-light/90 prose-p:font-switzer prose-p:font-light prose-p:leading-relaxed prose-a:text-purple prose-a:no-underline hover:prose-a:underline prose-strong:text-dark dark:prose-strong:text-light prose-code:text-purple prose-code:bg-purple/10 prose-code:px-2 prose-code:py-1 prose-code:rounded">
                 {content}
               </article>
@@ -159,15 +170,16 @@ export default async function BlogPostPage({ params }: { params: { slug: string 
             <div className="relative bg-light dark:bg-dark rounded-3xl p-12 md:p-16 text-center overflow-hidden">
               <BlurBG className="rounded-3xl" />
               <div className="absolute inset-0 bg-gradient-to-br from-purple/10 via-transparent to-purple/5 rounded-3xl" />
-              
+
               <div className="relative z-20">
                 <h2 className="text-[28px] md:text-[36px] lg:text-[42px] font-bold font-ao text-dark dark:text-light mb-6">
                   Ready to Apply These Insights?
                 </h2>
                 <p className="text-dark/80 dark:text-light/80 font-switzer font-light text-[16px] md:text-[18px] lg:text-[20px] leading-relaxed max-w-2xl mx-auto mb-8">
-                  Let&apos;s discuss how I can help implement these strategies and techniques in your next project.
+                  Let&apos;s discuss how I can help implement these strategies
+                  and techniques in your next project.
                 </p>
-                
+
                 <div className="flex flex-col sm:flex-row gap-4 justify-center">
                   <Link href="/contact">
                     <Button

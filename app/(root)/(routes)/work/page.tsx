@@ -4,6 +4,9 @@ import WorkWrapper from "../components/work-wrapper";
 
 export const metadata = {
   title: "Work",
+  alternates: {
+    canonical: "/work",
+  },
 };
 
 const WorkPage = () => {
@@ -12,7 +15,8 @@ const WorkPage = () => {
     "@context": "https://schema.org",
     "@type": "CollectionPage",
     name: "Portfolio - Zeeshan Junaid",
-    description: "A collection of web development and design projects showcasing expertise in React, Next.js, and modern web technologies.",
+    description:
+      "A collection of web development and design projects showcasing expertise in React, Next.js, and modern web technologies.",
     url: "https://zeeshanjunaid.dev/work",
     author: {
       "@type": "Person",

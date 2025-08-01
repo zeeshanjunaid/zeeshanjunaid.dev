@@ -6,6 +6,9 @@ import Skills from "../components/skills";
 
 export const metadata = {
   title: "About Me",
+  alternates: {
+    canonical: "/about",
+  },
 };
 
 const AboutPage = () => {
@@ -14,13 +17,15 @@ const AboutPage = () => {
     "@context": "https://schema.org",
     "@type": "AboutPage",
     name: "About Zeeshan Junaid - UI/UX Designer and Frontend Developer",
-    description: "Learn about Zeeshan Junaid's 8+ years of experience in UI/UX design and frontend development, helping businesses succeed online.",
+    description:
+      "Learn about Zeeshan Junaid's 8+ years of experience in UI/UX design and frontend development, helping businesses succeed online.",
     url: "https://zeeshanjunaid.dev/about",
     mainEntity: {
       "@type": "Person",
       name: "Zeeshan Junaid",
       jobTitle: "UI/UX Designer and Frontend Developer",
-      description: "Experienced freelance developer with 8+ years helping businesses build high-performance web applications.",
+      description:
+        "Experienced freelance developer with 8+ years helping businesses build high-performance web applications.",
       yearsOfExperience: "8",
       skills: [
         "React Development",

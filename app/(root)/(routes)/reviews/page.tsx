@@ -8,6 +8,9 @@ export const metadata = {
   title: "Feedback & Reviews",
   description:
     "Read testimonials and reviews from clients who have worked with Zeeshan Junaid for web development and design projects.",
+  alternates: {
+    canonical: "/reviews",
+  },
 };
 
 function ReviewsPageSchema() {

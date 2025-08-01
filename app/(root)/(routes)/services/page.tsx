@@ -3,6 +3,9 @@ import { ServiceSchema } from "../components/service-schema";
 
 export const metadata = {
   title: "Services",
+  alternates: {
+    canonical: "/services",
+  },
 };
 
 const ServicesPage = () => {

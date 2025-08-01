@@ -11,6 +11,9 @@ import ContactForm from "../components/contact-form";
 
 export const metadata = {
   title: "Start a Project",
+  alternates: {
+    canonical: "/contact",
+  },
 };
 
 const ContactPage = () => {
