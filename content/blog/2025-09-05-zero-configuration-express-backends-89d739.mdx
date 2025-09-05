@@ -1,7 +1,7 @@
 ---
 title: Zero-configuration Express backends
 slug: 2025-09-05-zero-configuration-express-backends-89d739
-date: '2025-09-05T23:23:45.640Z'
+date: '2025-09-05T23:27:01.681Z'
 tags:
   - react
   - next.js
@@ -9,108 +9,100 @@ tags:
   - node
   - web
 excerpt: >-
-  Learn how zero-configuration Express backends simplify Next.js deployments and
-  improve developer experience and performance.
+  Learn about zero-config Express backends on Vercel. Simplify your Next.js API
+  routes with no setup and better performance.
 cover: /images/og/2025-09-05-zero-configuration-express-backends-89d739.png
 readingTime: 3 min
 featured: false
 ---
 # What changed: Zero-configuration Express backends
 
-Vercel now supports zero-configuration Express backends. This means you can deploy Express apps alongside your Next.js projects without extra setup. It’s faster to start, easier to maintain, and fits well with modern React/Next.js workflows.
+Vercel now supports Express backends without any setup. This means you can write Express apps and deploy them on Vercel with zero configuration. It’s a simple way to add backend APIs alongside your Next.js frontend.
 
-## Why it matters for React/Next.js teams
+## Why it matters
 
-- **Performance and DX:** Express servers run without manual config. Less setup means fewer errors and faster iteration.
-- **Stack fit:** Works smoothly with Next.js API routes and server components.
-- **Who should care:** Frontend engineers, developer experience leads, and performance champions.
+If you build React or Next.js apps, you often need an API. Express is a popular Node.js framework for APIs. But setting up Express on serverless platforms can be tricky.
+
+With zero-config Express backends, you get:
+
+- Faster development. No need to tweak build or deploy settings.
+- Easier deployments. Just push your Express code.
+- Good performance out of the box.
+
+This fits well in modern stacks where Next.js handles frontend and you want a quick backend without a separate server.
+
+Frontend devs, DX owners, and performance leads should look into this. It can simplify your API layer and speed up your workflow.
 
 ## Background
 
-Previously, deploying an Express backend required manual configuration. You had to set up custom servers or adjust build settings. This added complexity and risked deployment issues.
+Before, running Express on Vercel needed manual config. You had to customize `vercel.json` or use special adapters.
 
-Now, Vercel detects Express apps automatically. It handles the server setup behind the scenes. This removes boilerplate and lets you focus on code.
+Now, Vercel detects Express apps automatically. It runs them as serverless functions without extra setup.
 
-### Breaking changes or migrations
+There are no breaking changes to existing Next.js API routes. You can add Express APIs side-by-side.
 
-- If you used custom Express server setups, you should test deployments carefully.
-- Old manual configs may conflict with the new zero-config system.
-- Migrating mostly means removing custom server code and relying on the new defaults.
+Migration is simple: just add Express code in your project and deploy.
 
 ## Steps to get started
 
-### 1. Minimal Express app example
+Here’s a minimal example.
 
 ```js
+// api/hello.js
 const express = require('express');
 const app = express();
 
-app.get('/api/hello', (req, res) => {
+app.get('/', (req, res) => {
   res.json({ message: 'Hello from Express!' });
 });
 
 module.exports = app;
 ```
 
-### 2. Enable zero-config (usually automatic)
+Place this file inside your project under the `api` folder. Vercel will detect it as an Express backend.
 
-On Vercel, no extra flags are needed if you have an `express` dependency and export the app. Just deploy.
+No flags or config needed. Just deploy.
 
-If you want to disable it, you can set `vercel.json` with:
+To call this API from your Next.js frontend:
 
-```json
-{
-  "functions": {
-    "api/**/*.js": {
-      "runtime": "nodejs"
-    }
-  }
-}
+```js
+fetch('/api/hello')
+  .then(res => res.json())
+  .then(data => console.log(data));
 ```
 
-### 3. Use Express APIs end-to-end
-
-Your Express routes work as usual. You can combine them with Next.js API routes or server components.
-
-Example request:
-
-```bash
-curl https://your-project.vercel.app/api/hello
-```
-
-Response:
-
-```json
-{ "message": "Hello from Express!" }
-```
+This example shows a simple GET endpoint. You can add more routes and middleware as usual.
 
 ## Pitfalls to watch
 
-- **Misconfiguration:** Mixing custom Express servers with Next.js can cause conflicts.
-- **Edge cases:** SSR and Edge runtimes don’t support Express. Use Next.js API routes or Edge functions there.
-- **Performance:** Express adds some overhead compared to native Next.js API routes. Test your app’s needs.
+- **Misconfigurations:** Avoid mixing Express and Next.js API routes in the same file. Keep Express apps in their own files.
 
-## Checklist before shipping
+- **Edge cases:** Express runs as a serverless function, not on the Edge runtime. If you need Edge APIs, use Next.js API routes or middleware.
 
-- Measure Web Vitals before and after deploying Express backend.
-- Ship a small demo page that calls your Express API.
-- Add monitoring and alerts for your Express endpoints.
-- Plan a rollback in case of deployment issues.
-- Share your learnings with your team.
+- **Performance:** Cold starts may happen like any serverless function. Keep your Express app light to reduce latency.
+
+- **Static exports:** If you use static HTML export, Express backends won’t run. They require serverless deployment.
+
+## Checklist before you ship
+
+1. **Measure before/after:** Use Web Vitals or similar to track performance impact.
+2. **Ship a tiny demo:** Start with a small Express API to test.
+3. **Add monitoring:** Set up error tracking and alerts for your backend.
+4. **Plan rollback:** Keep your old API routes ready to revert.
+5. **Share learnings:** Document your experience and share with your team.
 
 ```mermaid
+%% Express backend deployment flow
 flowchart TD
-  A[Write Express app] --> B[Deploy on Vercel]
-  B --> C{Vercel detects Express?}
-  C -- Yes --> D[Zero-config backend runs]
-  C -- No --> E[Manual config needed]
-  D --> F[App serves API requests]
-  E --> F
+  Dev[Developer writes Express API] --> Vercel[Vercel detects Express app]
+  Vercel --> Deploy[Deploy as serverless function]
+  Deploy --> User[User calls API endpoint]
+  User --> Deploy
 ```
 
-## Summary
+Zero-configuration Express backends are a practical way to add APIs to your Next.js projects with minimal fuss. Try it on your next project to see how it fits your workflow.
 
-Zero-configuration Express backends simplify backend deployment for React and Next.js teams. They reduce setup time and improve developer experience. But watch out for SSR and Edge limits. Test performance and monitor your endpoints.
+---
 
 # Further reading
 
