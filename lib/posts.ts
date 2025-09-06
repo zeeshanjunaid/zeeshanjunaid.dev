@@ -15,6 +15,7 @@ export interface PostMeta {
   author?: string;
   tags?: string[];
   featured?: boolean;
+  cover?: string;
 }
 
 export async function getPostBySlug(slug: string) {

@@ -3,6 +3,7 @@ import { Container } from "@/components/container";
 import { BlurBG } from "@/components/blur-bg";
 import { SchemaMarkup } from "@/components/schema-markup";
 import Link from "next/link";
+import Image from "next/image";
 import { Calendar, Clock, ArrowRight, BookOpen, TrendingUp } from "lucide-react";
 
 export const metadata = {
@@ -124,10 +125,24 @@ export default async function BlogPage() {
                 <Link href={`/blog/${post.slug}`} key={post.slug}>
                   <article className="group relative bg-light dark:bg-dark rounded-3xl p-8 md:p-10 overflow-hidden border border-lightBorderColor dark:border-darkBorderColor hover:border-purple/30 transition-all duration-300 hover:scale-[1.01]">
                     <BlurBG className="rounded-3xl" />
-                    
+
                     <div className="relative z-20">
                       <div className="flex flex-col lg:flex-row lg:items-start lg:justify-between gap-6">
                         <div className="flex-1">
+                          {/* Cover Image */}
+                          {post.cover && (
+                            <div className="w-full mb-6">
+                              <Image
+                                src={post.cover}
+                                alt={post.title}
+                                width={800}
+                                height={320}
+                                className="w-full rounded-2xl object-cover max-h-[320px]"
+                                loading="lazy"
+                              />
+                            </div>
+                          )}
+
                           {/* Featured Badge */}
                           {post.featured && (
                             <div className="inline-flex items-center gap-2 bg-purple/10 px-3 py-1.5 rounded-xl mb-4">
@@ -141,7 +156,7 @@ export default async function BlogPage() {
                           <h2 className="text-[24px] md:text-[28px] lg:text-[32px] font-bold font-ao text-dark dark:text-light mb-4 group-hover:text-purple transition-colors duration-300 leading-tight">
                             {post.title}
                           </h2>
-                          
+
                           <p className="text-dark/80 dark:text-light/80 font-switzer font-light text-[16px] md:text-[18px] leading-relaxed mb-6">
                             {post.excerpt}
                           </p>

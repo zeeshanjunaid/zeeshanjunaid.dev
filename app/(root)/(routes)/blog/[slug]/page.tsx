@@ -1,4 +1,5 @@
 import { getAllPostsMeta, getPostBySlug } from "@/lib/posts";
+import Image from "next/image";
 import { notFound } from "next/navigation";
 import type { Metadata } from "next";
 import { Container } from "@/components/container";
@@ -89,6 +90,20 @@ export default async function BlogPostPage({
 
             {/* Article Header */}
             <div className="max-w-4xl">
+              {/* Cover Image */}
+              {meta.cover && (
+                <div className="w-full mb-8">
+                  <Image
+                    src={meta.cover}
+                    alt={meta.title}
+                    width={1200}
+                    height={420}
+                    className="w-full rounded-2xl object-cover max-h-[420px]"
+                    priority
+                  />
+                </div>
+              )}
+
               {/* Featured Badge */}
               {meta.featured && (
                 <div className="inline-flex items-center gap-2 bg-purple/10 px-4 py-2 rounded-xl mb-6">
