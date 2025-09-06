@@ -105,12 +105,12 @@ export function MermaidDiagram({ children, className, ...props }: MermaidDiagram
         
         // Render the diagram
         console.log('Rendering Mermaid diagram...');
-        window.mermaid.render(id, diagramContent).then(({ svg }) => {
+  window.mermaid.render(id, diagramContent).then(({ svg }: { svg: string }) => {
           console.log('Mermaid diagram rendered successfully');
           if (diagramRef.current) {
             diagramRef.current.innerHTML = svg;
           }
-        }).catch((error) => {
+  }).catch((error: unknown) => {
           console.error('Error rendering Mermaid diagram:', error);
           if (diagramRef.current) {
             // Show a more readable fallback
