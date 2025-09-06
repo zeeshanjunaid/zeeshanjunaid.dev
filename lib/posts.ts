@@ -51,8 +51,9 @@ export async function getAllPostsMeta(): Promise<PostMeta[]> {
   let posts: PostMeta[] = [];
   const seenSlugs = new Set<string>();
   for (const file of mdxFiles) {
+    const slug = file.replace(/\.mdx$/, "");
     try {
-      const { meta } = await getPostBySlug(file);
+      const { meta } = await getPostBySlug(slug);
       if (!seenSlugs.has(meta.slug)) {
         posts.push(meta);
         seenSlugs.add(meta.slug);

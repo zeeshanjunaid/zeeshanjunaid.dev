@@ -1,12 +1,14 @@
 "use client";
 
-import { Container } from "@/components/container";
+import { ArrowRight, BookOpen, Calendar, Clock } from "lucide-react";
+
 import { BlurBG } from "@/components/blur-bg";
 import { Button } from "@/components/ui/button";
-import { ArrowRight, Calendar, Clock, BookOpen } from "lucide-react";
+import { Container } from "@/components/container";
+import Image from "next/image";
 import Link from "next/link";
-import { motion } from "framer-motion";
 import type { PostMeta } from "@/lib/posts";
+import { motion } from "framer-motion";
 
 interface LatestBlogPostsProps {
   posts: PostMeta[];
@@ -58,7 +60,8 @@ const LatestBlogPosts = ({ posts }: LatestBlogPostsProps) => {
             Latest Insights & Expertise
           </h3>
           <p className="text-dark/70 dark:text-light/70 font-switzer font-light text-[16px] md:text-[18px] leading-relaxed max-w-3xl">
-            Practical advice and real-world insights from building high-performance web applications.
+            Practical advice and real-world insights from building
+            high-performance web applications.
           </p>
         </motion.div>
 
@@ -70,49 +73,94 @@ const LatestBlogPosts = ({ posts }: LatestBlogPostsProps) => {
               className="group"
             >
               <Link href={`/blog/${post.slug}`}>
-                <article className="relative bg-light dark:bg-dark rounded-3xl p-8 overflow-hidden h-full border border-lightBorderColor dark:border-darkBorderColor hover:border-purple/30 transition-all duration-300 group-hover:scale-105">
+                <article className="relative bg-light dark:bg-dark rounded-3xl overflow-hidden h-full border border-lightBorderColor dark:border-darkBorderColor hover:border-purple/30 transition-all duration-300 group-hover:scale-105">
                   <BlurBG className="rounded-3xl" />
-                  
+
                   <div className="relative z-20 flex flex-col h-full">
-                    {/* Featured Badge */}
-                    {post.featured && (
-                      <div className="inline-flex items-center gap-2 bg-purple/10 px-3 py-1.5 rounded-xl mb-4 w-fit">
-                        <BookOpen className="w-4 h-4 text-purple" />
-                        <span className="text-purple font-switzer font-medium text-[10px] md:text-[12px] uppercase tracking-wider">
-                          Featured
-                        </span>
+                    {/* Cover Image */}
+                    {post.cover && (
+                      <div className="relative aspect-[4/3] overflow-hidden">
+                        <Image
+                          src={post.cover}
+                          alt={post.title}
+                          fill
+                          className="object-cover group-hover:scale-110 transition-transform duration-700"
+                          loading="lazy"
+                          sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+                        />
+                        <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-black/20 to-transparent" />
+
+                        {/* Date Badge */}
+                        <div className="absolute top-4 left-4">
+                          <div className="bg-white/90 dark:bg-dark/90 backdrop-blur-sm px-3 py-1.5 rounded-xl">
+                            <span className="text-purple font-switzer font-medium text-[12px] uppercase tracking-wider">
+                              {new Date(post.date).toLocaleDateString("en-US", {
+                                month: "short",
+                                day: "numeric",
+                              })}
+                            </span>
+                          </div>
+                        </div>
+
+                        {/* Featured Badge */}
+                        {post.featured && (
+                          <div className="absolute top-4 right-4">
+                            <div className="bg-purple/90 backdrop-blur-sm px-3 py-1.5 rounded-xl">
+                              <span className="text-white font-switzer font-medium text-[12px] uppercase tracking-wider">
+                                Featured
+                              </span>
+                            </div>
+                          </div>
+                        )}
                       </div>
                     )}
 
-                    <h3 className="text-[20px] md:text-[24px] font-ao font-bold text-dark dark:text-light mb-4 group-hover:text-purple transition-colors duration-300 leading-tight flex-1">
-                      {post.title}
-                    </h3>
-                    
-                    <p className="text-dark/80 dark:text-light/80 font-switzer font-light text-[14px] md:text-[16px] leading-relaxed mb-6 line-clamp-3">
-                      {post.excerpt}
-                    </p>
+                    <div className="p-8 flex flex-col flex-1">
+                      {/* Featured Badge for posts without cover image */}
+                      {post.featured && !post.cover && (
+                        <div className="inline-flex items-center gap-2 bg-purple/10 px-3 py-1.5 rounded-xl mb-4 w-fit">
+                          <BookOpen className="w-4 h-4 text-purple" />
+                          <span className="text-purple font-switzer font-medium text-[10px] md:text-[12px] uppercase tracking-wider">
+                            Featured
+                          </span>
+                        </div>
+                      )}
 
-                    {/* Meta Info */}
-                    <div className="flex items-center justify-between text-dark/60 dark:text-light/60 pt-4 border-t border-lightBorderColor dark:border-darkBorderColor">
-                      <div className="flex items-center gap-4">
-                        <div className="flex items-center gap-1">
-                          <Calendar className="w-3 h-3" />
-                          <span className="font-switzer font-light text-[12px]">
-                            {new Date(post.date).toLocaleDateString('en-US', {
-                              month: 'short',
-                              day: 'numeric'
-                            })}
-                          </span>
+                      <h3 className="text-[20px] md:text-[24px] font-ao font-bold text-dark dark:text-light mb-4 group-hover:text-purple transition-colors duration-300 leading-tight flex-1">
+                        {post.title}
+                      </h3>
+
+                      <p className="text-dark/80 dark:text-light/80 font-switzer font-light text-[14px] md:text-[16px] leading-relaxed mb-6 line-clamp-3">
+                        {post.excerpt}
+                      </p>
+
+                      {/* Meta Info */}
+                      <div className="flex items-center justify-between text-dark/60 dark:text-light/60 pt-4 border-t border-lightBorderColor dark:border-darkBorderColor">
+                        <div className="flex items-center gap-4">
+                          {!post.cover && (
+                            <div className="flex items-center gap-1">
+                              <Calendar className="w-3 h-3" />
+                              <span className="font-switzer font-light text-[12px]">
+                                {new Date(post.date).toLocaleDateString(
+                                  "en-US",
+                                  {
+                                    month: "short",
+                                    day: "numeric",
+                                  }
+                                )}
+                              </span>
+                            </div>
+                          )}
+                          <div className="flex items-center gap-1">
+                            <Clock className="w-3 h-3" />
+                            <span className="font-switzer font-light text-[12px]">
+                              {post.readingTime}m
+                            </span>
+                          </div>
                         </div>
-                        <div className="flex items-center gap-1">
-                          <Clock className="w-3 h-3" />
-                          <span className="font-switzer font-light text-[12px]">
-                            {post.readingTime}m
-                          </span>
-                        </div>
+
+                        <ArrowRight className="w-4 h-4 text-dark/40 dark:text-light/40 group-hover:text-purple group-hover:translate-x-1 transition-all duration-300" />
                       </div>
-
-                      <ArrowRight className="w-4 h-4 text-dark/40 dark:text-light/40 group-hover:text-purple group-hover:translate-x-1 transition-all duration-300" />
                     </div>
                   </div>
 
