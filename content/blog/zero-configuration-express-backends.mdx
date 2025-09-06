@@ -1,4 +1,3 @@
----
 title: >-
   Zero-configuration Express Backends on Vercel: What Changes for React and
   Next.js Teams
@@ -49,7 +48,6 @@ ogDescription: >-
   Express—no build scripts or custom config. Here’s how it works, what to watch
   for, and...
 featured: false
----
 export const seo = {
   "jsonLd": "{\"@context\":\"https://schema.org\",\"@type\":\"BlogPosting\",\"headline\":\"Zero-configuration Express Backends on Vercel: What Changes…\",\"description\":\"Vercel now supports zero-config Express backends. Ship API routes with Express—no build scripts or custom config. Here’s how it works, what to watch for, …\",\"url\":\"https://zeeshanjunaid.dev/blog/zero-configuration-express-backends\",\"mainEntityOfPage\":\"https://zeeshanjunaid.dev/blog/zero-configuration-express-backends\",\"author\":{\"@type\":\"Person\",\"name\":\"Zeeshan Junaid\"},\"publisher\":{\"@type\":\"Person\",\"name\":\"Zeeshan Junaid\"},\"datePublished\":\"2025-09-06T09:54:40.909Z\",\"image\":\"https://zeeshanjunaid.dev/images/og/zero-configuration-express-backends.png\"}",
   "faq": [
@@ -92,6 +90,3 @@ graph TD;
   B --> C[Express Backend]
   C --> D[API Response]
 ``` ## Pitfalls and edge cases - **Misplacing `express.js`:** If not at project root or `/api`, Vercel won’t detect it. - **SSR vs API:** Don’t mix SSR logic in `express.js`; keep frontend rendering in Next.js pages. - **Static assets:** Serve static files via Next.js/public, not through Express; otherwise, caching may break. - **Performance:** Always-on backends may cost more than serverless for low-traffic APIs; monitor cold starts if any (not documented yet). - **Middleware:** Use only supported Express middleware; custom binaries or native modules may not work (not documented yet). ## Checklist before rollout 1. Measure Web Vitals before and after enabling Express backend. 2. Ship a demo page that exercises each API route end-to-end. 3. Add monitoring/alerting for backend errors and latency spikes. 4. Plan a rollback path to previous serverless or custom-server approach if issues arise. 5. Share findings and gotchas with your team after first deployment. ## Further reading
-- [Zero-configuration Express backends - Vercel](https://vercel.com/changelog/zero-configuration-express-backends)
-- [Blog - Vercel](https://vercel.com/blog)
-- [Changelog - Vercel](https://vercel.com/changelog)

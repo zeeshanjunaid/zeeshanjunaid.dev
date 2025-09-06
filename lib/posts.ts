@@ -1,7 +1,7 @@
-import fs from 'fs';
-import path from 'path';
-import matter from 'gray-matter';
 import { compileMDX } from 'next-mdx-remote/rsc';
+import fs from 'fs';
+import matter from 'gray-matter';
+import path from 'path';
 
 const root = process.cwd();
 const postsDirectory = path.join(root, 'content', 'blog');
@@ -48,16 +48,18 @@ export async function getAllPostsMeta(): Promise<PostMeta[]> {
   const mdxFiles = files.filter(file => file.endsWith('.mdx'));
 
   let posts: PostMeta[] = [];
-  
+  const seenSlugs = new Set<string>();
   for (const file of mdxFiles) {
     try {
       const { meta } = await getPostBySlug(file);
-      posts.push(meta);
+      if (!seenSlugs.has(meta.slug)) {
+        posts.push(meta);
+        seenSlugs.add(meta.slug);
+      }
     } catch (error) {
       console.warn(`Failed to load post: ${file}`);
     }
   }
-
   // Sort posts by date in descending order
   return posts.sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime());
 }
