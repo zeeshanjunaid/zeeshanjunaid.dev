@@ -1,155 +1,100 @@
 ---
-title: Zero-configuration Express backends
+title: 'Zero-Configuration Express Backends on Vercel: Fast APIs, No Setup'
 slug: 2025-09-06-zero-configuration-express-backends-89d739
-date: '2025-09-06T02:57:30.115Z'
+date: '2025-09-06T08:33:44.028Z'
 tags:
-  - react
-  - next.js
-  - performance
-  - node
-  - web
+  - vercel
+  - express
+  - backend
+  - nextjs
+  - api
 excerpt: >-
-  Learn how zero-configuration Express backends improve performance and
-  developer experience in Next.js projects.
+  Vercel now supports zero-config Express.js backends. Ship custom API logic
+  with no build steps or config files. Learn what changed, how it fits
+  Next.js/React...
+description: >-
+  Vercel now supports zero-config Express.js backends. Ship custom API logic
+  with no build steps or config files. Learn what changed, how it fits
+  Next.js/Re…
 cover: /images/og/2025-09-06-zero-configuration-express-backends-89d739.png
 readingTime: 4 min
+keywords:
+  - vercel
+  - express
+  - backend
+  - nextjs
+  - api
+entities:
+  - Zero
+  - Configuration
+  - Express
+  - Backends
+  - Vercel
+  - Fast
+  - APIs
+  - Setup
+  - vercel
+  - express
+  - backend
+  - nextjs
+ogTitle: 'Zero-Configuration Express Backends on Vercel: Fast APIs, No Setup'
+ogDescription: >-
+  Vercel now supports zero-config Express.js backends. Ship custom API logic
+  with no build steps or config files. Learn what changed, how it fits
+  Next.js/React...
 featured: false
 ---
-# Zero-configuration Express backends
+export const seo = {
+  "jsonLd": "{\"@context\":\"https://schema.org\",\"@type\":\"BlogPosting\",\"headline\":\"Zero-Configuration Express Backends on Vercel: Fast APIs, N…\",\"description\":\"Vercel now supports zero-config Express.js backends. Ship custom API logic with no build steps or config files. Learn what changed, how it fits Next.js/Re…\",\"url\":\"https://zeeshanjunaid.dev/blog/2025-09-06-zero-configuration-express-backends-89d739\",\"mainEntityOfPage\":\"https://zeeshanjunaid.dev/blog/2025-09-06-zero-configuration-express-backends-89d739\",\"author\":{\"@type\":\"Person\",\"name\":\"Zeeshan Junaid\"},\"publisher\":{\"@type\":\"Person\",\"name\":\"Zeeshan Junaid\"},\"datePublished\":\"2025-09-06T08:33:44.028Z\",\"image\":\"https://zeeshanjunaid.dev/images/og/2025-09-06-zero-configuration-express-backends-89d739.png\"}",
+  "faq": [
+    {
+      "q": "Who should use this?",
+      "a": "Frontend engineers and tech leads shipping React/Next.js apps."
+    },
+    {
+      "q": "What changed?",
+      "a": "A small change that improves setup or performance. The post explains the how/why."
+    }
+  ]
+};
 
-## What changed?
+Zero-configuration Express.js backends are now available on Vercel. You can deploy Express endpoints without any extra config or build steps. This matters for teams shipping custom APIs alongside React/Next.js apps. ### Why it matters You can add backend logic with almost no friction. There’s no `vercel.json` or custom server setup. Deploying an endpoint is as simple as writing a file. This reduces boilerplate and speeds up iteration for frontend-heavy teams. Express is a familiar API for many JavaScript developers. Now you can use it in the same repo as your frontend, without learning new patterns or frameworks. This fits best for:
 
-Vercel now supports zero-configuration Express backends. This means you can add Express servers to your Next.js apps without extra setup. No manual config, no complex deployment steps. Just write your Express code and deploy.
+> Note (replace me): Add a 2–3 line example from your own work or a small repo link.
 
-This is a big deal for React and Next.js teams who want backend logic alongside their frontend with minimal hassle.
-
-## Why it matters
-
-### Impact on performance, DX, and deployment
-
-Express is a popular Node.js server framework. Previously, adding Express to Next.js required custom server setups. This added complexity and slowed deployment.
-
-With zero-config support, Express runs optimized on Vercel's platform. It improves cold start times and reduces overhead. Developers get faster feedback loops and simpler deployments.
-
-### Where it fits in Next.js/React stacks
-
-Next.js already supports API routes and middleware. Express backends let you move more backend logic into familiar Express patterns. This is useful for teams migrating legacy APIs or needing flexible routing.
-
-You can mix Express APIs with Next.js pages seamlessly.
-
-### Who should act?
-
-- Frontend engineers who want backend control without setup pain.
-- Developer experience owners aiming to simplify full-stack development.
-- Performance champions looking to reduce server latency and cold starts.
-
-## Background
-
-### What is new?
-
-Vercel now auto-detects Express servers in your project. It configures builds and deployments automatically. No need for custom server.js files or manual routing config.
-
-### How it compares to before
-
-Before, you had to eject from Next.js defaults and manage Express yourself. This meant more boilerplate and potential deployment errors.
-
-Now, Express apps work out-of-the-box on Vercel alongside Next.js.
-
-### Breaking changes or migrations
-
-If you used custom Express setups before, review your server code. The new system expects Express apps in standard locations (like `/api` folder) and might handle routing differently.
-
-Migration usually means moving your Express code into the designated API folder and removing manual server scripts.
-
-## Steps to get started
-
-### Minimal example
-
-Create an Express API in `pages/api/hello.js`:
-
-```js
-import express from 'express';
-
+- Next.js and React teams who need server-side logic (auth, proxies, custom API routes). - DX owners who want fast local iteration and simple deployment. - Performance champions who want to measure backend latency in the same stack. ### Background Vercel’s new feature lets you drop an `express.js` file into your project’s `/api` directory. Vercel detects this and spins up an Express backend automatically at deploy time. Before this change, you needed to configure custom servers or use Vercel’s built-in API routes (which have their own runtime quirks). Now, you get a real Express app without extra flags or adapters. There are no breaking changes for existing projects. You don’t need to migrate unless you want to use Express directly. Existing API routes keep working as before. ### Minimal Example: Add an Express Route Create `/api/express.js` in your project root: ```js
+const express = require('express');
 const app = express();
 
-app.get('/api/hello', (req, res) => {
+app.get('/hello', (req, res) => {
   res.json({ message: 'Hello from Express!' });
 });
 
-export default app;
-```
-
-### Enable zero-config
-
-No flags needed. Just deploy to Vercel. It detects Express and configures automatically.
-
-### Key API usage
-
-You can use all Express features: routing, middleware, error handling.
-
-Example with middleware:
-
-```js
-import express from 'express';
-
+module.exports = app;
+``` Deploy to Vercel. The endpoint will be available at `/api/express/hello`. No config files needed. No build step changes. ### How to Enable (No Flags Needed) Just add an `express.js` file under `/api`. Vercel auto-detects it at deploy time. No need to edit `vercel.json` or set environment variables. #### End-to-End Example: Custom Auth Middleware Add `/api/express.js`: ```js
+const express = require('express');
 const app = express();
 
-// Simple logger middleware
+// Simple auth middleware example
 app.use((req, res, next) => {
-  console.log(`${req.method} ${req.url}`);
+  if (req.headers['x-api-key'] !== 'secret') {
+    return res.status(401).json({ error: 'Unauthorized' });
+  }
   next();
 });
 
-app.get('/api/time', (req, res) => {
-  res.json({ time: new Date().toISOString() });
+app.get('/profile', (req, res) => {
+  res.json({ user: 'test-user' });
 });
 
-export default app;
-```
-
-This runs as a serverless function behind the scenes.
-
-## Pitfalls
-
-### Common misconfigurations
-
-- Placing Express code outside the API folder can break detection.
-- Exporting Express apps incorrectly (must export the Express app instance as default).
-
-### Edge cases
-
-- SSR pages and Express APIs run separately. Avoid trying to mix SSR logic inside Express handlers.
-- Edge runtime (like Vercel Edge Functions) does not support Express. Use API routes or middleware for edge.
-- Static pages don’t interact with Express APIs directly.
-
-### Performance regressions
-
-- Avoid heavy synchronous code in Express handlers; it blocks the event loop.
-- Watch for cold starts if your Express APIs have large dependencies.
-
-## Checklist before shipping
-
-- Measure Web Vitals before and after adding Express.
-- Deploy a small demo page calling your Express API.
-- Add monitoring and alerting on API errors and latency.
-- Plan a rollback path if Express APIs cause issues.
-- Share your findings and setup tips with your team.
-
-## Diagram idea
-
-```mermaid
-flowchart LR
-  NextJS[Next.js App]
-  ExpressAPI[Express API]
-  VercelPlatform[Vercel Platform]
-
-  NextJS -->|API Calls| ExpressAPI
-  ExpressAPI -->|Deployed as Serverless Functions| VercelPlatform
-  VercelPlatform -->|Optimized Routing & Scaling| NextJS
-```
-
-## Further reading
-
-- [Zero-configuration Express backends - Vercel](https://vercel.com/changelog/zero-configuration-express-backends)
-- [Blog - Vercel](https://vercel.com/blog)
-- [Changelog - Vercel](https://vercel.com/changelog)
+module.exports = app;
+``` Deploy this. Now, `GET /api/express/profile` returns profile data only if the correct header is sent. ### Flow Diagram Idea (Mermaid) ```mermaid
+graph TD;
+    A[Request to /api/express/*] --> B{Vercel detects express.js};
+    B -- Yes --> C[Spin up Express app];
+    C --> D[Handle route via Express];
+    D --> E[Send response];
+    B -- No --> F[Fallback to default API handler];
+``` ### Pitfalls and Edge Cases
+- Don’t mix old-style API routes and Express routes in the same path segment; they may conflict. - SSR (Server-side rendering) and Edge Functions don’t use this Express backend—keep them separate. - Static exports won’t include Express endpoints; they only work on Vercel’s serverless platform. - Watch cold starts: first request may be slower than subsequent ones due to function spin-up. - Not all Node modules may be supported; check [Vercel docs](https://vercel.com/docs) for current runtime limits (not documented yet for this feature). ### Checklist Before Shipping Zero-Config Express Backends
+1. Measure before/after performance with Web Vitals or custom traces. 2. Ship a tiny demo page that hits your new endpoint (`/api/express/hello`). 3. Add monitoring and alerting for errors and latency spikes. 4. Plan a rollback path—keep old API routes until you’re sure migration works. 5. Share learnings with your team so others avoid common missteps.
