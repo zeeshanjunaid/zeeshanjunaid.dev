@@ -1,0 +1,88 @@
+---
+title: "Serverless Horrors: What React and Next.js Teams Need to Know"
+slug: "serverless-horrors-4"
+date: "2025-09-07T17:55:30.514Z"
+description: "Serverless Horrors collects real-world failures from serverless deployments. Learn why these issues matter for React/Next.js teams, how to spot them, and how..."
+tags:
+  - "serverless"
+  - "nextjs"
+  - "react"
+  - "deployment"
+  - "performance"
+readingTime: 3
+coverImage: "/images/blog/serverless-horrors-4/cover.jpg"
+draft: false
+---
+
+Serverless Horrors catalogs production failures in serverless stacks.
+
+Each entry shows how small mistakes or cloud quirks can break apps at scale. ![Serverless horror illustration](/images/blog/serverless-horrors/cover.jpg) These stories matter for React and Next.js teams.
+
+Many modern sites use serverless for API routes, SSR, or static builds.
+
+When things go wrong, the impact is real—slow pages, broken deploys, or lost data. ## Why It Matters Serverless fits into most Next.js/React stacks as the default runtime for API routes and SSR.
+
+> Note (replace me): Add a 2–3 line example from your own work or a small repo link.
+
+Teams pick it for easy scaling and fast deploys. But the real world is messy.
+
+Serverless functions can hit cold starts, run out of memory, or fail silently.
+
+Frontend devs, DX owners, and performance leads should care.
+
+If your team ships on Vercel, AWS Lambda, or Netlify Functions, these horror stories could happen to you. ## Background: What Is Serverless Horrors? [Serverless Horrors](https://serverlesshorrors.com/) is a collection of real incidents from teams using serverless platforms.
+
+Each entry explains what broke and why. You get stack traces, root causes, and sometimes fixes.
+
+This is different from official docs or happy-path tutorials.
+
+It shows what happens when theory meets production traffic.
+
+There's no migration guide or breaking change list—just hard lessons learned by others. ## Minimal Example: Serverless Gone Wrong in Next.js Suppose you add a simple API route in `pages/api/hello.js`: ```javascript
+// pages/api/hello.js
+export default function handler(req, res) {
+  res.status(200).json({ name: 'world' });
+}
+
+``` It works locally.
+
+But on Vercel (or AWS Lambda), you might see random cold starts or timeouts under load. To repro a cold start issue: 1.
+
+Deploy this route to Vercel (default settings). 2.
+
+Hit the endpoint after several minutes of inactivity. 3.
+
+Notice the first request is much slower than later ones.
+
+There's no config flag to fix cold starts—they're part of serverless tradeoffs. ## End-to-End Example: Logging a Failing Request Add logging to spot failures: ```javascript
+// pages/api/hello.js
+export default function handler(req, res) {
+  try {
+    // Simulate a crash on purpose if query 'fail' is set
+    if (req.query.fail === '1') {
+      throw new Error('Simulated serverless error');
+    }
+    res.status(200).json({ name: 'world' });
+  } catch (err) {
+    console.error('API error:', err);
+    res.status(500).json({ error: 'Internal Server Error' });
+  }
+}
+
+``` Deploy this code.
+
+Call `/api/hello?fail=1` and check logs in your cloud dashboard.
+
+You may see errors that don't surface in local dev. ## Mermaid Diagram Idea: Serverless Failure Flow ```mermaid
+graph TD;
+  A[User request] --> B[API Route / SSR]
+  B --> C{Cold start?}
+  C -- Yes --> D[Slow response]
+  C -- No --> E[Normal response]
+  D --> F{Resource limits?}
+  F -- Exceeded --> G[Crash/Error]
+  F -- OK --> E[Normal response]
+
+``` ## Pitfalls To Watch For - **Misconfigurations**: Forgetting environment variables or secrets breaks prod but not local dev. - **Edge Cases**: SSR pages may fail if they depend on filesystem access not available in Lambda. - **Performance**: Cold starts can spike TTFB (time to first byte).
+
+Memory leaks crash functions under load. - **Silent Failures**: Some platforms swallow errors unless you log them explicitly. - **Limits**: Hitting execution timeouts or payload limits causes dropped requests with little warning. ## Checklist Before Shipping Serverless Features - Measure before/after with Web Vitals (TTFB, LCP). - Ship a tiny demo page using your API route in production. - Add monitoring and alerting for all serverless endpoints. - Plan a rollback path if latency or errors spike after deploy. - Share learnings from incidents with your team—don't repeat others' mistakes.
