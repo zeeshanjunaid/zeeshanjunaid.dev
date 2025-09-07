@@ -26,7 +26,6 @@ export interface PostMeta {
   tags?: string[];
   featured?: boolean;
   cover?: string;
-  coverImage?: string;
   draft?: boolean;
 }
 
@@ -98,9 +97,8 @@ export async function getPostBySlug(slug: string) {
       meta: { 
         ...data, 
         slug: realSlug,
-        // Normalize cover image field - prefer coverImage over cover
-        cover: data.coverImage || data.cover,
-        coverImage: undefined  // Remove duplicate field
+        // Normalize cover image field - prefer coverImage over cover for backward compatibility
+        cover: data.coverImage || data.cover
       } as PostMeta, 
       content: mdxContent 
     };
