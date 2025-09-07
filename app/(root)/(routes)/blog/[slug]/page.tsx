@@ -69,6 +69,11 @@ export default async function BlogPostPage({
   try {
     const { meta, content } = await getPostBySlug(slug);
 
+    // Hide draft posts in production
+    if (process.env.NODE_ENV === "production" && meta.draft) {
+      notFound();
+    }
+
     return (
       <>
         {/* Blog Post Schema Markup */}

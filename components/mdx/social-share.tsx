@@ -1,7 +1,8 @@
 "use client";
 
-import { useState } from 'react';
-import { Share2, Twitter, Linkedin, Facebook, Link, Check } from 'lucide-react';
+import { Check, Facebook, Link, Linkedin, Share2, Twitter } from "lucide-react";
+
+import { useState } from "react";
 
 interface SocialShareProps {
   title: string;
@@ -9,7 +10,11 @@ interface SocialShareProps {
   description?: string;
 }
 
-export function SocialShare({ title, url, description = '' }: SocialShareProps) {
+export function SocialShare({
+  title,
+  url,
+  description = "",
+}: SocialShareProps) {
   const [copied, setCopied] = useState(false);
 
   const shareData = {
@@ -19,9 +24,15 @@ export function SocialShare({ title, url, description = '' }: SocialShareProps) 
   };
 
   const shareUrls = {
-    twitter: `https://twitter.com/intent/tweet?text=${encodeURIComponent(title)}&url=${encodeURIComponent(url)}`,
-    linkedin: `https://www.linkedin.com/sharing/share-offsite/?url=${encodeURIComponent(url)}`,
-    facebook: `https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(url)}`,
+    twitter: `https://twitter.com/intent/tweet?text=${encodeURIComponent(
+      title
+    )}&url=${encodeURIComponent(url)}`,
+    linkedin: `https://www.linkedin.com/sharing/share-offsite/?url=${encodeURIComponent(
+      url
+    )}`,
+    facebook: `https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(
+      url
+    )}`,
   };
 
   const copyToClipboard = async () => {
@@ -30,7 +41,7 @@ export function SocialShare({ title, url, description = '' }: SocialShareProps) 
       setCopied(true);
       setTimeout(() => setCopied(false), 2000);
     } catch (err) {
-      console.error('Failed to copy:', err);
+      console.error("Failed to copy:", err);
     }
   };
 
@@ -39,7 +50,7 @@ export function SocialShare({ title, url, description = '' }: SocialShareProps) 
       try {
         await navigator.share(shareData);
       } catch (err) {
-        console.error('Error sharing:', err);
+        console.error("Error sharing:", err);
       }
     }
   };
@@ -118,15 +129,16 @@ export function SocialShare({ title, url, description = '' }: SocialShareProps) 
         </button>
 
         {/* Native Share (mobile) */}
-        {typeof navigator !== 'undefined' && navigator.share && (
-          <button
-            onClick={handleShare}
-            className="flex items-center gap-2 px-4 py-2 bg-dark/10 dark:bg-light/10 hover:bg-dark/20 dark:hover:bg-light/20 text-dark dark:text-light rounded-lg transition-colors font-switzer font-medium text-sm"
-          >
-            <Share2 className="w-4 h-4" />
-            Share
-          </button>
-        )}
+        {typeof navigator !== "undefined" &&
+          typeof navigator.share === "function" && (
+            <button
+              onClick={handleShare}
+              className="flex items-center gap-2 px-4 py-2 bg-dark/10 dark:bg-light/10 hover:bg-dark/20 dark:hover:bg-light/20 text-dark dark:text-light rounded-lg transition-colors font-switzer font-medium text-sm"
+            >
+              <Share2 className="w-4 h-4" />
+              Share
+            </button>
+          )}
       </div>
     </div>
   );

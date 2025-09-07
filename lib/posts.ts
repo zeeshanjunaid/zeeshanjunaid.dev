@@ -1,17 +1,18 @@
+import { AnchorLink, EnhancedHeading } from '@/components/mdx/enhanced-headings';
+import { AuthorBio, CTABox, NewsletterSignup, RelatedPosts } from '@/components/mdx/engagement-components';
+import { Blockquote, Callout } from '@/components/mdx/blockquote';
+import { CodeBlock, InlineCode } from '@/components/mdx/code-block';
+import { ComparisonTable, ImageGallery, ProcessSteps, VideoEmbed } from '@/components/mdx/visual-components';
+import { EnhancedTable, SimpleTable } from '@/components/mdx/enhanced-table';
+import { ReadingProgress, TableOfContents } from '@/components/mdx/reading-progress';
+
+import { MermaidDiagram } from '@/components/mdx/dynamic-mermaid';
+import React from 'react';
+import { SocialShare } from '@/components/mdx/social-share';
 import { compileMDX } from 'next-mdx-remote/rsc';
 import fs from 'fs';
 import matter from 'gray-matter';
 import path from 'path';
-import { CodeBlock, InlineCode } from '@/components/mdx/code-block';
-import { MermaidDiagram } from '@/components/mdx/dynamic-mermaid';
-import { Blockquote, Callout } from '@/components/mdx/blockquote';
-import { EnhancedTable, SimpleTable } from '@/components/mdx/enhanced-table';
-import { ReadingProgress, TableOfContents } from '@/components/mdx/reading-progress';
-import { SocialShare } from '@/components/mdx/social-share';
-import { ImageGallery, VideoEmbed, ProcessSteps, ComparisonTable } from '@/components/mdx/visual-components';
-import { NewsletterSignup, CTABox, AuthorBio, RelatedPosts } from '@/components/mdx/engagement-components';
-import { EnhancedHeading, AnchorLink } from '@/components/mdx/enhanced-headings';
-import React from 'react';
 
 const root = process.cwd();
 const postsDirectory = path.join(root, 'content', 'blog');
@@ -26,6 +27,7 @@ export interface PostMeta {
   tags?: string[];
   featured?: boolean;
   cover?: string;
+  draft?: boolean;
 }
 
 export async function getPostBySlug(slug: string) {
@@ -44,6 +46,7 @@ export async function getPostBySlug(slug: string) {
         pre: ({ children, ...props }: any) => {
           const child = children?.props;
           if (child?.className?.includes('language-')) {
+            // eslint-disable-next-line react/no-children-prop
             return React.createElement(CodeBlock, { 
               className: child.className,
               filename: child.filename,
@@ -55,6 +58,7 @@ export async function getPostBySlug(slug: string) {
         code: ({ children, className, ...props }: any) => {
           // Inline code (not in pre blocks)
           if (!className) {
+            // eslint-disable-next-line react/no-children-prop
             return React.createElement(InlineCode, { children });
           }
           // Block code (handled by pre component)
@@ -116,6 +120,10 @@ export async function getAllPostsMeta(): Promise<PostMeta[]> {
     try {
       const { meta } = await getPostBySlug(slug);
       if (!seenSlugs.has(meta.slug)) {
+        // Filter out drafts in production
+        if (process.env.NODE_ENV === 'production' && meta.draft) {
+          continue;
+        }
         posts.push(meta);
         seenSlugs.add(meta.slug);
       }

@@ -1,9 +1,19 @@
 "use client";
 
-import { useState } from 'react';
-import { Mail, Send, ArrowRight, CheckCircle, User, MapPin, Calendar, ExternalLink } from 'lucide-react';
-import Link from 'next/link';
-import Image from 'next/image';
+import {
+  ArrowRight,
+  Calendar,
+  CheckCircle,
+  ExternalLink,
+  Mail,
+  MapPin,
+  Send,
+  User,
+} from "lucide-react";
+
+import Image from "next/image";
+import Link from "next/link";
+import { useState } from "react";
 
 interface NewsletterSignupProps {
   title?: string;
@@ -12,26 +22,26 @@ interface NewsletterSignupProps {
   buttonText?: string;
 }
 
-export function NewsletterSignup({ 
+export function NewsletterSignup({
   title = "Stay Updated",
   description = "Get the latest posts and insights delivered to your inbox.",
   placeholder = "Enter your email",
-  buttonText = "Subscribe"
+  buttonText = "Subscribe",
 }: NewsletterSignupProps) {
-  const [email, setEmail] = useState('');
+  const [email, setEmail] = useState("");
   const [isSubmitted, setIsSubmitted] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setIsLoading(true);
-    
+
     // Simulate API call
-    await new Promise(resolve => setTimeout(resolve, 1000));
-    
+    await new Promise((resolve) => setTimeout(resolve, 1000));
+
     setIsSubmitted(true);
     setIsLoading(false);
-    setEmail('');
+    setEmail("");
   };
 
   if (isSubmitted) {
@@ -42,10 +52,11 @@ export function NewsletterSignup({
             <CheckCircle className="w-8 h-8 text-green-600 dark:text-green-400" />
           </div>
           <h3 className="font-ao font-bold text-xl text-green-900 dark:text-green-100 mb-2">
-            You're subscribed!
+            You&apos;re subscribed!
           </h3>
           <p className="text-green-700 dark:text-green-300 font-switzer">
-            Thank you for subscribing. You'll receive updates about new posts and insights.
+            Thank you for subscribing. You&apos;ll receive updates about new
+            posts and insights.
           </p>
         </div>
       </div>
@@ -102,42 +113,44 @@ interface CTABoxProps {
   description: string;
   buttonText: string;
   buttonLink: string;
-  variant?: 'primary' | 'secondary' | 'outline';
+  variant?: "primary" | "secondary" | "outline";
   icon?: React.ReactNode;
 }
 
-export function CTABox({ 
-  title, 
-  description, 
-  buttonText, 
-  buttonLink, 
-  variant = 'primary',
-  icon 
+export function CTABox({
+  title,
+  description,
+  buttonText,
+  buttonLink,
+  variant = "primary",
+  icon,
 }: CTABoxProps) {
   const getVariantStyles = () => {
     switch (variant) {
-      case 'secondary':
-        return 'bg-gradient-to-br from-blue-50 to-indigo-50 dark:from-blue-950/30 dark:to-indigo-950/30 border-blue-200 dark:border-blue-800';
-      case 'outline':
-        return 'bg-light dark:bg-dark border-lightBorderColor dark:border-darkBorderColor';
+      case "secondary":
+        return "bg-gradient-to-br from-blue-50 to-indigo-50 dark:from-blue-950/30 dark:to-indigo-950/30 border-blue-200 dark:border-blue-800";
+      case "outline":
+        return "bg-light dark:bg-dark border-lightBorderColor dark:border-darkBorderColor";
       default:
-        return 'bg-gradient-to-br from-purple/10 via-purple/5 to-transparent border-purple/20';
+        return "bg-gradient-to-br from-purple/10 via-purple/5 to-transparent border-purple/20";
     }
   };
 
   const getButtonStyles = () => {
     switch (variant) {
-      case 'secondary':
-        return 'bg-blue-600 hover:bg-blue-700 text-white';
-      case 'outline':
-        return 'bg-transparent border-2 border-purple text-purple hover:bg-purple hover:text-white';
+      case "secondary":
+        return "bg-blue-600 hover:bg-blue-700 text-white";
+      case "outline":
+        return "bg-transparent border-2 border-purple text-purple hover:bg-purple hover:text-white";
       default:
-        return 'bg-purple hover:bg-purple/90 text-white';
+        return "bg-purple hover:bg-purple/90 text-white";
     }
   };
 
   return (
-    <div className={`cta-box my-6 sm:my-8 p-6 sm:p-8 rounded-xl border ${getVariantStyles()}`}>
+    <div
+      className={`cta-box my-6 sm:my-8 p-6 sm:p-8 rounded-xl border ${getVariantStyles()}`}
+    >
       <div className="text-center">
         {icon && (
           <div className="w-12 h-12 sm:w-16 sm:h-16 bg-purple/20 rounded-full flex items-center justify-center mx-auto mb-4 sm:mb-6">
@@ -151,7 +164,9 @@ export function CTABox({
           {description}
         </p>
         <Link href={buttonLink}>
-          <button className={`inline-flex items-center gap-2 px-6 sm:px-8 py-3 sm:py-4 rounded-xl font-switzer font-semibold transition-all duration-300 hover:scale-105 active:scale-95 touch-friendly text-sm sm:text-base ${getButtonStyles()}`}>
+          <button
+            className={`inline-flex items-center gap-2 px-6 sm:px-8 py-3 sm:py-4 rounded-xl font-switzer font-semibold transition-all duration-300 hover:scale-105 active:scale-95 touch-friendly text-sm sm:text-base ${getButtonStyles()}`}
+          >
             {buttonText}
             <ArrowRight className="w-4 h-4 sm:w-5 sm:h-5" />
           </button>
@@ -176,15 +191,15 @@ interface AuthorBioProps {
   };
 }
 
-export function AuthorBio({ 
-  name, 
-  title, 
-  bio, 
-  avatar, 
-  location, 
-  joinDate, 
+export function AuthorBio({
+  name,
+  title,
+  bio,
+  avatar,
+  location,
+  joinDate,
   website,
-  social = {} 
+  social = {},
 }: AuthorBioProps) {
   return (
     <div className="author-bio my-6 sm:my-8 p-4 sm:p-6 bg-light dark:bg-dark rounded-xl border border-lightBorderColor dark:border-darkBorderColor">
@@ -232,7 +247,7 @@ export function AuthorBio({
               </div>
             )}
             {website && (
-              <a 
+              <a
                 href={website}
                 target="_blank"
                 rel="noopener noreferrer"
