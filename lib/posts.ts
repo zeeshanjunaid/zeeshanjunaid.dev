@@ -2,6 +2,8 @@ import { compileMDX } from 'next-mdx-remote/rsc';
 import fs from 'fs';
 import matter from 'gray-matter';
 import path from 'path';
+import { CodeBlock, InlineCode } from '@/components/mdx/code-block';
+import { MermaidDiagram } from '@/components/mdx/dynamic-mermaid';
 
 const root = process.cwd();
 const postsDirectory = path.join(root, 'content', 'blog');
@@ -29,6 +31,33 @@ export async function getPostBySlug(slug: string) {
     const { content: mdxContent } = await compileMDX({
       source: content,
       options: { parseFrontmatter: false },
+      components: {
+        // Custom code blocks
+        pre: ({ children, ...props }: any) => {
+          const child = children?.props;
+          if (child?.className?.includes('language-')) {
+            return (
+              <CodeBlock 
+                className={child.className}
+                filename={child.filename}
+              >
+                {child.children}
+              </CodeBlock>
+            );
+          }
+          return <pre {...props}>{children}</pre>;
+        },
+        code: ({ children, className, ...props }: any) => {
+          // Inline code (not in pre blocks)
+          if (!className) {
+            return <InlineCode>{children}</InlineCode>;
+          }
+          // Block code (handled by pre component)
+          return <code className={className} {...props}>{children}</code>;
+        },
+        // Mermaid diagrams
+        mermaid: MermaidDiagram,
+      },
     });
 
     return { 
