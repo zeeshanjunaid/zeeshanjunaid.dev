@@ -216,92 +216,41 @@ export default async function BlogPostPage({
           </Container>
         </section>
 
-        {/* Enhanced CTA Section */}
-        <section className="py-16 md:py-20 bg-gradient-to-br from-light via-light to-light/95 dark:from-dark dark:via-dark dark:to-dark/95">
-          <Container className="px-4 md:px-7 lg:px-0">
-            <div className="relative bg-gradient-to-br from-purple/10 via-purple/5 to-transparent rounded-3xl p-8 md:p-12 lg:p-16 text-center overflow-hidden border border-purple/20">
+        {/* Simple CTA Section */}
+        <section className="py-16 md:py-20">
+          <Container className="px-4 md:px-7 lg:px-0 max-w-4xl">
+            <div className="relative bg-light dark:bg-dark rounded-3xl p-8 md:p-12 text-center border border-lightBorderColor dark:border-darkBorderColor">
               <BlurBG className="rounded-3xl" />
-
-              {/* Background Elements */}
-              <div className="absolute top-0 right-0 w-32 h-32 bg-purple/10 rounded-full blur-2xl" />
-              <div className="absolute bottom-0 left-0 w-40 h-40 bg-purple/5 rounded-full blur-3xl" />
-
-              <div className="relative z-20 max-w-4xl mx-auto">
-                {/* Icon */}
-                <div className="w-16 h-16 bg-purple/20 rounded-2xl flex items-center justify-center mx-auto mb-6">
-                  <BookOpen className="w-8 h-8 text-purple" />
-                </div>
-
-                {/* Title */}
-                <h2 className="text-[28px] md:text-[36px] lg:text-[42px] font-bold font-ao text-dark dark:text-light mb-6 leading-tight">
-                  Ready to Apply These{" "}
-                  <span className="text-gradient">Insights</span>?
+              
+              <div className="relative z-20">
+                <h2 className="text-[24px] md:text-[32px] font-bold font-ao text-dark dark:text-light mb-4">
+                  Questions about this post?
                 </h2>
-
-                {/* Description */}
-                <p className="text-dark/80 dark:text-light/80 font-switzer font-light text-[16px] md:text-[18px] lg:text-[20px] leading-relaxed max-w-3xl mx-auto mb-10">
-                  Let&apos;s discuss how I can help implement these strategies
-                  and techniques in your next project. With 8+ years of
-                  experience, I&apos;ll ensure your ideas become reality.
+                
+                <p className="text-dark/70 dark:text-light/70 font-switzer text-[16px] leading-relaxed mb-8 max-w-2xl mx-auto">
+                  I&apos;d love to help you implement these concepts in your own projects.
                 </p>
-
-                {/* Stats */}
-                <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-10">
-                  <div className="text-center">
-                    <div className="text-[32px] md:text-[36px] font-bold font-ao text-purple mb-2">
-                      100+
-                    </div>
-                    <div className="text-dark/70 dark:text-light/70 font-switzer font-light text-[14px] uppercase tracking-wider">
-                      Projects Delivered
-                    </div>
-                  </div>
-                  <div className="text-center">
-                    <div className="text-[32px] md:text-[36px] font-bold font-ao text-purple mb-2">
-                      8+
-                    </div>
-                    <div className="text-dark/70 dark:text-light/70 font-switzer font-light text-[14px] uppercase tracking-wider">
-                      Years Experience
-                    </div>
-                  </div>
-                  <div className="text-center">
-                    <div className="text-[32px] md:text-[36px] font-bold font-ao text-purple mb-2">
-                      50+
-                    </div>
-                    <div className="text-dark/70 dark:text-light/70 font-switzer font-light text-[14px] uppercase tracking-wider">
-                      Happy Clients
-                    </div>
-                  </div>
-                </div>
-
-                {/* Action Buttons */}
+                
                 <div className="flex flex-col sm:flex-row gap-4 justify-center">
                   <Link href="/contact">
                     <Button
                       variant="purple"
                       size="lg"
-                      className="rounded-xl uppercase font-medium font-switzer flex items-center gap-2 w-full sm:w-auto justify-center min-w-[200px] hover:scale-105 transition-all duration-300"
+                      className="rounded-xl uppercase font-medium font-switzer flex items-center gap-2 justify-center hover:scale-105 transition-all duration-300"
                     >
-                      Start Your Project
+                      Get in Touch
                       <ArrowRight className="w-4 h-4" />
                     </Button>
                   </Link>
-                  <Link href="/work">
+                  <Link href="/blog">
                     <Button
                       variant="ghost"
                       size="lg"
-                      className="rounded-xl uppercase font-medium font-switzer text-dark dark:text-light hover:text-purple w-full sm:w-auto justify-center min-w-[200px] border border-lightBorderColor dark:border-darkBorderColor hover:border-purple/30 transition-all duration-300"
+                      className="rounded-xl uppercase font-medium font-switzer text-dark dark:text-light hover:text-purple border border-lightBorderColor dark:border-darkBorderColor hover:border-purple/30 transition-all duration-300"
                     >
-                      View Portfolio
+                      Read More Articles
                     </Button>
                   </Link>
-                </div>
-
-                {/* Additional Info */}
-                <div className="mt-8 pt-6 border-t border-lightBorderColor dark:border-darkBorderColor">
-                  <p className="text-dark/60 dark:text-light/60 font-switzer font-light text-[14px]">
-                    Free consultation • No commitment required • Quick response
-                    guaranteed
-                  </p>
                 </div>
               </div>
             </div>
