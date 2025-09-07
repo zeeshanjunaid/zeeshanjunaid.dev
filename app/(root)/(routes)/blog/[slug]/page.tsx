@@ -139,102 +139,44 @@ export default async function BlogPostPage({
         </section>
 
         {/* Article Content */}
-        <section className="py-12 md:py-16">
-          <Container className="px-4 md:px-7 lg:px-0 max-w-7xl">
-            <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12">
+        <section>
+          <Container className="px-4 md:px-7 lg:px-0 max-w-4xl">
+            <div className="grid grid-cols-1 lg:grid-cols-4 gap-8 lg:gap-12">
               {/* Main Content */}
-              <div className="lg:col-span-8">
-                <article
-                  className="prose prose-lg dark:prose-invert max-w-none 
-                  prose-headings:font-ao prose-headings:text-dark dark:prose-headings:text-light prose-headings:leading-tight
-                  prose-h1:text-[28px] md:prose-h1:text-[32px] prose-h1:mb-6 prose-h1:mt-10
-                  prose-h2:text-[22px] md:prose-h2:text-[26px] prose-h2:mb-4 prose-h2:mt-8
-                  prose-h3:text-[18px] md:prose-h3:text-[22px] prose-h3:mb-3 prose-h3:mt-6
-                  prose-p:text-dark/90 dark:prose-p:text-light/90 prose-p:font-switzer prose-p:font-light prose-p:leading-relaxed prose-p:text-[16px] md:prose-p:text-[17px] prose-p:mb-5
-                  prose-a:text-purple prose-a:no-underline hover:prose-a:underline prose-a:transition-all prose-a:duration-300
-                  prose-strong:text-dark dark:prose-strong:text-light prose-strong:font-semibold
-                  prose-code:text-purple prose-code:bg-purple/10 prose-code:px-2 prose-code:py-1 prose-code:rounded prose-code:text-[14px] prose-code:font-medium
-                  prose-pre:bg-dark prose-pre:border prose-pre:border-lightBorderColor dark:prose-pre:border-darkBorderColor prose-pre:rounded-xl prose-pre:p-4 prose-pre:text-[14px]
-                  prose-blockquote:border-l-purple prose-blockquote:bg-purple/5 prose-blockquote:rounded-r-xl prose-blockquote:not-italic prose-blockquote:py-4 prose-blockquote:px-6 prose-blockquote:my-6
-                  prose-ul:my-4 prose-ol:my-4 prose-li:my-1 prose-li:text-dark/90 dark:prose-li:text-light/90
-                  prose-img:rounded-xl prose-img:shadow-lg prose-img:my-6 prose-img:max-h-[550px] prose-img:w-auto prose-img:mx-auto
-                  prose-table:border prose-table:border-lightBorderColor dark:prose-table:border-darkBorderColor prose-table:rounded-xl prose-table:overflow-hidden prose-table:text-[14px]
-                  prose-th:bg-light dark:prose-th:bg-dark prose-th:border-lightBorderColor dark:prose-th:border-darkBorderColor prose-th:px-4 prose-th:py-2
-                  prose-td:border-lightBorderColor dark:prose-td:border-darkBorderColor prose-td:px-4 prose-td:py-2"
+              <div className="lg:col-span-3">
+                <article className="prose prose-lg dark:prose-invert max-w-none
+                  prose-headings:font-ao prose-headings:text-dark dark:prose-headings:text-light
+                  prose-h2:text-[24px] prose-h2:mb-4 prose-h2:mt-8
+                  prose-h3:text-[20px] prose-h3:mb-3 prose-h3:mt-6
+                  prose-p:text-dark/90 dark:prose-p:text-light/90 prose-p:font-switzer prose-p:leading-relaxed prose-p:text-[16px] prose-p:mb-4
+                  prose-a:text-purple prose-a:no-underline hover:prose-a:underline prose-a:transition-colors
+                  prose-strong:text-dark dark:prose-strong:text-light prose-strong:font-medium
+                  prose-code:text-purple prose-code:bg-purple/10 prose-code:px-2 prose-code:py-1 prose-code:rounded prose-code:text-[14px]
+                  prose-pre:bg-dark prose-pre:border prose-pre:border-lightBorderColor dark:prose-pre:border-darkBorderColor prose-pre:rounded-2xl prose-pre:p-4
+                  prose-blockquote:border-l-4 prose-blockquote:border-purple prose-blockquote:bg-purple/5 prose-blockquote:rounded-r-2xl prose-blockquote:py-4 prose-blockquote:px-6 prose-blockquote:not-italic
+                  prose-ul:mb-4 prose-ol:mb-4 prose-li:text-dark/90 dark:prose-li:text-light/90
+                  prose-img:rounded-2xl prose-img:my-8"
                 >
                   {content}
                 </article>
               </div>
 
-              {/* Sidebar */}
-              <div className="lg:col-span-4">
+              {/* Simplified Sidebar */}
+              <div className="lg:col-span-1">
                 <div className="sticky top-24 space-y-6">
-                  {/* Article Overview */}
-                  <div className="relative bg-light dark:bg-dark rounded-2xl p-5 border border-lightBorderColor dark:border-darkBorderColor">
-                    <BlurBG className="rounded-2xl" />
-                    <div className="relative z-20">
-                      <h3 className="font-ao font-bold text-[16px] text-dark dark:text-light mb-4 flex items-center gap-2">
-                        <BookOpen className="w-4 h-4 text-purple" />
-                        Article Info
-                      </h3>
-                      <div className="space-y-3">
-                        <div className="flex items-center justify-between text-[13px]">
-                          <span className="text-dark/60 dark:text-light/60 font-switzer">
-                            Reading Time
-                          </span>
-                          <span className="text-dark dark:text-light font-switzer font-medium">
-                            {meta.readingTime} min
-                          </span>
-                        </div>
-                        {meta.author && (
-                          <div className="flex items-center justify-between text-[13px]">
-                            <span className="text-dark/60 dark:text-light/60 font-switzer">
-                              Author
-                            </span>
-                            <span className="text-dark dark:text-light font-switzer font-medium">
-                              {meta.author}
-                            </span>
-                          </div>
-                        )}
-                      </div>
-                    </div>
-                  </div>
-
-                  {/* Share Section */}
-                  <div className="relative bg-light dark:bg-dark rounded-2xl p-5 border border-lightBorderColor dark:border-darkBorderColor">
-                    <BlurBG className="rounded-2xl" />
-                    <div className="relative z-20">
-                      <h3 className="font-ao font-bold text-[16px] text-dark dark:text-light mb-3 flex items-center gap-2">
-                        <Share2 className="w-4 h-4 text-purple" />
-                        Share Article
-                      </h3>
-                      <p className="text-dark/60 dark:text-light/60 font-switzer text-[13px] mb-4 leading-relaxed">
-                        Found this helpful? Share it with others who might
-                        benefit.
-                      </p>
-                      <Button
-                        variant="purple"
-                        size="sm"
-                        className="w-full rounded-xl uppercase font-medium font-switzer text-[11px] py-2"
-                      >
-                        Share Article
-                      </Button>
-                    </div>
-                  </div>
-
                   {/* Tags */}
                   {meta.tags && meta.tags.length > 0 && (
-                    <div className="relative bg-light dark:bg-dark rounded-2xl p-5 border border-lightBorderColor dark:border-darkBorderColor">
-                      <BlurBG className="rounded-2xl" />
+                    <div className="relative bg-light dark:bg-dark rounded-3xl p-6 border border-lightBorderColor dark:border-darkBorderColor">
+                      <BlurBG className="rounded-3xl" />
                       <div className="relative z-20">
-                        <h3 className="font-ao font-bold text-[16px] text-dark dark:text-light mb-3">
+                        <h3 className="font-ao font-bold text-[16px] text-dark dark:text-light mb-4">
                           Topics
                         </h3>
                         <div className="flex flex-wrap gap-2">
                           {meta.tags.map((tag, index) => (
                             <span
                               key={index}
-                              className="text-[10px] px-2.5 py-1 rounded-md border border-lightBorderColor dark:border-darkBorderColor text-dark/70 dark:text-light/70 uppercase font-medium bg-light dark:bg-dark hover:bg-purple/5 hover:border-purple/20 transition-all duration-300 cursor-pointer"
+                              className="text-[12px] px-3 py-1 rounded-lg bg-purple/10 text-purple uppercase font-medium tracking-wider"
                             >
                               {tag}
                             </span>
@@ -244,24 +186,24 @@ export default async function BlogPostPage({
                     </div>
                   )}
 
-                  {/* Contact CTA */}
-                  <div className="relative bg-gradient-to-br from-purple/10 via-purple/5 to-transparent rounded-2xl p-5 border border-purple/20">
-                    <BlurBG className="rounded-2xl" />
+                  {/* Author Card */}
+                  <div className="relative bg-light dark:bg-dark rounded-3xl p-6 border border-lightBorderColor dark:border-darkBorderColor">
+                    <BlurBG className="rounded-3xl" />
                     <div className="relative z-20 text-center">
-                      <div className="w-10 h-10 bg-purple/20 rounded-xl flex items-center justify-center mx-auto mb-3">
-                        <BookOpen className="w-5 h-5 text-purple" />
+                      <div className="w-12 h-12 bg-purple/10 rounded-full flex items-center justify-center mx-auto mb-4">
+                        <BookOpen className="w-6 h-6 text-purple" />
                       </div>
-                      <h3 className="font-ao font-bold text-[14px] text-dark dark:text-light mb-2">
-                        Need Help With This?
-                      </h3>
-                      <p className="text-dark/60 dark:text-light/60 font-switzer text-[12px] mb-3 leading-relaxed">
-                        I can help implement these solutions in your project.
+                      <h4 className="font-ao font-bold text-[16px] text-dark dark:text-light mb-2">
+                        {meta.author || "Zeeshan Junaid"}
+                      </h4>
+                      <p className="text-dark/60 dark:text-light/60 font-switzer text-[14px] mb-4">
+                        Frontend Developer with 8+ years of experience
                       </p>
                       <Link href="/contact">
                         <Button
                           variant="purple"
                           size="sm"
-                          className="w-full rounded-xl uppercase font-medium font-switzer text-[11px] py-2"
+                          className="w-full rounded-xl font-switzer text-[12px] uppercase font-medium"
                         >
                           Get in Touch
                         </Button>
