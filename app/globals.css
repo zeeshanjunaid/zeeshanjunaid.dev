@@ -290,3 +290,98 @@ html {
   scrollbar-width: thin;
   scrollbar-color: rgba(163, 116, 255, 0.3) rgba(163, 116, 255, 0.05);
 }
+
+/* Touch-friendly interactive elements */
+.touch-friendly {
+  min-height: 44px;
+  min-width: 44px;
+  touch-action: manipulation;
+}
+
+@media (hover: hover) {
+  .touch-friendly:hover {
+    transform: translateY(-1px);
+  }
+}
+
+@media (hover: none) {
+  .touch-friendly:active {
+    transform: scale(0.98);
+  }
+}
+
+/* Enhanced responsive utilities */
+.line-clamp-2 {
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+.line-clamp-3 {
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+/* Improved focus visibility for accessibility */
+.focus-visible:focus-visible {
+  outline: 2px solid var(--purple);
+  outline-offset: 2px;
+}
+
+/* Better scrollbar for mobile */
+@media (max-width: 768px) {
+  .overflow-x-auto {
+    scrollbar-width: thin;
+  }
+  
+  .overflow-x-auto::-webkit-scrollbar {
+    height: 4px;
+  }
+  
+  .overflow-x-auto::-webkit-scrollbar-track {
+    background: transparent;
+  }
+  
+  .overflow-x-auto::-webkit-scrollbar-thumb {
+    background: rgba(163, 116, 255, 0.3);
+    border-radius: 2px;
+  }
+}
+
+/* Enhanced table responsiveness */
+@media (max-width: 640px) {
+  .simple-table table {
+    font-size: 14px;
+  }
+  
+  .simple-table th,
+  .simple-table td {
+    padding: 0.5rem !important;
+  }
+}
+
+/* Component spacing improvements for mobile */
+@media (max-width: 640px) {
+  .callout-box,
+  .newsletter-signup,
+  .cta-box,
+  .social-share {
+    margin-left: -1rem;
+    margin-right: -1rem;
+    border-radius: 0.75rem;
+  }
+}
+
+/* Better lightbox for mobile */
+@media (max-width: 768px) {
+  .image-gallery .lightbox {
+    padding: 1rem;
+  }
+  
+  .image-gallery .lightbox img {
+    max-height: 60vh;
+  }
+}

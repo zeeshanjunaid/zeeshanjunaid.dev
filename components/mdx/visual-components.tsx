@@ -35,13 +35,16 @@ export function ImageGallery({ images }: ImageGalleryProps) {
 
   return (
     <>
-      <div className="image-gallery my-8">
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+      <div className="image-gallery my-6 sm:my-8">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3 sm:gap-4">
           {images.map((image, index) => (
             <div
               key={index}
-              className="cursor-pointer group relative overflow-hidden rounded-xl"
+              className="cursor-pointer group relative overflow-hidden rounded-xl touch-friendly"
               onClick={() => openLightbox(index)}
+              role="button"
+              tabIndex={0}
+              onKeyDown={(e) => e.key === 'Enter' && openLightbox(index)}
             >
               <div className="aspect-video relative">
                 <Image
@@ -49,12 +52,18 @@ export function ImageGallery({ images }: ImageGalleryProps) {
                   alt={image.alt}
                   fill
                   className="object-cover transition-transform duration-300 group-hover:scale-105"
+                  sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
                 />
                 <div className="absolute inset-0 bg-black/0 group-hover:bg-black/20 transition-colors duration-300" />
+                <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                  <div className="w-10 h-10 sm:w-12 sm:h-12 bg-white/90 rounded-full flex items-center justify-center">
+                    <span className="text-dark text-lg sm:text-xl">🔍</span>
+                  </div>
+                </div>
               </div>
               {image.caption && (
-                <div className="p-3 bg-light dark:bg-dark">
-                  <p className="text-sm text-dark/70 dark:text-light/70 font-switzer">
+                <div className="p-2 sm:p-3 bg-light dark:bg-dark">
+                  <p className="text-xs sm:text-sm text-dark/70 dark:text-light/70 font-switzer line-clamp-2">
                     {image.caption}
                   </p>
                 </div>
@@ -66,42 +75,52 @@ export function ImageGallery({ images }: ImageGalleryProps) {
 
       {/* Lightbox */}
       {isLightboxOpen && (
-        <div className="fixed inset-0 z-50 bg-black/90 flex items-center justify-center p-4">
+        <div className="fixed inset-0 z-50 bg-black/90 flex items-center justify-center p-2 sm:p-4">
           <button
             onClick={closeLightbox}
-            className="absolute top-4 right-4 w-10 h-10 bg-white/10 hover:bg-white/20 rounded-full flex items-center justify-center text-white transition-colors"
+            className="absolute top-2 sm:top-4 right-2 sm:right-4 w-10 h-10 sm:w-12 sm:h-12 bg-white/10 hover:bg-white/20 rounded-full flex items-center justify-center text-white transition-colors touch-friendly"
           >
-            <X className="w-5 h-5" />
+            <X className="w-4 h-4 sm:w-5 sm:h-5" />
           </button>
           
-          <button
-            onClick={prevImage}
-            className="absolute left-4 top-1/2 -translate-y-1/2 w-12 h-12 bg-white/10 hover:bg-white/20 rounded-full flex items-center justify-center text-white transition-colors"
-          >
-            <ChevronLeft className="w-6 h-6" />
-          </button>
-          
-          <button
-            onClick={nextImage}
-            className="absolute right-4 top-1/2 -translate-y-1/2 w-12 h-12 bg-white/10 hover:bg-white/20 rounded-full flex items-center justify-center text-white transition-colors"
-          >
-            <ChevronRight className="w-6 h-6" />
-          </button>
+          {images.length > 1 && (
+            <>
+              <button
+                onClick={prevImage}
+                className="absolute left-2 sm:left-4 top-1/2 -translate-y-1/2 w-10 h-10 sm:w-12 sm:h-12 bg-white/10 hover:bg-white/20 rounded-full flex items-center justify-center text-white transition-colors touch-friendly"
+              >
+                <ChevronLeft className="w-5 h-5 sm:w-6 sm:h-6" />
+              </button>
+              
+              <button
+                onClick={nextImage}
+                className="absolute right-2 sm:right-4 top-1/2 -translate-y-1/2 w-10 h-10 sm:w-12 sm:h-12 bg-white/10 hover:bg-white/20 rounded-full flex items-center justify-center text-white transition-colors touch-friendly"
+              >
+                <ChevronRight className="w-5 h-5 sm:w-6 sm:h-6" />
+              </button>
+            </>
+          )}
 
-          <div className="max-w-4xl max-h-full">
-            <div className="relative">
+          <div className="max-w-full max-h-full flex flex-col items-center">
+            <div className="relative max-w-4xl max-h-[70vh] sm:max-h-[80vh]">
               <Image
                 src={images[currentIndex].src}
                 alt={images[currentIndex].alt}
                 width={800}
                 height={600}
-                className="max-w-full max-h-[80vh] object-contain"
+                className="max-w-full max-h-full object-contain"
+                sizes="(max-width: 640px) 95vw, 80vw"
               />
             </div>
             {images[currentIndex].caption && (
-              <p className="text-white/80 text-center mt-4 font-switzer">
+              <p className="text-white/80 text-center mt-2 sm:mt-4 font-switzer text-sm sm:text-base px-4 max-w-2xl">
                 {images[currentIndex].caption}
               </p>
+            )}
+            {images.length > 1 && (
+              <div className="mt-2 sm:mt-4 text-white/60 text-xs sm:text-sm font-switzer">
+                {currentIndex + 1} of {images.length}
+              </div>
             )}
           </div>
         </div>
@@ -125,20 +144,27 @@ export function VideoEmbed({ src, title, thumbnail, platform = 'custom' }: Video
   };
 
   return (
-    <div className="video-embed my-8">
-      <div className="relative aspect-video rounded-xl overflow-hidden bg-dark/5 dark:bg-light/5">
+    <div className="video-embed my-6 sm:my-8">
+      <div className="relative aspect-video rounded-xl overflow-hidden bg-dark/5 dark:bg-light/5 shadow-lg">
         {!isPlaying && thumbnail ? (
-          <div className="relative w-full h-full cursor-pointer group" onClick={handlePlay}>
+          <div 
+            className="relative w-full h-full cursor-pointer group touch-friendly" 
+            onClick={handlePlay}
+            role="button"
+            tabIndex={0}
+            onKeyDown={(e) => e.key === 'Enter' && handlePlay()}
+          >
             <Image
               src={thumbnail}
               alt={title}
               fill
               className="object-cover"
+              sizes="(max-width: 768px) 100vw, (max-width: 1200px) 80vw, 70vw"
             />
             <div className="absolute inset-0 bg-black/30 group-hover:bg-black/40 transition-colors" />
             <div className="absolute inset-0 flex items-center justify-center">
-              <div className="w-16 h-16 bg-white/90 hover:bg-white rounded-full flex items-center justify-center transition-colors">
-                <Play className="w-6 h-6 text-dark ml-1" />
+              <div className="w-12 h-12 sm:w-16 sm:h-16 bg-white/90 hover:bg-white rounded-full flex items-center justify-center transition-all hover:scale-110">
+                <Play className="w-4 h-4 sm:w-6 sm:h-6 text-dark ml-0.5 sm:ml-1" />
               </div>
             </div>
           </div>
@@ -152,8 +178,8 @@ export function VideoEmbed({ src, title, thumbnail, platform = 'custom' }: Video
           />
         )}
       </div>
-      <div className="mt-3 text-center">
-        <h4 className="font-switzer font-medium text-dark dark:text-light">{title}</h4>
+      <div className="mt-2 sm:mt-3 text-center">
+        <h4 className="font-switzer font-medium text-sm sm:text-base text-dark dark:text-light">{title}</h4>
       </div>
     </div>
   );
@@ -169,26 +195,26 @@ interface ProcessStepsProps {
 
 export function ProcessSteps({ steps }: ProcessStepsProps) {
   return (
-    <div className="process-steps my-8">
-      <div className="space-y-6">
+    <div className="process-steps my-6 sm:my-8">
+      <div className="space-y-4 sm:space-y-6">
         {steps.map((step, index) => (
-          <div key={index} className="flex items-start gap-4">
+          <div key={index} className="flex items-start gap-3 sm:gap-4">
             {/* Step Number/Icon */}
             <div className="flex-shrink-0">
-              <div className="w-10 h-10 bg-purple rounded-full flex items-center justify-center text-white font-bold">
+              <div className="w-8 h-8 sm:w-10 sm:h-10 bg-purple rounded-full flex items-center justify-center text-white font-bold text-sm sm:text-base">
                 {step.icon || (index + 1)}
               </div>
               {index < steps.length - 1 && (
-                <div className="w-0.5 h-8 bg-purple/30 mx-auto mt-2" />
+                <div className="w-0.5 h-6 sm:h-8 bg-purple/30 mx-auto mt-2" />
               )}
             </div>
             
             {/* Step Content */}
-            <div className="flex-1 pb-6">
-              <h4 className="font-ao font-bold text-lg text-dark dark:text-light mb-2">
+            <div className="flex-1 pb-4 sm:pb-6 min-w-0">
+              <h4 className="font-ao font-bold text-base sm:text-lg text-dark dark:text-light mb-2">
                 {step.title}
               </h4>
-              <p className="text-dark/80 dark:text-light/80 font-switzer leading-relaxed">
+              <p className="text-dark/80 dark:text-light/80 font-switzer leading-relaxed text-sm sm:text-base">
                 {step.description}
               </p>
             </div>
@@ -209,18 +235,18 @@ interface ComparisonTableProps {
 
 export function ComparisonTable({ items, featureLabels }: ComparisonTableProps) {
   return (
-    <div className="comparison-table my-8 overflow-x-auto">
-      <div className="min-w-full border border-lightBorderColor dark:border-darkBorderColor rounded-xl overflow-hidden">
-        <table className="w-full">
+    <div className="comparison-table my-6 sm:my-8 overflow-x-auto">
+      <div className="min-w-full border border-lightBorderColor dark:border-darkBorderColor rounded-xl overflow-hidden shadow-sm">
+        <table className="w-full min-w-[600px]">
           <thead className="bg-light dark:bg-dark">
             <tr>
-              <th className="px-6 py-4 text-left font-switzer font-bold text-dark dark:text-light">
+              <th className="px-3 sm:px-6 py-3 sm:py-4 text-left font-switzer font-bold text-dark dark:text-light text-sm sm:text-base">
                 Feature
               </th>
               {items.map((item, index) => (
                 <th
                   key={index}
-                  className="px-6 py-4 text-center font-switzer font-bold text-dark dark:text-light"
+                  className="px-3 sm:px-6 py-3 sm:py-4 text-center font-switzer font-bold text-dark dark:text-light text-sm sm:text-base"
                 >
                   {item.name}
                 </th>
@@ -235,19 +261,20 @@ export function ComparisonTable({ items, featureLabels }: ComparisonTableProps) 
                   rowIndex % 2 === 0 ? 'bg-light/50 dark:bg-dark/50' : ''
                 }`}
               >
-                <td className="px-6 py-4 font-switzer font-medium text-dark dark:text-light">
+                <td className="px-3 sm:px-6 py-3 sm:py-4 font-switzer font-medium text-dark dark:text-light text-sm sm:text-base">
                   {label}
                 </td>
                 {items.map((item, index) => (
-                  <td key={index} className="px-6 py-4 text-center">
+                  <td key={index} className="px-3 sm:px-6 py-3 sm:py-4 text-center">
                     {typeof item.features[key] === 'boolean' ? (
                       <span
-                        className={`inline-block w-5 h-5 rounded-full ${
+                        className={`inline-block w-4 h-4 sm:w-5 sm:h-5 rounded-full ${
                           item.features[key] ? 'bg-green-500' : 'bg-red-500'
                         }`}
+                        title={item.features[key] ? 'Yes' : 'No'}
                       />
                     ) : (
-                      <span className="text-dark/80 dark:text-light/80 font-switzer">
+                      <span className="text-dark/80 dark:text-light/80 font-switzer text-xs sm:text-sm">
                         {item.features[key]}
                       </span>
                     )}

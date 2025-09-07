@@ -53,33 +53,33 @@ export function NewsletterSignup({
   }
 
   return (
-    <div className="newsletter-signup my-8 p-8 bg-gradient-to-br from-purple/10 via-purple/5 to-transparent rounded-xl border border-purple/20">
+    <div className="newsletter-signup my-6 sm:my-8 p-6 sm:p-8 bg-gradient-to-br from-purple/10 via-purple/5 to-transparent rounded-xl border border-purple/20">
       <div className="text-center mb-6">
-        <div className="w-16 h-16 bg-purple/20 rounded-full flex items-center justify-center mx-auto mb-4">
-          <Mail className="w-8 h-8 text-purple" />
+        <div className="w-12 h-12 sm:w-16 sm:h-16 bg-purple/20 rounded-full flex items-center justify-center mx-auto mb-4">
+          <Mail className="w-6 h-6 sm:w-8 sm:h-8 text-purple" />
         </div>
-        <h3 className="font-ao font-bold text-2xl text-dark dark:text-light mb-2">
+        <h3 className="font-ao font-bold text-xl sm:text-2xl text-dark dark:text-light mb-2">
           {title}
         </h3>
-        <p className="text-dark/70 dark:text-light/70 font-switzer text-lg">
+        <p className="text-dark/70 dark:text-light/70 font-switzer text-sm sm:text-lg">
           {description}
         </p>
       </div>
 
       <form onSubmit={handleSubmit} className="max-w-md mx-auto">
-        <div className="flex gap-3">
+        <div className="flex flex-col sm:flex-row gap-3">
           <input
             type="email"
             value={email}
             onChange={(e) => setEmail(e.target.value)}
             placeholder={placeholder}
             required
-            className="flex-1 px-4 py-3 bg-light dark:bg-dark border border-lightBorderColor dark:border-darkBorderColor rounded-xl text-dark dark:text-light placeholder-dark/50 dark:placeholder-light/50 focus:outline-none focus:ring-2 focus:ring-purple/20 focus:border-purple/50 transition-all"
+            className="flex-1 px-4 py-3 bg-light dark:bg-dark border border-lightBorderColor dark:border-darkBorderColor rounded-xl text-dark dark:text-light placeholder-dark/50 dark:placeholder-light/50 focus:outline-none focus:ring-2 focus:ring-purple/20 focus:border-purple/50 transition-all text-sm sm:text-base"
           />
           <button
             type="submit"
             disabled={isLoading}
-            className="px-6 py-3 bg-purple hover:bg-purple/90 text-white rounded-xl font-switzer font-medium transition-all duration-300 hover:scale-105 active:scale-95 disabled:opacity-50 disabled:cursor-not-allowed flex items-center gap-2"
+            className="px-6 py-3 bg-purple hover:bg-purple/90 text-white rounded-xl font-switzer font-medium transition-all duration-300 hover:scale-105 active:scale-95 disabled:opacity-50 disabled:cursor-not-allowed flex items-center justify-center gap-2 touch-friendly text-sm sm:text-base whitespace-nowrap"
           >
             {isLoading ? (
               <div className="w-4 h-4 border-2 border-white/30 border-t-white rounded-full animate-spin" />
@@ -137,23 +137,23 @@ export function CTABox({
   };
 
   return (
-    <div className={`cta-box my-8 p-8 rounded-xl border ${getVariantStyles()}`}>
+    <div className={`cta-box my-6 sm:my-8 p-6 sm:p-8 rounded-xl border ${getVariantStyles()}`}>
       <div className="text-center">
         {icon && (
-          <div className="w-16 h-16 bg-purple/20 rounded-full flex items-center justify-center mx-auto mb-6">
+          <div className="w-12 h-12 sm:w-16 sm:h-16 bg-purple/20 rounded-full flex items-center justify-center mx-auto mb-4 sm:mb-6">
             {icon}
           </div>
         )}
-        <h3 className="font-ao font-bold text-2xl text-dark dark:text-light mb-4">
+        <h3 className="font-ao font-bold text-xl sm:text-2xl text-dark dark:text-light mb-3 sm:mb-4">
           {title}
         </h3>
-        <p className="text-dark/80 dark:text-light/80 font-switzer text-lg mb-8 max-w-2xl mx-auto leading-relaxed">
+        <p className="text-dark/80 dark:text-light/80 font-switzer text-sm sm:text-lg mb-6 sm:mb-8 max-w-2xl mx-auto leading-relaxed">
           {description}
         </p>
         <Link href={buttonLink}>
-          <button className={`inline-flex items-center gap-2 px-8 py-4 rounded-xl font-switzer font-semibold transition-all duration-300 hover:scale-105 active:scale-95 ${getButtonStyles()}`}>
+          <button className={`inline-flex items-center gap-2 px-6 sm:px-8 py-3 sm:py-4 rounded-xl font-switzer font-semibold transition-all duration-300 hover:scale-105 active:scale-95 touch-friendly text-sm sm:text-base ${getButtonStyles()}`}>
             {buttonText}
-            <ArrowRight className="w-5 h-5" />
+            <ArrowRight className="w-4 h-4 sm:w-5 sm:h-5" />
           </button>
         </Link>
       </div>

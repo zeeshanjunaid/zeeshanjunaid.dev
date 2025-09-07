@@ -41,10 +41,11 @@ export function ReadingProgress() {
       {showBackToTop && (
         <button
           onClick={scrollToTop}
-          className="fixed bottom-8 right-8 z-50 w-12 h-12 bg-purple hover:bg-purple/90 text-white rounded-full shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-105 active:scale-95 flex items-center justify-center"
+          className="fixed bottom-4 sm:bottom-8 right-4 sm:right-8 z-50 w-10 h-10 sm:w-12 sm:h-12 bg-purple hover:bg-purple/90 text-white rounded-full shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-105 active:scale-95 flex items-center justify-center touch-friendly"
           title="Back to top"
+          aria-label="Back to top"
         >
-          <ChevronUp className="w-5 h-5" />
+          <ChevronUp className="w-4 h-4 sm:w-5 sm:h-5" />
         </button>
       )}
     </>
@@ -86,25 +87,25 @@ export function TableOfContents({ headings }: TableOfContentsProps) {
   };
 
   return (
-    <div className="table-of-contents sticky top-24 bg-light dark:bg-dark rounded-xl border border-lightBorderColor dark:border-darkBorderColor p-5">
-      <h3 className="font-ao font-bold text-lg text-dark dark:text-light mb-4 flex items-center gap-2">
+    <div className="table-of-contents sticky top-20 sm:top-24 bg-light dark:bg-dark rounded-xl border border-lightBorderColor dark:border-darkBorderColor p-4 sm:p-5 max-h-[70vh] overflow-y-auto">
+      <h3 className="font-ao font-bold text-base sm:text-lg text-dark dark:text-light mb-3 sm:mb-4 flex items-center gap-2">
         📖 Table of Contents
       </h3>
       <nav>
-        <ul className="space-y-2">
+        <ul className="space-y-1 sm:space-y-2">
           {headings.map(({ id, text, level }) => (
             <li key={id}>
               <button
                 onClick={() => scrollToHeading(id)}
-                className={`block w-full text-left py-2 px-3 rounded-lg font-switzer text-sm transition-all duration-200 ${
-                  level === 2 ? 'ml-0' : level === 3 ? 'ml-4' : 'ml-8'
+                className={`block w-full text-left py-1.5 sm:py-2 px-2 sm:px-3 rounded-lg font-switzer text-xs sm:text-sm transition-all duration-200 touch-friendly ${
+                  level === 2 ? 'ml-0' : level === 3 ? 'ml-2 sm:ml-4' : 'ml-4 sm:ml-8'
                 } ${
                   activeId === id
                     ? 'bg-purple/10 text-purple font-medium border-l-2 border-purple'
                     : 'text-dark/70 dark:text-light/70 hover:text-purple hover:bg-purple/5'
                 }`}
               >
-                {text}
+                <span className="line-clamp-2">{text}</span>
               </button>
             </li>
           ))}
