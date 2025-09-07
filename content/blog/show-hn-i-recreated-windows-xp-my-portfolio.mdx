@@ -1,0 +1,99 @@
+---
+title: "Show HN: I recreated Windows XP as my portfolio (React/Next.js takeaways)"
+date: "2025-09-07"
+excerpt: "A developer rebuilt Windows XP UI as a React/Next.js portfolio. This shows how far modern frontend stacks can go for interactive, nostalgic UIs. Here’s what..."
+readingTime: 4
+slug: "show-hn-i-recreated-windows-xp-my-portfolio"
+cover: "/images/blog/show-hn-i-recreated-windows-xp-my-portfolio/cover.jpg"
+tags:
+  - "react"
+  - "nextjs"
+  - "portfolio"
+  - "windowsxp"
+  - "frontend"
+  - "performance"
+featured: false
+---
+Show HN: A developer recreated Windows XP as a personal portfolio using React and Next.js.
+
+The site is live at https://mitchivin.com/.
+
+Why this matters: It demonstrates how modern React/Next.js can mimic complex, desktop-like UIs in the browser.
+
+For frontend teams, it’s a real-world test of performance, state management, and deployment when pushing the limits of web interactivity.
+
+For most Next.js/React stacks, this fits as a showcase of what’s possible with custom theming, window management, and simulated OS behaviors—all in a single-page app.
+
+Frontend devs, DX owners, and perf champions should note the trade-offs for heavy UI emulation. Background: The new thing is a full recreation of the Windows XP desktop experience—taskbar, start menu, draggable windows—built with React components.
+
+This approach replaces static or template-based portfolios with a fully interactive interface.
+
+The previous norm was simple landing pages or galleries; this is much more dynamic.
+
+No breaking changes or migrations are required for standard React/Next.js projects to attempt something similar.
+
+The portfolio uses familiar patterns: component state for window management, CSS for theming, and event handlers for drag/drop. Minimal starter snippet: Here’s how to make a draggable window in React (no external libs needed): ```jsx
+import { useRef, useState } from 'react';
+
+function DraggableWindow({ children }) {
+  const nodeRef = useRef(null);
+  const [dragging, setDragging] = useState(false);
+  const [pos, setPos] = useState({ x: 100, y: 100 });
+
+  function onMouseDown(e) {
+    setDragging(true);
+    nodeRef.current.startX = e.clientX - pos.x;
+    nodeRef.current.startY = e.clientY - pos.y;
+    document.addEventListener('mousemove', onMouseMove);
+    document.addEventListener('mouseup', onMouseUp);
+  }
+
+  function onMouseMove(e) {
+    if (!dragging) return;
+    setPos({ x: e.clientX - nodeRef.current.startX, y: e.clientY - nodeRef.current.startY });
+  }
+
+  function onMouseUp() {
+    setDragging(false);
+    document.removeEventListener('mousemove', onMouseMove);
+    document.removeEventListener('mouseup', onMouseUp);
+  }
+
+  return (
+    <div ref={nodeRef} style={{ position: 'absolute', left: pos.x, top: pos.y }}>
+      <div style={{ cursor: 'move' }} onMouseDown={onMouseDown}>
+        Window Titlebar (drag me)
+      </div>
+      <div>{children}</div>
+    </div>
+  );
+}
+``` This pattern scales to multiple windows by keeping an array of state objects.
+
+Add focus management and z-index stacking as needed.
+
+To enable similar behavior in Next.js:
+- Use client-side rendering (`use client` directive or dynamic imports) for interactive window states. - Keep global state (like open windows) in context providers or Redux if complexity grows. - Style with CSS modules or styled-components for classic XP look. - Optimize images and icons; XP-style UIs can be heavy on assets. - Deploy statically or server-side; no special flags are required.
+
+Key API usage is standard React state/events.
+
+No custom Next.js features are required beyond normal SSR/static settings.
+
+Pitfalls:
+- Common misconfigurations include missing event cleanup (drag listeners), which can cause memory leaks or stuck UI states. - Edge cases may appear if you try to SSR window positions—stick to client-only logic for anything interactive. - Performance regressions are possible if you manage too many windows/components without batching updates or memoizing props. - Asset bloat can slow initial load; optimize all images/icons used for the XP theme. - Accessibility may suffer if keyboard navigation isn’t handled—test with screen readers and tabbing.
+
+Diagram idea:
+```mermaid
+graph TD;
+a[User opens site] --> b[React renders desktop];
+b --> c[User clicks Start];
+c --> d[Start Menu opens];
+d --> e[User launches app];
+e --> f[New window appears];
+f --> g[User drags window];
+g --> h[State updates position]
+h --> i[UI rerenders]
+i --> j[User closes window];
+j --> b;
+``` Checklist:
+- Measure before/after (Web Vitals). - Ship a tiny demo page (one draggable window). - Add monitoring/alerting for JS errors and slow loads. - Plan rollback path (keep a simple landing page ready). - Share learnings internally (postmortem or tech talk).
