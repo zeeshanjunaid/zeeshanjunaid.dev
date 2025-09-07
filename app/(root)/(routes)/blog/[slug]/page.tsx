@@ -74,21 +74,15 @@ export default async function BlogPostPage({
         {/* Blog Post Schema Markup */}
         <SchemaMarkup schema={generateBlogPostSchema(meta)} />
 
-        {/* Hero Section */}
-        <section className="relative overflow-hidden bg-gradient-to-br from-light via-light to-light/95 dark:from-dark dark:via-dark dark:to-dark/95">
-          <div className="absolute inset-0 -z-10">
-            <div className="absolute top-10 right-10 w-80 h-80 bg-purple/8 rounded-full blur-3xl" />
-            <div className="absolute bottom-10 left-10 w-96 h-96 bg-purple/4 rounded-full blur-3xl" />
-            <div className="absolute top-1/2 left-1/2 w-64 h-64 bg-purple/6 rounded-full blur-2xl transform -translate-x-1/2 -translate-y-1/2" />
-          </div>
-
-          <Container className="px-4 md:px-7 lg:px-0 py-12 md:py-16 max-w-6xl">
+        {/* Simplified Hero Section */}
+        <section className="py-12 md:py-16">
+          <Container className="px-4 md:px-7 lg:px-0 max-w-4xl">
             {/* Navigation */}
             <div className="mb-8">
               <Link href="/blog">
                 <Button
                   variant="ghost"
-                  size="lg"
+                  size="sm"
                   className="rounded-xl uppercase font-medium font-switzer text-dark dark:text-light hover:text-purple flex items-center gap-2 hover:bg-purple/5 transition-all duration-300"
                 >
                   <ArrowLeft className="w-4 h-4" />
@@ -97,10 +91,39 @@ export default async function BlogPostPage({
               </Link>
             </div>
 
-            {/* Cover Image - Top */}
+            {/* Article Meta */}
+            <div className="flex flex-wrap items-center gap-3 mb-6">
+              {meta.featured && (
+                <span className="text-purple font-switzer font-medium text-[12px] uppercase tracking-wider bg-purple/10 px-3 py-1 rounded-lg">
+                  Featured
+                </span>
+              )}
+              <span className="text-dark/60 dark:text-light/60 font-switzer text-[14px]">
+                {new Date(meta.date).toLocaleDateString("en-US", {
+                  month: "long",
+                  day: "numeric",
+                  year: "numeric",
+                })}
+              </span>
+              <span className="text-dark/60 dark:text-light/60 font-switzer text-[14px]">
+                {meta.readingTime} min read
+              </span>
+            </div>
+
+            {/* Title */}
+            <h1 className="text-[28px] md:text-[36px] lg:text-[42px] font-bold font-ao text-dark dark:text-light leading-tight mb-6">
+              {meta.title}
+            </h1>
+
+            {/* Excerpt */}
+            <p className="text-dark/70 dark:text-light/70 font-switzer font-light text-[16px] md:text-[18px] leading-relaxed mb-8">
+              {meta.excerpt}
+            </p>
+
+            {/* Cover Image */}
             {meta.cover && (
               <div className="mb-12">
-                <div className="relative aspect-[16/9] md:aspect-[2/1] rounded-2xl overflow-hidden shadow-2xl">
+                <div className="relative aspect-[16/9] rounded-3xl overflow-hidden">
                   <Image
                     src={meta.cover}
                     alt={meta.title}
@@ -109,75 +132,9 @@ export default async function BlogPostPage({
                     priority
                     sizes="(max-width: 768px) 100vw, (max-width: 1200px) 90vw, 80vw"
                   />
-                  <div className="absolute inset-0 bg-gradient-to-t from-black/30 via-transparent to-transparent" />
-
-                  {/* Floating Elements */}
-                  <div className="absolute -top-2 -right-2 w-4 h-4 bg-purple rounded-full opacity-70" />
-                  <div className="absolute -bottom-2 -left-2 w-6 h-6 bg-purple/50 rounded-full opacity-60" />
                 </div>
               </div>
             )}
-
-            {/* Hero Content */}
-            <div className="max-w-4xl">
-              {/* Article Meta */}
-              <div className="flex flex-wrap items-center gap-4 mb-8">
-                {/* Featured Badge */}
-                {meta.featured && (
-                  <div className="inline-flex items-center gap-2 bg-purple/10 px-4 py-2 rounded-xl">
-                    <BookOpen className="w-4 h-4 text-purple" />
-                    <span className="text-purple font-switzer font-medium text-[12px] md:text-[14px] uppercase tracking-wider">
-                      Featured Article
-                    </span>
-                  </div>
-                )}
-
-                {/* Date Badge */}
-                <div className="inline-flex items-center gap-2 bg-light dark:bg-dark border border-lightBorderColor dark:border-darkBorderColor px-4 py-2 rounded-xl">
-                  <Calendar className="w-4 h-4 text-dark/60 dark:text-light/60" />
-                  <span className="text-dark/80 dark:text-light/80 font-switzer font-medium text-[12px] md:text-[14px] uppercase tracking-wider">
-                    {new Date(meta.date).toLocaleDateString("en-US", {
-                      month: "short",
-                      day: "numeric",
-                      year: "numeric",
-                    })}
-                  </span>
-                </div>
-
-                {/* Reading Time */}
-                <div className="inline-flex items-center gap-2 bg-light dark:bg-dark border border-lightBorderColor dark:border-darkBorderColor px-4 py-2 rounded-xl">
-                  <Clock className="w-4 h-4 text-dark/60 dark:text-light/60" />
-                  <span className="text-dark/80 dark:text-light/80 font-switzer font-medium text-[12px] md:text-[14px] uppercase tracking-wider">
-                    {meta.readingTime} min read
-                  </span>
-                </div>
-              </div>
-
-              {/* Title */}
-              <h1 className="text-[32px] md:text-[42px] lg:text-[52px] font-bold font-ao text-dark dark:text-light leading-tight mb-6">
-                {meta.title}
-              </h1>
-
-              {/* Excerpt */}
-              <p className="text-dark/80 dark:text-light/80 font-switzer font-light text-[18px] md:text-[20px] leading-relaxed mb-8 max-w-3xl">
-                {meta.excerpt}
-              </p>
-
-              {/* Author Info */}
-              <div className="flex items-center gap-4">
-                <div className="w-12 h-12 bg-purple/10 rounded-full flex items-center justify-center">
-                  <BookOpen className="w-6 h-6 text-purple" />
-                </div>
-                <div>
-                  <p className="font-switzer font-medium text-dark dark:text-light text-[16px]">
-                    {meta.author || "Zeeshan Junaid"}
-                  </p>
-                  <p className="font-switzer font-light text-dark/60 dark:text-light/60 text-[14px]">
-                    Full-Stack Developer
-                  </p>
-                </div>
-              </div>
-            </div>
           </Container>
         </section>
 
