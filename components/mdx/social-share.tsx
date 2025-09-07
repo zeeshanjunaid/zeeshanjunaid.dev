@@ -45,31 +45,32 @@ export function SocialShare({ title, url, description = '' }: SocialShareProps) 
   };
 
   return (
-    <div className="social-share my-8 p-6 bg-light dark:bg-dark rounded-xl border border-lightBorderColor dark:border-darkBorderColor">
+    <div className="social-share my-6 sm:my-8 p-4 sm:p-6 bg-light dark:bg-dark rounded-xl border border-lightBorderColor dark:border-darkBorderColor">
       <div className="flex items-center gap-3 mb-4">
-        <div className="w-10 h-10 bg-purple/10 rounded-xl flex items-center justify-center">
-          <Share2 className="w-5 h-5 text-purple" />
+        <div className="w-8 h-8 sm:w-10 sm:h-10 bg-purple/10 rounded-xl flex items-center justify-center">
+          <Share2 className="w-4 h-4 sm:w-5 sm:h-5 text-purple" />
         </div>
-        <div>
-          <h3 className="font-ao font-bold text-lg text-dark dark:text-light">
+        <div className="min-w-0 flex-1">
+          <h3 className="font-ao font-bold text-base sm:text-lg text-dark dark:text-light">
             Share this article
           </h3>
-          <p className="text-dark/60 dark:text-light/60 font-switzer text-sm">
+          <p className="text-dark/60 dark:text-light/60 font-switzer text-xs sm:text-sm">
             Help others discover this content
           </p>
         </div>
       </div>
 
-      <div className="flex flex-wrap gap-3">
+      <div className="flex flex-wrap gap-2 sm:gap-3">
         {/* Twitter */}
         <a
           href={shareUrls.twitter}
           target="_blank"
           rel="noopener noreferrer"
-          className="flex items-center gap-2 px-4 py-2 bg-blue-500 hover:bg-blue-600 text-white rounded-lg transition-colors font-switzer font-medium text-sm"
+          className="flex items-center gap-1.5 sm:gap-2 px-3 sm:px-4 py-2 bg-blue-500 hover:bg-blue-600 text-white rounded-lg transition-colors font-switzer font-medium text-xs sm:text-sm touch-friendly"
         >
-          <Twitter className="w-4 h-4" />
-          Twitter
+          <Twitter className="w-3 h-3 sm:w-4 sm:h-4" />
+          <span className="hidden sm:inline">Twitter</span>
+          <span className="sm:hidden">X</span>
         </a>
 
         {/* LinkedIn */}
@@ -77,10 +78,11 @@ export function SocialShare({ title, url, description = '' }: SocialShareProps) 
           href={shareUrls.linkedin}
           target="_blank"
           rel="noopener noreferrer"
-          className="flex items-center gap-2 px-4 py-2 bg-blue-700 hover:bg-blue-800 text-white rounded-lg transition-colors font-switzer font-medium text-sm"
+          className="flex items-center gap-1.5 sm:gap-2 px-3 sm:px-4 py-2 bg-blue-700 hover:bg-blue-800 text-white rounded-lg transition-colors font-switzer font-medium text-xs sm:text-sm touch-friendly"
         >
-          <Linkedin className="w-4 h-4" />
-          LinkedIn
+          <Linkedin className="w-3 h-3 sm:w-4 sm:h-4" />
+          <span className="hidden sm:inline">LinkedIn</span>
+          <span className="sm:hidden">In</span>
         </a>
 
         {/* Facebook */}
@@ -88,26 +90,29 @@ export function SocialShare({ title, url, description = '' }: SocialShareProps) 
           href={shareUrls.facebook}
           target="_blank"
           rel="noopener noreferrer"
-          className="flex items-center gap-2 px-4 py-2 bg-blue-600 hover:bg-blue-700 text-white rounded-lg transition-colors font-switzer font-medium text-sm"
+          className="flex items-center gap-1.5 sm:gap-2 px-3 sm:px-4 py-2 bg-blue-600 hover:bg-blue-700 text-white rounded-lg transition-colors font-switzer font-medium text-xs sm:text-sm touch-friendly"
         >
-          <Facebook className="w-4 h-4" />
-          Facebook
+          <Facebook className="w-3 h-3 sm:w-4 sm:h-4" />
+          <span className="hidden sm:inline">Facebook</span>
+          <span className="sm:hidden">FB</span>
         </a>
 
         {/* Copy Link */}
         <button
           onClick={copyToClipboard}
-          className="flex items-center gap-2 px-4 py-2 bg-purple/10 hover:bg-purple/20 text-purple rounded-lg transition-colors font-switzer font-medium text-sm border border-purple/20"
+          className="flex items-center gap-1.5 sm:gap-2 px-3 sm:px-4 py-2 bg-purple/10 hover:bg-purple/20 text-purple rounded-lg transition-colors font-switzer font-medium text-xs sm:text-sm border border-purple/20 touch-friendly"
         >
           {copied ? (
             <>
-              <Check className="w-4 h-4" />
-              Copied!
+              <Check className="w-3 h-3 sm:w-4 sm:h-4" />
+              <span className="hidden sm:inline">Copied!</span>
+              <span className="sm:hidden">✓</span>
             </>
           ) : (
             <>
-              <Link className="w-4 h-4" />
-              Copy Link
+              <Link className="w-3 h-3 sm:w-4 sm:h-4" />
+              <span className="hidden sm:inline">Copy Link</span>
+              <span className="sm:hidden">Copy</span>
             </>
           )}
         </button>

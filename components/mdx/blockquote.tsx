@@ -45,18 +45,18 @@ export function Blockquote({ children, type = 'default', author }: BlockquotePro
   };
 
   return (
-    <blockquote className={`custom-blockquote relative my-8 p-6 border-l-4 rounded-r-xl ${getStyles()}`}>
-      <div className="flex items-start gap-4">
+    <blockquote className={`custom-blockquote relative my-4 sm:my-6 lg:my-8 p-4 sm:p-6 border-l-4 rounded-r-xl ${getStyles()}`}>
+      <div className="flex items-start gap-3 sm:gap-4">
         <div className={`flex-shrink-0 ${getIconColor()}`}>
           {getIcon()}
         </div>
-        <div className="flex-1">
-          <div className="prose-lg font-switzer leading-relaxed">
+        <div className="flex-1 min-w-0">
+          <div className="text-sm sm:text-base lg:text-lg font-switzer leading-relaxed">
             {children}
           </div>
           {author && (
-            <div className="mt-4 pt-3 border-t border-current border-opacity-20">
-              <cite className="not-italic font-switzer font-medium text-sm opacity-80">
+            <div className="mt-3 sm:mt-4 pt-3 border-t border-current border-opacity-20">
+              <cite className="not-italic font-switzer font-medium text-xs sm:text-sm opacity-80">
                 — {author}
               </cite>
             </div>
@@ -114,18 +114,18 @@ export function Callout({ children, type, title }: CalloutProps) {
   const config = getConfig();
 
   return (
-    <div className={`callout-box my-6 p-5 border rounded-xl ${config.styles}`}>
+    <div className={`callout-box my-4 sm:my-6 p-4 sm:p-5 border rounded-xl ${config.styles}`}>
       <div className="flex items-start gap-3">
         <div className={`flex-shrink-0 ${config.iconColor}`}>
           {config.icon}
         </div>
-        <div className="flex-1">
+        <div className="flex-1 min-w-0">
           {title && (
-            <h4 className={`font-switzer font-bold text-lg mb-2 ${config.titleColor}`}>
+            <h4 className={`font-switzer font-bold text-base sm:text-lg mb-2 ${config.titleColor}`}>
               {title}
             </h4>
           )}
-          <div className="text-dark/90 dark:text-light/90 font-switzer">
+          <div className="text-dark/90 dark:text-light/90 font-switzer text-sm sm:text-base">
             {children}
           </div>
         </div>

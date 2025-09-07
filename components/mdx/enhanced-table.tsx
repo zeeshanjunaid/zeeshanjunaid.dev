@@ -146,10 +146,12 @@ export function EnhancedTable({ children, sortable = false, searchable = false, 
 // Simple table for regular markdown tables
 export function SimpleTable({ children }: { children: React.ReactNode }) {
   return (
-    <div className="simple-table my-6 overflow-x-auto rounded-xl border border-lightBorderColor dark:border-darkBorderColor">
-      <table className="w-full bg-light dark:bg-dark">
-        {children}
-      </table>
+    <div className="simple-table my-4 sm:my-6 overflow-x-auto rounded-xl border border-lightBorderColor dark:border-darkBorderColor shadow-sm">
+      <div className="min-w-full">
+        <table className="w-full bg-light dark:bg-dark">
+          {children}
+        </table>
+      </div>
     </div>
   );
 }
