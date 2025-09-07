@@ -4,6 +4,13 @@ import matter from 'gray-matter';
 import path from 'path';
 import { CodeBlock, InlineCode } from '@/components/mdx/code-block';
 import { MermaidDiagram } from '@/components/mdx/dynamic-mermaid';
+import { Blockquote, Callout } from '@/components/mdx/blockquote';
+import { EnhancedTable, SimpleTable } from '@/components/mdx/enhanced-table';
+import { ReadingProgress, TableOfContents } from '@/components/mdx/reading-progress';
+import { SocialShare } from '@/components/mdx/social-share';
+import { ImageGallery, VideoEmbed, ProcessSteps, ComparisonTable } from '@/components/mdx/visual-components';
+import { NewsletterSignup, CTABox, AuthorBio, RelatedPosts } from '@/components/mdx/engagement-components';
+import { EnhancedHeading, AnchorLink } from '@/components/mdx/enhanced-headings';
 import React from 'react';
 
 const root = process.cwd();
@@ -53,6 +60,33 @@ export async function getPostBySlug(slug: string) {
           // Block code (handled by pre component)
           return React.createElement('code', { className, ...props }, children);
         },
+        // Enhanced headings with anchor links
+        h1: (props: any) => React.createElement(EnhancedHeading, { level: 1, ...props }),
+        h2: (props: any) => React.createElement(EnhancedHeading, { level: 2, ...props }),
+        h3: (props: any) => React.createElement(EnhancedHeading, { level: 3, ...props }),
+        h4: (props: any) => React.createElement(EnhancedHeading, { level: 4, ...props }),
+        h5: (props: any) => React.createElement(EnhancedHeading, { level: 5, ...props }),
+        h6: (props: any) => React.createElement(EnhancedHeading, { level: 6, ...props }),
+        // Enhanced links
+        a: (props: any) => React.createElement(AnchorLink, { external: props.href?.startsWith('http'), ...props }),
+        // Table components
+        table: (props: any) => React.createElement(SimpleTable, props),
+        // Custom components
+        Blockquote,
+        Callout,
+        EnhancedTable,
+        SimpleTable,
+        ReadingProgress,
+        TableOfContents,
+        SocialShare,
+        ImageGallery,
+        VideoEmbed,
+        ProcessSteps,
+        ComparisonTable,
+        NewsletterSignup,
+        CTABox,
+        AuthorBio,
+        RelatedPosts,
         // Mermaid diagrams
         mermaid: MermaidDiagram,
       },
