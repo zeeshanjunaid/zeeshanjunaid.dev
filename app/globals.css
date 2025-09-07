@@ -259,3 +259,34 @@ html {
 .prose .custom-code-block pre {
   line-height: 1.6 !important;
 }
+
+/* Custom scrollbar styling for code blocks */
+.custom-code-block pre::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+
+.custom-code-block pre::-webkit-scrollbar-track {
+  background: rgba(163, 116, 255, 0.05);
+  border-radius: 3px;
+}
+
+.custom-code-block pre::-webkit-scrollbar-thumb {
+  background: rgba(163, 116, 255, 0.3);
+  border-radius: 3px;
+  transition: background 0.2s ease;
+}
+
+.custom-code-block pre::-webkit-scrollbar-thumb:hover {
+  background: rgba(163, 116, 255, 0.5);
+}
+
+.custom-code-block pre::-webkit-scrollbar-corner {
+  background: rgba(163, 116, 255, 0.05);
+}
+
+/* For Firefox */
+.custom-code-block pre {
+  scrollbar-width: thin;
+  scrollbar-color: rgba(163, 116, 255, 0.3) rgba(163, 116, 255, 0.05);
+}
