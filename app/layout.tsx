@@ -1,17 +1,19 @@
 import "./globals.css";
 
 import { Analytics } from "@vercel/analytics/react";
+import { AuthProvider } from "@/components/auth/auth-provider";
 import BackToTop from "@/components/back-to-top";
 import { Footer } from "@/components/footer";
 import { Header } from "@/components/header";
 import type { Metadata } from "next";
 import NextTopLoader from "nextjs-toploader";
+import { Schema } from "@/components/schema";
 import { SpeedInsights } from "@vercel/speed-insights/next";
 import { ThemeProvider } from "@/components/theme-provider";
 import { Toaster } from "@/components/ui/toaster";
 import { cn } from "@/lib/utils";
 import localFont from "next/font/local";
-import { Schema } from "@/components/schema";
+
 export const metadata: Metadata = {
   metadataBase: new URL("https://zeeshanjunaid.dev"),
   title: {
@@ -44,7 +46,7 @@ export const metadata: Metadata = {
     siteName: "Zeeshan Junaid",
     images: [
       {
-        url: "/images/opengraph-image.jpg", 
+        url: "/images/opengraph-image.jpg",
         width: 1200,
         height: 630,
         alt: "Zeeshan Junaid - UI/UX Designer and Frontend Developer",
@@ -120,28 +122,30 @@ export default function RootLayout({
         )}
       >
         <ThemeProvider attribute="class" defaultTheme="dark">
-          <NextTopLoader
-            color="#A374FF"
-            initialPosition={0.08}
-            crawlSpeed={200}
-            height={4}
-            crawl={true}
-            showSpinner={false}
-            easing="ease"
-            speed={250}
-            shadow="0 0 16px #A374FF,0 0 8px #A374FF"
-            template='<div class="bar" role="bar"><div class="peg"></div></div> 
+          <AuthProvider>
+            <NextTopLoader
+              color="#A374FF"
+              initialPosition={0.08}
+              crawlSpeed={200}
+              height={4}
+              crawl={true}
+              showSpinner={false}
+              easing="ease"
+              speed={250}
+              shadow="0 0 16px #A374FF,0 0 8px #A374FF"
+              template='<div class="bar" role="bar"><div class="peg"></div></div> 
 <div class="spinner" role="spinner"><div class="spinner-icon"></div></div>'
-            zIndex={1600}
-            showAtBottom={false}
-          />
+              zIndex={1600}
+              showAtBottom={false}
+            />
 
-          <Header />
-          <main className="pt-[100px]">{children}</main>
-          <Footer />
-          <BackToTop />
+            <Header />
+            <main className="pt-[100px]">{children}</main>
+            <Footer />
+            <BackToTop />
 
-          <Toaster />
+            <Toaster />
+          </AuthProvider>
         </ThemeProvider>
         <Analytics />
         <SpeedInsights />

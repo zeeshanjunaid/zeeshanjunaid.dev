@@ -3,11 +3,12 @@
 import React, { useState } from "react";
 import { motion, useMotionValueEvent, useScroll } from "framer-motion";
 
+import { AuthButton } from "./auth/auth-button";
 import { Button } from "./ui/button";
 import { Container } from "./container";
 import Link from "next/link";
-import NavMobile from "./nav-mobile";
 import { ModeToggle } from "./theme-toggle";
+import NavMobile from "./nav-mobile";
 import { cn } from "@/lib/utils";
 import navLinks from "@/data/nav";
 import { usePathname } from "next/navigation";
@@ -49,7 +50,7 @@ export const Header = () => {
     <header
       className={cn(
         "fixed z-40 top-0 left-0 right-0 w-full px-4 md:px-8 lg:px-0 pt-4 pb-4 border-b-[1px] border-b-transparent transition-all duration-200 bg-transparent",
-        scrolledClasses,
+        scrolledClasses
       )}
     >
       <Container className="flex items-center justify-between">
@@ -70,7 +71,7 @@ export const Header = () => {
                 className={cn(
                   "font-switzer font-dark dark:font-light text-sm uppercase font-medium transition-all duration-150 hover:text-purple hover:bg-purple/5 rounded-lg px-4 py-2 h-9",
                   pathname === link &&
-                    "bg-purple text-dark dark:text-light hover:text-dark dark:hover:text-light hover:bg-purple",
+                    "bg-purple text-dark dark:text-light hover:text-dark dark:hover:text-light hover:bg-purple"
                 )}
                 asChild
               >
@@ -81,6 +82,7 @@ export const Header = () => {
             ))}
           </div>
           <NavMobile data={navLinks} />
+          <AuthButton />
           <ModeToggle />
         </div>
       </Container>
