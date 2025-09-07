@@ -18,7 +18,6 @@ Preferred communication style: Simple, everyday language.
 ## Content Management
 - **Blog System**: File-based MDX content with gray-matter for frontmatter parsing
 - **Code Highlighting**: React Syntax Highlighter with custom code blocks
-- **Diagram Support**: Mermaid.js integration for technical diagrams
 - **Static Data**: TypeScript modules for portfolio projects, reviews, and services
 
 ## UI Component System

@@ -6,7 +6,6 @@ import { ComparisonTable, ImageGallery, ProcessSteps, VideoEmbed } from '@/compo
 import { EnhancedTable, SimpleTable } from '@/components/mdx/enhanced-table';
 import { ReadingProgress, TableOfContents } from '@/components/mdx/reading-progress';
 
-import { MermaidDiagram } from '@/components/mdx/dynamic-mermaid';
 import React from 'react';
 import { SocialShare } from '@/components/mdx/social-share';
 import { compileMDX } from 'next-mdx-remote/rsc';
@@ -27,6 +26,7 @@ export interface PostMeta {
   tags?: string[];
   featured?: boolean;
   cover?: string;
+  coverImage?: string;
   draft?: boolean;
 }
 
@@ -91,13 +91,17 @@ export async function getPostBySlug(slug: string) {
         CTABox,
         AuthorBio,
         RelatedPosts,
-        // Mermaid diagrams
-        mermaid: MermaidDiagram,
       },
     });
 
     return { 
-      meta: { ...data, slug: realSlug } as PostMeta, 
+      meta: { 
+        ...data, 
+        slug: realSlug,
+        // Normalize cover image field - prefer coverImage over cover
+        cover: data.coverImage || data.cover,
+        coverImage: undefined  // Remove duplicate field
+      } as PostMeta, 
       content: mdxContent 
     };
   } catch (error) {
