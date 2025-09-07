@@ -230,3 +230,32 @@ html {
   width: auto;
   margin: 0 auto;
 }
+
+/* Enhanced code block styling to work with custom components */
+.prose pre {
+  /* Reset default prose styles to let our custom components take over */
+  background: transparent !important;
+  padding: 0 !important;
+  margin: 0 !important;
+  border: none !important;
+  border-radius: 0 !important;
+}
+
+.prose code {
+  /* Reset default prose code styles when it's part of our custom components */
+  background: transparent !important;
+  padding: 0 !important;
+  border: none !important;
+  font-weight: inherit !important;
+  color: inherit !important;
+}
+
+/* Ensure our custom code blocks override prose styling */
+.prose .custom-code-block {
+  margin: 1.5rem 0 !important;
+}
+
+/* Improve readability for syntax highlighted code */
+.prose .custom-code-block pre {
+  line-height: 1.6 !important;
+}

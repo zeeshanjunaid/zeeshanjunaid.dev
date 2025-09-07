@@ -4,6 +4,7 @@ import matter from 'gray-matter';
 import path from 'path';
 import { CodeBlock, InlineCode } from '@/components/mdx/code-block';
 import { MermaidDiagram } from '@/components/mdx/dynamic-mermaid';
+import React from 'react';
 
 const root = process.cwd();
 const postsDirectory = path.join(root, 'content', 'blog');
@@ -36,24 +37,21 @@ export async function getPostBySlug(slug: string) {
         pre: ({ children, ...props }: any) => {
           const child = children?.props;
           if (child?.className?.includes('language-')) {
-            return (
-              <CodeBlock 
-                className={child.className}
-                filename={child.filename}
-              >
-                {child.children}
-              </CodeBlock>
-            );
+            return React.createElement(CodeBlock, { 
+              className: child.className,
+              filename: child.filename,
+              children: child.children
+            });
           }
-          return <pre {...props}>{children}</pre>;
+          return React.createElement('pre', props, children);
         },
         code: ({ children, className, ...props }: any) => {
           // Inline code (not in pre blocks)
           if (!className) {
-            return <InlineCode>{children}</InlineCode>;
+            return React.createElement(InlineCode, { children });
           }
           // Block code (handled by pre component)
-          return <code className={className} {...props}>{children}</code>;
+          return React.createElement('code', { className, ...props }, children);
         },
         // Mermaid diagrams
         mermaid: MermaidDiagram,
