@@ -3,7 +3,6 @@
 import React, { useState } from "react";
 import { motion, useMotionValueEvent, useScroll } from "framer-motion";
 
-import { AuthButton } from "./auth/auth-button";
 import { Button } from "./ui/button";
 import { Container } from "./container";
 import Link from "next/link";
@@ -82,7 +81,6 @@ export const Header = () => {
             ))}
           </div>
           <NavMobile data={navLinks} />
-          <AuthButton />
           <ModeToggle />
         </div>
       </Container>

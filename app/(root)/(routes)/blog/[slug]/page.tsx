@@ -10,7 +10,6 @@ import { getAllPostsMeta, getPostBySlug } from "@/lib/posts";
 
 import { BlurBG } from "@/components/blur-bg";
 import { Button } from "@/components/ui/button";
-import { CommentSection } from "@/components/comments/comment-section";
 import { Container } from "@/components/container";
 import Image from "next/image";
 import Link from "next/link";
@@ -323,12 +322,6 @@ export default async function BlogPostPage({
           </Container>
         </section>
 
-        {/* Comments Section */}
-        <section className="py-16 md:py-20 bg-gradient-to-br from-light via-light to-light/95 dark:from-dark dark:via-dark dark:to-dark/95">
-          <Container className="px-4 md:px-7 lg:px-0 max-w-4xl">
-            <CommentSection postSlug={slug} />
-          </Container>
-        </section>
 
         {/* Enhanced CTA Section */}
         <section className="py-16 md:py-20 bg-gradient-to-br from-light via-light to-light/95 dark:from-dark dark:via-dark dark:to-dark/95">
