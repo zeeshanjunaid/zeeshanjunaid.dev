@@ -1,5 +1,6 @@
 "use client";
 
+import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import {
   DropdownMenu,
   DropdownMenuContent,
@@ -19,7 +20,6 @@ import { Button } from "@/components/ui/button";
 import { CommentForm } from "@/components/comments/comment-form";
 import { CommentList } from "@/components/comments/comment-list";
 import { CommentWithReplies } from "@/types/database";
-import Image from "next/image";
 import { createClient } from "@/lib/supabase/client";
 import { formatDistanceToNow } from "date-fns";
 import { toast } from "@/components/ui/use-toast";
@@ -34,6 +34,18 @@ interface CommentProps {
 }
 
 const MAX_DEPTH = 3;
+
+// Helper function to format name as "First L."
+function formatDisplayName(fullName: string | null | undefined): string {
+  if (!fullName) return "User";
+
+  const parts = fullName.trim().split(" ");
+  if (parts.length === 1) return parts[0];
+
+  const firstName = parts[0];
+  const lastInitial = parts[parts.length - 1][0];
+  return `${firstName} ${lastInitial}.`;
+}
 
 export function Comment({
   comment,
@@ -136,23 +148,28 @@ export function Comment({
         {/* Comment Header */}
         <div className="flex items-start justify-between">
           <div className="flex items-center gap-3">
-            {comment.author_avatar ? (
-              <Image
-                src={comment.author_avatar}
+            <Avatar className="w-10 h-10 ring-2 ring-lightBorderColor dark:ring-darkBorderColor">
+              <AvatarImage
+                src={comment.author_avatar || ""}
                 alt={comment.author_name || "User"}
-                width={40}
-                height={40}
-                className="w-10 h-10 rounded-full ring-2 ring-lightBorderColor dark:ring-darkBorderColor"
               />
-            ) : (
-              <div className="w-10 h-10 rounded-full bg-light dark:bg-dark border border-lightBorderColor dark:border-darkBorderColor flex items-center justify-center">
-                <User className="w-5 h-5 text-dimLight dark:text-dimDark" />
-              </div>
-            )}
+              <AvatarFallback className="bg-light dark:bg-dark border border-lightBorderColor dark:border-darkBorderColor text-dimLight dark:text-dimDark">
+                {comment.author_name ? (
+                  comment.author_name
+                    .split(" ")
+                    .map((n) => n[0])
+                    .join("")
+                    .slice(0, 2)
+                    .toUpperCase()
+                ) : (
+                  <User className="w-5 h-5" />
+                )}
+              </AvatarFallback>
+            </Avatar>
             <div>
               <div className="flex items-center gap-2">
                 <span className="font-semibold text-[16px] font-switzer text-dark dark:text-light">
-                  {comment.author_name || "Anonymous"}
+                  {formatDisplayName(comment.author_name)}
                 </span>
                 <span className="text-xs text-dimLight dark:text-dimDark font-switzer">
                   {formatDistanceToNow(new Date(comment.created_at), {

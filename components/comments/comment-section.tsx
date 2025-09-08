@@ -58,9 +58,9 @@ export function CommentSection({ postSlug }: CommentSectionProps) {
   useEffect(() => {
     fetchComments();
 
-    // Subscribe to real-time changes
+    // Subscribe to real-time changes for comments
     const channel = supabase
-      .channel("comments")
+      .channel(`comments-${postSlug}`)
       .on(
         "postgres_changes",
         {
@@ -69,8 +69,12 @@ export function CommentSection({ postSlug }: CommentSectionProps) {
           table: "comments",
           filter: `post_slug=eq.${postSlug}`,
         },
-        () => {
-          fetchComments();
+        (payload) => {
+          console.log("Comment change detected:", payload);
+          // Fetch comments after a small delay to ensure data consistency
+          setTimeout(() => {
+            fetchComments();
+          }, 100);
         }
       )
       .on(
@@ -80,8 +84,11 @@ export function CommentSection({ postSlug }: CommentSectionProps) {
           schema: "public",
           table: "comment_likes",
         },
-        () => {
-          fetchComments();
+        (payload) => {
+          console.log("Comment like change detected:", payload);
+          setTimeout(() => {
+            fetchComments();
+          }, 100);
         }
       )
       .subscribe();
@@ -91,9 +98,10 @@ export function CommentSection({ postSlug }: CommentSectionProps) {
     };
   }, [postSlug, user?.id, supabase, fetchComments]);
 
-  const handleCommentAdded = () => {
+  const handleCommentAdded = useCallback(() => {
+    // Force immediate refresh when comment is added
     fetchComments();
-  };
+  }, [fetchComments]);
 
   if (loading) {
     return (

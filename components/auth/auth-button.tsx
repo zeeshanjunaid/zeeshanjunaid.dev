@@ -1,5 +1,6 @@
 "use client";
 
+import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import {
   DropdownMenu,
   DropdownMenuContent,
@@ -11,10 +12,21 @@ import { LogOut, User } from "lucide-react";
 
 import { AuthModal } from "./auth-modal";
 import { Button } from "@/components/ui/button";
-import Image from "next/image";
 import { toast } from "@/components/ui/use-toast";
 import { useAuth } from "./auth-provider";
 import { useState } from "react";
+
+// Helper function to format name as "First L."
+function formatDisplayName(fullName: string | null | undefined): string {
+  if (!fullName) return "User";
+
+  const parts = fullName.trim().split(" ");
+  if (parts.length === 1) return parts[0];
+
+  const firstName = parts[0];
+  const lastInitial = parts[parts.length - 1][0];
+  return `${firstName} ${lastInitial}.`;
+}
 
 export function AuthButton() {
   const { user, signOut, loading } = useAuth();
@@ -50,26 +62,27 @@ export function AuthButton() {
   }
 
   if (user) {
+    const displayName = formatDisplayName(user.user_metadata?.full_name);
+    const fallbackInitials = displayName
+      .split(" ")
+      .map((n) => n[0])
+      .join("")
+      .toUpperCase();
+
     return (
       <DropdownMenu>
         <DropdownMenuTrigger asChild>
           <Button variant="ghost" size="sm" className="gap-2">
-            {user.user_metadata?.avatar_url ? (
-              <Image
-                src={user.user_metadata.avatar_url}
-                alt={user.user_metadata?.full_name || user.email || "User"}
-                width={24}
-                height={24}
-                className="w-6 h-6 rounded-full"
+            <Avatar className="w-6 h-6">
+              <AvatarImage
+                src={user.user_metadata?.avatar_url}
+                alt={displayName}
               />
-            ) : (
-              <User className="w-4 h-4" />
-            )}
-            <span className="hidden sm:inline">
-              {user.user_metadata?.full_name ||
-                user.email?.split("@")[0] ||
-                "User"}
-            </span>
+              <AvatarFallback className="text-xs">
+                {fallbackInitials}
+              </AvatarFallback>
+            </Avatar>
+            <span className="hidden sm:inline">{displayName}</span>
           </Button>
         </DropdownMenuTrigger>
         <DropdownMenuContent align="end">

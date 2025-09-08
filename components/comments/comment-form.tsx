@@ -29,6 +29,13 @@ interface CommentFormProps {
   placeholder?: string;
 }
 
+// Helper function to format name for storage (keep full name)
+function getAuthorName(user: any): string {
+  return (
+    user.user_metadata?.full_name || user.email?.split("@")[0] || "Anonymous"
+  );
+}
+
 export function CommentForm({
   postSlug,
   parentId = null,
@@ -66,10 +73,7 @@ export function CommentForm({
         post_slug: postSlug,
         content: data.content,
         author_id: user.id,
-        author_name:
-          user.user_metadata?.full_name ||
-          user.email?.split("@")[0] ||
-          "Anonymous",
+        author_name: getAuthorName(user),
         author_email: user.email,
         author_avatar: user.user_metadata?.avatar_url,
         parent_id: parentId,
@@ -78,6 +82,8 @@ export function CommentForm({
       if (error) throw error;
 
       reset();
+
+      // Call the callback immediately to refresh comments
       onCommentAdded();
       onCancel?.();
 
