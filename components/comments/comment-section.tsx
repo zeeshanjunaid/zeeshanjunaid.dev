@@ -20,18 +20,13 @@ export function CommentSection({ postSlug }: CommentSectionProps) {
   const [comments, setComments] = useState<CommentWithReplies[]>([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
-  const [isRefreshing, setIsRefreshing] = useState(false);
   const { user } = useAuth();
   const supabase = createClient();
   const channelRef = useRef<any>(null);
 
-  const fetchComments = useCallback(async (showRefreshIndicator = false) => {
+  const fetchComments = useCallback(async () => {
     try {
-      if (showRefreshIndicator) {
-        setIsRefreshing(true);
-      } else {
-        setLoading(true);
-      }
+      setLoading(true);
       setError(null);
 
       // Fetch comments with user like status - Fixed query to use LEFT JOIN
@@ -64,7 +59,6 @@ export function CommentSection({ postSlug }: CommentSectionProps) {
       setError("Failed to load comments. Please try again.");
     } finally {
       setLoading(false);
-      setIsRefreshing(false);
     }
   }, [postSlug, user?.id, supabase]);
 
@@ -94,10 +88,36 @@ export function CommentSection({ postSlug }: CommentSectionProps) {
         },
         (payload) => {
           console.log("Comment change detected:", payload);
-          // Fetch comments after a small delay to ensure data consistency
-          setTimeout(() => {
-            fetchComments(true); // Show refresh indicator
-          }, 100);
+          // Update comments in real-time without full refresh
+          if (payload.eventType === 'INSERT') {
+            // Add new comment to the list
+            const newComment = payload.new;
+            if (newComment.post_slug === postSlug && !newComment.is_deleted && newComment.is_approved) {
+              setComments(prev => {
+                const updated = [...prev, { ...newComment, replies: [], user_has_liked: false }];
+                return processCommentsIntoTree(updated, user?.id);
+              });
+            }
+          } else if (payload.eventType === 'UPDATE') {
+            // Update existing comment
+            const updatedComment = payload.new;
+            if (updatedComment.post_slug === postSlug) {
+              setComments(prev => {
+                const filtered = prev.filter(c => c.id !== updatedComment.id);
+                if (!updatedComment.is_deleted && updatedComment.is_approved) {
+                  const updated = [...filtered, { ...updatedComment, replies: [], user_has_liked: false }];
+                  return processCommentsIntoTree(updated, user?.id);
+                }
+                return processCommentsIntoTree(filtered, user?.id);
+              });
+            }
+          } else if (payload.eventType === 'DELETE') {
+            // Remove deleted comment
+            const deletedComment = payload.old;
+            if (deletedComment.post_slug === postSlug) {
+              setComments(prev => processCommentsIntoTree(prev.filter(c => c.id !== deletedComment.id), user?.id));
+            }
+          }
         }
       )
       .on(
@@ -109,9 +129,30 @@ export function CommentSection({ postSlug }: CommentSectionProps) {
         },
         (payload) => {
           console.log("Comment like change detected:", payload);
-          setTimeout(() => {
-            fetchComments(true); // Show refresh indicator
-          }, 100);
+          // Update like count in real-time
+          if (payload.eventType === 'INSERT') {
+            const newLike = payload.new;
+            setComments(prev => {
+              const updated = prev.map(comment => {
+                if (comment.id === newLike.comment_id) {
+                  return { ...comment, like_count: (comment.like_count || 0) + 1 };
+                }
+                return comment;
+              });
+              return updated;
+            });
+          } else if (payload.eventType === 'DELETE') {
+            const removedLike = payload.old;
+            setComments(prev => {
+              const updated = prev.map(comment => {
+                if (comment.id === removedLike.comment_id) {
+                  return { ...comment, like_count: Math.max((comment.like_count || 0) - 1, 0) };
+                }
+                return comment;
+              });
+              return updated;
+            });
+          }
         }
       )
       .subscribe((status) => {
@@ -129,13 +170,9 @@ export function CommentSection({ postSlug }: CommentSectionProps) {
   }, [postSlug, user?.id, supabase, fetchComments]);
 
   const handleCommentAdded = useCallback(() => {
-    // Force immediate refresh when comment is added
-    fetchComments(true);
-  }, [fetchComments]);
-
-  const handleRefresh = useCallback(() => {
-    fetchComments(true);
-  }, [fetchComments]);
+    // Real-time updates will handle this automatically
+    // No need for manual refresh
+  }, []);
 
   if (loading) {
     return (
@@ -172,22 +209,11 @@ export function CommentSection({ postSlug }: CommentSectionProps) {
   if (error) {
     return (
       <div className="space-y-8">
-        <div className="flex items-center justify-between">
-          <div className="flex items-center gap-3">
-            <MessageCircle className="w-6 h-6 text-purple" />
-            <h2 className="text-[28px] md:text-[32px] font-bold font-ao text-dark dark:text-light">
-              Comments
-            </h2>
-          </div>
-          <Button
-            variant="outline"
-            size="sm"
-            onClick={handleRefresh}
-            className="gap-2 font-switzer"
-          >
-            <RefreshCw className="w-4 h-4" />
-            Retry
-          </Button>
+        <div className="flex items-center gap-3">
+          <MessageCircle className="w-6 h-6 text-purple" />
+          <h2 className="text-[28px] md:text-[32px] font-bold font-ao text-dark dark:text-light">
+            Comments
+          </h2>
         </div>
         <div className="text-center py-12">
           <div className="p-6 rounded-xl border border-red-200 dark:border-red-800 bg-red-50 dark:bg-red-900/20">
@@ -198,11 +224,11 @@ export function CommentSection({ postSlug }: CommentSectionProps) {
             <Button
               variant="outline"
               size="sm"
-              onClick={handleRefresh}
+              onClick={() => window.location.reload()}
               className="gap-2 font-switzer"
             >
               <RefreshCw className="w-4 h-4" />
-              Try Again
+              Reload Page
             </Button>
           </div>
         </div>
@@ -219,26 +245,11 @@ export function CommentSection({ postSlug }: CommentSectionProps) {
         <CommentDebug postSlug={postSlug} />
       )}
 
-      <div className="flex items-center justify-between">
-        <div className="flex items-center gap-3">
-          <MessageCircle className="w-6 h-6 text-purple" />
-          <h2 className="text-[28px] md:text-[32px] font-bold font-ao text-dark dark:text-light">
-            Comments ({topLevelComments.length})
-          </h2>
-          {isRefreshing && (
-            <RefreshCw className="w-5 h-5 text-purple animate-spin" />
-          )}
-        </div>
-        <Button
-          variant="ghost"
-          size="sm"
-          onClick={handleRefresh}
-          disabled={isRefreshing}
-          className="gap-2 font-switzer text-dimLight dark:text-dimDark hover:text-dark dark:hover:text-light"
-        >
-          <RefreshCw className={`w-4 h-4 ${isRefreshing ? 'animate-spin' : ''}`} />
-          Refresh
-        </Button>
+      <div className="flex items-center gap-3">
+        <MessageCircle className="w-6 h-6 text-purple" />
+        <h2 className="text-[28px] md:text-[32px] font-bold font-ao text-dark dark:text-light">
+          Comments ({topLevelComments.length})
+        </h2>
       </div>
 
       <CommentForm postSlug={postSlug} onCommentAdded={handleCommentAdded} />

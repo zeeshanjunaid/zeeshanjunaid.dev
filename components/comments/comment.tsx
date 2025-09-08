@@ -88,7 +88,8 @@ export function Comment({
         if (error) throw error;
       }
 
-      onCommentAdded(); // Refresh comments to update like count
+      // Real-time updates will handle the UI updates automatically
+      // No need to call onCommentAdded()
     } catch (error) {
       console.error("Error toggling like:", error);
       toast({
@@ -114,7 +115,7 @@ export function Comment({
 
       if (error) throw error;
 
-      onCommentAdded(); // Refresh comments
+      // Real-time updates will handle the UI updates automatically
       toast({
         title: "Comment deleted",
         description: "Your comment has been deleted successfully.",

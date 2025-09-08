@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useEffect } from "react";
+import { useState, useEffect, useCallback } from "react";
 import { createClient } from "@/lib/supabase/client";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
@@ -16,7 +16,7 @@ export function CommentDebug({ postSlug }: CommentDebugProps) {
   const [loading, setLoading] = useState(false);
   const supabase = createClient();
 
-  const fetchDebugInfo = async () => {
+  const fetchDebugInfo = useCallback(async () => {
     setLoading(true);
     try {
       // Test basic connection
@@ -55,11 +55,11 @@ export function CommentDebug({ postSlug }: CommentDebugProps) {
     } finally {
       setLoading(false);
     }
-  };
+  }, [postSlug, supabase]);
 
   useEffect(() => {
     fetchDebugInfo();
-  }, [postSlug]);
+  }, [postSlug, fetchDebugInfo]);
 
   if (!debugInfo) {
     return (

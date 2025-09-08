@@ -74,6 +74,36 @@ export async function POST(
       )
     }
 
+    // Additional spam protection
+    const spamPatterns = [
+      /(http|https|www\.)/gi, // URLs
+      /[A-Z]{5,}/g, // Excessive caps
+      /(.)\1{4,}/g, // Repeated characters
+      /(buy|sell|click|free|win|prize|offer|deal|discount|promo)/gi, // Spam keywords
+    ];
+    
+    if (spamPatterns.some(pattern => pattern.test(content))) {
+      return NextResponse.json(
+        { error: 'Comment contains potentially spammy content' },
+        { status: 400 }
+      )
+    }
+
+    // Check for duplicate content (basic spam protection)
+    const { data: recentComments } = await supabase
+      .from('comments')
+      .select('content')
+      .eq('author_id', user.id)
+      .gte('created_at', new Date(Date.now() - 24 * 60 * 60 * 1000).toISOString()) // Last 24 hours
+      .limit(10);
+
+    if (recentComments?.some(comment => comment.content === content.trim())) {
+      return NextResponse.json(
+        { error: 'Duplicate comment detected' },
+        { status: 400 }
+      )
+    }
+
     const { data: comment, error } = await supabase
       .from('comments')
       .insert({
