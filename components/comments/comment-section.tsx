@@ -88,36 +88,11 @@ export function CommentSection({ postSlug }: CommentSectionProps) {
         },
         (payload) => {
           console.log("Comment change detected:", payload);
-          // Update comments in real-time without full refresh
-          if (payload.eventType === 'INSERT') {
-            // Add new comment to the list
-            const newComment = payload.new;
-            if (newComment.post_slug === postSlug && !newComment.is_deleted && newComment.is_approved) {
-              setComments(prev => {
-                const updated = [...prev, { ...newComment, replies: [], user_has_liked: false }];
-                return processCommentsIntoTree(updated, user?.id);
-              });
-            }
-          } else if (payload.eventType === 'UPDATE') {
-            // Update existing comment
-            const updatedComment = payload.new;
-            if (updatedComment.post_slug === postSlug) {
-              setComments(prev => {
-                const filtered = prev.filter(c => c.id !== updatedComment.id);
-                if (!updatedComment.is_deleted && updatedComment.is_approved) {
-                  const updated = [...filtered, { ...updatedComment, replies: [], user_has_liked: false }];
-                  return processCommentsIntoTree(updated, user?.id);
-                }
-                return processCommentsIntoTree(filtered, user?.id);
-              });
-            }
-          } else if (payload.eventType === 'DELETE') {
-            // Remove deleted comment
-            const deletedComment = payload.old;
-            if (deletedComment.post_slug === postSlug) {
-              setComments(prev => processCommentsIntoTree(prev.filter(c => c.id !== deletedComment.id), user?.id));
-            }
-          }
+          // For comment changes, we need to refetch to maintain proper tree structure
+          // This is because nested comments are complex to update in real-time
+          setTimeout(() => {
+            fetchComments();
+          }, 100);
         }
       )
       .on(
@@ -129,28 +104,46 @@ export function CommentSection({ postSlug }: CommentSectionProps) {
         },
         (payload) => {
           console.log("Comment like change detected:", payload);
-          // Update like count in real-time
+          // Update like count in real-time for the specific comment
           if (payload.eventType === 'INSERT') {
             const newLike = payload.new;
             setComments(prev => {
-              const updated = prev.map(comment => {
-                if (comment.id === newLike.comment_id) {
-                  return { ...comment, like_count: (comment.like_count || 0) + 1 };
-                }
-                return comment;
-              });
-              return updated;
+              const updateCommentLikes = (comments: CommentWithReplies[]): CommentWithReplies[] => {
+                return comments.map(comment => {
+                  if (comment.id === newLike.comment_id) {
+                    return { 
+                      ...comment, 
+                      like_count: (comment.like_count || 0) + 1,
+                      user_has_liked: newLike.user_id === user?.id ? true : comment.user_has_liked
+                    };
+                  }
+                  if (comment.replies && comment.replies.length > 0) {
+                    return { ...comment, replies: updateCommentLikes(comment.replies) };
+                  }
+                  return comment;
+                });
+              };
+              return updateCommentLikes(prev);
             });
           } else if (payload.eventType === 'DELETE') {
             const removedLike = payload.old;
             setComments(prev => {
-              const updated = prev.map(comment => {
-                if (comment.id === removedLike.comment_id) {
-                  return { ...comment, like_count: Math.max((comment.like_count || 0) - 1, 0) };
-                }
-                return comment;
-              });
-              return updated;
+              const updateCommentLikes = (comments: CommentWithReplies[]): CommentWithReplies[] => {
+                return comments.map(comment => {
+                  if (comment.id === removedLike.comment_id) {
+                    return { 
+                      ...comment, 
+                      like_count: Math.max((comment.like_count || 0) - 1, 0),
+                      user_has_liked: removedLike.user_id === user?.id ? false : comment.user_has_liked
+                    };
+                  }
+                  if (comment.replies && comment.replies.length > 0) {
+                    return { ...comment, replies: updateCommentLikes(comment.replies) };
+                  }
+                  return comment;
+                });
+              };
+              return updateCommentLikes(prev);
             });
           }
         }

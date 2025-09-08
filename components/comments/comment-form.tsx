@@ -107,15 +107,10 @@ export function CommentForm({
       if (error) throw error;
 
       reset();
-
-      // Call the callback immediately to refresh comments
-      onCommentAdded();
       onCancel?.();
 
-      toast({
-        title: "Comment posted",
-        description: "Your comment has been published successfully.",
-      });
+      // Real-time updates will handle the UI updates automatically
+      // No need for toast notification - the comment will appear instantly
     } catch (error) {
       console.error("Error posting comment:", error);
       toast({

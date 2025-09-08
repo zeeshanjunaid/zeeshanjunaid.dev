@@ -70,26 +70,38 @@ export function Comment({
 
     try {
       if (comment.user_has_liked) {
-        // Unlike
+        // Unlike - use upsert to handle potential duplicates
         const { error } = await supabase
           .from("comment_likes")
           .delete()
           .eq("comment_id", comment.id)
           .eq("user_id", user.id);
 
-        if (error) throw error;
+        if (error) {
+          console.error("Unlike error:", error);
+          // Don't throw error for duplicate delete attempts
+          if (!error.message.includes("No rows deleted")) {
+            throw error;
+          }
+        }
       } else {
-        // Like
-        const { error } = await supabase.from("comment_likes").insert({
-          comment_id: comment.id,
-          user_id: user.id,
-        });
+        // Like - use upsert to handle potential duplicates
+        const { error } = await supabase
+          .from("comment_likes")
+          .upsert({
+            comment_id: comment.id,
+            user_id: user.id,
+          }, {
+            onConflict: 'comment_id,user_id'
+          });
 
-        if (error) throw error;
+        if (error) {
+          console.error("Like error:", error);
+          throw error;
+        }
       }
 
       // Real-time updates will handle the UI updates automatically
-      // No need to call onCommentAdded()
     } catch (error) {
       console.error("Error toggling like:", error);
       toast({
@@ -116,10 +128,7 @@ export function Comment({
       if (error) throw error;
 
       // Real-time updates will handle the UI updates automatically
-      toast({
-        title: "Comment deleted",
-        description: "Your comment has been deleted successfully.",
-      });
+      // No need for toast notification - the comment will disappear instantly
     } catch (error) {
       console.error("Error deleting comment:", error);
       toast({
@@ -134,7 +143,7 @@ export function Comment({
 
   const handleReplyAdded = () => {
     setShowReplyForm(false);
-    onCommentAdded();
+    // Real-time updates will handle the reply appearing automatically
   };
 
   return (
