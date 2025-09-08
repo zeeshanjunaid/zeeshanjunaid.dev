@@ -19,12 +19,14 @@ import {
 import { Button } from "@/components/ui/button";
 import { CommentForm } from "@/components/comments/comment-form";
 import { CommentList } from "@/components/comments/comment-list";
+import { CommentReport } from "@/components/comments/comment-report";
 import { CommentWithReplies } from "@/types/database";
 import { createClient } from "@/lib/supabase/client";
 import { formatDistanceToNow } from "date-fns";
 import { toast } from "@/components/ui/use-toast";
 import { useAuth } from "@/components/auth/auth-provider";
 import { useState } from "react";
+import { Textarea } from "@/components/ui/textarea";
 
 interface CommentProps {
   comment: CommentWithReplies;
@@ -33,7 +35,9 @@ interface CommentProps {
   depth?: number;
 }
 
-const MAX_DEPTH = 3;
+// Configuration constants
+const MAX_DEPTH = 3; // Maximum nesting depth for comments
+const RATE_LIMIT_SECONDS = 5; // Seconds between comment submissions
 
 // Helper function to format name as "First L."
 function formatDisplayName(fullName: string | null | undefined): string {
@@ -56,8 +60,10 @@ export function Comment({
   const { user } = useAuth();
   const [showReplyForm, setShowReplyForm] = useState(false);
   const [isEditing, setIsEditing] = useState(false);
+  const [editingContent, setEditingContent] = useState(comment.content);
   const [isLiking, setIsLiking] = useState(false);
   const [isDeleting, setIsDeleting] = useState(false);
+  const [isSaving, setIsSaving] = useState(false);
   const supabase = createClient();
 
   const isAuthor = user?.id === comment.author_id;
@@ -79,8 +85,8 @@ export function Comment({
 
         if (error) {
           console.error("Unlike error:", error);
-          // Don't throw error for duplicate delete attempts
-          if (!error.message.includes("No rows deleted")) {
+          // Don't throw error for duplicate delete attempts (PGRST116 = no rows affected)
+          if (error.code !== 'PGRST116') {
             throw error;
           }
         }
@@ -139,6 +145,44 @@ export function Comment({
     } finally {
       setIsDeleting(false);
     }
+  };
+
+  const handleEdit = async () => {
+    if (!editingContent.trim() || isSaving) return;
+
+    setIsSaving(true);
+
+    try {
+      const { error } = await supabase
+        .from('comments')
+        .update({ 
+          content: editingContent.trim(),
+          updated_at: new Date().toISOString()
+        })
+        .eq('id', comment.id);
+
+      if (error) throw error;
+
+      setIsEditing(false);
+      toast({
+        title: "Comment updated",
+        description: "Your comment has been updated successfully.",
+      });
+    } catch (error) {
+      console.error("Error updating comment:", error);
+      toast({
+        title: "Failed to update comment",
+        description: "Please try again later.",
+        variant: "destructive",
+      });
+    } finally {
+      setIsSaving(false);
+    }
+  };
+
+  const handleCancelEdit = () => {
+    setEditingContent(comment.content);
+    setIsEditing(false);
   };
 
   const handleReplyAdded = () => {
@@ -227,9 +271,44 @@ export function Comment({
         </div>
 
         {/* Comment Content */}
-        <div className="text-[16px] leading-relaxed whitespace-pre-wrap font-switzer text-dark dark:text-light bg-light/30 dark:bg-dark/30 p-4 rounded-lg border border-lightBorderColor/50 dark:border-darkBorderColor/50">
-          {comment.content}
-        </div>
+        {isEditing ? (
+          <div className="space-y-3">
+            <Textarea
+              value={editingContent}
+              onChange={(e) => setEditingContent(e.target.value)}
+              className="min-h-[100px] resize-none border-lightBorderColor dark:border-darkBorderColor bg-white dark:bg-gray-800/50 font-switzer text-[16px] focus:ring-purple focus:border-purple"
+              disabled={isSaving}
+            />
+            <div className="flex items-center gap-2">
+              <Button
+                size="sm"
+                onClick={handleEdit}
+                disabled={isSaving || !editingContent.trim()}
+                className="gap-2 font-switzer"
+              >
+                {isSaving ? (
+                  <div className="w-4 h-4 border-2 border-current border-t-transparent rounded-full animate-spin" />
+                ) : (
+                  <Edit2 className="w-4 h-4" />
+                )}
+                Save
+              </Button>
+              <Button
+                size="sm"
+                variant="ghost"
+                onClick={handleCancelEdit}
+                disabled={isSaving}
+                className="font-switzer"
+              >
+                Cancel
+              </Button>
+            </div>
+          </div>
+        ) : (
+          <div className="text-[16px] leading-relaxed whitespace-pre-wrap font-switzer text-dark dark:text-light bg-light/30 dark:bg-dark/30 p-4 rounded-lg border border-lightBorderColor/50 dark:border-darkBorderColor/50">
+            {comment.content}
+          </div>
+        )}
 
         {/* Comment Actions */}
         <div className="flex items-center gap-4 pt-2 border-t border-lightBorderColor/50 dark:border-darkBorderColor/50">
@@ -264,6 +343,13 @@ export function Comment({
               <Reply className="w-4 h-4" />
               Reply
             </Button>
+          )}
+
+          {!isAuthor && user && (
+            <CommentReport
+              commentId={comment.id}
+              commentAuthor={comment.author_name || "Anonymous"}
+            />
           )}
 
           {comment.replies && comment.replies.length > 0 && (

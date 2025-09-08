@@ -1,6 +1,6 @@
 import { NextRequest, NextResponse } from 'next/server'
-
 import { createClient } from '@/lib/supabase/server'
+import { commentRateLimit } from '@/lib/rate-limit'
 
 export async function GET(
   request: NextRequest,
@@ -54,6 +54,26 @@ export async function POST(
       return NextResponse.json(
         { error: 'Authentication required' },
         { status: 401 }
+      )
+    }
+
+    // Apply rate limiting
+    const rateLimitResult = await commentRateLimit(request);
+    if (!rateLimitResult.success) {
+      return NextResponse.json(
+        { 
+          error: 'Rate limit exceeded',
+          retryAfter: rateLimitResult.retryAfter 
+        },
+        { 
+          status: 429,
+          headers: {
+            'X-RateLimit-Limit': rateLimitResult.limit.toString(),
+            'X-RateLimit-Remaining': rateLimitResult.remaining.toString(),
+            'X-RateLimit-Reset': rateLimitResult.reset.toString(),
+            'Retry-After': rateLimitResult.retryAfter?.toString() || '60',
+          }
+        }
       )
     }
 

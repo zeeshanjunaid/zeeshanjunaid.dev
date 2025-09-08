@@ -5,7 +5,9 @@ import { useCallback, useEffect, useState, useRef } from "react";
 import { CommentForm } from "@/components/comments/comment-form";
 import { CommentList } from "@/components/comments/comment-list";
 import { CommentDebug } from "@/components/comments/comment-debug";
-import { CommentWithReplies } from "@/types/database";
+import { CommentSorting, CommentSortOption } from "@/components/comments/comment-sorting";
+import { CommentSearch } from "@/components/comments/comment-search";
+import { CommentWithReplies, Comment } from "@/types/database";
 import { MessageCircle, RefreshCw, AlertCircle } from "lucide-react";
 import { Skeleton } from "@/components/ui/skeleton";
 import { Button } from "@/components/ui/button";
@@ -20,47 +22,121 @@ export function CommentSection({ postSlug }: CommentSectionProps) {
   const [comments, setComments] = useState<CommentWithReplies[]>([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
+  const [hasMore, setHasMore] = useState(true);
+  const [loadingMore, setLoadingMore] = useState(false);
+  const [page, setPage] = useState(0);
+  const [sortBy, setSortBy] = useState<CommentSortOption>('newest');
+  const [isSearching, setIsSearching] = useState(false);
+  const [searchResults, setSearchResults] = useState<CommentWithReplies[]>([]);
   const { user } = useAuth();
   const supabase = createClient();
   const channelRef = useRef<any>(null);
 
-  const fetchComments = useCallback(async () => {
+  const COMMENTS_PER_PAGE = 20;
+
+  const fetchComments = useCallback(async (pageNum: number = 0, append: boolean = false) => {
     try {
-      setLoading(true);
+      if (pageNum === 0) {
+        setLoading(true);
+      } else {
+        setLoadingMore(true);
+      }
       setError(null);
 
-      // Fetch comments with user like status - Fixed query to use LEFT JOIN
-      const { data: commentsData, error: commentsError } = await supabase
-        .from("comments")
-        .select(
-          `
-          *,
-          comment_likes(user_id)
-        `
-        )
-        .eq("post_slug", postSlug)
-        .eq("is_deleted", false)
-        .eq("is_approved", true)
-        .order("created_at", { ascending: true });
+      // Try optimized query first, fallback to original if function doesn't exist
+      let commentsData, commentsError;
+      
+      try {
+        const result = await supabase
+          .rpc('get_comments_with_likes_paginated', {
+            p_post_slug: postSlug,
+            p_user_id: user?.id || null,
+            p_page_offset: pageNum * COMMENTS_PER_PAGE,
+            p_page_limit: COMMENTS_PER_PAGE,
+            p_sort_by: sortBy
+          });
+        
+        // Check if RPC function exists and works
+        if (result.error && result.error.code === 'PGRST202') {
+          console.log('RPC function not found, falling back to original query');
+          throw new Error('RPC_FUNCTION_NOT_FOUND');
+        }
+        
+        commentsData = result.data;
+        commentsError = result.error;
+      } catch (rpcError) {
+        console.log('RPC function error, falling back to original query:', rpcError);
+        // Fallback to original query method
+        const result = await supabase
+          .from("comments")
+          .select(`
+            *,
+            comment_likes(user_id)
+          `)
+          .eq("post_slug", postSlug)
+          .eq("is_deleted", false)
+          .eq("is_approved", true)
+          .order("created_at", { ascending: sortBy === 'oldest' })
+          .range(pageNum * COMMENTS_PER_PAGE, (pageNum + 1) * COMMENTS_PER_PAGE - 1);
+        commentsData = result.data;
+        commentsError = result.error;
+      }
 
       if (commentsError) {
         console.error("Comments query error:", commentsError);
+        console.error("Comments data:", commentsData);
         throw commentsError;
       }
+      
+      console.log("Comments loaded successfully:", commentsData?.length || 0, "comments");
 
       // Process comments to create nested structure
       const processedComments = processCommentsIntoTree(
         commentsData || [],
         user?.id
       );
-      setComments(processedComments);
+
+      if (append) {
+        setComments(prev => [...prev, ...processedComments]);
+      } else {
+        setComments(processedComments);
+      }
+
+      // Check if there are more comments to load
+      setHasMore(processedComments.length === COMMENTS_PER_PAGE);
+      setPage(pageNum);
     } catch (err) {
       console.error("Error fetching comments:", err);
       setError("Failed to load comments. Please try again.");
     } finally {
       setLoading(false);
+      setLoadingMore(false);
     }
-  }, [postSlug, user?.id, supabase]);
+  }, [postSlug, user?.id, supabase, COMMENTS_PER_PAGE, sortBy]);
+
+  const loadMoreComments = useCallback(async () => {
+    if (!loadingMore && hasMore) {
+      await fetchComments(page + 1, true);
+    }
+  }, [fetchComments, page, loadingMore, hasMore]);
+
+  const handleSortChange = useCallback((newSort: CommentSortOption) => {
+    setSortBy(newSort);
+    setPage(0);
+    setComments([]);
+    setHasMore(true);
+    // Fetch comments with new sort order
+    fetchComments(0, false);
+  }, [fetchComments]);
+
+  const handleSearchResults = useCallback((results: CommentWithReplies[]) => {
+    setSearchResults(results);
+  }, []);
+
+  const handleClearSearch = useCallback(() => {
+    setSearchResults([]);
+    setIsSearching(false);
+  }, []);
 
   useEffect(() => {
     fetchComments();
@@ -88,11 +164,17 @@ export function CommentSection({ postSlug }: CommentSectionProps) {
         },
         (payload) => {
           console.log("Comment change detected:", payload);
-          // For comment changes, we need to refetch to maintain proper tree structure
-          // This is because nested comments are complex to update in real-time
-          setTimeout(() => {
-            fetchComments();
-          }, 100);
+          // Handle targeted updates instead of full refetch
+          if (payload.eventType === 'INSERT') {
+            // Add new comment to tree
+            setComments(prev => addCommentToTree(prev, payload.new, user?.id));
+          } else if (payload.eventType === 'UPDATE') {
+            // Update specific comment
+            setComments(prev => updateCommentInTree(prev, payload.new, user?.id));
+          } else if (payload.eventType === 'DELETE') {
+            // Remove comment from tree
+            setComments(prev => removeCommentFromTree(prev, payload.old.id));
+          }
         }
       )
       .on(
@@ -229,7 +311,7 @@ export function CommentSection({ postSlug }: CommentSectionProps) {
     );
   }
 
-  const topLevelComments = comments.filter((comment) => !comment.parent_id);
+  const topLevelComments = isSearching ? searchResults : comments.filter((comment) => !comment.parent_id);
 
   return (
     <div className="space-y-8">
@@ -238,14 +320,33 @@ export function CommentSection({ postSlug }: CommentSectionProps) {
         <CommentDebug postSlug={postSlug} />
       )}
 
-      <div className="flex items-center gap-3">
-        <MessageCircle className="w-6 h-6 text-purple" />
-        <h2 className="text-[28px] md:text-[32px] font-bold font-ao text-dark dark:text-light">
-          Comments ({topLevelComments.length})
-        </h2>
+      <div className="space-y-4">
+        <div className="flex items-center gap-3">
+          <MessageCircle className="w-6 h-6 text-purple" />
+          <h2 className="text-[28px] md:text-[32px] font-bold font-ao text-dark dark:text-light">
+            Comments
+          </h2>
+        </div>
+        
+        {topLevelComments.length > 0 && (
+          <CommentSorting
+            sortBy={sortBy}
+            onSortChange={handleSortChange}
+            commentCount={topLevelComments.length}
+          />
+        )}
       </div>
 
       <CommentForm postSlug={postSlug} onCommentAdded={handleCommentAdded} />
+
+      {/* Comment Search */}
+      <CommentSearch
+        postSlug={postSlug}
+        onSearchResults={handleSearchResults}
+        onClearSearch={handleClearSearch}
+        isSearching={isSearching}
+        onSearchingChange={setIsSearching}
+      />
 
       {topLevelComments.length > 0 ? (
         <CommentList
@@ -270,9 +371,92 @@ export function CommentSection({ postSlug }: CommentSectionProps) {
   );
 }
 
+// Helper function to add a new comment to the tree
+function addCommentToTree(
+  comments: CommentWithReplies[],
+  newComment: any,
+  userId?: string
+): CommentWithReplies[] {
+  const processedComment: CommentWithReplies = {
+    ...newComment,
+    replies: [],
+    user_has_liked: false,
+  };
+
+  if (!newComment.parent_id) {
+    // Top-level comment
+    return [...comments, processedComment].sort((a, b) => 
+      new Date(a.created_at).getTime() - new Date(b.created_at).getTime()
+    );
+  } else {
+    // Reply to existing comment
+    return comments.map(comment => {
+      if (comment.id === newComment.parent_id) {
+        return {
+          ...comment,
+          replies: [...(comment.replies || []), processedComment].sort((a, b) => 
+            new Date(a.created_at).getTime() - new Date(b.created_at).getTime()
+          )
+        };
+      }
+      if (comment.replies && comment.replies.length > 0) {
+        return {
+          ...comment,
+          replies: addCommentToTree(comment.replies, newComment, userId)
+        };
+      }
+      return comment;
+    });
+  }
+}
+
+// Helper function to update a comment in the tree
+function updateCommentInTree(
+  comments: CommentWithReplies[],
+  updatedComment: any,
+  userId?: string
+): CommentWithReplies[] {
+  return comments.map(comment => {
+    if (comment.id === updatedComment.id) {
+      return {
+        ...comment,
+        ...updatedComment,
+        user_has_liked: userId
+          ? updatedComment.comment_likes?.some((like: any) => like.user_id === userId)
+          : comment.user_has_liked,
+      };
+    }
+    if (comment.replies && comment.replies.length > 0) {
+      return {
+        ...comment,
+        replies: updateCommentInTree(comment.replies, updatedComment, userId)
+      };
+    }
+    return comment;
+  });
+}
+
+// Helper function to remove a comment from the tree
+function removeCommentFromTree(
+  comments: CommentWithReplies[],
+  commentId: string
+): CommentWithReplies[] {
+  return comments
+    .filter(comment => comment.id !== commentId)
+    .map(comment => {
+      if (comment.replies && comment.replies.length > 0) {
+        return {
+          ...comment,
+          replies: removeCommentFromTree(comment.replies, commentId)
+        };
+      }
+      return comment;
+    });
+}
+
 // Helper function to process flat comments into nested tree structure
 function processCommentsIntoTree(
-  comments: any[],
+  comments: any[], // Using any[] since the RPC function returns a custom type
   userId?: string
 ): CommentWithReplies[] {
   const commentMap = new Map<string, CommentWithReplies>();
@@ -283,9 +467,7 @@ function processCommentsIntoTree(
     const processedComment: CommentWithReplies = {
       ...comment,
       replies: [],
-      user_has_liked: userId
-        ? comment.comment_likes?.some((like: any) => like.user_id === userId)
-        : false,
+      user_has_liked: comment.user_has_liked || false,
     };
     commentMap.set(comment.id, processedComment);
   });

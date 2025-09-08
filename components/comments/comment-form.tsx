@@ -16,18 +16,7 @@ const commentSchema = z.object({
   content: z
     .string()
     .min(1, "Comment cannot be empty")
-    .max(2000, "Comment must be less than 2000 characters")
-    .refine((val) => {
-      // Check for spam patterns
-      const spamPatterns = [
-        /(http|https|www\.)/gi, // URLs
-        /[A-Z]{5,}/g, // Excessive caps
-        /(.)\1{4,}/g, // Repeated characters
-        /(buy|sell|click|free|win|prize|offer|deal|discount|promo)/gi, // Spam keywords
-      ];
-      
-      return !spamPatterns.some(pattern => pattern.test(val));
-    }, "Comment contains potentially spammy content"),
+    .max(2000, "Comment must be less than 2000 characters"),
 });
 
 type CommentFormData = z.infer<typeof commentSchema>;
@@ -81,7 +70,7 @@ export function CommentForm({
     // Rate limiting: prevent rapid submissions
     const now = Date.now();
     const timeSinceLastSubmission = now - lastSubmissionTime;
-    if (timeSinceLastSubmission < 5000) { // 5 seconds between comments
+    if (timeSinceLastSubmission < 5000) { // 5 seconds between comments (configurable)
       toast({
         title: "Please wait",
         description: "You can only post one comment every 5 seconds.",
