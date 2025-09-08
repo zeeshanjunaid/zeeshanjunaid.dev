@@ -105,25 +105,33 @@ export function CommentForm({
 
   return (
     <>
-      <div className="p-6 rounded-xl border border-lightBorderColor dark:border-darkBorderColor bg-white/80 dark:bg-gray-900/30 backdrop-blur-sm">
+      <div className="p-6 rounded-xl border border-lightBorderColor dark:border-darkBorderColor bg-white/80 dark:bg-gray-900/30 backdrop-blur-sm shadow-sm">
         <form onSubmit={handleSubmit(onSubmit)} className="space-y-4">
           <div>
             <Textarea
               {...register("content")}
               placeholder={placeholder}
-              className="min-h-[100px] resize-none border-lightBorderColor dark:border-darkBorderColor bg-white dark:bg-gray-800/50 font-switzer text-[16px] focus:ring-purple focus:border-purple placeholder:text-dimLight dark:placeholder:text-dimDark"
+              className="min-h-[120px] resize-none border-lightBorderColor dark:border-darkBorderColor bg-white dark:bg-gray-800/50 font-switzer text-[16px] focus:ring-purple focus:border-purple placeholder:text-dimLight dark:placeholder:text-dimDark transition-all duration-200"
               disabled={isSubmitting}
             />
             {errors.content && (
-              <p className="text-sm text-red-600 dark:text-red-400 mt-2 font-switzer">
+              <p className="text-sm text-red-600 dark:text-red-400 mt-2 font-switzer flex items-center gap-2">
+                <span className="w-1 h-1 bg-red-500 rounded-full"></span>
                 {errors.content.message}
               </p>
             )}
           </div>
 
           <div className="flex items-center justify-between">
-            <div className="text-xs text-dimLight dark:text-dimDark font-switzer">
-              {content?.length || 0}/2000 characters
+            <div className="flex items-center gap-4">
+              <div className="text-xs text-dimLight dark:text-dimDark font-switzer">
+                {content?.length || 0}/2000 characters
+              </div>
+              {content && content.length > 1800 && (
+                <div className="text-xs text-amber-600 dark:text-amber-400 font-switzer">
+                  {2000 - (content?.length || 0)} characters remaining
+                </div>
+              )}
             </div>
 
             <div className="flex items-center gap-3">
@@ -134,7 +142,7 @@ export function CommentForm({
                   size="sm"
                   onClick={onCancel}
                   disabled={isSubmitting}
-                  className="text-dimLight dark:text-dimDark hover:text-dark dark:hover:text-light font-switzer"
+                  className="text-dimLight dark:text-dimDark hover:text-dark dark:hover:text-light font-switzer transition-colors"
                 >
                   Cancel
                 </Button>
@@ -144,7 +152,7 @@ export function CommentForm({
                 variant="purple"
                 size="sm"
                 disabled={isSubmitting || !content?.trim()}
-                className="gap-2 font-switzer text-white"
+                className="gap-2 font-switzer text-white transition-all duration-200 hover:scale-105 disabled:hover:scale-100"
               >
                 {isSubmitting ? (
                   <div className="w-4 h-4 border-2 border-current border-t-transparent rounded-full animate-spin" />
@@ -157,16 +165,19 @@ export function CommentForm({
           </div>
 
           {!user && (
-            <div className="text-sm text-dimLight dark:text-dimDark font-switzer">
+            <div className="text-sm text-dimLight dark:text-dimDark font-switzer bg-purple/5 dark:bg-purple/10 p-3 rounded-lg border border-purple/20">
+              <div className="flex items-center gap-2">
+                <span className="w-2 h-2 bg-purple rounded-full"></span>
+                <span>Want to join the discussion?</span>
+              </div>
               <Button
                 type="button"
                 variant="link"
-                className="p-0 h-auto text-sm text-purple hover:text-purple/80 font-switzer underline-purple"
+                className="p-0 h-auto text-sm text-purple hover:text-purple/80 font-switzer underline-purple mt-1"
                 onClick={() => setShowAuthModal(true)}
               >
-                Sign in
-              </Button>{" "}
-              to post a comment
+                Sign in to post a comment
+              </Button>
             </div>
           )}
         </form>

@@ -13,6 +13,8 @@ This project is a personal portfolio website built with [Next.js](https://nextjs
 - [TypeScript](https://www.typescriptlang.org/)
 - [Tailwind CSS](https://tailwindcss.com/)
 - [Framer Motion](https://www.framer.com/motion/)
+- [Supabase](https://supabase.com/) - Backend and real-time features
+- [MDX](https://mdxjs.com/) - Blog content management
 
 ## Getting Started
 
@@ -32,6 +34,15 @@ You need to have Node.js and npm (or yarn/pnpm/bun) installed on your machine.
     ```sh
     npm install
     ```
+3.  Set up environment variables
+    ```sh
+    cp .env.example .env.local
+    ```
+    Fill in the required environment variables:
+    - `NEXT_PUBLIC_SUPABASE_URL`: Your Supabase project URL
+    - `NEXT_PUBLIC_SUPABASE_ANON_KEY`: Your Supabase anonymous key
+    - `SUPABASE_SERVICE_ROLE_KEY`: Your Supabase service role key (for server-side operations)
+    - `RESEND_API_KEY`: Your Resend API key for contact form emails
 
 ## Available Scripts
 
@@ -65,6 +76,10 @@ Runs the linter to catch any code style issues.
 - **Animations:** Smooth animations and transitions using Framer Motion.
 - **Component-Based Architecture:** Built with a modular and reusable component structure.
 - **Contact Form:** A functional contact form that sends emails using Resend.
+- **Blog System:** MDX-based blog with syntax highlighting and interactive components.
+- **Comment System:** Real-time commenting system with nested replies, likes, and authentication.
+- **Authentication:** User authentication powered by Supabase Auth.
+- **Real-time Updates:** Live updates for comments and interactions using Supabase Realtime.
 
 ## Dependencies
 
@@ -79,8 +94,31 @@ This project uses a variety of modern technologies and libraries, including:
 - **`tailwind-merge`**: A utility for merging Tailwind CSS classes.
 - **`tailwindcss-animate`**: A plugin for adding animations to Tailwind CSS.
 - **`resend`**: For handling contact form email functionality.
+- **`@supabase/supabase-js`**: JavaScript client for Supabase backend services.
+- **`@supabase/ssr`**: Server-side rendering utilities for Supabase.
+- **`@mdx-js/loader` & `@mdx-js/react`**: For MDX content processing and rendering.
+- **`date-fns`**: Modern JavaScript date utility library.
 
 For a full list of dependencies, please see the `package.json` file.
+
+## Recent Updates
+
+### Comment System Redesign (Latest)
+
+- **Fixed Critical Bug**: Resolved issue where comments weren't appearing due to incorrect SQL query using INNER JOIN instead of LEFT JOIN.
+- **Enhanced UI/UX**: Modernized comment interface with better visual hierarchy, hover effects, and responsive design.
+- **Improved Real-time Features**: Better Supabase Realtime subscription management with proper channel cleanup.
+- **Better Error Handling**: Comprehensive error handling with retry functionality and user-friendly messages.
+- **Debug Tools**: Added development-only debug component for troubleshooting.
+- **Performance Optimizations**: Optimized queries and reduced unnecessary re-renders.
+
+### Key Improvements:
+- ✅ Comments now display properly under blog posts
+- ✅ Real-time updates for new comments and likes
+- ✅ Nested reply system with depth limiting
+- ✅ User authentication integration
+- ✅ Mobile-responsive design
+- ✅ Enhanced loading states and error handling
 
 ## License
 

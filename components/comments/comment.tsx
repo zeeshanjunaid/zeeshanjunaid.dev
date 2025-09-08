@@ -140,20 +140,21 @@ export function Comment({
     <div
       className={`${
         depth > 0
-          ? "ml-8 border-l-2 border-lightBorderColor dark:border-darkBorderColor pl-6"
+          ? "ml-6 md:ml-8 border-l-2 border-purple/20 dark:border-purple/30 pl-4 md:pl-6"
           : ""
       }`}
     >
-      <div className="p-6 rounded-xl border border-lightBorderColor dark:border-darkBorderColor bg-white/60 dark:bg-gray-900/20 backdrop-blur-sm space-y-4">
+      <div className="p-6 rounded-xl border border-lightBorderColor dark:border-darkBorderColor bg-white/70 dark:bg-gray-900/30 backdrop-blur-sm shadow-sm hover:shadow-md transition-all duration-200 space-y-4">
         {/* Comment Header */}
         <div className="flex items-start justify-between">
           <div className="flex items-center gap-3">
-            <Avatar className="w-10 h-10 ring-2 ring-lightBorderColor dark:ring-darkBorderColor">
+            <Avatar className="w-11 h-11 ring-2 ring-purple/20 dark:ring-purple/30 hover:ring-purple/40 transition-all duration-200">
               <AvatarImage
                 src={comment.author_avatar || ""}
                 alt={comment.author_name || "User"}
+                className="object-cover"
               />
-              <AvatarFallback className="bg-light dark:bg-dark border border-lightBorderColor dark:border-darkBorderColor text-dimLight dark:text-dimDark">
+              <AvatarFallback className="bg-gradient-to-br from-purple/20 to-purple/10 dark:from-purple/30 dark:to-purple/20 border border-purple/20 dark:border-purple/30 text-purple dark:text-purple-300 font-semibold">
                 {comment.author_name ? (
                   comment.author_name
                     .split(" ")
@@ -167,11 +168,11 @@ export function Comment({
               </AvatarFallback>
             </Avatar>
             <div>
-              <div className="flex items-center gap-2">
+              <div className="flex items-center gap-2 flex-wrap">
                 <span className="font-semibold text-[16px] font-switzer text-dark dark:text-light">
                   {formatDisplayName(comment.author_name)}
                 </span>
-                <span className="text-xs text-dimLight dark:text-dimDark font-switzer">
+                <span className="text-xs text-dimLight dark:text-dimDark font-switzer bg-light/50 dark:bg-dark/50 px-2 py-1 rounded-full">
                   {formatDistanceToNow(new Date(comment.created_at), {
                     addSuffix: true,
                   })}
@@ -216,30 +217,30 @@ export function Comment({
         </div>
 
         {/* Comment Content */}
-        <div className="text-[16px] leading-relaxed whitespace-pre-wrap font-switzer text-dark dark:text-light">
+        <div className="text-[16px] leading-relaxed whitespace-pre-wrap font-switzer text-dark dark:text-light bg-light/30 dark:bg-dark/30 p-4 rounded-lg border border-lightBorderColor/50 dark:border-darkBorderColor/50">
           {comment.content}
         </div>
 
         {/* Comment Actions */}
-        <div className="flex items-center gap-4 pt-2">
+        <div className="flex items-center gap-4 pt-2 border-t border-lightBorderColor/50 dark:border-darkBorderColor/50">
           <Button
             variant="ghost"
             size="sm"
             onClick={handleLike}
             disabled={!user || isLiking}
-            className={`gap-2 h-8 px-3 font-switzer ${
+            className={`gap-2 h-8 px-3 font-switzer transition-all duration-200 ${
               comment.user_has_liked
-                ? "text-red-500 hover:text-red-600"
-                : "text-dimLight dark:text-dimDark hover:text-dark dark:hover:text-light"
+                ? "text-red-500 hover:text-red-600 bg-red-50 dark:bg-red-900/20"
+                : "text-dimLight dark:text-dimDark hover:text-dark dark:hover:text-light hover:bg-light/50 dark:hover:bg-dark/50"
             }`}
           >
             <Heart
-              className={`w-4 h-4 ${
-                comment.user_has_liked ? "fill-current" : ""
+              className={`w-4 h-4 transition-all duration-200 ${
+                comment.user_has_liked ? "fill-current scale-110" : "hover:scale-110"
               }`}
             />
             {comment.like_count > 0 && (
-              <span className="text-sm">{comment.like_count}</span>
+              <span className="text-sm font-medium">{comment.like_count}</span>
             )}
           </Button>
 
@@ -248,11 +249,17 @@ export function Comment({
               variant="ghost"
               size="sm"
               onClick={() => setShowReplyForm(!showReplyForm)}
-              className="gap-2 h-8 px-3 text-dimLight dark:text-dimDark hover:text-dark dark:hover:text-light font-switzer"
+              className="gap-2 h-8 px-3 text-dimLight dark:text-dimDark hover:text-dark dark:hover:text-light font-switzer hover:bg-light/50 dark:hover:bg-dark/50 transition-all duration-200"
             >
               <Reply className="w-4 h-4" />
               Reply
             </Button>
+          )}
+
+          {comment.replies && comment.replies.length > 0 && (
+            <div className="text-xs text-dimLight dark:text-dimDark font-switzer">
+              {comment.replies.length} {comment.replies.length === 1 ? 'reply' : 'replies'}
+            </div>
           )}
         </div>
 
