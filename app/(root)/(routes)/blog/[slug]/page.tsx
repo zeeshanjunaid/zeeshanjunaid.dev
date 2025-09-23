@@ -81,7 +81,7 @@ export default async function BlogPostPage({
         <SchemaMarkup schema={generateBlogPostSchema(meta)} />
 
         {/* Hero Section */}
-        <section className="relative overflow-hidden bg-linear-to-br from-light via-light to-light/95 dark:from-dark dark:via-dark dark:to-dark/95">
+        <section className="relative overflow-hidden">
           <div className="absolute inset-0 -z-10">
             <div className="absolute top-10 right-10 w-80 h-80 bg-purple/8 rounded-full blur-3xl" />
             <div className="absolute bottom-10 left-10 w-96 h-96 bg-purple/4 rounded-full blur-3xl" />
@@ -139,7 +139,7 @@ export default async function BlogPostPage({
                 )}
 
                 {/* Date Badge */}
-                <div className="inline-flex items-center gap-2 bg-white dark:bg-gray-900 border border-gray-200 dark:border-gray-700 px-4 py-2 rounded-xl">
+                <div className="inline-flex items-center gap-2 bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 px-4 py-2 rounded-xl">
                   <Calendar className="w-4 h-4 text-dark/60 dark:text-light/60" />
                   <span className="text-gray-900/80 dark:text-white/80 font-switzer font-medium text-[12px] md:text-[14px] uppercase tracking-wider">
                     {new Date(meta.date).toLocaleDateString("en-US", {
@@ -151,7 +151,7 @@ export default async function BlogPostPage({
                 </div>
 
                 {/* Reading Time */}
-                <div className="inline-flex items-center gap-2 bg-white dark:bg-gray-900 border border-gray-200 dark:border-gray-700 px-4 py-2 rounded-xl">
+                <div className="inline-flex items-center gap-2 bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 px-4 py-2 rounded-xl">
                   <Clock className="w-4 h-4 text-dark/60 dark:text-light/60" />
                   <span className="text-gray-900/80 dark:text-white/80 font-switzer font-medium text-[12px] md:text-[14px] uppercase tracking-wider">
                     {meta.readingTime} min read
@@ -195,21 +195,21 @@ export default async function BlogPostPage({
               <div className="lg:col-span-8">
                 <article
                   className="prose prose-lg dark:prose-invert max-w-none 
-                  prose-headings:font-ao prose-headings:text-dark dark:prose-headings:text-light prose-headings:leading-tight
+                  prose-headings:font-ao prose-headings:leading-tight
                   prose-h1:text-[28px] md:prose-h1:text-[32px] prose-h1:mb-6 prose-h1:mt-10
                   prose-h2:text-[22px] md:prose-h2:text-[26px] prose-h2:mb-4 prose-h2:mt-8
                   prose-h3:text-[18px] md:prose-h3:text-[22px] prose-h3:mb-3 prose-h3:mt-6
-                  prose-p:text-dark/90 dark:prose-p:text-light/90 prose-p:font-switzer prose-p:font-light prose-p:leading-relaxed prose-p:text-[16px] md:prose-p:text-[17px] prose-p:mb-5
+                  prose-p:font-switzer prose-p:font-light prose-p:leading-relaxed prose-p:text-[16px] md:prose-p:text-[17px] prose-p:mb-5
                   prose-a:text-purple prose-a:no-underline hover:prose-a:underline prose-a:transition-all prose-a:duration-300
-                  prose-strong:text-dark dark:prose-strong:text-light prose-strong:font-semibold
-                  prose-code:text-purple prose-code:bg-purple/10 prose-code:px-2 prose-code:py-1 prose-code:rounded prose-code:text-[14px] prose-code:font-medium
-                  prose-pre:bg-dark prose-pre:border prose-pre:border-lightBorderColor dark:prose-pre:border-darkBorderColor prose-pre:rounded-xl prose-pre:p-4 prose-pre:text-[14px]
-                  prose-blockquote:border-l-purple prose-blockquote:bg-purple/5 prose-blockquote:rounded-r-xl prose-blockquote:not-italic prose-blockquote:py-4 prose-blockquote:px-6 prose-blockquote:my-6
-                  prose-ul:my-4 prose-ol:my-4 prose-li:my-1 prose-li:text-dark/90 dark:prose-li:text-light/90
+                  prose-strong:font-semibold
+                  prose-code:text-purple prose-code:bg-purple/10 dark:prose-code:bg-purple/20 prose-code:px-2 prose-code:py-1 prose-code:rounded prose-code:text-[14px] prose-code:font-medium
+                  prose-pre:bg-gray-900 dark:prose-pre:bg-gray-800 prose-pre:border prose-pre:border-gray-200 dark:prose-pre:border-gray-700 prose-pre:rounded-xl prose-pre:p-4 prose-pre:text-[14px]
+                  prose-blockquote:border-l-purple prose-blockquote:bg-purple/5 dark:prose-blockquote:bg-purple/10 prose-blockquote:rounded-r-xl prose-blockquote:not-italic prose-blockquote:py-4 prose-blockquote:px-6 prose-blockquote:my-6
+                  prose-ul:my-4 prose-ol:my-4 prose-li:my-1
                   prose-img:rounded-xl prose-img:shadow-lg prose-img:my-6 prose-img:max-h-[550px] prose-img:w-auto prose-img:mx-auto
-                  prose-table:border prose-table:border-lightBorderColor dark:prose-table:border-darkBorderColor prose-table:rounded-xl prose-table:overflow-hidden prose-table:text-[14px]
-                  prose-th:bg-light dark:prose-th:bg-dark prose-th:border-lightBorderColor dark:prose-th:border-darkBorderColor prose-th:px-4 prose-th:py-2
-                  prose-td:border-lightBorderColor dark:prose-td:border-darkBorderColor prose-td:px-4 prose-td:py-2"
+                  prose-table:border prose-table:border-gray-200 dark:prose-table:border-gray-700 prose-table:rounded-xl prose-table:overflow-hidden prose-table:text-[14px]
+                  prose-th:bg-gray-50 dark:prose-th:bg-gray-800 prose-th:border-gray-200 dark:prose-th:border-gray-700 prose-th:px-4 prose-th:py-2
+                  prose-td:border-gray-200 dark:prose-td:border-gray-700 prose-td:px-4 prose-td:py-2"
                 >
                   {content}
                 </article>
@@ -219,7 +219,7 @@ export default async function BlogPostPage({
               <div className="lg:col-span-4">
                 <div className="sticky top-24 space-y-6">
                   {/* Article Overview */}
-                  <div className="relative bg-white dark:bg-gray-900 rounded-2xl p-5 border border-gray-200 dark:border-gray-700">
+                  <div className="relative bg-white dark:bg-gray-800 rounded-2xl p-5 border border-gray-200 dark:border-gray-700">
                     <BlurBG className="rounded-2xl" />
                     <div className="relative z-20">
                       <h3 className="font-ao font-bold text-[16px] text-gray-900 dark:text-white mb-4 flex items-center gap-2">
@@ -250,7 +250,7 @@ export default async function BlogPostPage({
                   </div>
 
                   {/* Share Section */}
-                  <div className="relative bg-white dark:bg-gray-900 rounded-2xl p-5 border border-gray-200 dark:border-gray-700">
+                  <div className="relative bg-white dark:bg-gray-800 rounded-2xl p-5 border border-gray-200 dark:border-gray-700">
                     <BlurBG className="rounded-2xl" />
                     <div className="relative z-20">
                       <h3 className="font-ao font-bold text-[16px] text-gray-900 dark:text-white mb-3 flex items-center gap-2">
@@ -273,7 +273,7 @@ export default async function BlogPostPage({
 
                   {/* Tags */}
                   {meta.tags && meta.tags.length > 0 && (
-                    <div className="relative bg-white dark:bg-gray-900 rounded-2xl p-5 border border-gray-200 dark:border-gray-700">
+                    <div className="relative bg-white dark:bg-gray-800 rounded-2xl p-5 border border-gray-200 dark:border-gray-700">
                       <BlurBG className="rounded-2xl" />
                       <div className="relative z-20">
                         <h3 className="font-ao font-bold text-[16px] text-gray-900 dark:text-white mb-3">
@@ -283,7 +283,7 @@ export default async function BlogPostPage({
                           {meta.tags.map((tag, index) => (
                             <span
                               key={index}
-                              className="text-[10px] px-2.5 py-1 rounded-md border border-gray-200 dark:border-gray-700 text-gray-900/70 dark:text-white/70 uppercase font-medium bg-white dark:bg-gray-900 hover:bg-purple/5 hover:border-purple/20 transition-all duration-300 cursor-pointer"
+                              className="text-[10px] px-2.5 py-1 rounded-md border border-gray-200 dark:border-gray-700 text-gray-900/70 dark:text-white/70 uppercase font-medium bg-white dark:bg-gray-800 hover:bg-purple/5 hover:border-purple/20 transition-all duration-300 cursor-pointer"
                             >
                               {tag}
                             </span>
@@ -325,7 +325,7 @@ export default async function BlogPostPage({
 
 
         {/* Enhanced CTA Section */}
-        <section className="py-16 md:py-20 bg-linear-to-br from-light via-light to-light/95 dark:from-dark dark:via-dark dark:to-dark/95">
+        <section className="py-16 md:py-20">
           <Container className="px-4 md:px-7 lg:px-0">
             <div className="relative bg-linear-to-br from-purple/10 via-purple/5 to-transparent rounded-3xl p-8 md:p-12 lg:p-16 text-center overflow-hidden border border-purple/20">
               <BlurBG className="rounded-3xl" />

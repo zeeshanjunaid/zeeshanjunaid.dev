@@ -62,7 +62,7 @@ export function ImageGallery({ images }: ImageGalleryProps) {
                 </div>
               </div>
               {image.caption && (
-                <div className="p-2 sm:p-3 bg-white dark:bg-gray-900">
+                <div className="p-2 sm:p-3 bg-white dark:bg-gray-800 border-t border-gray-200 dark:border-gray-700">
                   <p className="text-xs sm:text-sm text-gray-900/70 dark:text-white/70 font-switzer line-clamp-2">
                     {image.caption}
                   </p>
@@ -145,7 +145,7 @@ export function VideoEmbed({ src, title, thumbnail, platform = 'custom' }: Video
 
   return (
     <div className="video-embed my-6 sm:my-8">
-      <div className="relative aspect-video rounded-xl overflow-hidden bg-dark/5 dark:bg-light/5 shadow-lg">
+      <div className="relative aspect-video rounded-xl overflow-hidden bg-gray-100 dark:bg-gray-800 shadow-lg">
         {!isPlaying && thumbnail ? (
           <div 
             className="relative w-full h-full cursor-pointer group touch-friendly" 
@@ -163,8 +163,8 @@ export function VideoEmbed({ src, title, thumbnail, platform = 'custom' }: Video
             />
             <div className="absolute inset-0 bg-black/30 group-hover:bg-black/40 transition-colors" />
             <div className="absolute inset-0 flex items-center justify-center">
-              <div className="w-12 h-12 sm:w-16 sm:h-16 bg-white/90 hover:bg-white rounded-full flex items-center justify-center transition-all hover:scale-110">
-                <Play className="w-4 h-4 sm:w-6 sm:h-6 text-dark ml-0.5 sm:ml-1" />
+              <div className="w-12 h-12 sm:w-16 sm:h-16 bg-white/90 hover:bg-white dark:bg-white/80 dark:hover:bg-white rounded-full flex items-center justify-center transition-all hover:scale-110">
+                <Play className="w-4 h-4 sm:w-6 sm:h-6 text-gray-900 ml-0.5 sm:ml-1" />
               </div>
             </div>
           </div>
@@ -258,7 +258,7 @@ export function ComparisonTable({ items, featureLabels }: ComparisonTableProps) 
               <tr
                 key={key}
                 className={`border-t border-gray-200 dark:border-gray-700 ${
-                  rowIndex % 2 === 0 ? 'bg-light/50 dark:bg-dark/50' : ''
+                  rowIndex % 2 === 0 ? 'bg-gray-50/50 dark:bg-gray-800/50' : ''
                 }`}
               >
                 <td className="px-3 sm:px-6 py-3 sm:py-4 font-switzer font-medium text-gray-900 dark:text-white text-sm sm:text-base">

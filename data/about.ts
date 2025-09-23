@@ -56,7 +56,6 @@ import {
   SketchOriginal,
   SqldeveloperPlain,
   SqliteOriginal,
-  SupabaseOriginal,
   TailwindcssOriginal,
   ThreejsOriginal,
   TravisOriginal,
@@ -253,11 +252,6 @@ export const Skillset: SkillSetProps[] = [
         name: "Firebase",
         icon: FirebaseOriginal,
         link: "https://firebase.google.com/",
-      },
-      {
-        name: "Supabase",
-        icon: SupabaseOriginal,
-        link: "https://supabase.com/",
       },
       {
         name: "Prisma",
@@ -798,11 +792,6 @@ export const CoreSkillset: SkillSetProps[] = [
         name: "Node.js",
         icon: NodejsOriginal,
         link: "https://nodejs.org/en/",
-      },
-      {
-        name: "Supabase",
-        icon: SupabaseOriginal,
-        link: "https://supabase.com/",
       },
       {
         name: "PostgreSQL",

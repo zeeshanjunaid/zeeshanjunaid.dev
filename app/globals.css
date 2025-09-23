@@ -412,6 +412,53 @@ html {
   }
 }
 
+/* Fix prose text colors in dark mode */
+[data-theme="dark"] .prose {
+  color: #fafaf6 !important;
+}
+
+[data-theme="dark"] .prose p {
+  color: #fafaf6 !important;
+}
+
+[data-theme="dark"] .prose li {
+  color: #fafaf6 !important;
+}
+
+[data-theme="dark"] .prose strong {
+  color: #fafaf6 !important;
+}
+
+[data-theme="dark"] .prose span {
+  color: #fafaf6 !important;
+}
+
+[data-theme="dark"] .prose div {
+  color: #fafaf6 !important;
+}
+
+[data-theme="dark"] .prose h1,
+[data-theme="dark"] .prose h2,
+[data-theme="dark"] .prose h3,
+[data-theme="dark"] .prose h4,
+[data-theme="dark"] .prose h5,
+[data-theme="dark"] .prose h6 {
+  color: #fafaf6 !important;
+}
+
+/* Also target the prose-invert class specifically */
+[data-theme="dark"] .prose-invert {
+  color: #fafaf6 !important;
+}
+
+[data-theme="dark"] .prose-invert p {
+  color: #fafaf6 !important;
+}
+
+[data-theme="dark"] .prose-invert li {
+  color: #fafaf6 !important;
+}
+
 /* Component spacing improvements for mobile */
 @media (max-width: 640px) {
   .callout-box,

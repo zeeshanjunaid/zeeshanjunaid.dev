@@ -125,7 +125,7 @@ export function Callout({ children, type, title }: CalloutProps) {
               {title}
             </h4>
           )}
-          <div className="text-dark/90 dark:text-light/90 font-switzer text-sm sm:text-base">
+          <div className="text-gray-900/90 dark:text-white/90 font-switzer text-sm sm:text-base">
             {children}
           </div>
         </div>

@@ -13,7 +13,6 @@ This project is a personal portfolio website built with [Next.js](https://nextjs
 - [TypeScript](https://www.typescriptlang.org/)
 - [Tailwind CSS](https://tailwindcss.com/)
 - [Framer Motion](https://www.framer.com/motion/)
-- [Supabase](https://supabase.com/) - Backend and real-time features
 - [MDX](https://mdxjs.com/) - Blog content management
 
 ## Getting Started
@@ -39,9 +38,6 @@ You need to have Node.js and pnpm installed on your machine.
     cp .env.example .env.local
     ```
     Fill in the required environment variables:
-    - `NEXT_PUBLIC_SUPABASE_URL`: Your Supabase project URL
-    - `NEXT_PUBLIC_SUPABASE_ANON_KEY`: Your Supabase anonymous key
-    - `SUPABASE_SERVICE_ROLE_KEY`: Your Supabase service role key (for server-side operations)
     - `RESEND_API_KEY`: Your Resend API key for contact form emails
 
 ## Available Scripts
@@ -91,8 +87,6 @@ This project uses a variety of modern technologies and libraries, including:
 - **`tailwind-merge`**: A utility for merging Tailwind CSS classes.
 - **`tailwindcss-animate`**: A plugin for adding animations to Tailwind CSS.
 - **`resend`**: For handling contact form email functionality.
-- **`@supabase/supabase-js`**: JavaScript client for Supabase backend services.
-- **`@supabase/ssr`**: Server-side rendering utilities for Supabase.
 - **`@mdx-js/loader` & `@mdx-js/react`**: For MDX content processing and rendering.
 - **`date-fns`**: Modern JavaScript date utility library.
 
