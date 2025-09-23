@@ -11,10 +11,6 @@ const MyApproach = () => {
     hidden: { opacity: 0 },
     visible: {
       opacity: 1,
-      transition: {
-        staggerChildren: 0.2,
-        delayChildren: 0.1,
-      },
     },
   };
 
@@ -23,10 +19,6 @@ const MyApproach = () => {
     visible: {
       opacity: 1,
       y: 0,
-      transition: {
-        duration: 0.6,
-        ease: "easeOut",
-      },
     },
   };
 
@@ -60,17 +52,17 @@ const MyApproach = () => {
         variants={containerVariants}
       >
         <motion.div variants={itemVariants} className="text-center mb-12">
-          <h2 className="inline-flex center gap-x-[10px] items-center font-normal text-dark dark:text-light uppercase text-[14px] tracking-[.42px] mb-6 justify-center">
+          <h2 className="inline-flex center gap-x-[10px] items-center font-normal text-gray-900 dark:text-white uppercase text-[14px] tracking-[.42px] mb-6 justify-center">
             <div className="flex flex-col space-y-[6px]">
               <span className="bg-dark dark:bg-light w-[18px] h-[1px]" />
               <span className="bg-dark dark:bg-light w-[18px] h-[1px]" />
             </div>
             My Approach
           </h2>
-          <h3 className="text-[28px] md:text-[36px] lg:text-[42px] font-bold font-ao text-dark dark:text-light mb-4">
+          <h3 className="text-[28px] md:text-[36px] lg:text-[42px] font-bold font-ao text-gray-900 dark:text-white mb-4">
             From Idea to Impact: My 3-Step Process
           </h3>
-          <p className="text-dark/70 dark:text-light/70 font-switzer font-light text-[16px] md:text-[18px] leading-relaxed max-w-3xl mx-auto">
+          <p className="text-gray-900/70 dark:text-white/70 font-switzer font-light text-[16px] md:text-[18px] leading-relaxed max-w-3xl mx-auto">
             I don&apos;t just code—I partner with you to create strategic solutions that drive real business results.
           </p>
         </motion.div>
@@ -82,7 +74,7 @@ const MyApproach = () => {
               variants={itemVariants}
               className="group relative"
             >
-              <div className="relative bg-light dark:bg-dark rounded-3xl p-8 md:p-10 overflow-hidden h-full border border-lightBorderColor dark:border-darkBorderColor hover:border-purple/30 transition-all duration-300 group-hover:scale-105">
+              <div className="relative bg-white dark:bg-gray-900 rounded-3xl p-8 md:p-10 overflow-hidden h-full border border-gray-200 dark:border-gray-700 hover:border-purple/30 transition-all duration-300 group-hover:scale-105">
                 <BlurBG className="rounded-3xl" />
                 
                 {/* Step Number */}
@@ -97,18 +89,18 @@ const MyApproach = () => {
                   </div>
                   
                   {/* Title */}
-                  <h4 className="text-[20px] md:text-[24px] font-ao font-bold text-dark dark:text-light mb-4 group-hover:text-purple transition-colors duration-300">
+                  <h4 className="text-[20px] md:text-[24px] font-ao font-bold text-gray-900 dark:text-white mb-4 group-hover:text-purple transition-colors duration-300">
                     {step.title}
                   </h4>
                   
                   {/* Description */}
-                  <p className="text-dark/80 dark:text-light/80 font-switzer font-light text-[14px] md:text-[16px] leading-relaxed">
+                  <p className="text-gray-900/80 dark:text-white/80 font-switzer font-light text-[14px] md:text-[16px] leading-relaxed">
                     {step.description}
                   </p>
                 </div>
 
                 {/* Hover Gradient */}
-                <div className="absolute inset-0 bg-gradient-to-br from-purple/5 via-transparent to-purple/10 rounded-3xl opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+                <div className="absolute inset-0 bg-linear-to-br from-purple/5 via-transparent to-purple/10 rounded-3xl opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
               </div>
             </motion.div>
           ))}

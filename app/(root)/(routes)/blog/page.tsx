@@ -62,7 +62,7 @@ export default async function BlogPage() {
           <div className="absolute bottom-20 left-20 w-96 h-96 bg-purple/5 rounded-full blur-3xl" />
         </div>
 
-        <div className="border-b-[1px] border-b-lightBorderColor dark:border-b-darkBorderColor pb-16 md:pb-20">
+        <div className="border-b-[1px] border-b-gray-200 dark:border-b-gray-700 pb-16 md:pb-20">
           <Container className="px-4 pt-4 md:pt-7 md:px-7 lg:px-0">
             <div className="max-w-4xl">
               <div className="flex items-center gap-3 mb-4">
@@ -72,12 +72,12 @@ export default async function BlogPage() {
                 </span>
               </div>
 
-              <h1 className="text-[32px] md:text-[42px] lg:text-[54px] font-bold font-ao text-dark dark:text-light leading-tight mb-6">
+              <h1 className="text-[32px] md:text-[42px] lg:text-[54px] font-bold font-ao text-gray-900 dark:text-white leading-tight mb-6">
                 Expert Insights on{" "}
                 <span className="text-gradient">Modern Web Development</span>
               </h1>
 
-              <p className="font-light text-[16px] md:text-[18px] lg:text-[20px] leading-relaxed text-dark/80 dark:text-light/80 max-w-3xl mb-8">
+              <p className="font-light text-[16px] md:text-[18px] lg:text-[20px] leading-relaxed text-gray-900/80 dark:text-white/80 max-w-3xl mb-8">
                 Practical advice, case studies, and technical insights from 8+
                 years of building high-performance web applications. Learn the
                 strategies and techniques that drive real business results.
@@ -89,10 +89,10 @@ export default async function BlogPage() {
                   <div className="w-12 h-12 bg-purple/10 rounded-xl flex items-center justify-center mx-auto mb-3">
                     <BookOpen className="w-6 h-6 text-purple" />
                   </div>
-                  <div className="text-[24px] md:text-[28px] font-bold font-ao text-dark dark:text-light">
+                  <div className="text-[24px] md:text-[28px] font-bold font-ao text-gray-900 dark:text-white">
                     {posts.length}
                   </div>
-                  <div className="text-dark/70 dark:text-light/70 font-switzer font-light text-[14px]">
+                  <div className="text-gray-900/70 dark:text-white/70 font-switzer font-light text-[14px]">
                     Articles
                   </div>
                 </div>
@@ -101,10 +101,10 @@ export default async function BlogPage() {
                   <div className="w-12 h-12 bg-purple/10 rounded-xl flex items-center justify-center mx-auto mb-3">
                     <TrendingUp className="w-6 h-6 text-purple" />
                   </div>
-                  <div className="text-[24px] md:text-[28px] font-bold font-ao text-dark dark:text-light">
+                  <div className="text-[24px] md:text-[28px] font-bold font-ao text-gray-900 dark:text-white">
                     100+
                   </div>
-                  <div className="text-dark/70 dark:text-light/70 font-switzer font-light text-[14px]">
+                  <div className="text-gray-900/70 dark:text-white/70 font-switzer font-light text-[14px]">
                     Projects
                   </div>
                 </div>
@@ -113,10 +113,10 @@ export default async function BlogPage() {
                   <div className="w-12 h-12 bg-purple/10 rounded-xl flex items-center justify-center mx-auto mb-3">
                     <Clock className="w-6 h-6 text-purple" />
                   </div>
-                  <div className="text-[24px] md:text-[28px] font-bold font-ao text-dark dark:text-light">
+                  <div className="text-[24px] md:text-[28px] font-bold font-ao text-gray-900 dark:text-white">
                     8+
                   </div>
-                  <div className="text-dark/70 dark:text-light/70 font-switzer font-light text-[14px]">
+                  <div className="text-gray-900/70 dark:text-white/70 font-switzer font-light text-[14px]">
                     Years Experience
                   </div>
                 </div>
@@ -133,7 +133,7 @@ export default async function BlogPage() {
             <div className="flex flex-col space-y-6 md:space-y-8">
               {posts.map((post, index) => (
                 <Link href={`/blog/${post.slug}`} key={post.slug}>
-                  <article className="group relative bg-light dark:bg-dark rounded-3xl overflow-hidden border border-lightBorderColor dark:border-darkBorderColor hover:border-purple/30 transition-all duration-300 hover:scale-[1.01]">
+                  <article className="group relative bg-white dark:bg-gray-900 rounded-3xl overflow-hidden border border-gray-200 dark:border-gray-700 hover:border-purple/30 transition-all duration-300 hover:scale-[1.01]">
                     <BlurBG className="rounded-3xl" />
 
                     <div className="relative z-20 grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12 p-8 md:p-10 lg:p-12">
@@ -149,7 +149,7 @@ export default async function BlogPage() {
                               sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
                               loading="lazy"
                             />
-                            <div className="absolute inset-0 bg-gradient-to-t from-black/20 via-transparent to-transparent" />
+                            <div className="absolute inset-0 bg-linear-to-t from-black/20 via-transparent to-transparent" />
 
                             {/* Date Badge on Image */}
                             <div className="absolute top-4 left-4">
@@ -192,11 +192,11 @@ export default async function BlogPage() {
                           </div>
                         )}
 
-                        <h2 className="text-[24px] md:text-[28px] lg:text-[32px] font-bold font-ao text-dark dark:text-light mb-4 group-hover:text-purple transition-colors duration-300 leading-tight">
+                        <h2 className="text-[24px] md:text-[28px] lg:text-[32px] font-bold font-ao text-gray-900 dark:text-white mb-4 group-hover:text-purple transition-colors duration-300 leading-tight">
                           {post.title}
                         </h2>
 
-                        <p className="text-dark/80 dark:text-light/80 font-switzer font-light text-[16px] md:text-[18px] leading-relaxed mb-6">
+                        <p className="text-gray-900/80 dark:text-white/80 font-switzer font-light text-[16px] md:text-[18px] leading-relaxed mb-6">
                           {post.excerpt}
                         </p>
 
@@ -231,7 +231,7 @@ export default async function BlogPage() {
                             {post.tags.slice(0, 3).map((tag, tagIndex) => (
                               <span
                                 key={tagIndex}
-                                className="text-[10px] md:text-[12px] px-3 py-1.5 rounded-lg border border-lightBorderColor dark:border-darkBorderColor text-dark/70 dark:text-light/70 uppercase font-medium bg-light dark:bg-dark"
+                                className="text-[10px] md:text-[12px] px-3 py-1.5 rounded-lg border border-gray-200 dark:border-gray-700 text-gray-900/70 dark:text-white/70 uppercase font-medium bg-white dark:bg-gray-900"
                               >
                                 {tag}
                               </span>
@@ -241,16 +241,16 @@ export default async function BlogPage() {
 
                         {/* Read More Button */}
                         <div className="flex items-center gap-2">
-                          <span className="text-dark dark:text-light font-switzer font-medium text-[14px] group-hover:text-purple transition-colors duration-300">
+                          <span className="text-gray-900 dark:text-white font-switzer font-medium text-[14px] group-hover:text-purple transition-colors duration-300">
                             Read Article
                           </span>
-                          <ArrowRight className="w-4 h-4 text-dark dark:text-light group-hover:text-purple group-hover:translate-x-1 transition-all duration-300" />
+                          <ArrowRight className="w-4 h-4 text-gray-900 dark:text-white group-hover:text-purple group-hover:translate-x-1 transition-all duration-300" />
                         </div>
                       </div>
                     </div>
 
                     {/* Hover Gradient */}
-                    <div className="absolute inset-0 bg-gradient-to-r from-purple/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 rounded-3xl" />
+                    <div className="absolute inset-0 bg-linear-to-r from-purple/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 rounded-3xl" />
                   </article>
                 </Link>
               ))}
@@ -258,16 +258,16 @@ export default async function BlogPage() {
           ) : (
             /* Empty State */
             <div className="text-center py-16">
-              <div className="relative bg-light dark:bg-dark rounded-3xl p-12 md:p-16 overflow-hidden max-w-2xl mx-auto">
+              <div className="relative bg-white dark:bg-gray-900 rounded-3xl p-12 md:p-16 overflow-hidden max-w-2xl mx-auto">
                 <BlurBG className="rounded-3xl" />
                 <div className="relative z-20">
                   <div className="w-16 h-16 mx-auto mb-6 bg-purple/10 rounded-2xl flex items-center justify-center">
                     <BookOpen className="w-8 h-8 text-purple" />
                   </div>
-                  <h3 className="text-[24px] md:text-[28px] font-bold font-ao text-dark dark:text-light mb-4">
+                  <h3 className="text-[24px] md:text-[28px] font-bold font-ao text-gray-900 dark:text-white mb-4">
                     Coming Soon
                   </h3>
-                  <p className="text-dark/80 dark:text-light/80 font-switzer font-light text-[16px] md:text-[18px] leading-relaxed mb-6">
+                  <p className="text-gray-900/80 dark:text-white/80 font-switzer font-light text-[16px] md:text-[18px] leading-relaxed mb-6">
                     I&apos;m working on creating valuable content that will help
                     you build better web applications. Check back soon for
                     expert insights and practical tutorials.

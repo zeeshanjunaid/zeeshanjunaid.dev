@@ -9,8 +9,7 @@ import { Container } from "@/components/container";
 import Image from "next/image";
 
 import { Skeleton } from "@/components/ui/skeleton";
-import { useTheme } from "next-themes";
-import { QuotedIconDark, QuotedIconLight } from "@/components/icons";
+import { QuotedIcon } from "@/components/icons";
 
 interface TestimonialsSliderProps {
   reviews: {
@@ -22,7 +21,6 @@ interface TestimonialsSliderProps {
   }[];
 }
 const TestimonialsSlider = ({ reviews }: TestimonialsSliderProps) => {
-  const { theme } = useTheme();
   const [currentIndex, setCurrentIndex] = useState(0);
   const [isLoaded, setIsLoaded] = useState(false);
   const totalReviews = reviews.length;
@@ -54,13 +52,13 @@ const TestimonialsSlider = ({ reviews }: TestimonialsSliderProps) => {
       <div className="py-8 px-5 md:p-12 w-full   lg:px-16 rounded-3xl relative flex overflow-hidden">
         <BlurBG className="rounded-3xl" />
         <div className="relative z-20">
-          <h2 className="text-[#3F3F3F]/70 dark:text-[#FAFAF6]/70 font-medium font-switzer text-[16px] md:text-[20px] lg:text-[16px] leading-relaxed  mb-8">
+          <h2 className="text-gray-900/70 dark:text-white/70 font-medium font-switzer text-[16px] md:text-[20px] lg:text-[16px] leading-relaxed  mb-8">
             Here&apos;s why {client} {company && <>from {company}</>} hired me.
           </h2>
           <div className="flex flex-col justify-between space-y-12 lg:space-y-5">
             <div className="relative">
-              {theme === "dark" ? <QuotedIconLight /> : <QuotedIconDark />}
-              <p className="italic text-[16px] md:text-[20px] lg:text-[16px] text-dark dark:text-light leading-relaxed md:mr-[72px] lg:mr-0 lg:min-h-[130px]">
+              <QuotedIcon />
+              <p className="italic text-[16px] md:text-[20px] lg:text-[16px] text-gray-900 dark:text-white leading-relaxed md:mr-[72px] lg:mr-0 lg:min-h-[130px]">
                 {review}
               </p>
             </div>
@@ -79,7 +77,7 @@ const TestimonialsSlider = ({ reviews }: TestimonialsSliderProps) => {
                   )}
                 </div>
                 <div className="flex flex-col gap-y-1">
-                  <p className="italic font-bold text-[14px] md:text-[18px] lg:text-[22px] text-dark dark:text-light leading-relaxed">
+                  <p className="italic font-bold text-[14px] md:text-[18px] lg:text-[22px] text-gray-900 dark:text-white leading-relaxed">
                     {client}
                   </p>
                   {logo && (
@@ -100,7 +98,7 @@ const TestimonialsSlider = ({ reviews }: TestimonialsSliderProps) => {
                   aria-label="Previous"
                   size="icon"
                   onClick={handlePrevious}
-                  className="bg-transparent text-dark dark:text-light border-[1px] border-solid border-dark dark:border-light hover:bg-purple hover:border-purple dark:hover:border-purple transition duration-200 rounded-xl"
+                  className="bg-transparent text-gray-900 dark:text-white border-[1px] border-solid border-dark dark:border-light hover:bg-purple hover:border-purple dark:hover:border-purple transition duration-200 rounded-xl"
                 >
                   <ChevronLeft size={18} />
                 </Button>
@@ -108,7 +106,7 @@ const TestimonialsSlider = ({ reviews }: TestimonialsSliderProps) => {
                   aria-label="Next"
                   onClick={handleNext}
                   size="icon"
-                  className="bg-transparent text-dark dark:text-light border-[1px] border-solid border-dark dark:border-light hover:bg-purple hover:border-purple dark:hover:border-purple transition duration-200 rounded-xl"
+                  className="bg-transparent text-gray-900 dark:text-white border-[1px] border-solid border-dark dark:border-light hover:bg-purple hover:border-purple dark:hover:border-purple transition duration-200 rounded-xl"
                 >
                   <ChevronRight size={18} />
                 </Button>

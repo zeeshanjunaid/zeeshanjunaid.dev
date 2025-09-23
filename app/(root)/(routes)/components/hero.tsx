@@ -37,10 +37,10 @@ export const Hero = () => {
           <div>
             <AvailabilityBadge className="mb-2.5" />
           </div>
-          <h1 className="text-center text-[22px] leading-tight sm:text-[28px] md:text-[36px] font-bold font-ao text-dark dark:text-light">
+          <h1 className="text-center text-[22px] leading-tight sm:text-[28px] md:text-[36px] font-bold font-ao text-gray-900 dark:text-white">
             {heroTitle}
           </h1>
-          <p className="text-center text-[14px] sm:text-[16px] md:text-[18px] font-light text-dark/80 dark:text-light/80 mt-4 leading-relaxed max-w-2xl">
+          <p className="text-center text-[14px] sm:text-[16px] md:text-[18px] font-light text-gray-900/80 dark:text-white/80 mt-4 leading-relaxed max-w-2xl">
             {heroSubtitle}
           </p>
         </div>
@@ -51,7 +51,7 @@ export const Hero = () => {
         <motion.div
           initial={{ opacity: 0, x: -50 }}
           animate={{ opacity: 1, x: 0 }}
-          transition={{ duration: 0.6, ease: "easeOut" }}
+          transition={{ duration: 0.6, ease: [0.25, 0.1, 0.25, 1] }}
           className="hidden lg:flex flex-col w-2/3 rounded-3xl px-16 py-12 justify-between flex-1 mr-5 relative overflow-hidden group"
         >
           {/* Animated Background */}
@@ -59,7 +59,7 @@ export const Hero = () => {
             initial={{ opacity: 0.25 }}
             whileHover={{ opacity: 0.3 }}
             transition={{ duration: 0.2 }}
-            className="backdrop-blur-md bg-lightBorderColor dark:bg-darkBorderColor absolute top-0 left-0 right-0 bottom-0 w-full h-full z-10 rounded-3xl"
+            className="backdrop-blur-md bg-gray-200 dark:bg-gray-700 absolute top-0 left-0 right-0 bottom-0 w-full h-full z-10 rounded-3xl"
           />
 
           {/* Subtle gradient overlay on hover */}
@@ -67,7 +67,7 @@ export const Hero = () => {
             initial={{ opacity: 0 }}
             whileHover={{ opacity: 0.05 }}
             transition={{ duration: 0.2 }}
-            className="absolute inset-0 bg-gradient-to-br from-purple/20 via-transparent to-purple/10 rounded-3xl z-10"
+            className="absolute inset-0 bg-linear-to-br from-purple/20 via-transparent to-purple/10 rounded-3xl z-10"
           />
 
           {/* Content */}
@@ -88,7 +88,7 @@ export const Hero = () => {
               initial={{ opacity: 0, y: 30 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.5, delay: 0.2 }}
-              className="text-left text-[32px] 2xl:text-[36px] font-bold font-ao text-dark dark:text-light leading-tight mb-8"
+              className="text-left text-[32px] 2xl:text-[36px] font-bold font-ao text-gray-900 dark:text-white leading-tight mb-8"
             >
               {heroTitle}
             </motion.h1>
@@ -96,7 +96,7 @@ export const Hero = () => {
               initial={{ opacity: 0, y: 30 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.5, delay: 0.25 }}
-              className="text-left text-[16px] lg:text-[18px] font-light text-dark/80 dark:text-light/80 mb-8 leading-relaxed max-w-2xl"
+              className="text-left text-[16px] lg:text-[18px] font-light text-gray-900/80 dark:text-white/80 mb-8 leading-relaxed max-w-2xl"
             >
               {heroSubtitle}
             </motion.p>

@@ -43,7 +43,7 @@ export const Header = () => {
   });
 
   const scrolledClasses = scrolled
-    ? "bg-light dark:bg-dark border-b-lightBorderColor dark:border-b-darkBorderColor"
+    ? "bg-white dark:bg-gray-900 border-b-gray-200 dark:border-b-gray-700"
     : "bg-transparent";
   return (
     <header
@@ -54,7 +54,7 @@ export const Header = () => {
     >
       <Container className="flex items-center justify-between">
         <Link
-          className="font-ao text-lg lg:text-xl text-dark dark:text-light font-bold tracking-tight flex items-center gap-x-2 header-logo"
+          className="font-ao text-lg lg:text-xl text-gray-900 dark:text-white font-bold tracking-tight flex items-center gap-x-2 header-logo"
           href="/"
         >
           <LogoIcon />
@@ -68,9 +68,9 @@ export const Header = () => {
                 variant="ghost"
                 key={label}
                 className={cn(
-                  "font-switzer font-dark dark:font-light text-sm uppercase font-medium transition-all duration-150 hover:text-purple hover:bg-purple/5 rounded-lg px-4 py-2 h-9",
+                  "font-switzer dark:font-light text-sm uppercase font-medium transition-all duration-150 hover:text-purple hover:bg-purple/5 rounded-lg px-4 py-2 h-9 text-gray-900 dark:text-white",
                   pathname === link &&
-                    "bg-purple text-dark dark:text-light hover:text-dark dark:hover:text-light hover:bg-purple"
+                    "bg-purple text-gray-900 dark:text-white hover:text-gray-900 dark:hover:text-white hover:bg-purple"
                 )}
                 asChild
               >

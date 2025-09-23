@@ -11,7 +11,7 @@ import { motion } from "framer-motion";
 const ExperienceTag = ({ children }: { children: React.ReactNode }) => (
   <div
     className={cn(
-      "inline-flex uppercase px-3 py-1.5 text-[10px] md:text-[12px] text-dark/70 dark:text-light/70 border border-solid border-dark/15 dark:border-light/15 rounded-xl leading-[125%] hover:border-purple/30 hover:text-purple/80 transition-all duration-200",
+      "inline-flex uppercase px-3 py-1.5 text-[10px] md:text-[12px] text-gray-900/70 dark:text-white/70 border border-solid border-gray-900/15 dark:border-white/15 rounded-xl leading-[125%] hover:border-purple/30 hover:text-purple/80 transition-all duration-200",
     )}
   >
     {children}
@@ -32,11 +32,6 @@ const ExperienceCard = ({ experience, index }: ExperienceCardProps) => {
     visible: {
       opacity: 1,
       y: 0,
-      transition: {
-        duration: 0.6,
-        delay: index * 0.2,
-        ease: "easeOut",
-      },
     },
   };
 
@@ -45,10 +40,6 @@ const ExperienceCard = ({ experience, index }: ExperienceCardProps) => {
     visible: {
       opacity: 1,
       scale: 1,
-      transition: {
-        duration: 0.3,
-        delay: 0.3 + index * 0.1,
-      },
     },
   };
 
@@ -60,11 +51,11 @@ const ExperienceCard = ({ experience, index }: ExperienceCardProps) => {
       variants={cardVariants}
       className="relative rounded-3xl overflow-hidden w-full group"
     >
-      <div className="relative py-8 px-6 md:p-10 lg:p-12 bg-light dark:bg-dark rounded-3xl overflow-hidden border border-lightBorderColor dark:border-darkBorderColor">
+      <div className="relative py-8 px-6 md:p-10 lg:p-12 bg-white dark:bg-gray-900 rounded-3xl overflow-hidden border border-gray-200 dark:border-gray-700">
         <BlurBG className="rounded-3xl" />
         
         {/* Hover Background Effect */}
-        <div className="absolute inset-0 bg-gradient-to-br from-purple/5 via-transparent to-purple/10 rounded-3xl opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+        <div className="absolute inset-0 bg-linear-to-br from-purple/5 via-transparent to-purple/10 rounded-3xl opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
         
         {/* Decorative Elements */}
         <div className="absolute top-6 right-6 w-2 h-2 bg-purple/30 rounded-full group-hover:scale-150 transition-transform duration-500" />
@@ -83,7 +74,7 @@ const ExperienceCard = ({ experience, index }: ExperienceCardProps) => {
               </div>
 
               {/* Role & Company */}
-              <h3 className="font-ao font-bold text-[20px] md:text-[24px] lg:text-[28px] text-dark dark:text-light mb-3 leading-tight">
+              <h3 className="font-ao font-bold text-[20px] md:text-[24px] lg:text-[28px] text-gray-900 dark:text-white mb-3 leading-tight">
                 {role}
               </h3>
               
@@ -96,7 +87,7 @@ const ExperienceCard = ({ experience, index }: ExperienceCardProps) => {
                   link={companyLink}
                   target="_blank"
                   rel="noreferrer noopener"
-                  className="font-switzer font-medium text-[14px] md:text-[16px] text-dark dark:text-light hover:text-purple"
+                  className="font-switzer font-medium text-[14px] md:text-[16px] text-gray-900 dark:text-white hover:text-purple"
                 />
                 <ExternalLink className="w-4 h-4 text-dark/40 dark:text-light/40" />
               </div>
@@ -107,11 +98,11 @@ const ExperienceCard = ({ experience, index }: ExperienceCardProps) => {
               href={companyLink}
               target="_blank"
               rel="noreferrer noopener"
-              className="hidden lg:flex items-center justify-center w-12 h-12 bg-light dark:bg-dark rounded-2xl border border-lightBorderColor dark:border-darkBorderColor hover:border-purple/30 hover:bg-purple/5 transition-all duration-300 group/link"
+              className="hidden lg:flex items-center justify-center w-12 h-12 bg-white dark:bg-gray-900 rounded-2xl border border-gray-200 dark:border-gray-700 hover:border-purple/30 hover:bg-purple/5 transition-all duration-300 group/link"
               whileHover={{ scale: 1.02 }}
               whileTap={{ scale: 0.98 }}
             >
-              <ArrowRight className="w-5 h-5 text-dark dark:text-light group-hover/link:text-purple group-hover/link:-rotate-45 transition-all duration-300" />
+              <ArrowRight className="w-5 h-5 text-gray-900 dark:text-white group-hover/link:text-purple group-hover/link:-rotate-45 transition-all duration-300" />
             </motion.a>
           </div>
 

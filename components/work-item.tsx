@@ -119,7 +119,7 @@ export const WorkItem = ({
                 type: "tween",
                 ease: "easeInOut",
               }}
-              className="text-[24px] text-dark dark:text-light md:hidden"
+              className="text-[24px] text-gray-900 dark:text-white md:hidden"
             >
               <ArrowRight />
             </motion.span>
@@ -181,12 +181,12 @@ export const WorkImg = ({
   );
 };
 export const WorkYear = ({ year }: { year: number }) => (
-  <span className="font-ao text-dark/50 dark:text-light/50 uppercase text-[10px] md:text-[12px] pt-1 md:pt-0">
+  <span className="font-ao text-gray-900/50 dark:text-white/50 uppercase text-[10px] md:text-[12px] pt-1 md:pt-0">
     {year}
   </span>
 );
 const WorkName = ({ name }: { name: string }) => (
-  <h2 className="font-ao text-dark font-bold text-[18px] md:text-[20px] lg:text-[22px] dark:text-light uppercase">
+  <h2 className="font-ao text-gray-900 font-bold text-[18px] md:text-[20px] lg:text-[22px] dark:text-white uppercase">
     {name}
   </h2>
 );
@@ -199,7 +199,7 @@ export const WorkTag = ({
 }) => (
   <div
     className={cn(
-      "inline-flex uppercase px-4 py-2 text-[10px] md:text-[12px] text-dark/70 dark:text-light/70 border border-solid border-dark/15 dark:border-light/15 rounded-xl leading-[125%]",
+      "inline-flex uppercase px-4 py-2 text-[10px] md:text-[12px] text-gray-900/70 dark:text-white/70 border border-solid border-gray-900/15 dark:border-white/15 rounded-xl leading-[125%]",
       selectedSkill === tag &&
         "bg-purple/40 border-transparent dark:border-transparent"
     )}

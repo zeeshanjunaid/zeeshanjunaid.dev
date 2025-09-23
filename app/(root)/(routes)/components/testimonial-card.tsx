@@ -35,12 +35,12 @@ const TestimonialCard = ({ review, className }: TestimonialCardProps) => {
       )}
     >
       {/* Main Card Container */}
-      <div className="relative bg-light dark:bg-dark rounded-3xl p-6 md:p-8 lg:p-10 border border-lightBorderColor dark:border-darkBorderColor transition-all duration-500 group-hover:border-purple/30">
+      <div className="relative bg-white dark:bg-gray-900 rounded-3xl p-6 md:p-8 lg:p-10 border border-gray-200 dark:border-gray-700 transition-all duration-500 group-hover:border-purple/30">
         <BlurBG className="rounded-3xl" />
 
         {/* Animated Background Gradient */}
         <motion.div
-          className="absolute inset-0 bg-gradient-to-br from-purple/5 via-transparent to-purple/10 rounded-3xl"
+          className="absolute inset-0 bg-linear-to-br from-purple/5 via-transparent to-purple/10 rounded-3xl"
           initial={{ opacity: 0 }}
           animate={{ opacity: isHovered ? 1 : 0 }}
           transition={{ duration: 0.3 }}
@@ -76,7 +76,7 @@ const TestimonialCard = ({ review, className }: TestimonialCardProps) => {
             <div className="flex-1 min-w-0">
               <div className="flex items-start justify-between mb-2">
                 <div className="flex-1">
-                  <h3 className="text-dark dark:text-light font-switzer font-semibold text-[16px] md:text-[18px] flex items-center gap-2 mb-1">
+                  <h3 className="text-gray-900 dark:text-white font-switzer font-semibold text-[16px] md:text-[18px] flex items-center gap-2 mb-1">
                     {review.client}
                     {review.country && (
                       <motion.span
@@ -110,7 +110,7 @@ const TestimonialCard = ({ review, className }: TestimonialCardProps) => {
                           <Award className="w-3 h-3 text-purple" />
                         </div>
                       )}
-                      <span className="text-dark/70 dark:text-light/70 font-switzer font-medium text-[14px] md:text-[15px]">
+                      <span className="text-gray-900/70 dark:text-white/70 font-switzer font-medium text-[14px] md:text-[15px]">
                         {review.company}
                       </span>
                     </div>
@@ -165,7 +165,7 @@ const TestimonialCard = ({ review, className }: TestimonialCardProps) => {
             {/* Headline */}
             {review.headline && (
               <motion.h4
-                className="text-dark dark:text-light font-switzer font-semibold text-[16px] md:text-[18px] lg:text-[19px] leading-tight mb-4"
+                className="text-gray-900 dark:text-white font-switzer font-semibold text-[16px] md:text-[18px] lg:text-[19px] leading-tight mb-4"
                 initial={{ opacity: 0.8 }}
                 animate={{ opacity: isHovered ? 1 : 0.9 }}
                 transition={{ duration: 0.3 }}
@@ -185,7 +185,7 @@ const TestimonialCard = ({ review, className }: TestimonialCardProps) => {
           </div>
 
           {/* Footer */}
-          <div className="flex items-center justify-between pt-4 border-t border-lightBorderColor dark:border-darkBorderColor">
+          <div className="flex items-center justify-between pt-4 border-t border-gray-200 dark:border-gray-700">
             <div className="flex items-center gap-2">
               <div className="w-2 h-2 bg-green-400 rounded-full animate-pulse" />
               <span className="text-dark/60 dark:text-light/60 font-switzer font-medium text-[11px] md:text-[12px] uppercase tracking-wider">

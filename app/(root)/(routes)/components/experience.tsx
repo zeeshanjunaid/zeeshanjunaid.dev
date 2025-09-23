@@ -11,10 +11,6 @@ const Experience = () => {
     hidden: { opacity: 0 },
     visible: {
       opacity: 1,
-      transition: {
-        staggerChildren: 0.2,
-        delayChildren: 0.1,
-      },
     },
   };
 
@@ -23,10 +19,6 @@ const Experience = () => {
     visible: {
       opacity: 1,
       y: 0,
-      transition: {
-        duration: 0.6,
-        ease: "easeOut",
-      },
     },
   };
 
@@ -46,14 +38,14 @@ const Experience = () => {
           variants={containerVariants}
         >
           <motion.div variants={headerVariants} className="mb-12">
-            <h2 className="inline-flex center gap-x-[10px] items-center font-normal text-dark dark:text-light uppercase text-[14px] tracking-[.42px] mb-6">
+            <h2 className="inline-flex center gap-x-[10px] items-center font-normal text-gray-900 dark:text-white uppercase text-[14px] tracking-[.42px] mb-6">
               <div className="flex flex-col space-y-[6px]">
                 <span className="bg-dark dark:bg-light w-[18px] h-[1px]" />
                 <span className="bg-dark dark:bg-light w-[18px] h-[1px]" />
               </div>
               Professional Experience
             </h2>
-            <p className="text-dark/70 dark:text-light/70 font-switzer font-light text-[14px] md:text-[16px] lg:text-[18px] max-w-2xl">
+            <p className="text-gray-900/70 dark:text-white/70 font-switzer font-light text-[14px] md:text-[16px] lg:text-[18px] max-w-2xl">
               My journey through the tech industry, working with innovative companies and building impactful digital solutions.
             </p>
           </motion.div>

@@ -9,7 +9,7 @@ import { cn } from "@/lib/utils";
 
 export function SocialLinks() {
   const styles =
-    "dark:text-dark text-light w-4 h-4 md:w-5 md:h-5 lg:w-6 lg:h-6";
+    "dark:text-gray-900 text-white w-4 h-4 md:w-5 md:h-5 lg:w-6 lg:h-6";
   const socialLinks = [
     {
       name: "github",

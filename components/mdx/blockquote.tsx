@@ -30,7 +30,7 @@ export function Blockquote({ children, type = 'default', author }: BlockquotePro
       case 'tip':
         return 'border-l-yellow-500 bg-yellow-50 dark:bg-yellow-950/30 text-yellow-800 dark:text-yellow-200';
       default:
-        return 'border-l-purple bg-purple/5 dark:bg-purple/10 text-dark dark:text-light';
+        return 'border-l-purple bg-purple/5 dark:bg-purple/10 text-gray-900 dark:text-white';
     }
   };
 

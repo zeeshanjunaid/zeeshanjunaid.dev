@@ -43,7 +43,7 @@ export function FilterBar({
           variant="outline"
           role="combobox"
           aria-expanded={open}
-          className="justify-between bg-light dark:bg-dark rounded-xl overflow-hidden relative w-[200px] md:w-[240px] uppercase font-switzer font-medium text-dark dark:text-light text-xs md:text-sm border-lightBorderColor dark:border-darkBorderColor hover:border-purple/30 hover:bg-purple/5 transition-all duration-300"
+          className="justify-between bg-white dark:bg-gray-900 rounded-xl overflow-hidden relative w-[200px] md:w-[240px] uppercase font-switzer font-medium text-gray-900 dark:text-white text-xs md:text-sm border-gray-200 dark:border-gray-700 hover:border-purple/30 hover:bg-purple/5 transition-all duration-300"
         >
           <BlurBG />
           <div className="z-20 relative flex justify-between w-full">
@@ -54,8 +54,8 @@ export function FilterBar({
           </div>
         </Button>
       </PopoverTrigger>
-      <PopoverContent className="w-full min-w-[200px] md:min-w-[240px] py-0 rounded-xl bg-light dark:bg-dark border-lightBorderColor dark:border-darkBorderColor">
-        <Command className="rounded-xl bg-light dark:bg-dark ">
+      <PopoverContent className="w-full min-w-[200px] md:min-w-[240px] py-0 rounded-xl bg-white dark:bg-gray-900 border-gray-200 dark:border-gray-700">
+        <Command className="rounded-xl bg-white dark:bg-gray-900 ">
           <CommandInput placeholder="Search technology..." className="border-0" />
           <CommandEmpty>No Skill found.</CommandEmpty>
           <CommandGroup>
@@ -63,7 +63,7 @@ export function FilterBar({
               <CommandItem
                 key={index}
                 value={skill}
-                className="uppercase font-switzer font-medium text-dark dark:text-light hover:bg-purple/10 aria-selected:bg-purple/20 rounded-lg mx-1 my-0.5"
+                className="uppercase font-switzer font-medium text-gray-900 dark:text-white hover:bg-purple/10 aria-selected:bg-purple/20 rounded-lg mx-1 my-0.5"
                 onSelect={(currentValue) => {
                   setSkillValue(
                     currentValue === skillValue ? "" : currentValue,

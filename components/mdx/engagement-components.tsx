@@ -46,7 +46,7 @@ export function NewsletterSignup({
 
   if (isSubmitted) {
     return (
-      <div className="newsletter-signup my-8 p-8 bg-gradient-to-br from-green-50 to-emerald-50 dark:from-green-950/30 dark:to-emerald-950/30 rounded-xl border border-green-200 dark:border-green-800">
+      <div className="newsletter-signup my-8 p-8 bg-linear-to-br from-green-50 to-emerald-50 dark:from-green-950/30 dark:to-emerald-950/30 rounded-xl border border-green-200 dark:border-green-800">
         <div className="text-center">
           <div className="w-16 h-16 bg-green-100 dark:bg-green-900/50 rounded-full flex items-center justify-center mx-auto mb-4">
             <CheckCircle className="w-8 h-8 text-green-600 dark:text-green-400" />
@@ -64,15 +64,15 @@ export function NewsletterSignup({
   }
 
   return (
-    <div className="newsletter-signup my-6 sm:my-8 p-6 sm:p-8 bg-gradient-to-br from-purple/10 via-purple/5 to-transparent rounded-xl border border-purple/20">
+    <div className="newsletter-signup my-6 sm:my-8 p-6 sm:p-8 bg-linear-to-br from-purple/10 via-purple/5 to-transparent rounded-xl border border-purple/20">
       <div className="text-center mb-6">
         <div className="w-12 h-12 sm:w-16 sm:h-16 bg-purple/20 rounded-full flex items-center justify-center mx-auto mb-4">
           <Mail className="w-6 h-6 sm:w-8 sm:h-8 text-purple" />
         </div>
-        <h3 className="font-ao font-bold text-xl sm:text-2xl text-dark dark:text-light mb-2">
+        <h3 className="font-ao font-bold text-xl sm:text-2xl text-gray-900 dark:text-white mb-2">
           {title}
         </h3>
-        <p className="text-dark/70 dark:text-light/70 font-switzer text-sm sm:text-lg">
+        <p className="text-gray-900/70 dark:text-white/70 font-switzer text-sm sm:text-lg">
           {description}
         </p>
       </div>
@@ -85,7 +85,7 @@ export function NewsletterSignup({
             onChange={(e) => setEmail(e.target.value)}
             placeholder={placeholder}
             required
-            className="flex-1 px-4 py-3 bg-light dark:bg-dark border border-lightBorderColor dark:border-darkBorderColor rounded-xl text-dark dark:text-light placeholder-dark/50 dark:placeholder-light/50 focus:outline-none focus:ring-2 focus:ring-purple/20 focus:border-purple/50 transition-all text-sm sm:text-base"
+            className="flex-1 px-4 py-3 bg-white dark:bg-gray-900 border border-gray-200 dark:border-gray-700 rounded-xl text-gray-900 dark:text-white placeholder-dark/50 dark:placeholder-light/50 focus:outline-none focus:ring-2 focus:ring-purple/20 focus:border-purple/50 transition-all text-sm sm:text-base"
           />
           <button
             type="submit"
@@ -100,7 +100,7 @@ export function NewsletterSignup({
             {buttonText}
           </button>
         </div>
-        <p className="text-xs text-dark/50 dark:text-light/50 mt-3 text-center font-switzer">
+        <p className="text-xs text-gray-900/50 dark:text-white/50 mt-3 text-center font-switzer">
           No spam, unsubscribe at any time.
         </p>
       </form>
@@ -128,11 +128,11 @@ export function CTABox({
   const getVariantStyles = () => {
     switch (variant) {
       case "secondary":
-        return "bg-gradient-to-br from-blue-50 to-indigo-50 dark:from-blue-950/30 dark:to-indigo-950/30 border-blue-200 dark:border-blue-800";
+        return "bg-linear-to-br from-blue-50 to-indigo-50 dark:from-blue-950/30 dark:to-indigo-950/30 border-blue-200 dark:border-blue-800";
       case "outline":
-        return "bg-light dark:bg-dark border-lightBorderColor dark:border-darkBorderColor";
+        return "bg-white dark:bg-gray-900 border-gray-200 dark:border-gray-700";
       default:
-        return "bg-gradient-to-br from-purple/10 via-purple/5 to-transparent border-purple/20";
+        return "bg-linear-to-br from-purple/10 via-purple/5 to-transparent border-purple/20";
     }
   };
 
@@ -157,10 +157,10 @@ export function CTABox({
             {icon}
           </div>
         )}
-        <h3 className="font-ao font-bold text-xl sm:text-2xl text-dark dark:text-light mb-3 sm:mb-4">
+        <h3 className="font-ao font-bold text-xl sm:text-2xl text-gray-900 dark:text-white mb-3 sm:mb-4">
           {title}
         </h3>
-        <p className="text-dark/80 dark:text-light/80 font-switzer text-sm sm:text-lg mb-6 sm:mb-8 max-w-2xl mx-auto leading-relaxed">
+        <p className="text-gray-900/80 dark:text-white/80 font-switzer text-sm sm:text-lg mb-6 sm:mb-8 max-w-2xl mx-auto leading-relaxed">
           {description}
         </p>
         <Link href={buttonLink}>
@@ -202,7 +202,7 @@ export function AuthorBio({
   social = {},
 }: AuthorBioProps) {
   return (
-    <div className="author-bio my-6 sm:my-8 p-4 sm:p-6 bg-light dark:bg-dark rounded-xl border border-lightBorderColor dark:border-darkBorderColor">
+    <div className="author-bio my-6 sm:my-8 p-4 sm:p-6 bg-white dark:bg-gray-900 rounded-xl border border-gray-200 dark:border-gray-700">
       <div className="flex flex-col sm:flex-row gap-4 sm:gap-6">
         {/* Avatar */}
         <div className="flex-shrink-0 mx-auto sm:mx-0">
@@ -220,7 +220,7 @@ export function AuthorBio({
         {/* Content */}
         <div className="flex-1 text-center sm:text-left">
           <div className="mb-3 sm:mb-4">
-            <h3 className="font-ao font-bold text-lg sm:text-xl text-dark dark:text-light mb-1">
+            <h3 className="font-ao font-bold text-lg sm:text-xl text-gray-900 dark:text-white mb-1">
               {name}
             </h3>
             <p className="text-purple font-switzer font-medium text-sm sm:text-base">
@@ -228,7 +228,7 @@ export function AuthorBio({
             </p>
           </div>
 
-          <p className="text-dark/80 dark:text-light/80 font-switzer leading-relaxed mb-3 sm:mb-4 text-sm sm:text-base">
+          <p className="text-gray-900/80 dark:text-white/80 font-switzer leading-relaxed mb-3 sm:mb-4 text-sm sm:text-base">
             {bio}
           </p>
 
@@ -313,21 +313,21 @@ interface RelatedPostsProps {
 export function RelatedPosts({ posts }: RelatedPostsProps) {
   return (
     <div className="related-posts my-6 sm:my-8">
-      <h3 className="font-ao font-bold text-xl sm:text-2xl text-dark dark:text-light mb-4 sm:mb-6">
+      <h3 className="font-ao font-bold text-xl sm:text-2xl text-gray-900 dark:text-white mb-4 sm:mb-6">
         Related Articles
       </h3>
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6">
         {posts.map((post, index) => (
           <Link key={index} href={`/blog/${post.slug}`}>
-            <div className="group p-4 sm:p-6 bg-light dark:bg-dark rounded-xl border border-lightBorderColor dark:border-darkBorderColor hover:border-purple/30 transition-all duration-300 hover:shadow-lg touch-friendly">
-              <h4 className="font-ao font-bold text-base sm:text-lg text-dark dark:text-light mb-2 sm:mb-3 group-hover:text-purple transition-colors line-clamp-2">
+            <div className="group p-4 sm:p-6 bg-white dark:bg-gray-900 rounded-xl border border-gray-200 dark:border-gray-700 hover:border-purple/30 transition-all duration-300 hover:shadow-lg touch-friendly">
+              <h4 className="font-ao font-bold text-base sm:text-lg text-gray-900 dark:text-white mb-2 sm:mb-3 group-hover:text-purple transition-colors line-clamp-2">
                 {post.title}
               </h4>
-              <p className="text-dark/70 dark:text-light/70 font-switzer text-xs sm:text-sm mb-3 sm:mb-4 line-clamp-3">
+              <p className="text-gray-900/70 dark:text-white/70 font-switzer text-xs sm:text-sm mb-3 sm:mb-4 line-clamp-3">
                 {post.excerpt}
               </p>
               <div className="flex items-center justify-between">
-                <span className="text-xs text-dark/50 dark:text-light/50 font-switzer">
+                <span className="text-xs text-gray-900/50 dark:text-white/50 font-switzer">
                   {post.readingTime}
                 </span>
                 <div className="flex gap-1">

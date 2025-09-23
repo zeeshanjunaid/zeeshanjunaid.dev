@@ -15,10 +15,6 @@ const ServicesPageClient = () => {
     hidden: { opacity: 0 },
     visible: {
       opacity: 1,
-      transition: {
-        staggerChildren: 0.1,
-        delayChildren: 0.2,
-      },
     },
   };
 
@@ -27,10 +23,6 @@ const ServicesPageClient = () => {
     visible: {
       opacity: 1,
       y: 0,
-      transition: {
-        duration: 0.6,
-        ease: "easeOut",
-      },
     },
   };
 
@@ -97,12 +89,12 @@ const ServicesPageClient = () => {
                 </span>
               </div>
 
-              <h1 className="leading-tight text-[32px] md:text-[42px] lg:text-[54px] font-bold font-ao text-dark dark:text-light">
+              <h1 className="leading-tight text-[32px] md:text-[42px] lg:text-[54px] font-bold font-ao text-gray-900 dark:text-white">
                 I Build Digital Solutions That{" "}
                 <span className="text-gradient">Drive Business Growth</span>
               </h1>
 
-              <p className="font-light text-[16px] md:text-[18px] lg:text-[20px] leading-relaxed text-dark/80 dark:text-light/80 max-w-3xl">
+              <p className="font-light text-[16px] md:text-[18px] lg:text-[20px] leading-relaxed text-gray-900/80 dark:text-white/80 max-w-3xl">
                 Below are the core solutions I provide to help my clients succeed. Each service is a partnership, tailored to solve your unique challenges and deliver a tangible return on your investment.
               </p>
 
@@ -126,7 +118,7 @@ const ServicesPageClient = () => {
                   <Button
                     variant="ghost"
                     size="lg"
-                    className="rounded-xl uppercase font-medium font-switzer text-dark dark:text-light hover:text-purple w-full sm:w-auto justify-center min-w-[200px]"
+                    className="rounded-xl uppercase font-medium font-switzer text-gray-900 dark:text-white hover:text-purple w-full sm:w-auto justify-center min-w-[200px]"
                   >
                     View My Work
                   </Button>
@@ -147,14 +139,14 @@ const ServicesPageClient = () => {
             viewport={{ once: true }}
             className="mb-16"
           >
-            <h2 className="inline-flex center gap-x-[10px] items-center font-normal text-dark dark:text-light uppercase text-[14px] tracking-[.42px] mb-8">
+            <h2 className="inline-flex center gap-x-[10px] items-center font-normal text-gray-900 dark:text-white uppercase text-[14px] tracking-[.42px] mb-8">
               <div className="flex flex-col space-y-[6px]">
                 <span className="bg-dark dark:bg-light w-[18px] h-[1px]" />
                 <span className="bg-dark dark:bg-light w-[18px] h-[1px]" />
               </div>
               My Services
             </h2>
-            <p className="text-dark/70 dark:text-light/70 font-switzer font-light text-[14px] md:text-[16px] lg:text-[18px] max-w-2xl">
+            <p className="text-gray-900/70 dark:text-white/70 font-switzer font-light text-[14px] md:text-[16px] lg:text-[18px] max-w-2xl">
               Comprehensive digital solutions designed to elevate your business
               and create meaningful connections with your audience.
             </p>
@@ -190,10 +182,10 @@ const ServicesPageClient = () => {
 
         <Container className="px-5 md:px-7 lg:px-0">
           <motion.div variants={itemVariants} className="mb-16 text-center">
-            <h2 className="text-[28px] md:text-[36px] lg:text-[42px] font-bold font-ao text-dark dark:text-light mb-6">
+            <h2 className="text-[28px] md:text-[36px] lg:text-[42px] font-bold font-ao text-gray-900 dark:text-white mb-6">
               My Process
             </h2>
-            <p className="text-dark/70 dark:text-light/70 font-switzer font-light text-[14px] md:text-[16px] lg:text-[18px] max-w-2xl mx-auto">
+            <p className="text-gray-900/70 dark:text-white/70 font-switzer font-light text-[14px] md:text-[16px] lg:text-[18px] max-w-2xl mx-auto">
               A proven methodology that ensures every project is delivered on
               time, within budget, and exceeds expectations.
             </p>
@@ -206,7 +198,7 @@ const ServicesPageClient = () => {
                 variants={itemVariants}
                 className="relative group"
               >
-                <div className="relative bg-light dark:bg-dark rounded-3xl p-8 md:p-10 overflow-hidden h-full">
+                <div className="relative bg-white dark:bg-gray-900 rounded-3xl p-8 md:p-10 overflow-hidden h-full">
                   <BlurBG className="rounded-3xl" />
 
                   <div className="relative z-20">
@@ -217,10 +209,10 @@ const ServicesPageClient = () => {
                         </span>
                       </div>
                       <div className="flex-1">
-                        <h3 className="text-[18px] md:text-[20px] lg:text-[24px] font-ao font-bold text-dark dark:text-light mb-3">
+                        <h3 className="text-[18px] md:text-[20px] lg:text-[24px] font-ao font-bold text-gray-900 dark:text-white mb-3">
                           {step.title}
                         </h3>
-                        <p className="text-dark/80 dark:text-light/80 font-switzer font-light text-[14px] md:text-[16px] leading-relaxed">
+                        <p className="text-gray-900/80 dark:text-white/80 font-switzer font-light text-[14px] md:text-[16px] leading-relaxed">
                           {step.description}
                         </p>
                       </div>
@@ -245,16 +237,16 @@ const ServicesPageClient = () => {
         className="py-16 md:py-20"
       >
         <Container className="px-5 md:px-7 lg:px-0">
-          <div className="relative bg-light dark:bg-dark rounded-3xl p-12 md:p-16 text-center overflow-hidden">
+          <div className="relative bg-white dark:bg-gray-900 rounded-3xl p-12 md:p-16 text-center overflow-hidden">
             <BlurBG className="rounded-3xl" />
 
-            <div className="absolute inset-0 bg-gradient-to-br from-purple/10 via-transparent to-purple/5 rounded-3xl" />
+            <div className="absolute inset-0 bg-linear-to-br from-purple/10 via-transparent to-purple/5 rounded-3xl" />
 
             <div className="relative z-20">
-              <h2 className="text-[28px] md:text-[36px] lg:text-[42px] font-bold font-ao text-dark dark:text-light mb-6">
+              <h2 className="text-[28px] md:text-[36px] lg:text-[42px] font-bold font-ao text-gray-900 dark:text-white mb-6">
                 Ready to Start Your Project?
               </h2>
-              <p className="text-dark/80 dark:text-light/80 font-switzer font-light text-[16px] md:text-[18px] lg:text-[20px] leading-relaxed max-w-2xl mx-auto mb-8">
+              <p className="text-gray-900/80 dark:text-white/80 font-switzer font-light text-[16px] md:text-[18px] lg:text-[20px] leading-relaxed max-w-2xl mx-auto mb-8">
                 Let&apos;s discuss how I can help bring your vision to life with
                 custom digital solutions that drive real results.
               </p>
@@ -274,7 +266,7 @@ const ServicesPageClient = () => {
                   <Button
                     variant="ghost"
                     size="lg"
-                    className="rounded-xl uppercase font-medium font-switzer text-dark dark:text-light hover:text-purple w-full sm:w-auto justify-center min-w-[200px]"
+                    className="rounded-xl uppercase font-medium font-switzer text-gray-900 dark:text-white hover:text-purple w-full sm:w-auto justify-center min-w-[200px]"
                   >
                     View Pricing Plans
                   </Button>

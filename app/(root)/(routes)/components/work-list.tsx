@@ -21,7 +21,7 @@ export const WorkList = ({ title, projects, selectedSkill }: WorkListProps) => {
       )}
     >
       {title && (
-        <h2 className="inline-flex center gap-x-[10px] items-center font-normal text-dark dark:text-light uppercase text-[14px] tracking-[.42px]">
+        <h2 className="inline-flex center gap-x-[10px] items-center font-normal text-gray-900 dark:text-white uppercase text-[14px] tracking-[.42px]">
           <div className="flex flex-col space-y-[6px]">
             <span className="bg-dark dark:bg-light w-[18px] h-[1px]" />
             <span className="bg-dark dark:bg-light w-[18px] h-[1px]" />

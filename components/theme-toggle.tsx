@@ -20,7 +20,7 @@ export function ModeToggle() {
         <Button
           variant="ghost"
           size="icon"
-          className="w-9 h-9 rounded-lg bg-light dark:bg-dark border border-lightBorderColor dark:border-darkBorderColor"
+          className="w-9 h-9 rounded-lg bg-white dark:bg-gray-900 border border-gray-200 dark:border-gray-700"
           disabled
         >
           <Sun className="h-4 w-4" />
@@ -39,7 +39,7 @@ export function ModeToggle() {
         onClick={() => setTheme(isDark ? "light" : "dark")}
         className={cn(
           "w-9 h-9 rounded-lg transition-all duration-200 relative overflow-hidden",
-          "bg-light dark:bg-dark border border-lightBorderColor dark:border-darkBorderColor",
+          "bg-white dark:bg-gray-900 border border-gray-200 dark:border-gray-700",
           "hover:bg-purple/10 hover:border-purple/30"
         )}
       >
@@ -48,8 +48,8 @@ export function ModeToggle() {
           className={cn(
             "absolute inset-0 transition-all duration-300 rounded-lg",
             isDark
-              ? "bg-gradient-to-br from-slate-800 to-slate-900"
-              : "bg-gradient-to-br from-amber-50 to-orange-100"
+              ? "bg-linear-to-br from-slate-800 to-slate-900"
+              : "bg-linear-to-br from-amber-50 to-orange-100"
           )}
         />
         

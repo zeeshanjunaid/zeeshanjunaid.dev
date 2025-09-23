@@ -91,7 +91,7 @@ const PricingTable = () => {
           >
             {tier.popular && (
               <div className="absolute top-0 left-1/2 transform -translate-x-1/2 -translate-y-1/2 z-30">
-                <div className="bg-purple text-dark dark:text-light px-4 py-1 rounded-full text-xs font-medium uppercase tracking-wider">
+                <div className="bg-purple text-gray-900 dark:text-white px-4 py-1 rounded-full text-xs font-medium uppercase tracking-wider">
                   Most Popular
                 </div>
               </div>
@@ -103,18 +103,18 @@ const PricingTable = () => {
               <div className="relative z-20 flex flex-col h-full">
                 {/* Header */}
                 <div className="text-center mb-8">
-                  <h3 className="text-[24px] md:text-[28px] font-bold font-ao text-dark dark:text-light mb-2">
+                  <h3 className="text-[24px] md:text-[28px] font-bold font-ao text-gray-900 dark:text-white mb-2">
                     {tier.name}
                   </h3>
                   <div className="mb-4">
-                    <span className="text-[36px] md:text-[42px] font-bold font-ao text-dark dark:text-light">
+                    <span className="text-[36px] md:text-[42px] font-bold font-ao text-gray-900 dark:text-white">
                       ${tier.price}
                     </span>
-                    <span className="text-dark/70 dark:text-light/70 text-lg font-light">
+                    <span className="text-gray-900/70 dark:text-white/70 text-lg font-light">
                       /month
                     </span>
                   </div>
-                  <p className="text-dark/80 dark:text-light/80 text-sm leading-relaxed">
+                  <p className="text-gray-900/80 dark:text-white/80 text-sm leading-relaxed">
                     {tier.description}
                   </p>
                 </div>
@@ -127,7 +127,7 @@ const PricingTable = () => {
                         <div className="text-purple mt-0.5 flex-shrink-0">
                           {feature.icon}
                         </div>
-                        <span className="text-dark dark:text-light text-sm leading-relaxed">
+                        <span className="text-gray-900 dark:text-white text-sm leading-relaxed">
                           {feature.text}
                         </span>
                       </li>
@@ -153,10 +153,10 @@ const PricingTable = () => {
 
       {/* Additional Info */}
       <div className="text-center mt-8">
-        <p className="text-dark/70 dark:text-light/70 text-sm">
+        <p className="text-gray-900/70 dark:text-white/70 text-sm">
           All plans can be paused or cancelled anytime with 30 days notice.
         </p>
-        <p className="text-dark/50 dark:text-light/50 text-xs mt-2">
+        <p className="text-gray-900/50 dark:text-white/50 text-xs mt-2">
           Contact me directly to get started with your chosen plan.
         </p>
       </div>

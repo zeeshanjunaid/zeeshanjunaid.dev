@@ -2,9 +2,9 @@ import ProjectsList from "@/data/work";
 
 interface ProjectLayoutProps {
   children: React.ReactNode;
-  params: {
+  params: Promise<{
     slug: string;
-  };
+  }>;
 }
 
 export async function generateStaticParams() {
@@ -16,9 +16,10 @@ export async function generateStaticParams() {
 export async function generateMetadata({
   params,
 }: {
-  params: { slug: string };
+  params: Promise<{ slug: string }>;
 }) {
-  const project = ProjectsList.find((p) => p.slug === params.slug);
+  const { slug } = await params;
+  const project = ProjectsList.find((p) => p.slug === slug);
 
   if (!project) {
     return {
@@ -32,13 +33,13 @@ export async function generateMetadata({
       project.description ||
       `Detailed case study of ${project.name} project by Zeeshan Junaid`,
     alternates: {
-      canonical: `/work/${project.slug}`,
+      canonical: `/work/${slug}`,
     },
 
     openGraph: {
       title: `${project.name} - Project Case Study`,
       description: project.description,
-      url: `https://zeeshanjunaid.dev/work/${project.slug}`,
+      url: `https://zeeshanjunaid.dev/work/${slug}`,
       images: [
         {
           url: project.imgUrl, // Make sure your data has this field

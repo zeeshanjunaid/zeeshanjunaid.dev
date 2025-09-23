@@ -70,26 +70,26 @@ export function EnhancedTable({
       {searchable && (
         <div className="mb-4">
           <div className="relative">
-            <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 w-4 h-4 text-dark/50 dark:text-light/50" />
+            <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 w-4 h-4 text-gray-900/50 dark:text-white/50" />
             <input
               type="text"
               placeholder="Search table..."
               value={searchTerm}
               onChange={(e) => setSearchTerm(e.target.value)}
-              className="w-full pl-10 pr-4 py-3 bg-light dark:bg-dark border border-lightBorderColor dark:border-darkBorderColor rounded-xl text-dark dark:text-light placeholder-dark/50 dark:placeholder-light/50 focus:outline-none focus:ring-2 focus:ring-purple/20 focus:border-purple/50 transition-all"
+              className="w-full pl-10 pr-4 py-3 bg-white dark:bg-gray-900 border border-gray-200 dark:border-gray-700 rounded-xl text-gray-900 dark:text-white placeholder-dark/50 dark:placeholder-light/50 focus:outline-none focus:ring-2 focus:ring-purple/20 focus:border-purple/50 transition-all"
             />
           </div>
         </div>
       )}
 
-      <div className="overflow-x-auto rounded-xl border border-lightBorderColor dark:border-darkBorderColor">
+      <div className="overflow-x-auto rounded-xl border border-gray-200 dark:border-gray-700">
         <table className="w-full">
-          <thead className="bg-light dark:bg-dark border-b border-lightBorderColor dark:border-darkBorderColor">
+          <thead className="bg-white dark:bg-gray-900 border-b border-gray-200 dark:border-gray-700">
             <tr>
               {data.headers.map((header, index) => (
                 <th
                   key={index}
-                  className={`px-6 py-4 text-left font-switzer font-bold text-dark dark:text-light ${
+                  className={`px-6 py-4 text-left font-switzer font-bold text-gray-900 dark:text-white ${
                     sortable
                       ? "cursor-pointer hover:bg-purple/5 transition-colors"
                       : ""
@@ -125,7 +125,7 @@ export function EnhancedTable({
             {sortedRows.map((row, rowIndex) => (
               <tr
                 key={rowIndex}
-                className={`border-b border-lightBorderColor dark:border-darkBorderColor last:border-b-0 hover:bg-purple/5 transition-colors ${
+                className={`border-b border-gray-200 dark:border-gray-700 last:border-b-0 hover:bg-purple/5 transition-colors ${
                   striped && rowIndex % 2 === 1
                     ? "bg-light/50 dark:bg-dark/50"
                     : ""
@@ -157,7 +157,7 @@ export function EnhancedTable({
 // Simple table for regular markdown tables
 export function SimpleTable({ children }: { children: React.ReactNode }) {
   return (
-    <div className="simple-table my-6 overflow-x-auto rounded-xl border border-lightBorderColor dark:border-darkBorderColor shadow-sm bg-light dark:bg-dark">
+    <div className="simple-table my-6 overflow-x-auto rounded-xl border border-gray-200 dark:border-gray-700 shadow-sm bg-white dark:bg-gray-900">
       <div className="w-full">
         <table className="w-full border-collapse">{children}</table>
       </div>

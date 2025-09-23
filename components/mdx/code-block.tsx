@@ -32,18 +32,18 @@ export function CodeBlock({ children, className, filename }: CodeBlockProps) {
   return (
     <div className="custom-code-block relative group my-8">
       {/* Header with filename and copy button */}
-      <div className="flex items-center justify-between bg-light dark:bg-dark border border-lightBorderColor dark:border-darkBorderColor rounded-t-xl px-4 py-3 backdrop-blur-sm">
+      <div className="flex items-center justify-between bg-white dark:bg-gray-900 border border-gray-200 dark:border-gray-700 rounded-t-xl px-4 py-3 backdrop-blur-sm">
         <div className="flex items-center gap-3">
           <div className="w-8 h-8 bg-purple/10 rounded-lg flex items-center justify-center">
             <Code className="w-4 h-4 text-purple" />
           </div>
           {filename ? (
-            <span className="text-sm font-switzer font-semibold text-dark dark:text-light">
+            <span className="text-sm font-switzer font-semibold text-gray-900 dark:text-white">
               {filename}
             </span>
           ) : (
             <div className="flex items-center gap-2">
-              <span className="text-sm font-switzer font-semibold text-dark/80 dark:text-light/80 uppercase tracking-wider">
+              <span className="text-sm font-switzer font-semibold text-gray-900/80 dark:text-white/80 uppercase tracking-wider">
                 {language}
               </span>
               <div className="w-2 h-2 bg-purple rounded-full opacity-60" />
@@ -71,7 +71,7 @@ export function CodeBlock({ children, className, filename }: CodeBlockProps) {
       </div>
       
       {/* Code content */}
-      <div className="relative overflow-hidden rounded-b-xl border-x border-b border-lightBorderColor dark:border-darkBorderColor bg-light dark:bg-dark">
+      <div className="relative overflow-hidden rounded-b-xl border-x border-b border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-900">
         <SyntaxHighlighter
           language={language}
           style={theme === 'dark' ? oneDark : oneLight}
@@ -101,7 +101,7 @@ export function CodeBlock({ children, className, filename }: CodeBlockProps) {
         </SyntaxHighlighter>
         
         {/* Subtle gradient overlay for visual hierarchy */}
-        <div className="absolute inset-0 bg-gradient-to-br from-purple/2 via-transparent to-purple/3 pointer-events-none rounded-b-xl" />
+        <div className="absolute inset-0 bg-linear-to-br from-purple/2 via-transparent to-purple/3 pointer-events-none rounded-b-xl" />
         
         {/* Corner decorations */}
         <div className="absolute top-2 right-2 w-2 h-2 bg-purple/20 rounded-full" />

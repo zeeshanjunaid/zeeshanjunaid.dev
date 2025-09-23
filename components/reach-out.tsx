@@ -23,14 +23,14 @@ const ReachOut = () => {
             Ready to Start Your Project?
           </h2>
           <div className="flex flex-col gap-y-2">
-            <p className="text-[14px] md:text-[18px] lg:text-5 font-switzer text-dark dark:text-light">
+            <p className="text-[14px] md:text-[18px] lg:text-5 font-switzer text-gray-900 dark:text-white">
               Let&apos;s discuss how we can bring your vision to life
             </p>
             <div>
               <CustomLink
                 text="hello[at]zeeshanjunaid[dot]dev"
                 link="mailto:hello@zeeshanjunaid.dev"
-                className="text-[14px] md:text-[18px] lg:text-[20px] font-switzer text-dark dark:text-light"
+                className="text-[14px] md:text-[18px] lg:text-[20px] font-switzer text-gray-900 dark:text-white"
               />
             </div>
           </div>

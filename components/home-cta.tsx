@@ -13,7 +13,7 @@ const HomeCTA = () => {
       </div>
 
       <Container className="px-4 md:px-7 lg:px-0">
-        <div className="relative bg-light dark:bg-dark rounded-3xl p-12 md:p-16 text-center overflow-hidden">
+        <div className="relative bg-white dark:bg-gray-900 rounded-3xl p-12 md:p-16 text-center overflow-hidden">
           <BlurBG className="rounded-3xl" />
           
           {/* Decorative Elements */}
@@ -25,11 +25,11 @@ const HomeCTA = () => {
               <Sparkles className="w-8 h-8 text-purple" />
             </div>
             
-            <h2 className="text-[28px] md:text-[36px] lg:text-[42px] font-bold font-ao text-dark dark:text-light mb-6">
+            <h2 className="text-[28px] md:text-[36px] lg:text-[42px] font-bold font-ao text-gray-900 dark:text-white mb-6">
               Have a Project in Mind?
             </h2>
             
-            <p className="text-dark/80 dark:text-light/80 font-switzer font-light text-[16px] md:text-[18px] lg:text-[20px] leading-relaxed max-w-2xl mx-auto mb-8">
+            <p className="text-gray-900/80 dark:text-white/80 font-switzer font-light text-[16px] md:text-[18px] lg:text-[20px] leading-relaxed max-w-2xl mx-auto mb-8">
               Let&apos;s turn your idea into a tangible success. I&apos;m currently available for new freelance projects and would love to hear about your vision.
             </p>
             
@@ -46,7 +46,7 @@ const HomeCTA = () => {
           </div>
           
           {/* Subtle gradient overlay */}
-          <div className="absolute inset-0 bg-gradient-to-br from-purple/5 via-transparent to-purple/10 rounded-3xl" />
+          <div className="absolute inset-0 bg-linear-to-br from-purple/5 via-transparent to-purple/10 rounded-3xl" />
         </div>
       </Container>
     </section>

@@ -12,17 +12,13 @@ import { ArrowRight, Download, MapPin, Calendar, Coffee } from "lucide-react";
 const heroImg = "/images/zeeshan.png";
 
 const paragraphStyles =
-  "text-[16px] lg:text-[18px] text-dark/80 dark:text-light/80 leading-relaxed font-light";
+  "text-[16px] lg:text-[18px] text-gray-900/80 dark:text-white/80 leading-relaxed font-light";
 
 const AboutHero = () => {
   const containerVariants = {
     hidden: { opacity: 0 },
     visible: {
       opacity: 1,
-      transition: {
-        staggerChildren: 0.2,
-        delayChildren: 0.3,
-      },
     },
   };
 
@@ -31,10 +27,6 @@ const AboutHero = () => {
     visible: {
       opacity: 1,
       y: 0,
-      transition: {
-        duration: 0.6,
-        ease: "easeOut",
-      },
     },
   };
 
@@ -43,10 +35,6 @@ const AboutHero = () => {
     visible: {
       opacity: 1,
       scale: 1,
-      transition: {
-        duration: 0.7,
-        ease: "easeOut",
-      },
     },
   };
 
@@ -82,7 +70,7 @@ const AboutHero = () => {
               </span>
             </div>
             
-            <h1 className="text-left text-[28px] md:text-[36px] lg:text-[44px] font-bold font-ao text-dark dark:text-light leading-tight mb-6">
+            <h1 className="text-left text-[28px] md:text-[36px] lg:text-[44px] font-bold font-ao text-gray-900 dark:text-white leading-tight mb-6">
               More Than a Developer—I&apos;m Your{" "}
               <span className="text-gradient">Partner in Building</span>{" "}
               Digital Excellence.
@@ -90,7 +78,7 @@ const AboutHero = () => {
 
             {/* Quick Info Cards */}
             <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 mb-8">
-              <div className="relative bg-light dark:bg-dark rounded-2xl p-4 overflow-hidden">
+              <div className="relative bg-white dark:bg-gray-900 rounded-2xl p-4 overflow-hidden">
                 <BlurBG className="rounded-2xl" />
                 <div className="relative z-20 flex items-center gap-3">
                   <MapPin className="w-5 h-5 text-purple" />
@@ -98,14 +86,14 @@ const AboutHero = () => {
                     <p className="text-[12px] font-switzer font-light text-dark/60 dark:text-light/60 uppercase tracking-wider">
                       Location
                     </p>
-                    <p className="text-[14px] font-switzer font-medium text-dark dark:text-light">
+                    <p className="text-[14px] font-switzer font-medium text-gray-900 dark:text-white">
                       Pakistan
                     </p>
                   </div>
                 </div>
               </div>
 
-              <div className="relative bg-light dark:bg-dark rounded-2xl p-4 overflow-hidden">
+              <div className="relative bg-white dark:bg-gray-900 rounded-2xl p-4 overflow-hidden">
                 <BlurBG className="rounded-2xl" />
                 <div className="relative z-20 flex items-center gap-3">
                   <Calendar className="w-5 h-5 text-purple" />
@@ -113,14 +101,14 @@ const AboutHero = () => {
                     <p className="text-[12px] font-switzer font-light text-dark/60 dark:text-light/60 uppercase tracking-wider">
                       Experience
                     </p>
-                    <p className="text-[14px] font-switzer font-medium text-dark dark:text-light">
+                    <p className="text-[14px] font-switzer font-medium text-gray-900 dark:text-white">
                       8+ Years
                     </p>
                   </div>
                 </div>
               </div>
 
-              <div className="relative bg-light dark:bg-dark rounded-2xl p-4 overflow-hidden">
+              <div className="relative bg-white dark:bg-gray-900 rounded-2xl p-4 overflow-hidden">
                 <BlurBG className="rounded-2xl" />
                 <div className="relative z-20 flex items-center gap-3">
                   <Coffee className="w-5 h-5 text-purple" />
@@ -128,7 +116,7 @@ const AboutHero = () => {
                     <p className="text-[12px] font-switzer font-light text-dark/60 dark:text-light/60 uppercase tracking-wider">
                       Status
                     </p>
-                    <p className="text-[14px] font-switzer font-medium text-dark dark:text-light">
+                    <p className="text-[14px] font-switzer font-medium text-gray-900 dark:text-white">
                       Available
                     </p>
                   </div>
@@ -149,7 +137,7 @@ const AboutHero = () => {
 
             <motion.div
               variants={itemVariants}
-              className="relative bg-light dark:bg-dark rounded-2xl p-6 my-8 overflow-hidden"
+              className="relative bg-white dark:bg-gray-900 rounded-2xl p-6 my-8 overflow-hidden"
             >
               <BlurBG className="rounded-2xl" />
               <div className="relative z-20">
@@ -158,7 +146,7 @@ const AboutHero = () => {
                     <span className="text-purple text-[18px]">&quot;</span>
                   </div>
                   <div>
-                    <p className="font-ao text-[18px] md:text-[20px] text-dark dark:text-light leading-relaxed italic mb-2">
+                    <p className="font-ao text-[18px] md:text-[20px] text-gray-900 dark:text-white leading-relaxed italic mb-2">
                       &quot;The best digital solutions are born from understanding business goals, not just technical requirements.&quot;
                     </p>
                     <p className="text-[14px] font-switzer font-light text-dark/60 dark:text-light/60">
@@ -183,10 +171,10 @@ const AboutHero = () => {
                 transition={{ duration: 0.6, delay: 0.8 + index * 0.1 }}
                 className="text-center group"
               >
-                <div className="text-[24px] md:text-[28px] lg:text-[32px] font-bold font-ao text-dark dark:text-light mb-1 group-hover:text-purple transition-colors duration-300">
+                <div className="text-[24px] md:text-[28px] lg:text-[32px] font-bold font-ao text-gray-900 dark:text-white mb-1 group-hover:text-purple transition-colors duration-300">
                   {stat.number}
                 </div>
-                <div className="text-[10px] md:text-[12px] font-switzer font-light text-dark/70 dark:text-light/70 uppercase tracking-wider">
+                <div className="text-[10px] md:text-[12px] font-switzer font-light text-gray-900/70 dark:text-white/70 uppercase tracking-wider">
                   {stat.label}
                 </div>
               </motion.div>
@@ -212,7 +200,7 @@ const AboutHero = () => {
               <Button
                 variant="ghost"
                 size="lg"
-                className="rounded-xl uppercase font-medium font-switzer text-dark dark:text-light hover:text-purple w-full sm:w-auto justify-center min-w-[200px]"
+                className="rounded-xl uppercase font-medium font-switzer text-gray-900 dark:text-white hover:text-purple w-full sm:w-auto justify-center min-w-[200px]"
               >
                 View My Work
               </Button>

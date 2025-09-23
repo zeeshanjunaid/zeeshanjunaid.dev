@@ -9,7 +9,7 @@ export interface TextareaProps
 const Textarea = React.forwardRef<HTMLTextAreaElement, TextareaProps>(
   ({ className, ...props }, ref) => {
     return (
-      <div className="relative rounded-xl overflow-hidden bg-light dark:bg-dark border-[1px] border-solid border-lightBorderColor dark:border-darkBorderColor">
+      <div className="relative rounded-xl overflow-hidden bg-white dark:bg-gray-900 border-[1px] border-solid border-gray-200 dark:border-gray-700">
         <BlurBG className="rouned-xl" />
         <textarea
           className={cn(

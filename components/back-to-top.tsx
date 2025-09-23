@@ -42,7 +42,7 @@ const BackToTop = () => {
         boxShadow: "0 8px 20px rgba(163, 116, 255, 0.2)"
       }}
       whileTap={{ scale: 0.98 }}
-      className="fixed bottom-6 right-6 md:right-8 bg-gradient-to-r from-purple to-purple/80 z-40 h-14 w-14 flex items-center justify-center text-white cursor-pointer rounded-full shadow-lg hover:shadow-xl transition-all duration-200 backdrop-blur-sm border border-white/10 group"
+      className="fixed bottom-6 right-6 md:right-8 bg-linear-to-r from-purple to-purple/80 z-40 h-14 w-14 flex items-center justify-center text-white cursor-pointer rounded-full shadow-lg hover:shadow-xl transition-all duration-200 backdrop-blur-sm border border-white/10 group"
     >
       <motion.div
         initial={{ y: 0 }}

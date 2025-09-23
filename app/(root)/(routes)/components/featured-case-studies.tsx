@@ -31,10 +31,6 @@ const FeaturedCaseStudies = ({ projects }: FeaturedCaseStudiesProps) => {
     hidden: { opacity: 0 },
     visible: {
       opacity: 1,
-      transition: {
-        staggerChildren: 0.2,
-        delayChildren: 0.1,
-      },
     },
   };
 
@@ -43,10 +39,6 @@ const FeaturedCaseStudies = ({ projects }: FeaturedCaseStudiesProps) => {
     visible: {
       opacity: 1,
       y: 0,
-      transition: {
-        duration: 0.6,
-        ease: "easeOut",
-      },
     },
   };
 
@@ -67,17 +59,17 @@ const FeaturedCaseStudies = ({ projects }: FeaturedCaseStudiesProps) => {
         variants={containerVariants}
       >
         <motion.div variants={itemVariants} className="mb-12">
-          <h2 className="inline-flex center gap-x-[10px] items-center font-normal text-dark dark:text-light uppercase text-[14px] tracking-[.42px] mb-6">
+          <h2 className="inline-flex center gap-x-[10px] items-center font-normal text-gray-900 dark:text-white uppercase text-[14px] tracking-[.42px] mb-6">
             <div className="flex flex-col space-y-[6px]">
               <span className="bg-dark dark:bg-light w-[18px] h-[1px]" />
               <span className="bg-dark dark:bg-light w-[18px] h-[1px]" />
             </div>
             Featured Case Studies
           </h2>
-          <h3 className="text-[28px] md:text-[36px] lg:text-[42px] font-bold font-ao text-dark dark:text-light mb-4">
+          <h3 className="text-[28px] md:text-[36px] lg:text-[42px] font-bold font-ao text-gray-900 dark:text-white mb-4">
             Real Projects, Real Results
           </h3>
-          <p className="text-dark/70 dark:text-light/70 font-switzer font-light text-[16px] md:text-[18px] leading-relaxed max-w-3xl">
+          <p className="text-gray-900/70 dark:text-white/70 font-switzer font-light text-[16px] md:text-[18px] leading-relaxed max-w-3xl">
             See how I&apos;ve helped businesses like yours achieve their goals through strategic design and development.
           </p>
         </motion.div>
@@ -89,7 +81,7 @@ const FeaturedCaseStudies = ({ projects }: FeaturedCaseStudiesProps) => {
               variants={itemVariants}
               className="group"
             >
-              <div className="relative bg-light dark:bg-dark rounded-3xl overflow-hidden border border-lightBorderColor dark:border-darkBorderColor hover:border-purple/30 transition-all duration-300">
+              <div className="relative bg-white dark:bg-gray-900 rounded-3xl overflow-hidden border border-gray-200 dark:border-gray-700 hover:border-purple/30 transition-all duration-300">
                 <BlurBG className="rounded-3xl" />
                 
                 <div className="relative z-20 grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12 p-8 md:p-10 lg:p-12">
@@ -104,17 +96,17 @@ const FeaturedCaseStudies = ({ projects }: FeaturedCaseStudiesProps) => {
                     </div>
 
                     {/* Project Name */}
-                    <h4 className="text-[24px] md:text-[28px] lg:text-[32px] font-ao font-bold text-dark dark:text-light mb-3 capitalize leading-tight">
+                    <h4 className="text-[24px] md:text-[28px] lg:text-[32px] font-ao font-bold text-gray-900 dark:text-white mb-3 capitalize leading-tight">
                       {project.name}
                     </h4>
 
                     {/* One-liner Description */}
-                    <p className="text-dark/80 dark:text-light/80 font-switzer font-light text-[16px] md:text-[18px] leading-relaxed mb-6">
+                    <p className="text-gray-900/80 dark:text-white/80 font-switzer font-light text-[16px] md:text-[18px] leading-relaxed mb-6">
                       {project.description}
                     </p>
 
                     {/* Key Result */}
-                    <div className="relative bg-light dark:bg-dark rounded-2xl p-6 mb-6 border border-lightBorderColor dark:border-darkBorderColor overflow-hidden">
+                    <div className="relative bg-white dark:bg-gray-900 rounded-2xl p-6 mb-6 border border-gray-200 dark:border-gray-700 overflow-hidden">
                       <BlurBG className="rounded-2xl" />
                       <div className="relative z-20 flex items-start gap-4">
                         <div className="w-10 h-10 bg-green-500/10 rounded-xl flex items-center justify-center flex-shrink-0">
@@ -124,7 +116,7 @@ const FeaturedCaseStudies = ({ projects }: FeaturedCaseStudiesProps) => {
                           <p className="text-[12px] font-switzer font-medium text-green-500 uppercase tracking-wider mb-1">
                             Key Result
                           </p>
-                          <p className="text-dark dark:text-light font-switzer font-medium text-[16px] md:text-[18px] leading-tight">
+                          <p className="text-gray-900 dark:text-white font-switzer font-medium text-[16px] md:text-[18px] leading-tight">
                             {getKeyResult(project)}
                           </p>
                         </div>
@@ -136,7 +128,7 @@ const FeaturedCaseStudies = ({ projects }: FeaturedCaseStudiesProps) => {
                       {project.tags.slice(0, 3).map((tag, tagIndex) => (
                         <span
                           key={tagIndex}
-                          className="text-[10px] md:text-[12px] px-3 py-1.5 rounded-lg border border-lightBorderColor dark:border-darkBorderColor text-dark/70 dark:text-light/70 uppercase font-medium bg-light dark:bg-dark"
+                          className="text-[10px] md:text-[12px] px-3 py-1.5 rounded-lg border border-gray-200 dark:border-gray-700 text-gray-900/70 dark:text-white/70 uppercase font-medium bg-white dark:bg-gray-900"
                         >
                           {tag}
                         </span>
@@ -159,7 +151,7 @@ const FeaturedCaseStudies = ({ projects }: FeaturedCaseStudiesProps) => {
                         <Button
                           variant="ghost"
                           size="lg"
-                          className="rounded-xl uppercase font-medium font-switzer text-dark dark:text-light hover:text-purple flex items-center gap-2 w-full sm:w-auto justify-center min-w-[200px]"
+                          className="rounded-xl uppercase font-medium font-switzer text-gray-900 dark:text-white hover:text-purple flex items-center gap-2 w-full sm:w-auto justify-center min-w-[200px]"
                         >
                           View Live Site
                           <ExternalLink className="w-4 h-4" />
@@ -184,7 +176,7 @@ const FeaturedCaseStudies = ({ projects }: FeaturedCaseStudiesProps) => {
                             sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
                             onLoad={() => handleImageLoad(project.name)}
                           />
-                          <div className="absolute inset-0 bg-gradient-to-t from-black/20 via-transparent to-transparent" />
+                          <div className="absolute inset-0 bg-linear-to-t from-black/20 via-transparent to-transparent" />
                         </>
                       )}
                     </div>
@@ -192,7 +184,7 @@ const FeaturedCaseStudies = ({ projects }: FeaturedCaseStudiesProps) => {
                 </div>
 
                 {/* Hover Gradient */}
-                <div className="absolute inset-0 bg-gradient-to-r from-purple/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 rounded-3xl" />
+                <div className="absolute inset-0 bg-linear-to-r from-purple/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 rounded-3xl" />
               </div>
             </motion.div>
           ))}
@@ -204,7 +196,7 @@ const FeaturedCaseStudies = ({ projects }: FeaturedCaseStudiesProps) => {
             <Button
               variant="ghost"
               size="lg"
-              className="rounded-xl uppercase font-medium font-switzer text-dark dark:text-light hover:text-purple flex items-center gap-2 mx-auto"
+              className="rounded-xl uppercase font-medium font-switzer text-gray-900 dark:text-white hover:text-purple flex items-center gap-2 mx-auto"
             >
               See All Case Studies
               <ArrowRight className="w-4 h-4" />

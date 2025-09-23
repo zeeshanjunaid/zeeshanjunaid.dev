@@ -1,0 +1,37 @@
+{
+  "extends": ["stylelint-config-standard"],
+  "rules": {
+    "at-rule-no-unknown": [
+      true,
+      {
+        "ignoreAtRules": [
+          "tailwind",
+          "apply",
+          "variants",
+          "responsive",
+          "screen",
+          "layer",
+          "theme",
+          "variant",
+          "plugin",
+          "custom-variant",
+          "utility",
+          "source",
+          "reference"
+        ]
+      }
+    ],
+    "property-no-vendor-prefix": [
+      true,
+      {
+        "ignoreProperties": ["line-clamp", "webkit-line-clamp", "webkit-box-orient"]
+      }
+    ],
+    "value-no-vendor-prefix": [
+      true,
+      {
+        "ignoreValues": ["webkit-box"]
+      }
+    ]
+  }
+}

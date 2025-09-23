@@ -26,20 +26,21 @@ export async function generateStaticParams() {
 export async function generateMetadata({
   params,
 }: {
-  params: { slug: string };
+  params: Promise<{ slug: string }>;
 }): Promise<Metadata> {
   try {
-    const { meta } = await getPostBySlug(params.slug);
+    const { slug } = await params;
+    const { meta } = await getPostBySlug(slug);
     return {
       title: `${meta.title} - Blog`,
       description: meta.excerpt,
       alternates: {
-        canonical: `/blog/${params.slug}`,
+        canonical: `/blog/${slug}`,
       },
       openGraph: {
         title: meta.title,
         description: meta.excerpt,
-        url: `https://zeeshanjunaid.dev/blog/${params.slug}`,
+        url: `https://zeeshanjunaid.dev/blog/${slug}`,
         type: "article",
         publishedTime: meta.date,
         authors: [meta.author || "Zeeshan Junaid"],
@@ -62,9 +63,9 @@ export async function generateMetadata({
 export default async function BlogPostPage({
   params,
 }: {
-  params: { slug: string };
+  params: Promise<{ slug: string }>;
 }) {
-  const { slug } = params;
+  const { slug } = await params;
 
   try {
     const { meta, content } = await getPostBySlug(slug);
@@ -80,7 +81,7 @@ export default async function BlogPostPage({
         <SchemaMarkup schema={generateBlogPostSchema(meta)} />
 
         {/* Hero Section */}
-        <section className="relative overflow-hidden bg-gradient-to-br from-light via-light to-light/95 dark:from-dark dark:via-dark dark:to-dark/95">
+        <section className="relative overflow-hidden bg-linear-to-br from-light via-light to-light/95 dark:from-dark dark:via-dark dark:to-dark/95">
           <div className="absolute inset-0 -z-10">
             <div className="absolute top-10 right-10 w-80 h-80 bg-purple/8 rounded-full blur-3xl" />
             <div className="absolute bottom-10 left-10 w-96 h-96 bg-purple/4 rounded-full blur-3xl" />
@@ -94,7 +95,7 @@ export default async function BlogPostPage({
                 <Button
                   variant="ghost"
                   size="lg"
-                  className="rounded-xl uppercase font-medium font-switzer text-dark dark:text-light hover:text-purple flex items-center gap-2 hover:bg-purple/5 transition-all duration-300"
+                  className="rounded-xl uppercase font-medium font-switzer text-gray-900 dark:text-white hover:text-purple flex items-center gap-2 hover:bg-purple/5 transition-all duration-300"
                 >
                   <ArrowLeft className="w-4 h-4" />
                   Back to Blog
@@ -114,7 +115,7 @@ export default async function BlogPostPage({
                     priority
                     sizes="(max-width: 768px) 100vw, (max-width: 1200px) 90vw, 80vw"
                   />
-                  <div className="absolute inset-0 bg-gradient-to-t from-black/30 via-transparent to-transparent" />
+                  <div className="absolute inset-0 bg-linear-to-t from-black/30 via-transparent to-transparent" />
 
                   {/* Floating Elements */}
                   <div className="absolute -top-2 -right-2 w-4 h-4 bg-purple rounded-full opacity-70" />
@@ -138,9 +139,9 @@ export default async function BlogPostPage({
                 )}
 
                 {/* Date Badge */}
-                <div className="inline-flex items-center gap-2 bg-light dark:bg-dark border border-lightBorderColor dark:border-darkBorderColor px-4 py-2 rounded-xl">
+                <div className="inline-flex items-center gap-2 bg-white dark:bg-gray-900 border border-gray-200 dark:border-gray-700 px-4 py-2 rounded-xl">
                   <Calendar className="w-4 h-4 text-dark/60 dark:text-light/60" />
-                  <span className="text-dark/80 dark:text-light/80 font-switzer font-medium text-[12px] md:text-[14px] uppercase tracking-wider">
+                  <span className="text-gray-900/80 dark:text-white/80 font-switzer font-medium text-[12px] md:text-[14px] uppercase tracking-wider">
                     {new Date(meta.date).toLocaleDateString("en-US", {
                       month: "short",
                       day: "numeric",
@@ -150,21 +151,21 @@ export default async function BlogPostPage({
                 </div>
 
                 {/* Reading Time */}
-                <div className="inline-flex items-center gap-2 bg-light dark:bg-dark border border-lightBorderColor dark:border-darkBorderColor px-4 py-2 rounded-xl">
+                <div className="inline-flex items-center gap-2 bg-white dark:bg-gray-900 border border-gray-200 dark:border-gray-700 px-4 py-2 rounded-xl">
                   <Clock className="w-4 h-4 text-dark/60 dark:text-light/60" />
-                  <span className="text-dark/80 dark:text-light/80 font-switzer font-medium text-[12px] md:text-[14px] uppercase tracking-wider">
+                  <span className="text-gray-900/80 dark:text-white/80 font-switzer font-medium text-[12px] md:text-[14px] uppercase tracking-wider">
                     {meta.readingTime} min read
                   </span>
                 </div>
               </div>
 
               {/* Title */}
-              <h1 className="text-[32px] md:text-[42px] lg:text-[52px] font-bold font-ao text-dark dark:text-light leading-tight mb-6">
+              <h1 className="text-[32px] md:text-[42px] lg:text-[52px] font-bold font-ao text-gray-900 dark:text-white leading-tight mb-6">
                 {meta.title}
               </h1>
 
               {/* Excerpt */}
-              <p className="text-dark/80 dark:text-light/80 font-switzer font-light text-[18px] md:text-[20px] leading-relaxed mb-8 max-w-3xl">
+              <p className="text-gray-900/80 dark:text-white/80 font-switzer font-light text-[18px] md:text-[20px] leading-relaxed mb-8 max-w-3xl">
                 {meta.excerpt}
               </p>
 
@@ -174,7 +175,7 @@ export default async function BlogPostPage({
                   <BookOpen className="w-6 h-6 text-purple" />
                 </div>
                 <div>
-                  <p className="font-switzer font-medium text-dark dark:text-light text-[16px]">
+                  <p className="font-switzer font-medium text-gray-900 dark:text-white text-[16px]">
                     {meta.author || "Zeeshan Junaid"}
                   </p>
                   <p className="font-switzer font-light text-dark/60 dark:text-light/60 text-[14px]">
@@ -218,10 +219,10 @@ export default async function BlogPostPage({
               <div className="lg:col-span-4">
                 <div className="sticky top-24 space-y-6">
                   {/* Article Overview */}
-                  <div className="relative bg-light dark:bg-dark rounded-2xl p-5 border border-lightBorderColor dark:border-darkBorderColor">
+                  <div className="relative bg-white dark:bg-gray-900 rounded-2xl p-5 border border-gray-200 dark:border-gray-700">
                     <BlurBG className="rounded-2xl" />
                     <div className="relative z-20">
-                      <h3 className="font-ao font-bold text-[16px] text-dark dark:text-light mb-4 flex items-center gap-2">
+                      <h3 className="font-ao font-bold text-[16px] text-gray-900 dark:text-white mb-4 flex items-center gap-2">
                         <BookOpen className="w-4 h-4 text-purple" />
                         Article Info
                       </h3>
@@ -230,7 +231,7 @@ export default async function BlogPostPage({
                           <span className="text-dark/60 dark:text-light/60 font-switzer">
                             Reading Time
                           </span>
-                          <span className="text-dark dark:text-light font-switzer font-medium">
+                          <span className="text-gray-900 dark:text-white font-switzer font-medium">
                             {meta.readingTime} min
                           </span>
                         </div>
@@ -239,7 +240,7 @@ export default async function BlogPostPage({
                             <span className="text-dark/60 dark:text-light/60 font-switzer">
                               Author
                             </span>
-                            <span className="text-dark dark:text-light font-switzer font-medium">
+                            <span className="text-gray-900 dark:text-white font-switzer font-medium">
                               {meta.author}
                             </span>
                           </div>
@@ -249,10 +250,10 @@ export default async function BlogPostPage({
                   </div>
 
                   {/* Share Section */}
-                  <div className="relative bg-light dark:bg-dark rounded-2xl p-5 border border-lightBorderColor dark:border-darkBorderColor">
+                  <div className="relative bg-white dark:bg-gray-900 rounded-2xl p-5 border border-gray-200 dark:border-gray-700">
                     <BlurBG className="rounded-2xl" />
                     <div className="relative z-20">
-                      <h3 className="font-ao font-bold text-[16px] text-dark dark:text-light mb-3 flex items-center gap-2">
+                      <h3 className="font-ao font-bold text-[16px] text-gray-900 dark:text-white mb-3 flex items-center gap-2">
                         <Share2 className="w-4 h-4 text-purple" />
                         Share Article
                       </h3>
@@ -272,17 +273,17 @@ export default async function BlogPostPage({
 
                   {/* Tags */}
                   {meta.tags && meta.tags.length > 0 && (
-                    <div className="relative bg-light dark:bg-dark rounded-2xl p-5 border border-lightBorderColor dark:border-darkBorderColor">
+                    <div className="relative bg-white dark:bg-gray-900 rounded-2xl p-5 border border-gray-200 dark:border-gray-700">
                       <BlurBG className="rounded-2xl" />
                       <div className="relative z-20">
-                        <h3 className="font-ao font-bold text-[16px] text-dark dark:text-light mb-3">
+                        <h3 className="font-ao font-bold text-[16px] text-gray-900 dark:text-white mb-3">
                           Topics
                         </h3>
                         <div className="flex flex-wrap gap-2">
                           {meta.tags.map((tag, index) => (
                             <span
                               key={index}
-                              className="text-[10px] px-2.5 py-1 rounded-md border border-lightBorderColor dark:border-darkBorderColor text-dark/70 dark:text-light/70 uppercase font-medium bg-light dark:bg-dark hover:bg-purple/5 hover:border-purple/20 transition-all duration-300 cursor-pointer"
+                              className="text-[10px] px-2.5 py-1 rounded-md border border-gray-200 dark:border-gray-700 text-gray-900/70 dark:text-white/70 uppercase font-medium bg-white dark:bg-gray-900 hover:bg-purple/5 hover:border-purple/20 transition-all duration-300 cursor-pointer"
                             >
                               {tag}
                             </span>
@@ -293,13 +294,13 @@ export default async function BlogPostPage({
                   )}
 
                   {/* Contact CTA */}
-                  <div className="relative bg-gradient-to-br from-purple/10 via-purple/5 to-transparent rounded-2xl p-5 border border-purple/20">
+                  <div className="relative bg-linear-to-br from-purple/10 via-purple/5 to-transparent rounded-2xl p-5 border border-purple/20">
                     <BlurBG className="rounded-2xl" />
                     <div className="relative z-20 text-center">
                       <div className="w-10 h-10 bg-purple/20 rounded-xl flex items-center justify-center mx-auto mb-3">
                         <BookOpen className="w-5 h-5 text-purple" />
                       </div>
-                      <h3 className="font-ao font-bold text-[14px] text-dark dark:text-light mb-2">
+                      <h3 className="font-ao font-bold text-[14px] text-gray-900 dark:text-white mb-2">
                         Need Help With This?
                       </h3>
                       <p className="text-dark/60 dark:text-light/60 font-switzer text-[12px] mb-3 leading-relaxed">
@@ -324,9 +325,9 @@ export default async function BlogPostPage({
 
 
         {/* Enhanced CTA Section */}
-        <section className="py-16 md:py-20 bg-gradient-to-br from-light via-light to-light/95 dark:from-dark dark:via-dark dark:to-dark/95">
+        <section className="py-16 md:py-20 bg-linear-to-br from-light via-light to-light/95 dark:from-dark dark:via-dark dark:to-dark/95">
           <Container className="px-4 md:px-7 lg:px-0">
-            <div className="relative bg-gradient-to-br from-purple/10 via-purple/5 to-transparent rounded-3xl p-8 md:p-12 lg:p-16 text-center overflow-hidden border border-purple/20">
+            <div className="relative bg-linear-to-br from-purple/10 via-purple/5 to-transparent rounded-3xl p-8 md:p-12 lg:p-16 text-center overflow-hidden border border-purple/20">
               <BlurBG className="rounded-3xl" />
 
               {/* Background Elements */}
@@ -340,13 +341,13 @@ export default async function BlogPostPage({
                 </div>
 
                 {/* Title */}
-                <h2 className="text-[28px] md:text-[36px] lg:text-[42px] font-bold font-ao text-dark dark:text-light mb-6 leading-tight">
+                <h2 className="text-[28px] md:text-[36px] lg:text-[42px] font-bold font-ao text-gray-900 dark:text-white mb-6 leading-tight">
                   Ready to Apply These{" "}
                   <span className="text-gradient">Insights</span>?
                 </h2>
 
                 {/* Description */}
-                <p className="text-dark/80 dark:text-light/80 font-switzer font-light text-[16px] md:text-[18px] lg:text-[20px] leading-relaxed max-w-3xl mx-auto mb-10">
+                <p className="text-gray-900/80 dark:text-white/80 font-switzer font-light text-[16px] md:text-[18px] lg:text-[20px] leading-relaxed max-w-3xl mx-auto mb-10">
                   Let&apos;s discuss how I can help implement these strategies
                   and techniques in your next project. With 8+ years of
                   experience, I&apos;ll ensure your ideas become reality.
@@ -358,7 +359,7 @@ export default async function BlogPostPage({
                     <div className="text-[32px] md:text-[36px] font-bold font-ao text-purple mb-2">
                       100+
                     </div>
-                    <div className="text-dark/70 dark:text-light/70 font-switzer font-light text-[14px] uppercase tracking-wider">
+                    <div className="text-gray-900/70 dark:text-white/70 font-switzer font-light text-[14px] uppercase tracking-wider">
                       Projects Delivered
                     </div>
                   </div>
@@ -366,7 +367,7 @@ export default async function BlogPostPage({
                     <div className="text-[32px] md:text-[36px] font-bold font-ao text-purple mb-2">
                       8+
                     </div>
-                    <div className="text-dark/70 dark:text-light/70 font-switzer font-light text-[14px] uppercase tracking-wider">
+                    <div className="text-gray-900/70 dark:text-white/70 font-switzer font-light text-[14px] uppercase tracking-wider">
                       Years Experience
                     </div>
                   </div>
@@ -374,7 +375,7 @@ export default async function BlogPostPage({
                     <div className="text-[32px] md:text-[36px] font-bold font-ao text-purple mb-2">
                       50+
                     </div>
-                    <div className="text-dark/70 dark:text-light/70 font-switzer font-light text-[14px] uppercase tracking-wider">
+                    <div className="text-gray-900/70 dark:text-white/70 font-switzer font-light text-[14px] uppercase tracking-wider">
                       Happy Clients
                     </div>
                   </div>
@@ -396,7 +397,7 @@ export default async function BlogPostPage({
                     <Button
                       variant="ghost"
                       size="lg"
-                      className="rounded-xl uppercase font-medium font-switzer text-dark dark:text-light hover:text-purple w-full sm:w-auto justify-center min-w-[200px] border border-lightBorderColor dark:border-darkBorderColor hover:border-purple/30 transition-all duration-300"
+                      className="rounded-xl uppercase font-medium font-switzer text-gray-900 dark:text-white hover:text-purple w-full sm:w-auto justify-center min-w-[200px] border border-gray-200 dark:border-gray-700 hover:border-purple/30 transition-all duration-300"
                     >
                       View Portfolio
                     </Button>
@@ -404,7 +405,7 @@ export default async function BlogPostPage({
                 </div>
 
                 {/* Additional Info */}
-                <div className="mt-8 pt-6 border-t border-lightBorderColor dark:border-darkBorderColor">
+                <div className="mt-8 pt-6 border-t border-gray-200 dark:border-gray-700">
                   <p className="text-dark/60 dark:text-light/60 font-switzer font-light text-[14px]">
                     Free consultation • No commitment required • Quick response
                     guaranteed

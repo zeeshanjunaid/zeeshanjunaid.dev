@@ -62,8 +62,8 @@ export function ImageGallery({ images }: ImageGalleryProps) {
                 </div>
               </div>
               {image.caption && (
-                <div className="p-2 sm:p-3 bg-light dark:bg-dark">
-                  <p className="text-xs sm:text-sm text-dark/70 dark:text-light/70 font-switzer line-clamp-2">
+                <div className="p-2 sm:p-3 bg-white dark:bg-gray-900">
+                  <p className="text-xs sm:text-sm text-gray-900/70 dark:text-white/70 font-switzer line-clamp-2">
                     {image.caption}
                   </p>
                 </div>
@@ -179,7 +179,7 @@ export function VideoEmbed({ src, title, thumbnail, platform = 'custom' }: Video
         )}
       </div>
       <div className="mt-2 sm:mt-3 text-center">
-        <h4 className="font-switzer font-medium text-sm sm:text-base text-dark dark:text-light">{title}</h4>
+        <h4 className="font-switzer font-medium text-sm sm:text-base text-gray-900 dark:text-white">{title}</h4>
       </div>
     </div>
   );
@@ -211,10 +211,10 @@ export function ProcessSteps({ steps }: ProcessStepsProps) {
             
             {/* Step Content */}
             <div className="flex-1 pb-4 sm:pb-6 min-w-0">
-              <h4 className="font-ao font-bold text-base sm:text-lg text-dark dark:text-light mb-2">
+              <h4 className="font-ao font-bold text-base sm:text-lg text-gray-900 dark:text-white mb-2">
                 {step.title}
               </h4>
-              <p className="text-dark/80 dark:text-light/80 font-switzer leading-relaxed text-sm sm:text-base">
+              <p className="text-gray-900/80 dark:text-white/80 font-switzer leading-relaxed text-sm sm:text-base">
                 {step.description}
               </p>
             </div>
@@ -236,17 +236,17 @@ interface ComparisonTableProps {
 export function ComparisonTable({ items, featureLabels }: ComparisonTableProps) {
   return (
     <div className="comparison-table my-6 sm:my-8 overflow-x-auto">
-      <div className="min-w-full border border-lightBorderColor dark:border-darkBorderColor rounded-xl overflow-hidden shadow-sm">
+      <div className="min-w-full border border-gray-200 dark:border-gray-700 rounded-xl overflow-hidden shadow-sm">
         <table className="w-full min-w-[600px]">
-          <thead className="bg-light dark:bg-dark">
+          <thead className="bg-white dark:bg-gray-900">
             <tr>
-              <th className="px-3 sm:px-6 py-3 sm:py-4 text-left font-switzer font-bold text-dark dark:text-light text-sm sm:text-base">
+              <th className="px-3 sm:px-6 py-3 sm:py-4 text-left font-switzer font-bold text-gray-900 dark:text-white text-sm sm:text-base">
                 Feature
               </th>
               {items.map((item, index) => (
                 <th
                   key={index}
-                  className="px-3 sm:px-6 py-3 sm:py-4 text-center font-switzer font-bold text-dark dark:text-light text-sm sm:text-base"
+                  className="px-3 sm:px-6 py-3 sm:py-4 text-center font-switzer font-bold text-gray-900 dark:text-white text-sm sm:text-base"
                 >
                   {item.name}
                 </th>
@@ -257,11 +257,11 @@ export function ComparisonTable({ items, featureLabels }: ComparisonTableProps) 
             {Object.entries(featureLabels).map(([key, label], rowIndex) => (
               <tr
                 key={key}
-                className={`border-t border-lightBorderColor dark:border-darkBorderColor ${
+                className={`border-t border-gray-200 dark:border-gray-700 ${
                   rowIndex % 2 === 0 ? 'bg-light/50 dark:bg-dark/50' : ''
                 }`}
               >
-                <td className="px-3 sm:px-6 py-3 sm:py-4 font-switzer font-medium text-dark dark:text-light text-sm sm:text-base">
+                <td className="px-3 sm:px-6 py-3 sm:py-4 font-switzer font-medium text-gray-900 dark:text-white text-sm sm:text-base">
                   {label}
                 </td>
                 {items.map((item, index) => (
@@ -274,7 +274,7 @@ export function ComparisonTable({ items, featureLabels }: ComparisonTableProps) 
                         title={item.features[key] ? 'Yes' : 'No'}
                       />
                     ) : (
-                      <span className="text-dark/80 dark:text-light/80 font-switzer text-xs sm:text-sm">
+                      <span className="text-gray-900/80 dark:text-white/80 font-switzer text-xs sm:text-sm">
                         {item.features[key]}
                       </span>
                     )}

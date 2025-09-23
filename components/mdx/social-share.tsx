@@ -56,13 +56,13 @@ export function SocialShare({
   };
 
   return (
-    <div className="social-share my-6 sm:my-8 p-4 sm:p-6 bg-light dark:bg-dark rounded-xl border border-lightBorderColor dark:border-darkBorderColor">
+    <div className="social-share my-6 sm:my-8 p-4 sm:p-6 bg-white dark:bg-gray-900 rounded-xl border border-gray-200 dark:border-gray-700">
       <div className="flex items-center gap-3 mb-4">
         <div className="w-8 h-8 sm:w-10 sm:h-10 bg-purple/10 rounded-xl flex items-center justify-center">
           <Share2 className="w-4 h-4 sm:w-5 sm:h-5 text-purple" />
         </div>
         <div className="min-w-0 flex-1">
-          <h3 className="font-ao font-bold text-base sm:text-lg text-dark dark:text-light">
+          <h3 className="font-ao font-bold text-base sm:text-lg text-gray-900 dark:text-white">
             Share this article
           </h3>
           <p className="text-dark/60 dark:text-light/60 font-switzer text-xs sm:text-sm">
@@ -133,7 +133,7 @@ export function SocialShare({
           typeof navigator.share === "function" && (
             <button
               onClick={handleShare}
-              className="flex items-center gap-2 px-4 py-2 bg-dark/10 dark:bg-light/10 hover:bg-dark/20 dark:hover:bg-light/20 text-dark dark:text-light rounded-lg transition-colors font-switzer font-medium text-sm"
+              className="flex items-center gap-2 px-4 py-2 bg-dark/10 dark:bg-light/10 hover:bg-dark/20 dark:hover:bg-light/20 text-gray-900 dark:text-white rounded-lg transition-colors font-switzer font-medium text-sm"
             >
               <Share2 className="w-4 h-4" />
               Share

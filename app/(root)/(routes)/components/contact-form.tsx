@@ -102,10 +102,6 @@ const ContactForm = () => {
     hidden: { opacity: 0 },
     visible: {
       opacity: 1,
-      transition: {
-        staggerChildren: 0.1,
-        delayChildren: 0.2,
-      },
     },
   };
 
@@ -114,10 +110,6 @@ const ContactForm = () => {
     visible: {
       opacity: 1,
       y: 0,
-      transition: {
-        duration: 0.4,
-        ease: "easeOut",
-      },
     },
   };
 
@@ -157,16 +149,16 @@ const ContactForm = () => {
         <Form {...form}>
           <form
             onSubmit={form.handleSubmit(onSubmit)}
-            className="bg-light dark:bg-dark relative overflow-hidden rounded-3xl p-8 md:p-10 lg:p-12 border border-lightBorderColor dark:border-darkBorderColor max-w-4xl mx-auto"
+            className="bg-white dark:bg-gray-900 relative overflow-hidden rounded-3xl p-8 md:p-10 lg:p-12 border border-gray-200 dark:border-gray-700 max-w-4xl mx-auto"
           >
             <BlurBG className="rounded-3xl" />
 
             {/* Form Header */}
             <div className="relative z-20 mb-8 text-center">
-              <h4 className="text-[24px] md:text-[28px] font-ao font-bold text-dark dark:text-light mb-3">
+              <h4 className="text-[24px] md:text-[28px] font-ao font-bold text-gray-900 dark:text-white mb-3">
                 Tell Me About Your Project
               </h4>
-              <p className="text-dark/70 dark:text-light/70 font-switzer font-light text-[16px] leading-relaxed">
+              <p className="text-gray-900/70 dark:text-white/70 font-switzer font-light text-[16px] leading-relaxed">
                 Fill out the form below and I&apos;ll get back to you within 24
                 hours with a detailed response tailored to your project needs.
               </p>
@@ -181,7 +173,7 @@ const ContactForm = () => {
                   name="name"
                   render={({ field }) => (
                     <FormItem className="space-y-3">
-                      <FormLabel className="flex items-center gap-2 text-dark dark:text-light font-switzer font-medium text-[16px]">
+                      <FormLabel className="flex items-center gap-2 text-gray-900 dark:text-white font-switzer font-medium text-[16px]">
                         <User className="w-4 h-4 text-purple" />
                         Full Name *
                       </FormLabel>
@@ -189,7 +181,7 @@ const ContactForm = () => {
                         <Input
                           disabled={isLoading}
                           placeholder="John Doe"
-                          className="border-0 focus-visible:ring-0 text-dark dark:text-light font-switzer text-[16px] font-light focus-visible:ring-offset-0 relative h-14"
+                          className="border-0 focus-visible:ring-0 text-gray-900 dark:text-white font-switzer text-[16px] font-light focus-visible:ring-offset-0 relative h-14"
                           {...field}
                         />
                       </FormControl>
@@ -204,7 +196,7 @@ const ContactForm = () => {
                   name="email"
                   render={({ field }) => (
                     <FormItem className="space-y-3">
-                      <FormLabel className="flex items-center gap-2 text-dark dark:text-light font-switzer font-medium text-[16px]">
+                      <FormLabel className="flex items-center gap-2 text-gray-900 dark:text-white font-switzer font-medium text-[16px]">
                         <Mail className="w-4 h-4 text-purple" />
                         Email Address *
                       </FormLabel>
@@ -212,7 +204,7 @@ const ContactForm = () => {
                         <Input
                           disabled={isLoading}
                           placeholder="john@example.com"
-                          className="border-0 focus-visible:ring-0 text-dark dark:text-light font-switzer text-[16px] font-light focus-visible:ring-offset-0 relative h-14"
+                          className="border-0 focus-visible:ring-0 text-gray-900 dark:text-white font-switzer text-[16px] font-light focus-visible:ring-offset-0 relative h-14"
                           {...field}
                         />
                       </FormControl>
@@ -230,7 +222,7 @@ const ContactForm = () => {
                   name="phone"
                   render={({ field }) => (
                     <FormItem className="space-y-3">
-                      <FormLabel className="flex items-center gap-2 text-dark dark:text-light font-switzer font-medium text-[16px]">
+                      <FormLabel className="flex items-center gap-2 text-gray-900 dark:text-white font-switzer font-medium text-[16px]">
                         <Phone className="w-4 h-4 text-purple" />
                         Phone Number *
                       </FormLabel>
@@ -238,7 +230,7 @@ const ContactForm = () => {
                         <Input
                           disabled={isLoading}
                           placeholder="+1 (555) 123-4567"
-                          className="border-0 focus-visible:ring-0 text-dark dark:text-light font-switzer text-[16px] font-light focus-visible:ring-offset-0 relative h-14"
+                          className="border-0 focus-visible:ring-0 text-gray-900 dark:text-white font-switzer text-[16px] font-light focus-visible:ring-offset-0 relative h-14"
                           {...field}
                         />
                       </FormControl>
@@ -253,7 +245,7 @@ const ContactForm = () => {
                   name="service"
                   render={({ field }) => (
                     <FormItem className="space-y-3">
-                      <FormLabel className="flex items-center gap-2 text-dark dark:text-light font-switzer font-medium text-[16px]">
+                      <FormLabel className="flex items-center gap-2 text-gray-900 dark:text-white font-switzer font-medium text-[16px]">
                         <CheckCircle className="w-4 h-4 text-purple" />
                         Service Needed *
                       </FormLabel>
@@ -263,15 +255,15 @@ const ContactForm = () => {
                           defaultValue={field.value}
                           disabled={isLoading}
                         >
-                          <SelectTrigger className="h-14 focus:ring-0 text-dark dark:text-light font-switzer text-[16px] font-light focus:ring-offset-0 relative bg-light dark:bg-dark border-[1px] border-solid border-lightBorderColor dark:border-darkBorderColor rounded-xl">
+                          <SelectTrigger className="h-14 focus:ring-0 text-gray-900 dark:text-white font-switzer text-[16px] font-light focus:ring-offset-0 relative bg-white dark:bg-gray-900 border-[1px] border-solid border-gray-200 dark:border-gray-700 rounded-xl">
                             <SelectValue placeholder="Select a service..." />
                           </SelectTrigger>
-                          <SelectContent className="bg-light dark:bg-dark border-lightBorderColor dark:border-darkBorderColor rounded-xl">
+                          <SelectContent className="bg-white dark:bg-gray-900 border-gray-200 dark:border-gray-700 rounded-xl">
                             {serviceOptions.map((option) => (
                               <SelectItem
                                 key={option.value}
                                 value={option.value}
-                                className="text-dark dark:text-light font-switzer font-light hover:bg-purple/10 focus:bg-purple/20 rounded-lg mx-1 my-0.5"
+                                className="text-gray-900 dark:text-white font-switzer font-light hover:bg-purple/10 focus:bg-purple/20 rounded-lg mx-1 my-0.5"
                               >
                                 {option.label}
                               </SelectItem>
@@ -291,7 +283,7 @@ const ContactForm = () => {
                 name="referral"
                 render={({ field }) => (
                   <FormItem className="space-y-3">
-                    <FormLabel className="flex items-center gap-2 text-dark dark:text-light font-switzer font-medium text-[16px]">
+                    <FormLabel className="flex items-center gap-2 text-gray-900 dark:text-white font-switzer font-medium text-[16px]">
                       <HelpCircle className="w-4 h-4 text-purple" />
                       How did you find me?
                     </FormLabel>
@@ -299,7 +291,7 @@ const ContactForm = () => {
                       <Input
                         disabled={isLoading}
                         placeholder="Google, LinkedIn, referral..."
-                        className="border-0 focus-visible:ring-0 text-dark dark:text-light font-switzer text-[16px] font-light focus-visible:ring-offset-0 relative h-14"
+                        className="border-0 focus-visible:ring-0 text-gray-900 dark:text-white font-switzer text-[16px] font-light focus-visible:ring-offset-0 relative h-14"
                         {...field}
                       />
                     </FormControl>
@@ -314,13 +306,13 @@ const ContactForm = () => {
                 name="message"
                 render={({ field }) => (
                   <FormItem className="space-y-3">
-                    <FormLabel className="flex items-center gap-2 text-dark dark:text-light font-switzer font-medium text-[16px]">
+                    <FormLabel className="flex items-center gap-2 text-gray-900 dark:text-white font-switzer font-medium text-[16px]">
                       <MessageSquare className="w-4 h-4 text-purple" />
                       Project Details & Budget *
                     </FormLabel>
                     <FormControl>
                       <Textarea
-                        className="border-0 focus-visible:ring-0 text-dark dark:text-light font-switzer text-[16px] font-light focus-visible:ring-offset-0 relative min-h-[140px] resize-none"
+                        className="border-0 focus-visible:ring-0 text-gray-900 dark:text-white font-switzer text-[16px] font-light focus-visible:ring-offset-0 relative min-h-[140px] resize-none"
                         placeholder="I'm looking for a React developer to build an e-commerce website. My budget is around $5,000 and I need it completed within 8 weeks. The site should have user authentication, payment processing, and an admin dashboard..."
                         {...field}
                         disabled={isLoading}
@@ -332,13 +324,13 @@ const ContactForm = () => {
               />
 
               {/* Submit Section */}
-              <div className="pt-6 border-t border-lightBorderColor dark:border-darkBorderColor">
+              <div className="pt-6 border-t border-gray-200 dark:border-gray-700">
                 <div className="flex flex-col sm:flex-row items-center justify-between gap-4">
                   <div className="text-center sm:text-left">
                     <p className="text-dark/60 dark:text-light/60 font-switzer font-light text-[14px] mb-1">
                       * Required fields
                     </p>
-                    <p className="text-dark/50 dark:text-light/50 font-switzer font-light text-[12px]">
+                    <p className="text-gray-900/50 dark:text-white/50 font-switzer font-light text-[12px]">
                       Your information is secure and will never be shared
                     </p>
                   </div>

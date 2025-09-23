@@ -13,7 +13,7 @@ import { motion, AnimatePresence } from "framer-motion";
 import { BlurBG } from "@/components/blur-bg";
 import Image from "next/image";
 import ReactCountryFlag from "react-country-flag";
-import ReactPlayer from "react-player/youtube";
+import ReactPlayer from "react-player";
 import { Skeleton } from "@/components/ui/skeleton";
 import { User2Icon, Play, X, Volume2, VolumeX, Maximize2 } from "lucide-react";
 import { Button } from "@/components/ui/button";
@@ -81,11 +81,11 @@ const VideoModal = ({
                     repeat: isHovered ? Infinity : 0,
                   }}
                 >
-                  <div className="w-full h-full bg-light dark:bg-dark rounded-3xl" />
+                  <div className="w-full h-full bg-white dark:bg-gray-900 rounded-3xl" />
                 </motion.div>
 
                 {/* Profile Image Container */}
-                <div className="absolute inset-[3px] rounded-3xl overflow-hidden bg-light dark:bg-dark z-30">
+                <div className="absolute inset-[3px] rounded-3xl overflow-hidden bg-white dark:bg-gray-900 z-30">
                   <BlurBG className="rounded-3xl" />
 
                   {profile ? (
@@ -103,13 +103,13 @@ const VideoModal = ({
                       />
 
                       {/* Gradient Overlay */}
-                      <div className="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-transparent z-25" />
+                      <div className="absolute inset-0 bg-linear-to-t from-black/40 via-transparent to-transparent z-25" />
                     </div>
                   ) : (
                     <div className="w-full h-full flex items-center justify-center relative z-20">
                       <User2Icon
                         size={48}
-                        className="text-dark dark:text-light group-hover/button:scale-110 transition-transform duration-300"
+                        className="text-gray-900 dark:text-white group-hover/button:scale-110 transition-transform duration-300"
                       />
                     </div>
                   )}
@@ -165,7 +165,7 @@ const VideoModal = ({
             whileHover={{ scale: 1.02 }}
             transition={{ duration: 0.4, delay: 0.1 }}
           >
-            <h3 className="text-dark dark:text-light font-switzer font-semibold text-[14px] md:text-[16px] mb-2 leading-tight">
+            <h3 className="text-gray-900 dark:text-white font-switzer font-semibold text-[14px] md:text-[16px] mb-2 leading-tight">
               {client}
             </h3>
             {country && (
@@ -180,7 +180,7 @@ const VideoModal = ({
                   }}
                   aria-label={country.name}
                 />
-                <span className="text-dark/70 dark:text-light/70 font-switzer font-light text-[12px] md:text-[14px]">
+                <span className="text-gray-900/70 dark:text-white/70 font-switzer font-light text-[12px] md:text-[14px]">
                   {country.name}
                 </span>
               </motion.div>
@@ -189,14 +189,17 @@ const VideoModal = ({
         </div>
 
         {/* Enhanced Modal */}
-        <DialogContent className="bg-light dark:bg-dark max-w-4xl w-[95vw] border border-lightBorderColor dark:border-darkBorderColor rounded-3xl p-0 overflow-hidden [&>button]:hidden">
+        <DialogContent 
+          id={`video-modal-${client.replace(/\s+/g, '-').toLowerCase()}`}
+          className="bg-white dark:bg-gray-900 max-w-4xl w-[95vw] border border-gray-200 dark:border-gray-700 rounded-3xl p-0 overflow-hidden [&>button]:hidden"
+        >
           <div className="relative">
             <BlurBG className="rounded-3xl" />
 
             {/* Modal Header */}
             <DialogHeader className="relative z-20 p-6 pb-4">
               <div className="flex items-center gap-4">
-                <DialogTitle className="flex items-center gap-3 font-ao font-bold text-[18px] md:text-[20px] text-dark dark:text-light">
+                <DialogTitle className="flex items-center gap-3 font-ao font-bold text-[18px] md:text-[20px] text-gray-900 dark:text-white">
                   <div className="w-10 h-10 rounded-2xl overflow-hidden relative">
                     {profile ? (
                       <Image
@@ -236,7 +239,7 @@ const VideoModal = ({
                   variant="ghost"
                   size="icon"
                   onClick={() => handleModalOpen(false)}
-                  className="absolute top-4 right-4 w-10 h-10 rounded-2xl hover:bg-red-500/10 text-dark dark:text-light hover:text-red-500 z-50"
+                  className="absolute top-4 right-4 w-10 h-10 rounded-2xl hover:bg-red-500/10 text-gray-900 dark:text-white hover:text-red-500 z-50"
                 >
                   <X className="w-5 h-5" />
                 </Button>
@@ -244,29 +247,21 @@ const VideoModal = ({
             </DialogHeader>
 
             {/* Video Container */}
-            <DialogDescription className="relative z-20 p-6">
+            <div className="relative z-20 p-6">
               <div className="relative rounded-2xl overflow-hidden bg-black mb-4">
                 <div className="aspect-video">
                   <ReactPlayer
                     width="100%"
                     height="100%"
                     controls={true}
-                    playsinline={true}
+                    playsInline={true}
                     playing={isModalOpen}
                     muted={isMuted}
-                    url={video}
+                    src={video}
                     onStart={handleVideoStart}
                     onEnded={handleVideoEnd}
                     onPlay={() => setIsPlaying(true)}
                     onPause={() => setIsPlaying(false)}
-                    config={{
-                      playerVars: {
-                        showinfo: 1,
-                        modestbranding: 1,
-                        rel: 0,
-                        autoplay: 1,
-                      },
-                    }}
                   />
                 </div>
 
@@ -286,12 +281,12 @@ const VideoModal = ({
                   </Button>
                 </div>
               </div>
-            </DialogDescription>
+            </div>
 
             {/* Video Info Footer */}
-            <div className="relative z-20 px-6 pb-6 border-t border-lightBorderColor dark:border-darkBorderColor pt-4">
+            <div className="relative z-20 px-6 pb-6 border-t border-gray-200 dark:border-gray-700 pt-4">
               <div className="flex items-center justify-center">
-                <span className="text-[12px] text-dark/60 dark:text-light/60">
+                <span className="text-[12px] text-gray-900/60 dark:text-white/60">
                   Client Testimonial Video • Click outside or press ESC to close
                 </span>
               </div>

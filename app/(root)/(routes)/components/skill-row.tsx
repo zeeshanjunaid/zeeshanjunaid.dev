@@ -14,10 +14,6 @@ const SkillRow = ({ skillset }: SkillRowProps) => {
     hidden: { opacity: 0 },
     visible: {
       opacity: 1,
-      transition: {
-        staggerChildren: 0.05,
-        delayChildren: 0.1,
-      },
     },
   };
 
@@ -26,10 +22,6 @@ const SkillRow = ({ skillset }: SkillRowProps) => {
     visible: {
       opacity: 1,
       y: 0,
-      transition: {
-        duration: 0.3,
-        ease: "easeOut",
-      },
     },
   };
 
@@ -52,7 +44,7 @@ const SkillRow = ({ skillset }: SkillRowProps) => {
           >
             {link ? (
               <a
-                className="relative flex items-center gap-3 p-4 bg-light dark:bg-dark rounded-2xl border border-lightBorderColor dark:border-darkBorderColor hover:border-purple/30 hover:bg-purple/5 transition-all duration-300 group overflow-hidden"
+                className="relative flex items-center gap-3 p-4 bg-white dark:bg-gray-900 rounded-2xl border border-gray-200 dark:border-gray-700 hover:border-purple/30 hover:bg-purple/5 transition-all duration-300 group overflow-hidden"
                 href={link}
                 target="_blank"
                 rel="noopener noreferrer"
@@ -64,13 +56,13 @@ const SkillRow = ({ skillset }: SkillRowProps) => {
                       <Icon size="16" className="text-purple" />
                     </div>
                   )}
-                  <span className="text-dark dark:text-light text-[14px] md:text-[16px] font-light group-hover:text-purple transition-colors duration-300 flex-1">
+                  <span className="text-gray-900 dark:text-white text-[14px] md:text-[16px] font-light group-hover:text-purple transition-colors duration-300 flex-1">
                     {name}
                   </span>
                 </div>
               </a>
             ) : (
-              <div className="relative flex items-center gap-3 p-4 bg-light dark:bg-dark rounded-2xl border border-lightBorderColor dark:border-darkBorderColor hover:border-purple/30 hover:bg-purple/5 transition-all duration-300 group overflow-hidden cursor-default">
+              <div className="relative flex items-center gap-3 p-4 bg-white dark:bg-gray-900 rounded-2xl border border-gray-200 dark:border-gray-700 hover:border-purple/30 hover:bg-purple/5 transition-all duration-300 group overflow-hidden cursor-default">
                 <BlurBG className="rounded-2xl" />
                 <div className="relative z-20 flex items-center gap-3 w-full">
                   {Icon && (
@@ -78,7 +70,7 @@ const SkillRow = ({ skillset }: SkillRowProps) => {
                       <Icon size="16" className="text-purple" />
                     </div>
                   )}
-                  <span className="text-dark dark:text-light text-[14px] md:text-[16px] font-light group-hover:text-purple transition-colors duration-200 flex-1">
+                  <span className="text-gray-900 dark:text-white text-[14px] md:text-[16px] font-light group-hover:text-purple transition-colors duration-200 flex-1">
                     {name}
                   </span>
                 </div>

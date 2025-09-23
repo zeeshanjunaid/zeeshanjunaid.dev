@@ -40,12 +40,12 @@ const NavMobile = ({ data }: NavMobileProps) => {
           <HiMenuAlt4 className="h-[20px] w-[20px] md:h-[22px] md:w-[22px]" />
         </Button>
       </SheetTrigger>
-      <SheetContent className="bg-light dark:bg-dark flex flex-col justify-between">
+      <SheetContent id="mobile-navigation" className="bg-white dark:bg-gray-900 flex flex-col justify-between">
         <div className="flex flex-col space-y-4 mt-12">
           <Link
             href="/"
             className={cn(
-              "w-full border-b-[1px] last:border-0 pt-0 pb-4 font-switzer font-dark dark:font-light text-base uppercase font-medium transition hover:text-purple",
+              "w-full border-b-[1px] last:border-0 pt-0 pb-4 font-switzer dark:font-light text-base uppercase font-medium transition hover:text-purple text-gray-900 dark:text-white",
               pathname === "/" && "text-purple",
             )}
           >
@@ -56,7 +56,7 @@ const NavMobile = ({ data }: NavMobileProps) => {
               href={link}
               key={label}
               className={cn(
-                "w-full border-b-[1px] last:border-0 pt-0 pb-4 font-switzer font-dark dark:font-light text-base uppercase font-medium transition hover:text-purple",
+                "w-full border-b-[1px] last:border-0 pt-0 pb-4 font-switzer dark:font-light text-base uppercase font-medium transition hover:text-purple text-gray-900 dark:text-white",
                 pathname === link && "text-purple",
               )}
             >
@@ -64,8 +64,8 @@ const NavMobile = ({ data }: NavMobileProps) => {
             </Link>
           ))}
         </div>
-        <div className="flex flex-col items-start border-t-[1px] pt-6 min-w-max flex-wrap justify-between">
-          <h4 className="font-ao text-xs">Reach out via:</h4>
+        <div className="flex flex-col items-start border-t-[1px] border-gray-200 dark:border-gray-700 pt-6 min-w-max flex-wrap justify-between">
+          <h4 className="font-ao text-xs text-gray-900 dark:text-white">Reach out via:</h4>
           <div className="flex items-center space-x-3 pt-3 min-w-max flex-wrap justify-between">
             <SocialLinks />
           </div>

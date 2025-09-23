@@ -41,10 +41,6 @@ const WorkWrapper = () => {
     hidden: { opacity: 0 },
     visible: {
       opacity: 1,
-      transition: {
-        staggerChildren: 0.1,
-        delayChildren: 0.2,
-      },
     },
   };
 
@@ -53,10 +49,6 @@ const WorkWrapper = () => {
     visible: {
       opacity: 1,
       y: 0,
-      transition: {
-        duration: 0.8,
-        ease: "easeOut",
-      },
     },
   };
 
@@ -82,7 +74,7 @@ const WorkWrapper = () => {
           <div className="absolute bottom-20 left-20 w-96 h-96 bg-purple/5 rounded-full blur-3xl" />
         </div>
 
-        <div className="border-b-[1px] border-b-lightBorderColor dark:border-b-darkBorderColor pb-16 md:pb-20">
+        <div className="border-b-[1px] border-b-gray-200 dark:border-b-gray-700 pb-16 md:pb-20">
           <Container className="px-4 pt-4 md:pt-7 md:px-7 lg:px-0">
             <motion.div
               initial="hidden"
@@ -99,12 +91,12 @@ const WorkWrapper = () => {
                   </span>
                 </div>
 
-                <h1 className="text-[32px] md:text-[42px] lg:text-[54px] font-bold font-ao text-dark dark:text-light leading-tight mb-6">
+                <h1 className="text-[32px] md:text-[42px] lg:text-[54px] font-bold font-ao text-gray-900 dark:text-white leading-tight mb-6">
                   From Vision to Value: A{" "}
                   <span className="text-gradient">Portfolio of Results</span>
                 </h1>
 
-                <p className="font-light text-[16px] md:text-[18px] lg:text-[20px] leading-relaxed text-dark/80 dark:text-light/80 max-w-3xl">
+                <p className="font-light text-[16px] md:text-[18px] lg:text-[20px] leading-relaxed text-gray-900/80 dark:text-white/80 max-w-3xl">
                   I partner with businesses to build digital solutions that not only look great but also deliver measurable success. 
                   Below are a few examples of how I&apos;ve helped clients overcome challenges and achieve their goals.
                 </p>
@@ -137,7 +129,7 @@ const WorkWrapper = () => {
               >
                 <div className="flex items-center gap-3">
                   <Search className="w-5 h-5 text-purple" />
-                  <span className="text-dark dark:text-light font-switzer font-medium text-[16px] md:text-[18px]">
+                  <span className="text-gray-900 dark:text-white font-switzer font-medium text-[16px] md:text-[18px]">
                     {projects.length} {projects.length === 1 ? 'Project' : 'Projects'} Found
                     {skillValue && (
                       <span className="text-dark/60 dark:text-light/60 font-light">
@@ -175,16 +167,16 @@ const WorkWrapper = () => {
           className="py-16 md:py-20"
         >
           <Container className="px-4 md:px-7 lg:px-0 text-center">
-            <div className="relative bg-light dark:bg-dark rounded-3xl p-12 md:p-16 overflow-hidden max-w-2xl mx-auto">
+            <div className="relative bg-white dark:bg-gray-900 rounded-3xl p-12 md:p-16 overflow-hidden max-w-2xl mx-auto">
               <BlurBG className="rounded-3xl" />
               <div className="relative z-20">
                 <div className="w-16 h-16 mx-auto mb-6 bg-purple/10 rounded-2xl flex items-center justify-center">
                   <Search className="w-8 h-8 text-purple" />
                 </div>
-                <h3 className="text-[24px] md:text-[28px] font-bold font-ao text-dark dark:text-light mb-4">
+                <h3 className="text-[24px] md:text-[28px] font-bold font-ao text-gray-900 dark:text-white mb-4">
                   No Projects Found
                 </h3>
-                <p className="text-dark/80 dark:text-light/80 font-switzer font-light text-[16px] md:text-[18px] leading-relaxed mb-6">
+                <p className="text-gray-900/80 dark:text-white/80 font-switzer font-light text-[16px] md:text-[18px] leading-relaxed mb-6">
                   No projects match your current filter criteria. Try adjusting your search or browse all projects.
                 </p>
                 <button

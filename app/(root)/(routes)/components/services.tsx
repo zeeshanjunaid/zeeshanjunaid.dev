@@ -12,10 +12,6 @@ const Services = () => {
     hidden: { opacity: 0 },
     visible: {
       opacity: 1,
-      transition: {
-        staggerChildren: 0.1,
-        delayChildren: 0.2,
-      },
     },
   };
 
@@ -24,10 +20,6 @@ const Services = () => {
     visible: {
       opacity: 1,
       y: 0,
-      transition: {
-        duration: 0.6,
-        ease: "easeOut",
-      },
     },
   };
 
@@ -36,10 +28,6 @@ const Services = () => {
     visible: {
       opacity: 1,
       scale: 1,
-      transition: {
-        duration: 0.3,
-        ease: "easeOut",
-      },
     },
   };
   return (
@@ -52,7 +40,7 @@ const Services = () => {
       >
         <motion.h2 
           variants={itemVariants}
-          className="inline-flex center gap-x-[10px] items-center font-normal text-dark dark:text-light uppercase text-[14px] tracking-[.42px]"
+          className="inline-flex center gap-x-[10px] items-center font-normal text-gray-900 dark:text-white uppercase text-[14px] tracking-[.42px]"
         >
           <div className="flex flex-col space-y-[6px]">
             <span className="bg-dark dark:bg-light w-[18px] h-[1px]" />
@@ -63,12 +51,12 @@ const Services = () => {
         
         <motion.div 
           variants={itemVariants}
-          className="px-5 md:px-6 py-8 w-full bg-light dark:bg-dark rounded-3xl relative overflow-hidden group hover:shadow-md transition-all duration-200"
+          className="px-5 md:px-6 py-8 w-full bg-white dark:bg-gray-900 rounded-3xl relative overflow-hidden group hover:shadow-md transition-all duration-200"
         >
           <BlurBG className="rounded-3xl" />
           
           {/* Subtle hover gradient */}
-          <div className="absolute inset-0 bg-gradient-to-r from-purple/3 via-transparent to-purple/3 opacity-0 group-hover:opacity-100 transition-opacity duration-200 rounded-3xl z-10" />
+          <div className="absolute inset-0 bg-linear-to-r from-purple/3 via-transparent to-purple/3 opacity-0 group-hover:opacity-100 transition-opacity duration-200 rounded-3xl z-10" />
           
           <motion.ul 
             variants={containerVariants}
@@ -80,7 +68,7 @@ const Services = () => {
                   variants={serviceItemVariants}
                   whileHover={{ scale: 1.02, y: -1 }}
                   transition={{ duration: 0.2 }}
-                  className="uppercase font-ao text-dark dark:text-light text-[12px] md:text-[14px] flex items-center gap-x-1 md:gap-x-2 px-4 py-2 w-max rounded-xl hover:bg-purple/5 transition-all duration-200 cursor-default"
+                  className="uppercase font-ao text-gray-900 dark:text-white text-[12px] md:text-[14px] flex items-center gap-x-1 md:gap-x-2 px-4 py-2 w-max rounded-xl hover:bg-purple/5 transition-all duration-200 cursor-default"
                 >
                   {Icon && (
                     <motion.div
@@ -105,7 +93,7 @@ const Services = () => {
 
             <motion.li variants={serviceItemVariants}>
               <CustomLink
-                className="text-[14px] font-ao text-dark dark:text-light uppercase px-2 py-2 flex items-center hover:text-purple transition-colors duration-200"
+                className="text-[14px] font-ao text-gray-900 dark:text-white uppercase px-2 py-2 flex items-center hover:text-purple transition-colors duration-200"
                 link="/services"
                 text="See All Solutions"
                 internal

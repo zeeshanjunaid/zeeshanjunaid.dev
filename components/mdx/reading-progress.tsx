@@ -32,7 +32,7 @@ export function ReadingProgress() {
       {/* Progress Bar */}
       <div className="fixed top-0 left-0 right-0 z-50 h-1 bg-light/20 dark:bg-dark/20">
         <div 
-          className="h-full bg-gradient-to-r from-purple to-purple/80 transition-all duration-150 ease-out"
+          className="h-full bg-linear-to-r from-purple to-purple/80 transition-all duration-150 ease-out"
           style={{ width: `${progress}%` }}
         />
       </div>
@@ -87,8 +87,8 @@ export function TableOfContents({ headings }: TableOfContentsProps) {
   };
 
   return (
-    <div className="table-of-contents sticky top-20 sm:top-24 bg-light dark:bg-dark rounded-xl border border-lightBorderColor dark:border-darkBorderColor p-4 sm:p-5 max-h-[70vh] overflow-y-auto">
-      <h3 className="font-ao font-bold text-base sm:text-lg text-dark dark:text-light mb-3 sm:mb-4 flex items-center gap-2">
+    <div className="table-of-contents sticky top-20 sm:top-24 bg-white dark:bg-gray-900 rounded-xl border border-gray-200 dark:border-gray-700 p-4 sm:p-5 max-h-[70vh] overflow-y-auto">
+      <h3 className="font-ao font-bold text-base sm:text-lg text-gray-900 dark:text-white mb-3 sm:mb-4 flex items-center gap-2">
         📖 Table of Contents
       </h3>
       <nav>
@@ -102,7 +102,7 @@ export function TableOfContents({ headings }: TableOfContentsProps) {
                 } ${
                   activeId === id
                     ? 'bg-purple/10 text-purple font-medium border-l-2 border-purple'
-                    : 'text-dark/70 dark:text-light/70 hover:text-purple hover:bg-purple/5'
+                    : 'text-gray-900/70 dark:text-white/70 hover:text-purple hover:bg-purple/5'
                 }`}
               >
                 <span className="line-clamp-2">{text}</span>

@@ -47,10 +47,6 @@ export const WorkGrid = ({ projects, selectedSkill }: WorkGridProps) => {
     hidden: { opacity: 0 },
     visible: {
       opacity: 1,
-      transition: {
-        staggerChildren: 0.1,
-        delayChildren: 0.2,
-      },
     },
   };
 
@@ -59,10 +55,6 @@ export const WorkGrid = ({ projects, selectedSkill }: WorkGridProps) => {
     visible: {
       opacity: 1,
       y: 0,
-      transition: {
-        duration: 0.6,
-        ease: "easeOut",
-      },
     },
   };
 
@@ -85,7 +77,7 @@ export const WorkGrid = ({ projects, selectedSkill }: WorkGridProps) => {
             >
               <Link href={`/work/${project.slug}`}>
                 <motion.div
-                  className="relative bg-light dark:bg-dark rounded-3xl overflow-hidden border border-lightBorderColor dark:border-darkBorderColor group cursor-pointer h-full"
+                  className="relative bg-white dark:bg-gray-900 rounded-3xl overflow-hidden border border-gray-200 dark:border-gray-700 group cursor-pointer h-full"
                   whileHover={{ y: -4, scale: 1.01 }}
                   transition={{ duration: 0.2 }}
                 >
@@ -106,7 +98,7 @@ export const WorkGrid = ({ projects, selectedSkill }: WorkGridProps) => {
                           sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
                           onLoad={() => handleImageLoad(project.name)}
                         />
-                        <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-black/20 to-transparent" />
+                        <div className="absolute inset-0 bg-linear-to-t from-black/60 via-black/20 to-transparent" />
                       </>
                     )}
 
@@ -139,11 +131,11 @@ export const WorkGrid = ({ projects, selectedSkill }: WorkGridProps) => {
                   {/* Project Content */}
                   <div className="relative z-20 p-6">
                     <div className="mb-4">
-                      <h3 className="text-[20px] md:text-[22px] font-bold font-ao text-dark dark:text-light capitalize mb-2 group-hover:text-purple transition-colors duration-300">
+                      <h3 className="text-[20px] md:text-[22px] font-bold font-ao text-gray-900 dark:text-white capitalize mb-2 group-hover:text-purple transition-colors duration-300">
                         {project.name}
                       </h3>
 
-                      <p className="text-dark/70 dark:text-light/70 font-switzer font-light text-[14px] leading-relaxed line-clamp-2">
+                      <p className="text-gray-900/70 dark:text-white/70 font-switzer font-light text-[14px] leading-relaxed line-clamp-2">
                         {project.description}
                       </p>
                     </div>
@@ -156,14 +148,14 @@ export const WorkGrid = ({ projects, selectedSkill }: WorkGridProps) => {
                           className={`text-[10px] px-2 py-1 rounded-lg border uppercase font-medium transition-all duration-200 ${
                             selectedSkill === tag
                               ? "bg-purple/20 border-purple/30 text-purple"
-                              : "bg-light dark:bg-dark border-lightBorderColor dark:border-darkBorderColor text-dark/70 dark:text-light/70 group-hover:border-purple/30"
+                              : "bg-white dark:bg-gray-900 border-gray-200 dark:border-gray-700 text-gray-900/70 dark:text-white/70 group-hover:border-purple/30"
                           }`}
                         >
                           {tag}
                         </span>
                       ))}
                       {project.tags.length > 3 && (
-                        <span className="text-[10px] px-2 py-1 rounded-lg border border-lightBorderColor dark:border-darkBorderColor text-dark/50 dark:text-light/50 uppercase font-medium">
+                        <span className="text-[10px] px-2 py-1 rounded-lg border border-gray-200 dark:border-gray-700 text-gray-900/50 dark:text-white/50 uppercase font-medium">
                           +{project.tags.length - 3} more
                         </span>
                       )}
@@ -183,7 +175,7 @@ export const WorkGrid = ({ projects, selectedSkill }: WorkGridProps) => {
                   </div>
 
                   {/* Hover Gradient */}
-                  <div className="absolute inset-0 bg-gradient-to-r from-purple/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 rounded-3xl" />
+                  <div className="absolute inset-0 bg-linear-to-r from-purple/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 rounded-3xl" />
                 </motion.div>
               </Link>
             </motion.div>

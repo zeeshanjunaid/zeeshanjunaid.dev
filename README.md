@@ -22,7 +22,7 @@ To get a local copy up and running, follow these simple steps.
 
 ### Prerequisites
 
-You need to have Node.js and npm (or yarn/pnpm/bun) installed on your machine.
+You need to have Node.js and pnpm installed on your machine.
 
 ### Installation
 
@@ -30,9 +30,9 @@ You need to have Node.js and npm (or yarn/pnpm/bun) installed on your machine.
     ```sh
     git clone https://github.com/zeeshanjunaid/zeeshanjunaid.dev.git
     ```
-2.  Install NPM packages
+2.  Install dependencies
     ```sh
-    npm install
+    pnpm install
     ```
 3.  Set up environment variables
     ```sh
@@ -48,7 +48,7 @@ You need to have Node.js and npm (or yarn/pnpm/bun) installed on your machine.
 
 In the project directory, you can run:
 
-### `npm run dev`
+### `pnpm dev`
 
 Runs the app in the development mode.
 Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
@@ -56,16 +56,16 @@ Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
 The page will reload if you make edits.
 You will also see any lint errors in the console.
 
-### `npm run build`
+### `pnpm build`
 
 Builds the app for production to the `.next` folder.
 It correctly bundles React in production mode and optimizes the build for the best performance.
 
-### `npm run start`
+### `pnpm start`
 
-Starts the application in production mode. The application should be compiled with `npm run build` first.
+Starts the application in production mode. The application should be compiled with `pnpm build` first.
 
-### `npm run lint`
+### `pnpm lint`
 
 Runs the linter to catch any code style issues.
 

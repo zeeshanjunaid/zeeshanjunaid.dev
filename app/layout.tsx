@@ -115,12 +115,12 @@ export default function RootLayout({
     <html lang="en" suppressHydrationWarning>
       <body
         className={cn(
-          "bg-light dark:bg-dark font-switzer",
+          "bg-white dark:bg-gray-900 font-switzer",
           antiqueOlive.variable,
           switzer.variable
         )}
       >
-        <ThemeProvider attribute="class" defaultTheme="dark">
+        <ThemeProvider attribute="data-theme" defaultTheme="dark">
           <NextTopLoader
             color="#A374FF"
             initialPosition={0.08}

@@ -13,11 +13,6 @@ const AvailabilityBadge = ({ className }: { className?: string }) => {
     animate: {
       scale: [1, 1.1, 1],
       opacity: [0.9, 1, 0.9],
-      transition: {
-        duration: 3,
-        ease: "easeInOut",
-        repeat: Infinity,
-      },
     },
   };
 

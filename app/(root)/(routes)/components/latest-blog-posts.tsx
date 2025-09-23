@@ -21,10 +21,6 @@ const LatestBlogPosts = ({ posts }: LatestBlogPostsProps) => {
     hidden: { opacity: 0 },
     visible: {
       opacity: 1,
-      transition: {
-        staggerChildren: 0.1,
-        delayChildren: 0.2,
-      },
     },
   };
 
@@ -33,10 +29,6 @@ const LatestBlogPosts = ({ posts }: LatestBlogPostsProps) => {
     visible: {
       opacity: 1,
       y: 0,
-      transition: {
-        duration: 0.6,
-        ease: "easeOut",
-      },
     },
   };
 
@@ -49,17 +41,17 @@ const LatestBlogPosts = ({ posts }: LatestBlogPostsProps) => {
         variants={containerVariants}
       >
         <motion.div variants={itemVariants} className="mb-12">
-          <h2 className="inline-flex center gap-x-[10px] items-center font-normal text-dark dark:text-light uppercase text-[14px] tracking-[.42px] mb-6">
+          <h2 className="inline-flex center gap-x-[10px] items-center font-normal text-gray-900 dark:text-white uppercase text-[14px] tracking-[.42px] mb-6">
             <div className="flex flex-col space-y-[6px]">
               <span className="bg-dark dark:bg-light w-[18px] h-[1px]" />
               <span className="bg-dark dark:bg-light w-[18px] h-[1px]" />
             </div>
             From the Blog
           </h2>
-          <h3 className="text-[28px] md:text-[36px] lg:text-[42px] font-bold font-ao text-dark dark:text-light mb-4">
+          <h3 className="text-[28px] md:text-[36px] lg:text-[42px] font-bold font-ao text-gray-900 dark:text-white mb-4">
             Latest Insights & Expertise
           </h3>
-          <p className="text-dark/70 dark:text-light/70 font-switzer font-light text-[16px] md:text-[18px] leading-relaxed max-w-3xl">
+          <p className="text-gray-900/70 dark:text-white/70 font-switzer font-light text-[16px] md:text-[18px] leading-relaxed max-w-3xl">
             Practical advice and real-world insights from building
             high-performance web applications.
           </p>
@@ -73,7 +65,7 @@ const LatestBlogPosts = ({ posts }: LatestBlogPostsProps) => {
               className="group"
             >
               <Link href={`/blog/${post.slug}`}>
-                <article className="relative bg-light dark:bg-dark rounded-3xl overflow-hidden h-full border border-lightBorderColor dark:border-darkBorderColor hover:border-purple/30 transition-all duration-300 group-hover:scale-105">
+                <article className="relative bg-white dark:bg-gray-900 rounded-3xl overflow-hidden h-full border border-gray-200 dark:border-gray-700 hover:border-purple/30 transition-all duration-300 group-hover:scale-105">
                   <BlurBG className="rounded-3xl" />
 
                   <div className="relative z-20 flex flex-col h-full">
@@ -88,7 +80,7 @@ const LatestBlogPosts = ({ posts }: LatestBlogPostsProps) => {
                           loading="lazy"
                           sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
                         />
-                        <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-black/20 to-transparent" />
+                        <div className="absolute inset-0 bg-linear-to-t from-black/60 via-black/20 to-transparent" />
 
                         {/* Date Badge */}
                         <div className="absolute top-4 left-4">
@@ -126,16 +118,16 @@ const LatestBlogPosts = ({ posts }: LatestBlogPostsProps) => {
                         </div>
                       )}
 
-                      <h3 className="text-[20px] md:text-[24px] font-ao font-bold text-dark dark:text-light mb-4 group-hover:text-purple transition-colors duration-300 leading-tight flex-1">
+                      <h3 className="text-[20px] md:text-[24px] font-ao font-bold text-gray-900 dark:text-white mb-4 group-hover:text-purple transition-colors duration-300 leading-tight flex-1">
                         {post.title}
                       </h3>
 
-                      <p className="text-dark/80 dark:text-light/80 font-switzer font-light text-[14px] md:text-[16px] leading-relaxed mb-6 line-clamp-3">
+                      <p className="text-gray-900/80 dark:text-white/80 font-switzer font-light text-[14px] md:text-[16px] leading-relaxed mb-6 line-clamp-3">
                         {post.excerpt}
                       </p>
 
                       {/* Meta Info */}
-                      <div className="flex items-center justify-between text-dark/60 dark:text-light/60 pt-4 border-t border-lightBorderColor dark:border-darkBorderColor">
+                      <div className="flex items-center justify-between text-dark/60 dark:text-light/60 pt-4 border-t border-gray-200 dark:border-gray-700">
                         <div className="flex items-center gap-4">
                           {!post.cover && (
                             <div className="flex items-center gap-1">
@@ -165,7 +157,7 @@ const LatestBlogPosts = ({ posts }: LatestBlogPostsProps) => {
                   </div>
 
                   {/* Hover Gradient */}
-                  <div className="absolute inset-0 bg-gradient-to-r from-purple/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 rounded-3xl" />
+                  <div className="absolute inset-0 bg-linear-to-r from-purple/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 rounded-3xl" />
                 </article>
               </Link>
             </motion.div>
@@ -178,7 +170,7 @@ const LatestBlogPosts = ({ posts }: LatestBlogPostsProps) => {
             <Button
               variant="ghost"
               size="lg"
-              className="rounded-xl uppercase font-medium font-switzer text-dark dark:text-light hover:text-purple flex items-center gap-2 mx-auto"
+              className="rounded-xl uppercase font-medium font-switzer text-gray-900 dark:text-white hover:text-purple flex items-center gap-2 mx-auto"
             >
               Read All Articles
               <ArrowRight className="w-4 h-4" />

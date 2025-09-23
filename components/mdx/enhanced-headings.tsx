@@ -2,6 +2,7 @@
 
 import { useState } from 'react';
 import { Link as LinkIcon, Check } from 'lucide-react';
+import React from 'react';
 
 interface EnhancedHeadingProps {
   level: 1 | 2 | 3 | 4 | 5 | 6;
@@ -29,7 +30,7 @@ export function EnhancedHeading({ level, children, id }: EnhancedHeadingProps) {
   };
 
   const getHeadingClasses = () => {
-    const baseClasses = "group relative font-ao font-bold text-dark dark:text-light leading-tight scroll-mt-24";
+    const baseClasses = "group relative font-ao font-bold text-gray-900 dark:text-white leading-tight scroll-mt-24";
     
     switch (level) {
       case 1:
@@ -49,7 +50,7 @@ export function EnhancedHeading({ level, children, id }: EnhancedHeadingProps) {
     }
   };
 
-  const HeadingTag = `h${level}` as keyof JSX.IntrinsicElements;
+  const HeadingTag = `h${level}` as keyof React.JSX.IntrinsicElements;
 
   return (
     <HeadingTag id={headingId} className={getHeadingClasses()}>

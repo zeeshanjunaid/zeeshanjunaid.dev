@@ -9,7 +9,7 @@ const BackHomeButton = () => {
   return (
     <Link href="/">
       <Button
-        className="mt-8 space-x-1 w-max rounded-xl text-dark dark:text-light uppercase text-[12px] md:text-[14px]]"
+        className="mt-8 space-x-1 w-max rounded-xl text-gray-900 dark:text-white uppercase text-[12px] md:text-[14px]]"
         variant="purple"
       >
         <ChevronsLeft className="h-4 w-4" />
