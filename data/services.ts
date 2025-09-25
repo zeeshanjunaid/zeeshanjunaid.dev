@@ -82,7 +82,7 @@ export const servicesCards: ServicesCardProps[] = [
       "Engaging interfaces that captivate your audience, reduce bounce rates, and enhance user retention.",
     ctaLink: "uiux-design",
     ctaText: "Dive into my design depths",
-    ctaInfo: " for pricing and profound insights.",
+    ctaInfo: " for profound insights.",
   },
   {
     slug: "frontend-development",
@@ -104,7 +104,7 @@ export const servicesCards: ServicesCardProps[] = [
       "Cutting-edge web solutions that offer unparalleled speed, scalability, and interactivity, enhancing user engagement and satisfaction.",
     ctaLink: "frontend-development",
     ctaText: "Step into the future",
-    ctaInfo: "with our detailed guide and pricing.",
+    ctaInfo: "with our detailed guide.",
   },
   {
     slug: 'wordpress-development',
@@ -125,7 +125,7 @@ export const servicesCards: ServicesCardProps[] = [
       "A robust, scalable WordPress website that combines functionality, beauty, and ease of use, driving growth and user engagement.",
     ctaLink: "wordpress-development",
     ctaText: "Unravel the details",
-    ctaInfo: "of custom solutions and pricing.",
+    ctaInfo: "of custom solutions.",
   },
   {
     slug: 'webflow-development',
@@ -147,7 +147,7 @@ export const servicesCards: ServicesCardProps[] = [
       "Visually stunning, highly functional websites that you can easily manage and update, designed to captivate and convert your target audience.",
     ctaLink: "webflow-development",
     ctaText: "Chart your course",
-    ctaInfo: "to my pricing and service blueprints.",
+    ctaInfo: "to my service blueprints.",
   },
   {
     slug: 'shopify-development',
@@ -169,7 +169,7 @@ export const servicesCards: ServicesCardProps[] = [
       "A seamless, scalable, and secure online shopping experience that drives sales and delights customers at every touchpoint.",
     ctaLink: "shopify-development",
     ctaText: "Embark with me",
-    ctaInfo: "to discover pricing and explore uncharted possibilities.",
+    ctaInfo: "to explore uncharted possibilities.",
   },
   {
     slug: 'seo-optimization',
@@ -191,7 +191,7 @@ export const servicesCards: ServicesCardProps[] = [
       "Improved search engine rankings, increased organic traffic, and higher conversion rates, leading to significant growth in your online presence.",
     ctaLink: "seo-optimization",
     ctaText: "Begin your journey",
-    ctaInfo: "to peak performance with pricing guide.",
+    ctaInfo: "to peak performance.",
   },
   {
     slug: 'speed-optimization',
@@ -213,6 +213,6 @@ export const servicesCards: ServicesCardProps[] = [
       " A lightning-fast website that retains users, improves engagement, and boosts conversions, setting you apart from the competition.",
     ctaLink: "speed-optimization",
     ctaText: "Accelerate your journey",
-    ctaInfo: "with my performance optimization pricing and insights.",
+    ctaInfo: "with my performance optimization insights.",
   },
 ];

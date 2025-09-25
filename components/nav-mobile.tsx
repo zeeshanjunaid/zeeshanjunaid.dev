@@ -2,7 +2,7 @@
 
 import React, { useEffect } from "react";
 import { SocialLinks } from "./social-connect";
-import { Sheet, SheetContent, SheetTrigger } from "./ui/sheet";
+import { Sheet, SheetContent, SheetTrigger, SheetTitle } from "./ui/sheet";
 
 import { Button } from "./ui/button";
 import { HiMenuAlt4 } from "react-icons/hi";
@@ -41,6 +41,7 @@ const NavMobile = ({ data }: NavMobileProps) => {
         </Button>
       </SheetTrigger>
       <SheetContent id="mobile-navigation" className="bg-white dark:bg-gray-900 flex flex-col justify-between">
+        <SheetTitle className="sr-only">Mobile Navigation Menu</SheetTitle>
         <div className="flex flex-col space-y-4 mt-12">
           <Link
             href="/"

@@ -40,7 +40,6 @@ import { useSearchParams } from "next/navigation";
 import { useToast } from "@/components/ui/use-toast";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { motion } from "framer-motion";
-import { pricingTiers } from "./pricing-table";
 
 const formSchema = z.object({
   name: z.string().min(1, { message: "Name is required" }),
@@ -91,11 +90,14 @@ const ContactForm = () => {
 
   const serviceOptions = [
     { value: "none", label: "I'm not sure yet - let's discuss" },
-    ...pricingTiers.map((tier) => ({
-      value: tier.id,
-      label: `${tier.name} - $${tier.price}/month`,
-    })),
-    { value: "custom", label: "Custom project (one-time)" },
+    { value: "ui-ux-design", label: "UI/UX Design" },
+    { value: "frontend-development", label: "Frontend Development" },
+    { value: "wordpress-development", label: "WordPress Development" },
+    { value: "webflow-development", label: "Webflow Development" },
+    { value: "shopify-development", label: "Shopify Development" },
+    { value: "seo-optimization", label: "SEO Optimization" },
+    { value: "speed-optimization", label: "Speed Optimization" },
+    { value: "custom", label: "Custom project" },
   ];
 
   const containerVariants = {

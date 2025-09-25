@@ -1,13 +1,9 @@
 import ContactPageClient from "../components/contact-client";
 
-import PricingTable from "../components/pricing-table";
 import { SchemaMarkup } from "@/components/schema-markup";
 import { Container } from "@/components/container";
 import { BlurBG } from "@/components/blur-bg";
-import { CheckCircle, HelpCircle, ArrowRight } from "lucide-react";
-import { Button } from "@/components/ui/button";
-import Link from "next/link";
-import ContactForm from "../components/contact-form";
+import { HelpCircle } from "lucide-react";
 
 export const metadata = {
   title: "Start a Project",
@@ -44,15 +40,11 @@ const ContactPage = () => {
     },
     {
       question: "What is your turnaround time for a typical project?",
-      answer: "Project timelines vary based on scope and complexity. A simple website typically takes 4-6 weeks, while more complex applications can take 8-16 weeks. For subscription plans, you'll see regular progress with weekly updates and monthly deliverables."
-    },
-    {
-      question: "How does the subscription plan work?",
-      answer: "Subscription plans provide ongoing value with monthly deliverables. You can pause or cancel anytime with 30 days notice. There are no long-term contracts - just consistent, high-quality work that grows with your business needs."
+      answer: "Project timelines vary based on scope and complexity. A simple website typically takes 4-6 weeks, while more complex applications can take 8-16 weeks. I'll provide regular progress updates throughout the development process."
     },
     {
       question: "What if I only need a small, one-time task completed?",
-      answer: "I'm happy to discuss one-time projects! While my subscription plans offer the best value for ongoing work, I also take on custom projects. Use the contact form below to describe your needs, and I'll provide a custom quote."
+      answer: "I'm happy to discuss one-time projects! Use the contact form below to describe your needs, and I'll provide a custom quote for your specific requirements."
     }
   ];
 
@@ -61,51 +53,6 @@ const ContactPage = () => {
       <SchemaMarkup schema={contactSchema} />
       <ContactPageClient />
 
-      {/* Pricing Section */}
-      <section className="py-16 md:py-20 relative overflow-hidden">
-        <div className="absolute inset-0 -z-10">
-          <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] bg-purple/3 rounded-full blur-3xl" />
-        </div>
-
-        <Container className="px-4 md:px-7 lg:px-0">
-          <div className="mb-16 text-center">
-            <h2 className="text-[28px] md:text-[36px] lg:text-[42px] font-bold font-ao text-gray-900 dark:text-white mb-6">
-              How We Can Work Together
-            </h2>
-            <p className="text-gray-900/70 dark:text-white/70 font-switzer font-light text-[16px] md:text-[18px] leading-relaxed max-w-2xl mx-auto">
-              Choose the package that best fits your needs, or let&apos;s discuss a custom solution for your unique project.
-            </p>
-          </div>
-
-          <PricingTable />
-
-          {/* Custom Project Option */}
-          <div className="mt-16 text-center">
-            <div className="relative bg-white dark:bg-gray-900 rounded-3xl p-8 md:p-12 overflow-hidden max-w-3xl mx-auto">
-              <BlurBG className="rounded-3xl" />
-              <div className="relative z-20">
-                <h3 className="text-[24px] md:text-[28px] font-ao font-bold text-gray-900 dark:text-white mb-4">
-                  Have a Custom Project in Mind?
-                </h3>
-                <p className="text-gray-900/80 dark:text-white/80 font-switzer font-light text-[16px] md:text-[18px] leading-relaxed mb-6">
-                  If your project doesn&apos;t fit into one of the packages above, I&apos;d still love to hear about it.
-                  Fill out the form below with your project details, and I&apos;ll get back to you with a custom proposal.
-                </p>
-                <Link href="#contact-form">
-                  <Button
-                    variant="purple"
-                    size="lg"
-                    className="rounded-xl uppercase font-medium font-switzer flex items-center gap-2 mx-auto w-full sm:w-auto justify-center min-w-[200px]"
-                  >
-                    Discuss Custom Project
-                    <ArrowRight className="w-4 h-4" />
-                  </Button>
-                </Link>
-              </div>
-            </div>
-          </div>
-        </Container>
-      </section>
 
       {/* FAQ Section */}
       <section className="py-16 md:py-20">

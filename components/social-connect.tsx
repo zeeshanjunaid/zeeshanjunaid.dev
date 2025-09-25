@@ -9,7 +9,7 @@ import { cn } from "@/lib/utils";
 
 export function SocialLinks() {
   const styles =
-    "dark:text-gray-900 text-white w-4 h-4 md:w-5 md:h-5 lg:w-6 lg:h-6";
+    "text-gray-900 dark:text-white w-4 h-4 md:w-5 md:h-5 lg:w-6 lg:h-6";
   const socialLinks = [
     {
       name: "github",
@@ -39,7 +39,8 @@ export function SocialLinks() {
             aria-label={name}
             role="link"
             size="icon"
-            className="rounded-xl h-12 w-12 transition-all duration-200 hover:shadow-md"
+            variant="outline"
+            className="rounded-xl h-12 w-12 transition-all duration-200 hover:shadow-md border-gray-200 dark:border-gray-700 hover:border-purple/50 dark:hover:border-purple/50 bg-white/50 dark:bg-gray-800/50 hover:bg-purple/5 dark:hover:bg-purple/5"
           >
             {icon}
           </Button>

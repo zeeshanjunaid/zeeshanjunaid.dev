@@ -82,36 +82,6 @@ export const generatePersonSchema = () => ({
   },
 });
 
-export const generateBlogPostSchema = (post: any) => ({
-  "@context": "https://schema.org",
-  "@type": "BlogPosting",
-  headline: post.title,
-  description: post.excerpt,
-  image: `https://zeeshanjunaid.dev/images/opengraph-image.jpg`,
-  author: {
-    "@type": "Person",
-    name: post.author || "Zeeshan Junaid",
-    url: "https://zeeshanjunaid.dev/about",
-  },
-  publisher: {
-    "@type": "Organization",
-    name: "Zeeshan Junaid",
-    logo: {
-      "@type": "ImageObject",
-      url: "https://zeeshanjunaid.dev/images/opengraph-image.jpg",
-    },
-  },
-  datePublished: post.date,
-  dateModified: post.date,
-  mainEntityOfPage: {
-    "@type": "WebPage",
-    "@id": `https://zeeshanjunaid.dev/blog/${post.slug}`,
-  },
-  keywords: post.tags?.join(", ") || "",
-  wordCount: post.readingTime ? post.readingTime * 200 : 1000,
-  timeRequired: post.readingTime ? `PT${post.readingTime}M` : "PT5M",
-});
-
 export const generateServiceSchema = (service: any) => ({
   "@context": "https://schema.org",
   "@type": "Service",

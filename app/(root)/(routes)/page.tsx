@@ -1,8 +1,6 @@
 import { Hero } from "./components/hero";
-import { getLatestPosts } from "@/lib/posts";
 import { SchemaMarkup } from "@/components/schema-markup";
 import HomeCTA from "@/components/home-cta";
-import LatestBlogPosts from "./components/latest-blog-posts";
 import ProjectsList from "@/data/work";
 import ReviewsList from "@/data/reviews";
 import MyApproach from "./components/my-approach";
@@ -12,7 +10,6 @@ import TestimonialsSlider from "./components/testimonials-slider";
 export default async function Home() {
   const selectedProjects = ProjectsList.filter((project) => project.selected);
   const featuredReviews = ReviewsList.filter((review) => review.featured);
-  const latestPosts = await getLatestPosts(3);
   const homepageSchema = {
     "@context": "https://schema.org",
     "@type": "WebPage",
@@ -55,7 +52,6 @@ export default async function Home() {
       <Hero />
       <MyApproach />
       <FeaturedCaseStudies projects={selectedProjects} />
-      <LatestBlogPosts posts={latestPosts} />
       <TestimonialsSlider reviews={featuredReviews} />
       <HomeCTA />
     </>

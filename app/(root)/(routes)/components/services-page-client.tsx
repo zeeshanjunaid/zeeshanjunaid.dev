@@ -268,7 +268,7 @@ const ServicesPageClient = () => {
                     size="lg"
                     className="rounded-xl uppercase font-medium font-switzer text-gray-900 dark:text-white hover:text-purple w-full sm:w-auto justify-center min-w-[200px]"
                   >
-                    View Pricing Plans
+                    Start a Project
                   </Button>
                 </Link>
               </div>

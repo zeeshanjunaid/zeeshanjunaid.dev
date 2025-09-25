@@ -270,13 +270,6 @@ html {
   display: none;
 }
 
-/* Blog post diagrams max height */
-.prose svg,
-.prose img[src*="diagram"] {
-  max-height: 550px;
-  width: auto;
-  margin: 0 auto;
-}
 
 /* Enhanced code block styling to work with custom components */
 .prose pre {

@@ -141,7 +141,7 @@ export const Hero = () => {
             initial={{ scale: 0.9 }}
             animate={{ scale: 1 }}
             transition={{ duration: 0.6, delay: 0.2 }}
-            className="absolute bottom-0 lg:left-auto lg:right-0 -translate-x-3/4 lg:translate-x-0 w-full h-full z-20"
+            className="absolute bottom-0 left-1/2 lg:left-auto lg:right-0 -translate-x-1/2 lg:translate-x-0 w-full h-full z-20"
           >
             <Image
               sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"

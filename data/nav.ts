@@ -1,7 +1,6 @@
 const navLinks = [
   { label: "About", link: "/about" },
   { label: "Work", link: "/work" },
-  { label: "Blog", link: "/blog" },
   { label: "Services", link: "/services" },
   { label: "Reviews", link: "/reviews" },
   { label: "Start a Project", link: "/contact" },
