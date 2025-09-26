@@ -25,11 +25,12 @@ const WorkWrapper = () => {
       skillValue.length > 0
         ? ProjectsList.filter((project) =>
             project.tags.some((skill) => 
-              skill.toLowerCase().includes(skillValue.toLowerCase())
+              skill.toLowerCase() === skillValue.toLowerCase()
             ),
           )
         : ProjectsList;
 
+    console.log('Filtering by:', skillValue, 'Found projects:', filteredProjects.length);
     setProjects(filteredProjects);
   }, [skillValue]);
 
@@ -68,7 +69,7 @@ const WorkWrapper = () => {
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         transition={{ duration: 0.8 }}
-        className="relative overflow-hidden"
+        className="relative overflow-x-hidden"
       >
         {/* Background Elements */}
         <div className="absolute inset-0 -z-10">

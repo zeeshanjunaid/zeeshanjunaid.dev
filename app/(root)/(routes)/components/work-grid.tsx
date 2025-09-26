@@ -64,17 +64,20 @@ export const WorkGrid = ({ projects, selectedSkill }: WorkGridProps) => {
       <Container className="px-4 md:px-7 lg:px-0">
         <motion.div
           initial="hidden"
-          whileInView="visible"
-          viewport={{ once: true, margin: "-50px" }}
+          animate="visible"
           variants={containerVariants}
           className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12"
         >
-          {projects.map((project, index) => (
-            <motion.div
-              key={project.name}
-              variants={cardVariants}
-              className="group relative"
-            >
+          <AnimatePresence mode="wait">
+            {projects.map((project, index) => (
+              <motion.div
+                key={project.name}
+                variants={cardVariants}
+                initial="hidden"
+                animate="visible"
+                exit="hidden"
+                className="group relative"
+              >
               <Link href={`/work/${project.slug}`}>
                 <motion.div
                   className="relative bg-white dark:bg-gray-900 rounded-3xl overflow-hidden border border-gray-200 dark:border-gray-700 group cursor-pointer h-full"
@@ -178,8 +181,9 @@ export const WorkGrid = ({ projects, selectedSkill }: WorkGridProps) => {
                   <div className="absolute inset-0 bg-linear-to-r from-purple/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 rounded-3xl" />
                 </motion.div>
               </Link>
-            </motion.div>
-          ))}
+              </motion.div>
+            ))}
+          </AnimatePresence>
         </motion.div>
       </Container>
     </div>

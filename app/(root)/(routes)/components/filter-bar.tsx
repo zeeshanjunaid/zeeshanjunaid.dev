@@ -62,7 +62,7 @@ export function FilterBar({
   }, [open]);
 
   return (
-    <div className="relative" ref={dropdownRef}>
+    <div className="relative z-50" ref={dropdownRef}>
       <Button
         variant="outline"
         role="combobox"
@@ -94,7 +94,7 @@ export function FilterBar({
       </Button>
 
       {open && (
-        <div className="absolute top-full left-0 right-0 z-[9999] mt-1 w-full min-w-[200px] md:min-w-[240px] rounded-xl bg-white dark:bg-gray-900 border border-gray-200 dark:border-gray-700 shadow-xl">
+        <div className="absolute top-full left-0 right-0 z-[99] mt-1 w-full min-w-[200px] md:min-w-[240px] rounded-xl bg-white dark:bg-gray-900 border border-gray-200 dark:border-gray-700 shadow-xl overflow-hidden">
           {/* Search Input */}
           <div className="flex items-center border-b px-3 py-2">
             <input
