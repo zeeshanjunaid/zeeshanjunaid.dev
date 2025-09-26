@@ -69,7 +69,7 @@ const WorkWrapper = () => {
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         transition={{ duration: 0.8 }}
-        className="relative overflow-x-hidden"
+        className="relative"
       >
         {/* Background Elements */}
         <div className="absolute inset-0 -z-10">
