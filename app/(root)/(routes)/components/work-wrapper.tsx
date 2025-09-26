@@ -24,7 +24,9 @@ const WorkWrapper = () => {
     const filteredProjects =
       skillValue.length > 0
         ? ProjectsList.filter((project) =>
-            project.tags.some((skill) => skill.includes(skillValue)),
+            project.tags.some((skill) => 
+              skill.toLowerCase().includes(skillValue.toLowerCase())
+            ),
           )
         : ProjectsList;
 

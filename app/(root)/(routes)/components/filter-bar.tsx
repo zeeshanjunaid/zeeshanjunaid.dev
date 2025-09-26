@@ -21,9 +21,16 @@ export function FilterBar({
   const [searchValue, setSearchValue] = React.useState("");
   const dropdownRef = React.useRef<HTMLDivElement>(null);
 
-  const filteredSkills = skills.filter((skill) =>
-    skill.toLowerCase().includes(searchValue.toLowerCase())
-  );
+  const filteredSkills = React.useMemo(() => {
+    if (!searchValue.trim()) {
+      return skills;
+    }
+    const filtered = skills.filter((skill) =>
+      skill.toLowerCase().includes(searchValue.toLowerCase())
+    );
+    console.log('Search value:', searchValue, 'Filtered skills:', filtered);
+    return filtered;
+  }, [skills, searchValue]);
 
   const handleSelect = (skill: string) => {
     setSkillValue(skill === skillValue ? "" : skill);
@@ -87,7 +94,7 @@ export function FilterBar({
       </Button>
 
       {open && (
-        <div className="absolute top-full left-0 right-0 z-50 mt-1 w-full min-w-[200px] md:min-w-[240px] rounded-xl bg-white dark:bg-gray-900 border border-gray-200 dark:border-gray-700 shadow-lg">
+        <div className="absolute top-full left-0 right-0 z-[9999] mt-1 w-full min-w-[200px] md:min-w-[240px] rounded-xl bg-white dark:bg-gray-900 border border-gray-200 dark:border-gray-700 shadow-xl">
           {/* Search Input */}
           <div className="flex items-center border-b px-3 py-2">
             <input
@@ -95,16 +102,27 @@ export function FilterBar({
               placeholder="Search technology..."
               value={searchValue}
               onChange={(e) => setSearchValue(e.target.value)}
-              className="flex h-8 w-full rounded-md bg-transparent text-sm outline-none placeholder:text-muted-foreground disabled:cursor-not-allowed disabled:opacity-50"
+              className="flex h-8 w-full rounded-md bg-transparent text-sm outline-none placeholder:text-muted-foreground disabled:cursor-not-allowed disabled:opacity-50 text-gray-900 dark:text-white"
               autoFocus
+              onKeyDown={(e) => {
+                if (e.key === 'Escape') {
+                  setOpen(false);
+                  setSearchValue("");
+                }
+              }}
             />
           </div>
           
           {/* Skills List */}
           <div className="max-h-[300px] overflow-y-auto overflow-x-hidden p-1">
+            {searchValue && (
+              <div className="px-2 py-1 text-xs text-gray-500 dark:text-gray-400 border-b">
+                {filteredSkills.length} skill{filteredSkills.length !== 1 ? 's' : ''} found
+              </div>
+            )}
             {filteredSkills.length === 0 ? (
-              <div className="py-6 text-center text-sm text-muted-foreground">
-                No Skill found.
+              <div className="py-6 text-center text-sm text-gray-500 dark:text-gray-400">
+                {searchValue ? `No skills found for "${searchValue}"` : "No skills available"}
               </div>
             ) : (
               <div className="space-y-1">
