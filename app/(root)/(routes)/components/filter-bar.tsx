@@ -9,6 +9,7 @@ import {
   CommandGroup,
   CommandInput,
   CommandItem,
+  CommandList,
 } from "@/components/ui/command";
 import {
   Popover,
@@ -57,30 +58,32 @@ export function FilterBar({
       <PopoverContent className="w-full min-w-[200px] md:min-w-[240px] py-0 rounded-xl bg-white dark:bg-gray-900 border-gray-200 dark:border-gray-700">
         <Command className="rounded-xl bg-white dark:bg-gray-900 ">
           <CommandInput placeholder="Search technology..." className="border-0" />
-          <CommandEmpty>No Skill found.</CommandEmpty>
-          <CommandGroup>
-            {skills.map((skill, index) => (
-              <CommandItem
-                key={index}
-                value={skill}
-                className="uppercase font-switzer font-medium text-gray-900 dark:text-white hover:bg-purple/10 aria-selected:bg-purple/20 rounded-lg mx-1 my-0.5"
-                onSelect={(currentValue) => {
-                  setSkillValue(
-                    currentValue === skillValue ? "" : currentValue,
-                  );
-                  setOpen(false);
-                }}
-              >
-                <Check
-                  className={cn(
-                    "mr-2 h-4 w-4 text-purple",
-                    skillValue === skill ? "opacity-100" : "opacity-0",
-                  )}
-                />
-                {skill}
-              </CommandItem>
-            ))}
-          </CommandGroup>
+          <CommandList>
+            <CommandEmpty>No Skill found.</CommandEmpty>
+            <CommandGroup>
+              {skills.map((skill, index) => (
+                <CommandItem
+                  key={index}
+                  value={skill}
+                  className="uppercase font-switzer font-medium text-gray-900 dark:text-white hover:bg-purple/10 aria-selected:bg-purple/20 rounded-lg mx-1 my-0.5"
+                  onSelect={(currentValue) => {
+                    setSkillValue(
+                      currentValue === skillValue ? "" : currentValue,
+                    );
+                    setOpen(false);
+                  }}
+                >
+                  <Check
+                    className={cn(
+                      "mr-2 h-4 w-4 text-purple",
+                      skillValue === skill ? "opacity-100" : "opacity-0",
+                    )}
+                  />
+                  {skill}
+                </CommandItem>
+              ))}
+            </CommandGroup>
+          </CommandList>
         </Command>
       </PopoverContent>
     </Popover>
