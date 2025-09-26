@@ -1,7 +1,4 @@
-"use client";
-
-import { notFound, useRouter } from "next/navigation";
-import { useEffect, useState } from "react";
+import { notFound } from "next/navigation";
 import { Container } from "@/components/container";
 import { BlurBG } from "@/components/blur-bg";
 import { Button } from "@/components/ui/button";
@@ -9,7 +6,6 @@ import {
   ArrowLeft,
   ExternalLink,
   Calendar,
-  ArrowRight,
   ChevronDown,
 } from "lucide-react";
 import Link from "next/link";
@@ -17,8 +13,8 @@ import Image from "next/image";
 import ProjectsList from "@/data/work";
 import { WorkTag } from "@/components/work-item";
 import { SchemaMarkup } from "@/components/schema-markup";
-import { motion, useScroll, useTransform } from "framer-motion";
 import { generateProjectSchema } from "@/lib/schema";
+import { NextProjectButton, ParallaxImage } from "./client-components";
 
 interface ProjectPageProps {
   params: Promise<{
@@ -26,38 +22,20 @@ interface ProjectPageProps {
   }>;
 }
 
-export default function ProjectPage({ params }: ProjectPageProps) {
-  const router = useRouter();
-  const [slug, setSlug] = useState<string>("");
-  const [project, setProject] = useState<any>(null);
-
-  useEffect(() => {
-    const getParams = async () => {
-      const resolvedParams = await params;
-      setSlug(resolvedParams.slug);
-      const foundProject = ProjectsList.find((p) => p.slug === resolvedParams.slug);
-      setProject(foundProject);
-    };
-    getParams();
-  }, [params]);
-  const { scrollYProgress } = useScroll();
-  const y = useTransform(scrollYProgress, [0, 1], [0, -100]); // Moved hook to top level
-
-  if (!project && slug) {
-    notFound();
-  }
+export default async function ProjectPage({ params }: ProjectPageProps) {
+  const resolvedParams = await params;
+  const slug = resolvedParams.slug;
+  const project = ProjectsList.find((p) => p.slug === slug);
 
   if (!project) {
-    return <div>Loading...</div>;
+    notFound();
   }
 
   // Find next project
   const currentIndex = ProjectsList.findIndex((p) => p.slug === slug);
   const nextProject = ProjectsList[(currentIndex + 1) % ProjectsList.length];
 
-  const navigateToNextProject = () => {
-    router.push(`/work/${nextProject.slug}`);
-  };
+  // This will be handled by a client component
 
   // Dynamic image descriptions based on project context
   const getImageDescription = (index: number, totalImages: number) => {
@@ -87,91 +65,117 @@ export default function ProjectPage({ params }: ProjectPageProps) {
       <SchemaMarkup schema={generateProjectSchema(project)} />
 
       {/* Hero Section with Parallax */}
-      <section className="relative min-h-screen flex items-center justify-center overflow-hidden">
-        {project.imgUrl && (
-          <motion.div
-            className="absolute inset-0 z-0"
-            style={{ y }} // Use the variable here
-          >
-            <Image
-              src={project.imgUrl}
-              alt={project.name}
-              fill
-              className="object-cover"
-              sizes="100vw"
-              priority
-            />
-            <div className="absolute inset-0 bg-black/60" />
-          </motion.div>
-        )}
-
-        <Container className="relative z-10 px-4 lg:px-0 text-center">
-          <motion.div
-            initial={{ opacity: 0, y: 50 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, delay: 0.2 }}
-          >
-            <div className="flex items-center justify-center gap-4 mb-6">
-              <div className="flex items-center gap-2 text-white/80">
-                <Calendar className="w-4 h-4" />
-                <span className="text-[12px] md:text-[14px] font-switzer font-light uppercase tracking-wider">
-                  {project.year}
-                </span>
+      {project.imgUrl ? (
+        <ParallaxImage imgUrl={project.imgUrl} name={project.name}>
+          <Container className="relative z-10 px-4 lg:px-0 text-center">
+              <div className="flex items-center justify-center gap-4 mb-6">
+                <div className="flex items-center gap-2 text-white/80">
+                  <Calendar className="w-4 h-4" />
+                  <span className="text-[12px] md:text-[14px] font-switzer font-light uppercase tracking-wider">
+                    {project.year}
+                  </span>
+                </div>
+                <div className="flex items-center gap-2">
+                  {project.tags.slice(0, 3).map((tag: string, index: number) => (
+                    <div
+                      key={index}
+                      className="px-3 py-1 bg-white/20 backdrop-blur-sm rounded-xl text-white text-[10px] md:text-[12px] uppercase font-switzer font-light"
+                    >
+                      {tag}
+                    </div>
+                  ))}
+                </div>
               </div>
-              <div className="flex items-center gap-2">
-                {project.tags.slice(0, 3).map((tag: string, index: number) => (
-                  <div
-                    key={index}
-                    className="px-3 py-1 bg-white/20 backdrop-blur-sm rounded-xl text-white text-[10px] md:text-[12px] uppercase font-switzer font-light"
+
+              <h1 className="text-[32px] md:text-[48px] lg:text-[64px] font-bold font-ao text-white mb-6 capitalize leading-tight">
+                {project.name}
+              </h1>
+
+              <p className="text-[16px] md:text-[18px] lg:text-[20px] text-white/90 font-switzer font-light leading-relaxed max-w-3xl mx-auto mb-8">
+                {project.description}
+              </p>
+
+              <div className="flex flex-col sm:flex-row gap-4 justify-center">
+                <a href={project.link} target="_blank" rel="noopener noreferrer">
+                  <Button
+                    variant="purple"
+                    size="lg"
+                    className="rounded-xl uppercase font-medium font-switzer flex items-center gap-2 w-full sm:w-auto justify-center min-w-[200px]"
                   >
-                    {tag}
-                  </div>
-                ))}
+                    <ExternalLink className="w-4 h-4" />
+                    View Live Project
+                  </Button>
+                </a>
+                <Link href="/work">
+                  <Button
+                    variant="ghost"
+                    size="lg"
+                    className="rounded-xl uppercase font-medium font-switzer text-white border-white/30 hover:bg-white/10 w-full sm:w-auto justify-center min-w-[200px]"
+                  >
+                    <ArrowLeft className="w-4 h-4 mr-2" />
+                    Back to Case Studies
+                  </Button>
+                </Link>
+              </div>
+          </Container>
+        </ParallaxImage>
+      ) : (
+        <section className="relative min-h-screen flex items-center justify-center overflow-hidden bg-gray-100 dark:bg-gray-800">
+          <Container className="relative z-10 px-4 lg:px-0 text-center">
+            <div>
+              <div className="flex items-center justify-center gap-4 mb-6">
+                <div className="flex items-center gap-2 text-gray-600 dark:text-gray-300">
+                  <Calendar className="w-4 h-4" />
+                  <span className="text-[12px] md:text-[14px] font-switzer font-light uppercase tracking-wider">
+                    {project.year}
+                  </span>
+                </div>
+                <div className="flex items-center gap-2">
+                  {project.tags.slice(0, 3).map((tag: string, index: number) => (
+                    <div
+                      key={index}
+                      className="px-3 py-1 bg-gray-200 dark:bg-gray-700 rounded-xl text-gray-800 dark:text-gray-200 text-[10px] md:text-[12px] uppercase font-switzer font-light"
+                    >
+                      {tag}
+                    </div>
+                  ))}
+                </div>
+              </div>
+
+              <h1 className="text-[32px] md:text-[48px] lg:text-[64px] font-bold font-ao text-gray-900 dark:text-white mb-6 capitalize leading-tight">
+                {project.name}
+              </h1>
+
+              <p className="text-[16px] md:text-[18px] lg:text-[20px] text-gray-600 dark:text-gray-300 font-switzer font-light leading-relaxed max-w-3xl mx-auto mb-8">
+                {project.description}
+              </p>
+
+              <div className="flex flex-col sm:flex-row gap-4 justify-center">
+                <a href={project.link} target="_blank" rel="noopener noreferrer">
+                  <Button
+                    variant="purple"
+                    size="lg"
+                    className="rounded-xl uppercase font-medium font-switzer flex items-center gap-2 w-full sm:w-auto justify-center min-w-[200px]"
+                  >
+                    <ExternalLink className="w-4 h-4" />
+                    View Live Project
+                  </Button>
+                </a>
+                <Link href="/work">
+                  <Button
+                    variant="ghost"
+                    size="lg"
+                    className="rounded-xl uppercase font-medium font-switzer text-gray-900 dark:text-white border-gray-300 dark:border-gray-600 hover:bg-gray-100 dark:hover:bg-gray-700 w-full sm:w-auto justify-center min-w-[200px]"
+                  >
+                    <ArrowLeft className="w-4 h-4 mr-2" />
+                    Back to Case Studies
+                  </Button>
+                </Link>
               </div>
             </div>
-
-            <h1 className="text-[32px] md:text-[48px] lg:text-[64px] font-bold font-ao text-white mb-6 capitalize leading-tight">
-              {project.name}
-            </h1>
-
-            <p className="text-[16px] md:text-[18px] lg:text-[20px] text-white/90 font-switzer font-light leading-relaxed max-w-3xl mx-auto mb-8">
-              {project.description}
-            </p>
-
-            <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <a href={project.link} target="_blank" rel="noopener noreferrer">
-                <Button
-                  variant="purple"
-                  size="lg"
-                  className="rounded-xl uppercase font-medium font-switzer flex items-center gap-2 w-full sm:w-auto justify-center min-w-[200px]"
-                >
-                  <ExternalLink className="w-4 h-4" />
-                  View Live Project
-                </Button>
-              </a>
-              <Link href="/work">
-                <Button
-                  variant="ghost"
-                  size="lg"
-                  className="rounded-xl uppercase font-medium font-switzer text-white border-white/30 hover:bg-white/10 w-full sm:w-auto justify-center min-w-[200px]"
-                >
-                  <ArrowLeft className="w-4 h-4 mr-2" />
-                  Back to Case Studies
-                </Button>
-              </Link>
-            </div>
-          </motion.div>
-        </Container>
-
-        {/* Scroll indicator */}
-        <motion.div
-          className="absolute bottom-8 left-1/2 transform -translate-x-1/2 text-white"
-          animate={{ y: [0, 10, 0] }}
-          transition={{ duration: 2, repeat: Infinity }}
-        >
-          <ChevronDown className="w-6 h-6" />
-        </motion.div>
-      </section>
+          </Container>
+        </section>
+      )}
 
       {/* Story Section */}
       {project.images && project.images.length > 0 && (
@@ -179,13 +183,7 @@ export default function ProjectPage({ params }: ProjectPageProps) {
           <Container className="px-4 md:px-7 lg:px-0">
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 items-start">
               {/* Story Content */}
-              <motion.div
-                initial={{ opacity: 0, x: -50 }}
-                whileInView={{ opacity: 1, x: 0 }}
-                transition={{ duration: 0.8 }}
-                viewport={{ once: true }}
-                className="space-y-8"
-              >
+              <div className="space-y-8">
                 <div>
                   <h2 className="text-[24px] md:text-[32px] lg:text-[36px] font-bold font-ao text-gray-900 dark:text-white mb-6">
                     The Story
@@ -216,16 +214,10 @@ export default function ProjectPage({ params }: ProjectPageProps) {
                     </p>
                   </div>
                 )}
-              </motion.div>
+              </div>
 
               {/* Project Info Sidebar */}
-              <motion.div
-                initial={{ opacity: 0, x: 50 }}
-                whileInView={{ opacity: 1, x: 0 }}
-                transition={{ duration: 0.8 }}
-                viewport={{ once: true }}
-                className="space-y-6"
-              >
+              <div className="space-y-6">
                 <div className="relative rounded-3xl overflow-hidden bg-white dark:bg-gray-900 p-8">
                   <BlurBG className="rounded-3xl" />
                   <div className="relative z-20">
@@ -298,7 +290,7 @@ export default function ProjectPage({ params }: ProjectPageProps) {
                     </div>
                   </div>
                 )}
-              </motion.div>
+              </div>
             </div>
           </Container>
         </section>
@@ -308,39 +300,23 @@ export default function ProjectPage({ params }: ProjectPageProps) {
       {project.images && project.images.length > 0 && (
         <section className="py-16 md:py-20">
           <Container className="px-4 md:px-7 lg:px-0 mb-12">
-            <motion.h2
-              initial={{ opacity: 0, y: 30 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.8 }}
-              viewport={{ once: true }}
-              className="inline-flex center gap-x-[10px] items-center font-normal text-gray-900 dark:text-white uppercase text-[14px] tracking-[.42px] mb-8"
-            >
+            <h2 className="inline-flex center gap-x-[10px] items-center font-normal text-gray-900 dark:text-white uppercase text-[14px] tracking-[.42px] mb-8">
               <div className="flex flex-col space-y-[6px]">
                 <span className="bg-dark dark:bg-light w-[18px] h-[1px]" />
                 <span className="bg-dark dark:bg-light w-[18px] h-[1px]" />
               </div>
               Visual Journey
-            </motion.h2>
-            <motion.p
-              initial={{ opacity: 0, y: 30 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.8, delay: 0.1 }}
-              viewport={{ once: true }}
-              className="text-gray-900/70 dark:text-white/70 font-switzer font-light text-[14px] md:text-[16px] lg:text-[18px] max-w-2xl"
-            >
+            </h2>
+            <p className="text-gray-900/70 dark:text-white/70 font-switzer font-light text-[14px] md:text-[16px] lg:text-[18px] max-w-2xl">
               Explore the complete visual story of this project through detailed
               screens and interactions.
-            </motion.p>
+            </p>
           </Container>
 
           <div className="space-y-12 md:space-y-16 lg:space-y-20">
                       {project.images.map((image: string, index: number) => (
-              <motion.div
+              <div
                 key={index}
-                initial={{ opacity: 0, y: 100 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                transition={{ duration: 1, delay: index * 0.1 }}
-                viewport={{ once: true, margin: "-100px" }}
                 className="relative w-full"
               >
                 {/* Adaptive image container */}
@@ -391,7 +367,7 @@ export default function ProjectPage({ params }: ProjectPageProps) {
                     </p>
                   </div>
                 </Container>
-              </motion.div>
+              </div>
             ))}
           </div>
         </section>
@@ -401,13 +377,7 @@ export default function ProjectPage({ params }: ProjectPageProps) {
       {project.results && (
         <section className="py-16 md:py-20">
           <Container className="px-4 md:px-7 lg:px-0">
-            <motion.div
-              initial={{ opacity: 0, y: 50 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.8 }}
-              viewport={{ once: true }}
-              className="mb-12"
-            >
+            <div className="mb-12">
               <h2 className="inline-flex center gap-x-[10px] items-center font-normal text-gray-900 dark:text-white uppercase text-[14px] tracking-[.42px] mb-8">
                 <div className="flex flex-col space-y-[6px]">
                   <span className="bg-dark dark:bg-light w-[18px] h-[1px]" />
@@ -419,7 +389,7 @@ export default function ProjectPage({ params }: ProjectPageProps) {
                 The measurable outcomes and positive impact this project
                 delivered.
               </p>
-            </motion.div>
+            </div>
 
             <div className="relative rounded-3xl overflow-hidden max-w-4xl mx-auto bg-white dark:bg-gray-900 p-8 md:p-12">
               <BlurBG className="rounded-3xl" />
@@ -427,19 +397,15 @@ export default function ProjectPage({ params }: ProjectPageProps) {
                 {Array.isArray(project.results) ? (
                   <div className="grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-8">
                     {project.results.map((result: string, index: number) => (
-                      <motion.div
+                      <div
                         key={index}
-                        initial={{ opacity: 0, y: 30 }}
-                        whileInView={{ opacity: 1, y: 0 }}
-                        transition={{ duration: 0.6, delay: index * 0.1 }}
-                        viewport={{ once: true }}
                         className="flex items-start gap-4"
                       >
                         <div className="w-3 h-3 bg-purple rounded-full mt-2 flex-shrink-0" />
                         <span className="text-gray-900 dark:text-white font-switzer font-light text-[14px] md:text-[16px] lg:text-[18px] leading-relaxed">
                           {result}
                         </span>
-                      </motion.div>
+                      </div>
                     ))}
                   </div>
                 ) : (
@@ -469,12 +435,7 @@ export default function ProjectPage({ params }: ProjectPageProps) {
         </div>
 
         <Container className="relative z-10 px-4 md:px-7 lg:px-0 text-center">
-          <motion.div
-            initial={{ opacity: 0, y: 50 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8 }}
-            viewport={{ once: true }}
-          >
+          <div>
             <h2 className="text-[24px] md:text-[32px] lg:text-[36px] font-bold font-ao text-white mb-4">
               Next Project
             </h2>
@@ -485,18 +446,8 @@ export default function ProjectPage({ params }: ProjectPageProps) {
               {nextProject.description}
             </p>
 
-            <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
-              <Button
-                onClick={navigateToNextProject}
-                variant="purple"
-                size="lg"
-                className="rounded-xl uppercase font-medium font-switzer flex items-center gap-2 mx-auto"
-              >
-                View Next Project
-                <ArrowRight className="w-4 h-4" />
-              </Button>
-            </motion.div>
-          </motion.div>
+            <NextProjectButton nextProject={nextProject} />
+          </div>
         </Container>
       </section>
     </>
