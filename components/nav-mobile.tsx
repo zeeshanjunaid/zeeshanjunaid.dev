@@ -24,15 +24,16 @@ const NavMobile = ({ data }: NavMobileProps) => {
     setOpen(false);
   }, [pathname]);
   return (
-    <Sheet open={open} onOpenChange={setOpen}>
-      <SheetTrigger asChild>
-        <Button
-          aria-label="hamburger"
-          role="button"
-          size="icon"
-          variant="highlight"
-          className="lg:hidden inline-flex items-center h-[38px]"
-        >
+    <div suppressHydrationWarning>
+      <Sheet open={open} onOpenChange={setOpen}>
+        <SheetTrigger asChild>
+          <Button
+            aria-label="hamburger"
+            role="button"
+            size="icon"
+            variant="highlight"
+            className="lg:hidden inline-flex items-center h-[38px]"
+          >
           <div
             className="absolute top-0 left-0 w-full h-full rounded-xl -z-10 scale-y-110 scale-x-105
     backdrop-blur-xs group-hover:scale-0 transition-all duration-500 delay-0 ease-in-out group-hover:duration-1000 hamburger-gradient"
@@ -73,6 +74,7 @@ const NavMobile = ({ data }: NavMobileProps) => {
         </div>
       </SheetContent>
     </Sheet>
+    </div>
   );
 };
 
