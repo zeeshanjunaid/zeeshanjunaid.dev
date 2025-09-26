@@ -14,7 +14,7 @@ import ProjectsList from "@/data/work";
 import { WorkTag } from "@/components/work-item";
 import { SchemaMarkup } from "@/components/schema-markup";
 import { generateProjectSchema } from "@/lib/schema";
-import { NextProjectButton, ParallaxImage } from "./client-components";
+import { NextProjectButton, ParallaxImage, ProjectImage } from "./client-components";
 
 interface ProjectPageProps {
   params: Promise<{
@@ -323,32 +323,12 @@ export default async function ProjectPage({ params }: ProjectPageProps) {
                 <div className="relative w-full group overflow-hidden rounded-3xl mx-4 md:mx-7 lg:mx-0">
                   {/* Dynamic height container based on image aspect ratio */}
                   <div className="relative w-full min-h-[40vh] max-h-[90vh]">
-                    <Image
+                    <ProjectImage
                       src={image}
                       alt={`${project.name} screen ${index + 1}`}
-                      fill
                       className="object-contain object-center group-hover:scale-[1.02] transition-transform duration-700"
                       sizes="100vw"
                       priority={index < 2}
-                      onLoad={(e) => {
-                        const img = e.target as HTMLImageElement;
-                        const container = img.parentElement;
-                        if (container) {
-                          const aspectRatio =
-                            img.naturalWidth / img.naturalHeight;
-                          // Adjust container height based on aspect ratio
-                          if (aspectRatio > 2) {
-                            // Wide images (like desktop screens)
-                            container.style.height = "50vh";
-                          } else if (aspectRatio < 0.8) {
-                            // Tall images (like mobile screens)
-                            container.style.height = "70vh";
-                          } else {
-                            // Square-ish images
-                            container.style.height = "60vh";
-                          }
-                        }
-                      }}
                     />
                   </div>
                   <div className="absolute inset-0 bg-linear-to-t from-black/5 to-transparent rounded-3xl pointer-events-none" />

@@ -63,3 +63,44 @@ export function ParallaxImage({ imgUrl, name, children }: ParallaxImageProps) {
     </section>
   );
 }
+
+interface ProjectImageProps {
+  src: string;
+  alt: string;
+  className?: string;
+  sizes?: string;
+  priority?: boolean;
+}
+
+export function ProjectImage({ src, alt, className, sizes, priority }: ProjectImageProps) {
+  const handleLoad = (e: React.SyntheticEvent<HTMLImageElement>) => {
+    const img = e.target as HTMLImageElement;
+    const container = img.parentElement;
+    if (container) {
+      const aspectRatio = img.naturalWidth / img.naturalHeight;
+      // Adjust container height based on aspect ratio
+      if (aspectRatio > 2) {
+        // Wide images (like desktop screens)
+        container.style.height = "50vh";
+      } else if (aspectRatio < 0.8) {
+        // Tall images (like mobile screens)
+        container.style.height = "70vh";
+      } else {
+        // Square-ish images
+        container.style.height = "60vh";
+      }
+    }
+  };
+
+  return (
+    <Image
+      src={src}
+      alt={alt}
+      fill
+      className={className}
+      sizes={sizes}
+      priority={priority}
+      onLoad={handleLoad}
+    />
+  );
+}
