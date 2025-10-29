@@ -197,18 +197,6 @@ const ReviewsList: Review[] = [
       name: "Canada",
     },
   },
-  {
-    client: "Suliman Hassan",
-    headline: "Talented React Developer - great guy to work with",
-    profile: "/images/testimonials/allegra.png",
-    review:
-      "If you are looking for a talented React Developer, I would recommend considering this freelancer for your project.Great guy to work with. I will consider him for future projects",
-    rating: 5,
-    country: {
-      code: "sa",
-      name: "Saudi Arabia",
-    },
-  },
 ];
 
 export default ReviewsList;

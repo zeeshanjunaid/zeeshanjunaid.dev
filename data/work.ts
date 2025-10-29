@@ -75,36 +75,6 @@ const ProjectsList: Project[] = [
     duration: "8 weeks",
   },
   {
-    name: "Ajras",
-    slug: "ajras",
-    imgUrl: "/images/projects/ajras.jpg",
-    images: ["/images/projects/ajras.jpg"],
-    link: "https://ajras.com",
-    year: 2024,
-    tags: ["next.js", "fintech", "b2b"],
-    selected: true, // Let's make this a selected project
-    description:
-      "A modern corporate website for a technology consulting firm, emphasizing innovation and professional expertise.",
-    challenge:
-      "Ajras, an innovative Saudi Arabian FinTech startup, needed to build a secure and professional web platform for their 'Rent Now, Pay Later' service for commercial real estate. The primary challenge was to create a user experience that felt trustworthy and simple for business owners applying for financing, while also conveying the credibility needed to attract high-value property owners to list with them.",
-    solution:
-      "I led the frontend development for the Ajras marketing site and client portal using Next.js and TypeScript. The solution focused on:\n\n1.  **Building Trust:** I developed a clean, professional, and mobile-responsive interface that clearly communicates their value proposition and security measures, which is crucial for a financial services company.\n\n2.  **Streamlining Applications:** I built a multi-step application form that simplifies the complex process of submitting financial documents and business information, improving the user completion rate.\n\n3.  **Client Portal Foundation:** I created the authenticated space where both tenants and property owners could log in to manage their accounts, view payment schedules, and track application statuses. This required a strong focus on secure, client-side data handling.",
-    technologies: [
-      "React",
-      "Next.js",
-      "TypeScript",
-      "Tailwind CSS",
-      "User Authentication",
-    ],
-    results: [
-      "Successfully launched the digital presence for an innovative FinTech product in the Saudi Arabian market.",
-      "The intuitive application form led to a 40% increase in completed submissions compared to their initial manual process.",
-      "Established a professional and credible brand image that attracted both business tenants and major property owners.",
-    ],
-    client: "Ajras Information Technology Company",
-    duration: "4 weeks",
-  },
-  {
     name: "Customs Royalty Checker",
     slug: "customs-royalty-checker",
     imgUrl: "/images/projects/customs.jpg",
@@ -135,38 +105,6 @@ const ProjectsList: Project[] = [
     ],
     client: "Passage Protocol",
     duration: "10 weeks",
-  },
-  {
-    name: "Roa’a Technologies",
-    slug: "roaa-technologies",
-    imgUrl: "/images/projects/roaa.jpg",
-    images: ["/images/projects/roaa.jpg", "/images/projects/roaa-full.jpg"],
-    link: "https://roaa-zeeshanjunaid.vercel.app/",
-    year: 2023,
-    tags: ["ui/ux", "frontend", "animations", "3d"],
-    description:
-      "A cutting-edge technology company website featuring advanced animations and modern design principles.",
-    challenge:
-      "Roa’a Technologies, a conceptual AI hardware startup, needed a website that did more than just describe their product—it had to *demonstrate* innovation. The challenge was to create a web experience that could communicate a highly complex technical concept to investors and top engineering talent, making the abstract feel tangible and exciting.",
-    solution:
-      "I was brought on to lead the frontend development and create a visually immersive, interactive website. The solution was built around a central 3D product visualization:\n\n1.  **Interactive 3D Model:** Using Three.js and React Three Fiber, I built an interactive 3D model of their AI chip. Users can rotate, zoom, and click on different components to explore its features, transforming a technical spec sheet into an engaging experience.\n\n2.  **Performant Animations:** I used Framer Motion to create sophisticated, GPU-accelerated scroll-based animations that guide the user through the company's story and technology without sacrificing performance.\n\n3.  **Modern Tech Stack:** The site was built with Next.js and TypeScript for a fast, secure, and scalable foundation, ensuring the site would perform flawlessly during high-traffic launch announcements.",
-    technologies: [
-      "React",
-      "Next.js",
-      "TypeScript",
-      "Tailwind CSS",
-      "Framer Motion",
-      "Three.js",
-      "WebGL",
-    ],
-    results: [
-      "Delivered a web experience that successfully differentiated the brand in a competitive tech landscape.",
-      "The interactive 3D demo received praise from potential investors for making the technology understandable and compelling.",
-      "The site's high-end execution served as a powerful recruiting tool, attracting top-tier engineering talent.",
-      "Achieved a perfect Lighthouse performance score despite the use of complex 3D and animation elements.",
-    ],
-    client: "Roa’a Technologies (Conceptual Project)",
-    duration: "12 weeks",
   },
   {
     name: "drillbit",
