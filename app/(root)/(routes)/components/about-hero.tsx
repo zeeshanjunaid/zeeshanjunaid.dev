@@ -128,11 +128,11 @@ const AboutHero = () => {
           {/* Story Content */}
           <motion.div variants={containerVariants} className="space-y-6 mb-8">
             <motion.p variants={itemVariants} className={paragraphStyles}>
-              Hello! I&apos;m Zeeshan. I believe that the best websites and applications are born from a deep understanding of the business goals they serve. My passion isn&apos;t just about writing clean code; it&apos;s about building digital solutions that drive growth, engage users, and deliver measurable results.
+              Hello! I&apos;m Zeeshan. I believe that the best web applications are born from a deep understanding of both frontend and backend technologies. My passion isn&apos;t just about writing clean code; it&apos;s about building end-to-end digital solutions that drive growth, engage users, and deliver measurable results across the entire technology stack.
             </motion.p>
 
             <motion.p variants={itemVariants} className={paragraphStyles}>
-              My approach is collaborative and transparent. I work closely with you to understand your vision, challenge assumptions, and transform your ideas into a robust, scalable, and beautiful final product. I particularly enjoy partnering with innovative US-based startups and brands to bring their ambitious ideas to life on a global scale.
+              My approach is collaborative and transparent. I work closely with you to understand your vision, challenge assumptions, and transform your ideas into robust, scalable, and beautiful fullstack applications. I particularly enjoy partnering with innovative US-based startups and brands to bring their ambitious ideas to life on a global scale.
             </motion.p>
 
             <motion.div

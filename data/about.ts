@@ -647,7 +647,25 @@ export interface WorkExperienceProps {
 }
 export const WorkExperience: WorkExperienceProps[] = [
   {
-    duration: "2023 - Present",
+    duration: "2024 - Present",
+    role: "Fullstack Developer",
+    company: "Innovation Media Labs",
+    companyLink: "https://innovationmedialabs.com/",
+    description:
+      "Leading fullstack development initiatives for innovative digital solutions. Working across the entire technology stack to deliver scalable web applications and digital experiences that drive business growth and user engagement.",
+    technologies: [
+      "React",
+      "Node.js",
+      "Next.js",
+      "TypeScript",
+      "PostgreSQL",
+      "TailwindCSS",
+      "Framer Motion",
+      "REST APIs",
+    ],
+  },
+  {
+    duration: "2023 - 2024",
     role: "Frontend developer",
     company: "Passage Protocol",
     companyLink: "https://passage.xyz/",

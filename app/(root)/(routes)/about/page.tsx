@@ -16,26 +16,26 @@ const AboutPage = () => {
   const aboutSchema = {
     "@context": "https://schema.org",
     "@type": "AboutPage",
-    name: "About Zeeshan Junaid - UI/UX Designer and Frontend Developer",
+    name: "About Zeeshan Junaid - Fullstack Developer",
     description:
-      "Learn about Zeeshan Junaid's 8+ years of experience in UI/UX design and frontend development, helping businesses succeed online.",
+      "Learn about Zeeshan Junaid's 8+ years of experience in fullstack development, helping businesses succeed online with scalable web applications.",
     url: "https://zeeshanjunaid.dev/about",
     mainEntity: {
       "@type": "Person",
       name: "Zeeshan Junaid",
-      jobTitle: "UI/UX Designer and Frontend Developer",
+      jobTitle: "Fullstack Developer",
       description:
-        "Experienced freelance developer with 8+ years helping businesses build high-performance web applications.",
+        "Experienced fullstack developer with 8+ years helping businesses build high-performance web applications and digital solutions.",
       yearsOfExperience: "8",
       skills: [
         "React Development",
         "Next.js",
         "TypeScript",
-        "UI/UX Design",
-        "Frontend Architecture",
+        "Node.js",
+        "PostgreSQL",
+        "Fullstack Architecture",
         "Performance Optimization",
-        "WordPress Development",
-        "Shopify Development",
+        "REST APIs",
       ],
     },
   };

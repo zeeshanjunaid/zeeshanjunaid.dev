@@ -34,11 +34,11 @@ const CustomLink = ({
       >
         <span
           className={cn(
-            "absolute bottom-0 left-0 right-0 bg-purple w-full z-10 transition-all duration-150",
-            isHovered ? "h-full" : "h-0.5",
+            "absolute bottom-0 left-0 right-0 bg-purple w-full z-0 transition-all duration-150",
+            isHovered ? "h-full" : "h-0.5"
           )}
         />
-        <span className="z-20 relative">{text}</span>
+        <span className="z-10 relative text-white">{text}</span>
       </Link>
     );
   }
@@ -54,11 +54,11 @@ const CustomLink = ({
     >
       <span
         className={cn(
-          "absolute bottom-0 left-0 right-0 bg-purple w-full z-10 transition-all duration-150",
-          isHovered ? "h-full" : "h-0.5",
+          "absolute bottom-0 left-0 right-0 bg-purple w-full z-0 transition-all duration-150",
+          isHovered ? "h-full" : "h-0.5"
         )}
       />
-      <span className="z-20 relative">{text}</span>
+      <span className="z-10 relative text-white">{text}</span>
     </a>
   );
 };
